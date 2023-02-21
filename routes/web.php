@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DdeulController;
@@ -18,6 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/test', [MailController::class, 'send']);
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get("/login/{provider}", [SocialController::class, 'redirect']);
 Route::get("/login/{provider}/callback", [SocialController::class, 'Callback']);
