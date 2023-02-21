@@ -1,0 +1,45 @@
+/*@import "tailwindcss/base";*/
+/*@import "tailwindcss/components";*/
+/*@import "tailwindcss/utilities";*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+}
+
+#toast{
+    max-width: 700px;
+    min-width: 300px;
+    padding: 14px 20px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    /*background-color: rgba(38, 45, 57, 0.88);*/
+
+    color: white;
+    font-size: 14px;
+    line-height: 21px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    z-index: 99999;
+    bottom: 50px;
+    left: 50%;
+    transform: translate(-50%, 10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s, visibility .5s, transform .5s;
+}
+#toast.reveal {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+}
+
+#form_app input, #form_app select, textarea  {
+    border-color : #f0f0f0;
+}

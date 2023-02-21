@@ -1,0 +1,11 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/js/appbar.js": "/js/appbar.js",
+    "/js/user/user.js": "/js/user/user.js",
+    "/js/post/post.js": "/js/post/post.js",
+    "/js/ddeul/ddeul.js": "/js/ddeul/ddeul.js",
+    "/css/main.css": "/css/main.css",
+    "/css/app.css": "/css/app.css",
+    "/css/ddeul/create.css": "/css/ddeul/create.css",
+    "/css/layout.css": "/css/layout.css"
+}
