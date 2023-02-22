@@ -28,7 +28,7 @@ class MailAuth extends Mailable
      */
     public function build()
     {
-        return $this->from('remnant2816@gmail.com', '서동화')
+        return $this->from(env("MAIL_FROM_ADDRESS"), 'Admin')
             ->view('auth.mail')->with([
                 'content' => $this->content,
             ]);
