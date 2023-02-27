@@ -17,6 +17,7 @@ module.exports = {
   plugins: [
     require('tailwindcss'),
     require('@tailwindcss/forms'),
+    // require('tailwindcss-children'),
     // require('@tailwindcss/ui'),
     // require('daisyui'),
     // function({ addBase, config }) {

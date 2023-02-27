@@ -11,8 +11,19 @@
                     <div class="w-full flex-col mb-2 bg-white rounded-lg">
                         <div class="w-full px-3" onclick="location.href='/ddeul/{{$ddeul->id}}'">
                             <div class="border-b border-1 border-gray-100 p-2 relative">
-                                <span class="rounded-lg text-gray-50 bg-{{$ddeul->color}}-500 text-xs p-1">{{$ddeul->category}}</span>
-                                <p class="text-gray-900 text-base font-bold inline-block ml-1">{{$ddeul->name}}<span class="text-sm">의 뜰</span></p>
+                                @switch($ddeul->color)
+                                    @case("gray") <span class="rounded-lg text-gray-600 bg-gray-200 text-xs p-1">{{$ddeul->category}}</span> @break
+                                    @case("pink") <span class="rounded-lg text-pink-600 bg-pink-200 text-xs p-1">{{$ddeul->category}}</span> @break
+                                    @case("red") <span class="rounded-lg text-red-600 bg-red-200 text-xs p-1">{{$ddeul->category}}</span> @break
+                                    @case("orange") <span class="rounded-lg text-orange-600 bg-orange-200 text-xs p-1">{{$ddeul->category}}</span> @break
+                                    @case("yellow") <span class="rounded-lg text-yellow-600 bg-yellow-200 text-xs p-1">{{$ddeul->category}}</span> @break
+                                    @case("teal") <span class="rounded-lg text-teal-600 bg-teal-200 text-xs p-1">{{$ddeul->category}}</span> @break
+                                    @case("green") <span class="rounded-lg text-green-600 bg-green-200 text-xs p-1">{{$ddeul->category}}</span> @break
+                                    @case("sky") <span class="rounded-lg text-sky-600 bg-sky-200 text-xs p-1">{{$ddeul->category}}</span> @break
+                                    @case("blue") <span class="rounded-lg text-blue-600 bg-blue-200 text-xs p-1">{{$ddeul->category}}</span> @break
+                                    @case("purple") <span class="rounded-lg text-purple-600 bg-purple-200 text-xs p-1">{{$ddeul->category}}</span> @break
+                                @endswitch
+                                <p class="text-gray-900 text-base font-bold inline-block ml-1">{{$ddeul->name}}<span class="text-sm"></span></p>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-6 w-6 text-gray-900"
                                      style="position:absolute; right:6px; top:12px;"
                                      fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
