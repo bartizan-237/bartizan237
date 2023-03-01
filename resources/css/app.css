@@ -9,6 +9,9 @@ html {
     font-weight: 500;
 }
 
+.bg-237 {
+    background: rgb(237, 237, 237 );
+}
 #toast{
     max-width: 700px;
     min-width: 300px;

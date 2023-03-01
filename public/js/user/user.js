@@ -5,7 +5,7 @@ var __webpack_exports__ = {};
 /*!*****************************************!*\
   !*** ./resources/js/user/basic_info.js ***!
   \*****************************************/
-console.log("basic info init");
+console.log("basic info init 2");
 var form_app = new Vue({
   el: '#form_app',
   data: {
@@ -39,6 +39,10 @@ var form_app = new Vue({
           return true;
         } else if (res.data.code == 301) {
           toast("warning", "이미 등록되어있는 닉네임입니다🥲 다른 닉네임을 입력해주세요😀");
+          _this.nickname_validation = false;
+          return false;
+        } else if (res.data.code == 302) {
+          toast("warning", "\'" + nickname + "\'은 허용되지 않는 닉네임입니다. 다른 닉네임을 입력해주세요😀");
           _this.nickname_validation = false;
           return false;
         } else {
@@ -129,6 +133,10 @@ var myPage = new Vue({
           return true;
         } else if (res.data.code == 301) {
           toast("warning", "이미 등록되어있는 닉네임입니다🥲 다른 닉네임을 입력해주세요😀");
+          _this.nickname_validation = false;
+          return false;
+        } else if (res.data.code == 302) {
+          toast("warning", "\'" + nickname + "\'은 허용되지 않는 닉네임입니다. 다른 닉네임을 입력해주세요😀");
           _this.nickname_validation = false;
           return false;
         } else {

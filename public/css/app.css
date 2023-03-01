@@ -1385,6 +1385,9 @@ html {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 500;
 }
+.bg-237 {
+    background: rgb(237, 237, 237 );
+}
 #toast{
     max-width: 700px;
     min-width: 300px;
@@ -1661,6 +1664,9 @@ html {
   .sm\:mb-6 {
     margin-bottom: 1.5rem;
   }
+  .sm\:w-full {
+    width: 100%;
+  }
   .sm\:w-auto {
     width: auto;
   }
@@ -1812,6 +1818,11 @@ html {
     --tw-space-x-reverse: 0;
     margin-right: calc(1.5rem * var(--tw-space-x-reverse));
     margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+}
+@media (min-width: 1280px) {
+  .xl\:w-2\/3 {
+    width: 66.666667%;
   }
 }
 

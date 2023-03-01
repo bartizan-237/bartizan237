@@ -19,7 +19,7 @@ var myPage = new Vue({
     methods: {
         validateNickname : function (){
             if(preset_nickname == this.nickname) return false;
-            
+
             var nickname = this.nickname;
             console.log("blur ", nickname);
             axios.post('/user/validate_nickname',
@@ -41,7 +41,12 @@ var myPage = new Vue({
                         toast("warning", "이미 등록되어있는 닉네임입니다🥲 다른 닉네임을 입력해주세요😀");
                         this.nickname_validation = false;
                         return false;
-                    }else{
+                    }else if(res.data.code == 302){
+                        toast("warning", "\'"+ nickname + "\'은 허용되지 않는 닉네임입니다. 다른 닉네임을 입력해주세요😀");
+                        this.nickname_validation = false;
+                        return false;
+                    }
+                    else{
                         toast("warning", "서버에 일시적인 오류가 발생했습니다. 잠시 후에 다시 시도해주시기 바랍니다");
                         this.nickname_validation = false;
                         return false;

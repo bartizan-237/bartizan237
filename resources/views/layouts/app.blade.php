@@ -27,17 +27,20 @@
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <input id="user_id" type="hidden" value="{{Auth::user()->id ?? ''}}">
 </head>
-<body class="bg-gray-100 antialiased leading-none">
+<body class="bg-237 antialiased leading-none">
 
 
 <div id="toast"><p></p></div>
 
-    <div id="app"  style="max-width: 500px; margin:0 auto;" class="bg-gray-100">
+    <div id="app"  style="max-width: 500px; margin:0 auto;" class="bg-237">
         <header id="header-bar" class="flex w-full border-b border border-gray-100 bg-white fixed top-0 left-0" style="height: 60px; z-index: 10;">
-            <div class="" style="padding:20px">
-                <a href="/home">
-                    <img width="100" height="40" src="https://kr.object.ncloudstorage.com/immanuel/ddeul/ddeul237.png">
-                </a>
+            <div class="mx-auto sm:w-full md:w-full lg:w-2/3 xl:w-2/3" style="min-width: 500px;">
+                <div class="" style="padding:20px">
+                    <a href="/home">
+                        <img width="100" height="40" src="https://kr.object.ncloudstorage.com/immanuel/ddeul/ddeul237.png">
+                    </a>
+                </div>
+
             </div>
 
 {{--            @auth--}}

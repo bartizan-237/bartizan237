@@ -40,9 +40,18 @@ class UserController extends Controller
 
     public function validateNickname(Request $request){
         $nickname = $request->nickname;
+        info(__METHOD__);
+        info($nickname);
         if(User::where('nickname', $nickname)->exists()){
             return response()->json(["code" => 301, "message" => "That Nickname is already registered"]);
         }else{
+            $is_keyword_available = isKeywordAvailable($nickname); // array
+
+            if(!$is_keyword_available){
+                return response()->json(["code" => 302, "message" => "That Nickname is not allowed!"]);
+            }
+            info("\$is_keyword_available = $is_keyword_available");
+
             return response()->json(["code" => 200]);
         }
     }
