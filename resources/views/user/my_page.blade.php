@@ -23,15 +23,6 @@
                 <div class="flex flex-col -m-2">
                     <div class="p-2 w-full">
                         <div class="relative">
-                            <label for="name" class="leading-7 text-sm text-gray-600 required">이름</label>
-                            <input type="hidden" id="preset_name" value="{{$user->name}}">
-                            <input v-model="name" type="text" id="name" name="name"
-                                   class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                            >
-                        </div>
-                    </div>
-                    <div class="p-2 w-full">
-                        <div class="relative">
                             <label for="nickname" class="leading-7 text-sm text-gray-600 required">닉네임</label>
                             <input type="hidden" id="preset_nickname" value="{{$user->nickname}}">
                             <input v-model="nickname" v-on:blur="validateNickname" type="text" id="nickname" name="nickname"
@@ -41,11 +32,11 @@
 
                     <div class="p-2 w-full">
                         <div class="relative">
-                            <label for="birth" class="leading-7 text-sm text-gray-600">생년월일</label>
-                            <input type="hidden" id="preset_birth" value="{{$user->birth}}">
-                            <input v-model="birth" type="date" id="birth" name="birth"
-                                   min="1901-01-01" max="2021-12-31"
-                                   class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            <label for="name" class="leading-7 text-sm text-gray-600">이름</label>
+                            <input type="hidden" id="preset_name" value="{{$user->name}}">
+                            <input v-model="name" type="text" id="name" name="name"
+                                   class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                            >
                         </div>
                     </div>
 
@@ -56,6 +47,12 @@
                             <input v-model="birth" type="date" id="birth" name="birth"
                                    min="1901-01-01" max="2021-12-31"
                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        </div>
+                    </div>
+
+                    <div class="p-2 w-full">
+                        <div class="relative">
+                            <label for="birth" class="leading-7 text-sm text-gray-600">관심분야</label>
                         </div>
                     </div>
 

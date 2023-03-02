@@ -14,29 +14,30 @@
                     action="{{ route('register') }}">
                     @csrf
 
-                    <div class="flex flex-wrap">
-                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
-                            이름
-                        </label>
+{{--                    <div class="flex flex-wrap">--}}
+{{--                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">--}}
+{{--                            이름--}}
+{{--                        </label>--}}
 
-                        <input id="name" type="text" class="form-input w-full @error('name')  border-red-500 @enderror"
-                            name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+{{--                        <input id="name" type="text" class="form-input w-full @error('name')  border-red-500 @enderror"--}}
+{{--                            name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>--}}
 
-                        @error('name')
-                        <p class="text-red-500 text-xs italic mt-4">
-                            {{ $message }}
-                        </p>
-                        @enderror
-                    </div>
+{{--                        @error('name')--}}
+{{--                        <p class="text-red-500 text-xs italic mt-4">--}}
+{{--                            {{ $message }}--}}
+{{--                        </p>--}}
+{{--                        @enderror--}}
+{{--                    </div>--}}
 
                     <div class="flex flex-wrap">
                         <label for="email" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
                             이메일
                         </label>
 
-                        <input id="email" type="email"
-                            class="form-input w-full @error('email') border-red-500 @enderror" name="email"
-                            value="{{ old('email') }}" required autocomplete="email">
+{{--                        <input id="email" type="email"--}}
+{{--                            class="form-input w-full @error('email') border-red-500 @enderror" name="email"--}}
+{{--                            value="{{ old('email') }}" required autocomplete="email">--}}
+{{--                        <button>인증번호받기</button>--}}
 
                         @error('email')
                         <p class="text-red-500 text-xs italic mt-4">
@@ -72,13 +73,13 @@
 
                     <div class="flex flex-wrap">
                         <button type="submit"
-                            class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-blue-500 hover:bg-blue-700 sm:py-4">
+                            class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-green-500 hover:bg-green-700 sm:py-4">
                             가입하기
                         </button>
 
                         <p class="w-full text-xs text-center text-gray-700 my-6 sm:text-sm sm:my-8">
                             이미 계정이 있으신가요?
-                            <a class="text-blue-500 hover:text-blue-700 no-underline hover:underline" href="{{ route('login') }}">
+                            <a class="text-green-500 hover:text-green-700 no-underline hover:underline" href="{{ route('login') }}">
                                 로그인하기
                             </a>
                         </p>
