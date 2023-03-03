@@ -51,12 +51,6 @@
                     </div>
 
                     <div class="p-2 w-full">
-                        <div class="relative">
-                            <label for="birth" class="leading-7 text-sm text-gray-600">관심분야</label>
-                        </div>
-                    </div>
-
-                    <div class="p-2 w-full">
                         <button
                                 @click="submitForm"
                                 class="mx-auto w-full text-center items-center text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">
@@ -70,19 +64,33 @@
     </section>
 
 @auth
-    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-        로그아웃
-    </a>
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-        {{ csrf_field() }}
-    </form>
+    <section class="w-full mt-12">
+        <div class="p-2 mx-auto text-center items-center ">
+            <a class="text-gray-700 font-bold py-2 px-8 hover:text-green-900 rounded text-lg hover:underline hover:underline-offset-4"
+                href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                로그아웃
+            </a>
+        </div>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+        </form>
+    </section>
 @else
-    <a href="{{ route('login') }}">
-        로그인
-    </a>
-    <a href="{{ route('register') }}">
-        회원가입
-    </a>
+    <section class="w-full mt-12">
+        <div class="p-2 mx-auto text-center items-center ">
+            <a class="text-gray-700 font-bold py-2 px-8 hover:text-green-900 rounded text-lg hover:underline hover:underline-offset-4"
+                href="{{ route('login') }}">
+            로그인
+            </a>
+        </div>
+        <div class="p-2 mx-auto text-center items-center mt-6">
+            <a class="mx-auto w-full text-center items-center text-green-500 font-bold py-2 px-8 hover:text-green-700 rounded text-lg"
+               href="{{ route('register') }}">
+                회원가입
+            </a>
+        </div>
+    </section>
 @endauth
 
 {{--    <script src="{{ asset('js/user/basic_info.js') }}" defer></script>--}}

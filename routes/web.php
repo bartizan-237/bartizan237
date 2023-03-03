@@ -55,7 +55,9 @@ Route::group(['namespace' => 'User',
     Route::get('/basic_info', [UserController::class, 'basicInfo']);
     Route::post('/basic_info', [UserController::class, 'saveBasicInfo']);
     Route::post('/validate_nickname', [UserController::class, 'validateNickname']);
+
     Route::get('/my_page', [UserController::class, 'myPage']);
+    Route::get('/my_fields', [UserController::class, 'myFields']); // 관심분야
 });
 
 // SET JOBS

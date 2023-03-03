@@ -8,6 +8,7 @@
             <span class="block text-xs leading-none">홈</span>
         </div>
     </a>
+
     <a id="" href="#" onclick="toast('normal', '준비중입니다😂')" class="nav_btn w-1/5  cursor-pointer flex flex-grow items-center justify-center p-2 text-gray-800 active:text-theme-01">
         <div class="text-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mb-1" viewBox="0 0 20 20" fill="currentColor">
@@ -16,21 +17,29 @@
             <span class="block text-xs leading-none">검색</span>
         </div>
     </a>
+    
     <a id="" href="/ddeul" class="nav_btn w-1/5  cursor-pointer flex flex-grow items-center justify-center p-2 @if(isset($now) AND $now == "ddeul") text-green-500 @else text-gray-800 @endif active:text-theme-01">
         <div class="text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mb-1 feather feather-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line>
-            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mb-1 feather feather-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
             <span class="block text-xs leading-none">뜰</span>
         </div>
     </a>
-    <a id="" href="#" onclick="toast('normal', '준비중입니다😂')" class="nav_btn w-1/5  cursor-pointer flex flex-grow items-center justify-center p-2 text-gray-800 active:text-theme-01">
-        <div class="text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mb-1" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
-            </svg>
-            <span class="block text-xs leading-none">알림</span>
-        </div>
-    </a>
+
+{{--    <a id="" href="/fields" class="nav_btn w-1/5  cursor-pointer flex flex-grow items-center justify-center p-2 @if(isset($now) AND $now == "fields") text-green-500 @else text-gray-800 @endif active:text-theme-01">--}}
+{{--        <div class="text-center">--}}
+{{--            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 feather feather-briefcase"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>--}}
+{{--            <span class="block text-xs leading-none">관심분야</span>--}}
+{{--        </div>--}}
+{{--    </a>--}}
+
+{{--    <a id="" href="#" onclick="toast('normal', '준비중입니다😂')" class="nav_btn w-1/5  cursor-pointer flex flex-grow items-center justify-center p-2 text-gray-800 active:text-theme-01">--}}
+{{--        <div class="text-center">--}}
+{{--            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mb-1" viewBox="0 0 20 20" fill="currentColor">--}}
+{{--                <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />--}}
+{{--            </svg>--}}
+{{--            <span class="block text-xs leading-none">알림</span>--}}
+{{--        </div>--}}
+{{--    </a>--}}
     <a id="" href="/user/my_page" class="nav_btn w-1/5  cursor-pointer flex flex-grow items-center justify-center p-2 text-gray-800 active:text-theme-01">
         <div class="text-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mb-1" viewBox="0 0 20 20" fill="currentColor">

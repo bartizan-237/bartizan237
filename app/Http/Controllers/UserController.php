@@ -84,4 +84,14 @@ class UserController extends Controller
         ]);
     }
 
+    public function myFields()
+    {
+        // 관심분야 설정
+        $fields = Job::select('id', 'industry', 'name')->get()->groupBy("industry");
+        return view('user.my_fields', [
+            'user' => $this->user,
+            'fields' => $fields
+        ]);
+    }
+
 }
