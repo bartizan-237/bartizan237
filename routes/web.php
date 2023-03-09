@@ -1,15 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MailController;
-use App\Http\Controllers\SocialController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\DdeulController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\LikeController;
-
+use App\Http\Controllers\{
+    HomeController,
+    MailController,
+    SocialController,
+    UserController,
+    DdeulController,
+    PostController,
+    CommentController,
+    LikeController,
+    AjaxController
+};
 
 Route::get('/', function () {
     return redirect('/home');
@@ -29,6 +31,8 @@ Route::resources([
     'post' => PostController::class,
     'comment' => CommentController::class,
 ]);
+
+Route::post("upload_image", [AjaxController::class, 'uploadImage']);
 
 // Click LIKE
 Route::post("like", [LikeController::class, 'clickLike']);

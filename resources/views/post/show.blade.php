@@ -133,6 +133,6 @@
     </div>
 
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-    <script src="{{ asset('js/post/post.js') }}" defer></script>
+    <script src="{{ asset('js/post/show.js') }}" defer></script>
 
 @endsection

@@ -1,7 +1,5 @@
 /******/ (() => { // webpackBootstrap
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
-(() => {
 /*!*************************************!*\
   !*** ./resources/js/post/create.js ***!
   \*************************************/
@@ -93,10 +91,71 @@ var toolbarOptions = [['bold', 'italic', 'underline', 'strike'], // toggled butt
   'align': []
 }], ['clean'] // remove formatting button
 ];
+
+function selectLocalImage() {
+  var input = document.createElement('input');
+  input.setAttribute('type', 'file');
+  input.click();
+
+  input.onchange = function () {
+    var file = input.files[0];
+
+    if (/^image\//.test(file.type)) {
+      saveToServer(file);
+    } else {
+      console.warn('You could only upload images.');
+    }
+  };
+}
+
+function saveToServer(file) {
+  var fd = new FormData();
+  fd.append('image', file);
+  console.log("FormData", fd);
+  fetch('/upload_image', {
+    method: 'POST',
+    body: fd
+  }).then(function (response) {
+    return response.json();
+  }).then(function (json) {
+    console.log("saveToServer response json", json);
+    insertToEditor(json.url);
+  }); // Change the URL below to your PHP script that handles the image upload
+  // fetch('upload.php', {
+  //     method: 'POST',
+  //     body: fd
+  // })
+  //     .then(function(response) {
+  //         return response.json();
+  //     })
+  //     .then(function(json) {
+  //         insertToEditor(json.url);
+  //     });
+}
+
+function insertToEditor(url) {
+  console.log("insertToEditor", url);
+  var range = quill.getSelection();
+
+  if (url.indexOf("http") != -1) {
+    quill.insertEmbed(range.index, 'image', url);
+  } else {
+    quill.insertEmbed(range.index, 'image', "https://platform.237.co.kr/" + url);
+  }
+}
+
 quill = new Quill('#editor', {
   theme: 'snow',
   modules: {
-    toolbar: '#toolbar' // toolbar : toolbarOptions
+    toolbar: '#toolbar' // handlers: {
+    //     'image': function() {
+    //         // 23.3.9. Dynamic Image Upload
+    //         // POST data to server
+    //         // UPLOAD image to CLOUD
+    //         selectLocalImage();
+    //     }
+    // }
+    // toolbar : toolbarOptions
     // toolbar:    [
     //     [ { header: [1, 2, false] }],
     //     ['bold', 'italic', 'underline'],
@@ -110,38 +169,6 @@ quill = new Quill('#editor', {
   },
   placeholder: '내용을 입력하세요'
 });
-})();
-
-// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
-(() => {
-/*!***********************************!*\
-  !*** ./resources/js/post/show.js ***!
-  \***********************************/
-var commentApp = new Vue({
-  el: '#commentApp',
-  data: {
-    post_id: null,
-    user_id: null,
-    writer: null,
-    content: null,
-    comment_text: "",
-    csrf_token: null
-  },
-  mounted: function mounted() {
-    this.csrf_token = document.querySelector('meta[name="csrf-token"]').content;
-  },
-  methods: {
-    createComment: function createComment() {
-      console.log("createComment", this.post_id, this.user_id);
-
-      if (this.user_id == "") {
-        toast("warning", "댓글을 쓰기 위해서는 먼저 로그인해주세요🙏 ");
-        return false;
-      }
-    }
-  }
-});
-})();
-
+quill.getModule("toolbar").addHandler("image", selectLocalImage);
 /******/ })()
 ;

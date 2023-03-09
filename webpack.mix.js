@@ -15,12 +15,12 @@ const mix = require('laravel-mix');
 //     .vue()
 //     .sass('resources/sass/app.scss', 'public/css');
 
-
 mix
     .js('resources/js/app.js', 'public/js')
     .js('resources/js/appbar.js', 'public/js')
     .js('resources/js/user/*', 'public/js/user/user.js')
-    .js('resources/js/post/*', 'public/js/post/post.js')
+    .js('resources/js/post/create.js', 'public/js/post/create.js')
+    .js('resources/js/post/show.js', 'public/js/post/show.js')
     .js('resources/js/ddeul/*', 'public/js/ddeul/ddeul.js')
     .sass('resources/css/layout.scss', 'public/css')
     .postCss('resources/css/ddeul/create.css', 'public/css/ddeul', [

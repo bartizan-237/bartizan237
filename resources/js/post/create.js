@@ -52,9 +52,6 @@ var form_app = new Vue({
     }
 });
 
-
-
-
 var toolbarOptions = [
     ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
     ['blockquote', 'code-block'],
@@ -76,10 +73,79 @@ var toolbarOptions = [
 ];
 
 
+
+function selectLocalImage() {
+    var input = document.createElement('input');
+    input.setAttribute('type', 'file');
+    input.click();
+
+    input.onchange = function() {
+        var file = input.files[0];
+
+        if (/^image\//.test(file.type)) {
+            saveToServer(file);
+        } else {
+            console.warn('You could only upload images.');
+        }
+    };
+}
+
+
+function saveToServer(file) {
+    var fd = new FormData();
+    fd.append('image', file);
+
+    console.log("FormData",fd);
+
+    fetch('/upload_image', {
+        method: 'POST',
+        body: fd
+    })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(json) {
+            console.log("saveToServer response json", json);
+            insertToEditor(json.url);
+        });
+
+    // Change the URL below to your PHP script that handles the image upload
+    // fetch('upload.php', {
+    //     method: 'POST',
+    //     body: fd
+    // })
+    //     .then(function(response) {
+    //         return response.json();
+    //     })
+    //     .then(function(json) {
+    //         insertToEditor(json.url);
+    //     });
+}
+
+function insertToEditor(url) {
+    console.log("insertToEditor", url);
+    var range = quill.getSelection();
+
+    if(url.indexOf("http") != -1){
+        quill.insertEmbed(range.index, 'image', url);
+    } else {
+        quill.insertEmbed(range.index, 'image', "https://platform.237.co.kr/" + url);
+    }
+}
+
+
 quill = new Quill('#editor', {
     theme: 'snow',
     modules: {
-        toolbar: '#toolbar'
+        toolbar: '#toolbar',
+        // handlers: {
+        //     'image': function() {
+        //         // 23.3.9. Dynamic Image Upload
+        //         // POST data to server
+        //         // UPLOAD image to CLOUD
+        //         selectLocalImage();
+        //     }
+        // }
         // toolbar : toolbarOptions
         // toolbar:    [
         //     [ { header: [1, 2, false] }],
@@ -93,3 +159,6 @@ quill = new Quill('#editor', {
     },
     placeholder: '내용을 입력하세요',
 });
+
+quill.getModule("toolbar").addHandler("image", selectLocalImage);
+
