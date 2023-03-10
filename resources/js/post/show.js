@@ -82,7 +82,7 @@ var commentApp = new Vue({
         createComment : function (){
             console.log("createComment", this.post_id, this.user_id);
             if(this.user_id == ""){
-                toast("warning", "댓글을 쓰시려면 먼저 로그인해주세요🙏");
+                toast("warning", "댓글을 쓰시려면 먼저 로그인해주세요.");
                 return false;
             }
 

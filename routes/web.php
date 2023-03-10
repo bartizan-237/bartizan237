@@ -64,5 +64,8 @@ Route::group(['namespace' => 'User',
     Route::get('/my_fields', [UserController::class, 'myFields']); // 관심분야
 });
 
+// 전체 분야
+Route::get('/fields', [UserController::class, 'myFields']); // 관심분야
+
 // SET JOBS
 Route::get('/set_jobs', [HomeController::class, 'setJobs']);

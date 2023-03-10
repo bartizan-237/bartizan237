@@ -27,9 +27,9 @@
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <input id="user_id" type="hidden" value="{{Auth::user()->id ?? ''}}">
 </head>
+{{--<body class="bg-237 antialiased leading-none">--}}
+
 <body class="bg-237 antialiased leading-none">
-
-
 <div id="toast"><p></p></div>
 
     <div id="app"  style="max-width: 500px; margin:0 auto;" class="bg-237">
@@ -66,7 +66,9 @@
         </section>
 
 
-       @include('layouts.bottom_nav')
+        <section>
+            @include('layouts.bottom_nav')
+        </section>
     </div>
 </body>
 
