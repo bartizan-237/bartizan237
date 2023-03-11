@@ -75,12 +75,12 @@
                 </form>
 
                 <!-- 카카오 로그인 -->
-{{--                <div class="text-center w-full">--}}
-{{--                    <img onclick="location.href='/login/kakao'"--}}
-{{--                         class="my-6 mx-auto"--}}
-{{--                         src="/image/kakao_login.png"--}}
-{{--                    />--}}
-{{--                </div>--}}
+                <div class="text-center w-full">
+                    <img onclick="location.href='/login/kakao'"
+                         class="my-6 mx-auto"
+                         src="/image/kakao_login.png"
+                    />
+                </div>
 
 
             </section>

@@ -14,6 +14,7 @@ use App\Http\Controllers\{
 };
 
 Route::get('/', function () {
+//    return redirect('https://www.naver.com');
     return redirect('/home');
 //    $user = \Auth::user();
 //    return view('welcome');
