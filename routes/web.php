@@ -6,7 +6,7 @@ use App\Http\Controllers\{
     MailController,
     SocialController,
     UserController,
-    DdeulController,
+    BartizanController,
     PostController,
     CommentController,
     LikeController,
@@ -22,13 +22,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/test', [MailController::class, 'send']);
+
+Route::get('/test', [HomeController::class, 'test']);
+//Route::get('/test', [MailController::class, 'send']);
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get("/login/{provider}", [SocialController::class, 'redirect']);
 Route::get("/login/{provider}/callback", [SocialController::class, 'Callback']);
 
 Route::resources([
-//    'ddeul' => DdeulController::class,
+//    'bartizan' => BartizanController::class,
     'post' => PostController::class,
     'comment' => CommentController::class,
 ]);
@@ -38,17 +40,17 @@ Route::post("upload_image", [AjaxController::class, 'uploadImage']);
 // Click LIKE
 Route::post("like", [LikeController::class, 'clickLike']);
 
-Route::group(['namespace' => 'Ddeul', 'prefix' => 'ddeul'], function() {
-    Route::get("/", [DdeulController::class, 'index']);
-    Route::get("/create", [DdeulController::class, 'create']);
-    Route::post("/", [DdeulController::class, 'store']);
-    Route::get("/{ddeul}", [DdeulController::class, 'show']);
-    Route::get("/{ddeul}/edit", [DdeulController::class, 'edit']);
-//    Route::post("/{ddeul}", [DdeulController::class, 'update']);
-    Route::delete("/{ddeul}", [DdeulController::class, 'delete']);
-    Route::post('/validate_name', [DdeulController::class, 'validateName']);
-    Route::get("/{ddeul}/posts", [DdeulController::class, 'posts']);
-    Route::get("/{ddeul}/posts/{post}", [DdeulController::class, 'showPost']);
+Route::group(['namespace' => 'Bartizan', 'prefix' => 'bartizan'], function() {
+    Route::get("/", [BartizanController::class, 'index']);
+    Route::get("/create", [BartizanController::class, 'create']);
+    Route::post("/", [BartizanController::class, 'store']);
+    Route::get("/{bartizan}", [BartizanController::class, 'show']);
+    Route::get("/{bartizan}/edit", [BartizanController::class, 'edit']);
+//    Route::post("/{bartizan}", [BartizanController::class, 'update']);
+    Route::delete("/{bartizan}", [BartizanController::class, 'delete']);
+    Route::post('/validate_name', [BartizanController::class, 'validateName']);
+    Route::get("/{bartizan}/posts", [BartizanController::class, 'posts']);
+    Route::get("/{bartizan}/posts/{post}", [BartizanController::class, 'showPost']);
 });
 
 

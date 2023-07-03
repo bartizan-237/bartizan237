@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ddeul;
+use App\Models\Bartizan;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
-class DdeulController extends Controller
+class BartizanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class DdeulController extends Controller
      */
     public function index()
     {
-        $ddeuls = Ddeul::paginate(10);
-        return view('ddeul.index', [
-           'ddeuls' => $ddeuls
+        $bartizans = Bartizan::paginate(10);
+        return view('bartizan.index', [
+           'bartizans' => $bartizans
         ]);
     }
 
@@ -29,7 +29,7 @@ class DdeulController extends Controller
      */
     public function create()
     {
-        return view("ddeul.create");
+        return view("bartizan.create");
     }
 
     /**
@@ -48,7 +48,7 @@ class DdeulController extends Controller
         }
 
 //        $validatedData = $request->validate([
-//            'name' => ['required', 'unique:ddeuls', 'max:255'],
+//            'name' => ['required', 'unique:bartizans', 'max:255'],
 //            'category' => ['required'],
 //            'type' => ['required'],
 //        ]);
@@ -57,7 +57,7 @@ class DdeulController extends Controller
 
         $data = $request->data;
 
-        Ddeul::create([
+        Bartizan::create([
             'name' => $data['name'],
             'category' => $data['category'],
             'type' => $data['category'],
@@ -74,26 +74,26 @@ class DdeulController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Ddeul  $ddeul
+     * @param  \App\Models\Bartizan  $bartizan
      * @return \Illuminate\Http\Response
      */
-    public function show(Ddeul $ddeul)
+    public function show(Bartizan $bartizan)
     {
-        return view("ddeul.show", [
-            "ddeul" => $ddeul
+        return view("bartizan.show", [
+            "bartizan" => $bartizan
         ]);
     }
 
-    public function posts(Ddeul $ddeul)
+    public function posts(Bartizan $bartizan)
     {
-        $posts = Post::where("ddeul_id", $ddeul->id)->orderBy('id', 'desc')->paginate(10);
-        return view("ddeul.posts", [
-            "ddeul" => $ddeul,
+        $posts = Post::where("bartizan_id", $bartizan->id)->orderBy('id', 'desc')->paginate(10);
+        return view("bartizan.posts", [
+            "bartizan" => $bartizan,
             "posts" => $posts
         ]);
     }
 
-    public function showPost(Ddeul $ddeul, Post $post){{
+    public function showPost(Bartizan $bartizan, Post $post){{
         $post->increment("hit");
 
         if($user = \Auth::user()){
@@ -102,7 +102,7 @@ class DdeulController extends Controller
             $post->like_by_this_user = 0;
         }
         return view("post.show", [
-            "ddeul" => $ddeul,
+            "bartizan" => $bartizan,
             "show_post" => true,
             "post" => $post
         ]);
@@ -111,13 +111,13 @@ class DdeulController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Ddeul  $ddeul
+     * @param  \App\Models\Bartizan  $bartizan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ddeul $ddeul)
+    public function edit(Bartizan $bartizan)
     {
-        return view("ddeul.edit", [
-            "ddeul" => $ddeul
+        return view("bartizan.edit", [
+            "bartizan" => $bartizan
         ]);
     }
 
@@ -125,10 +125,10 @@ class DdeulController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Ddeul  $ddeul
+     * @param  \App\Models\Bartizan  $bartizan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ddeul $ddeul)
+    public function update(Request $request, Bartizan $bartizan)
     {
         //
     }
@@ -136,10 +136,10 @@ class DdeulController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Ddeul  $ddeul
+     * @param  \App\Models\Bartizan  $bartizan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ddeul $ddeul)
+    public function destroy(Bartizan $bartizan)
     {
         //
     }
@@ -147,7 +147,7 @@ class DdeulController extends Controller
     public function validateName(Request $request){
         $name = $request->name;
         info(__FUNCTION__ . " > " .$name);
-        if(Ddeul::where('name', $name)->exists()){
+        if(Bartizan::where('name', $name)->exists()){
             return response()->json(["code" => 301, "message" => "That Nickname is already registered"]);
         }else{
             return response()->json(["code" => 200]);

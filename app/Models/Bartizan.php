@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
-class Ddeul extends Model
+class Bartizan extends Model
 {
     use SoftDeletes;
     use HasFactory;
 
-    protected $table = "ddeuls";
+    protected $table = "bartizans";
     protected $guarded = [
 
     ];

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <link href="{{ mix('css/ddeul/create.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/bartizan/create.css') }}" rel="stylesheet">
 
 {{--    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>--}}
 {{--    <script type="text/javascript" src="/smarteditor2/js/HuskyEZCreator.js"></script>--}}
@@ -14,11 +14,11 @@
                 <div class="flex flex-col">
                     <div class="mb-6 p-1">
                         <h3 class="text-gray-900 mb-3 text-xl inline-block mr-1">포스트 작성</h3>
-                        @if(isset($ddeul))
-                            <input type="hidden" id="ddeul_id" value="{{$ddeul->id}}">
-                            <p class="text-sm inline-block"> <span class="text-green-700">{{$ddeul->name}}</span> 뜰에 글쓰기</p>
+                        @if(isset($bartizan))
+                            <input type="hidden" id="bartizan_id" value="{{$bartizan->id}}">
+                            <p class="text-sm inline-block"> <span class="text-green-700">{{$bartizan->name}}</span> 망대에 글쓰기</p>
                         @else
-                            <input type="hidden" id="ddeul_id" value="">
+                            <input type="hidden" id="bartizan_id" value="">
                         @endif
 
                         <p class="text-gray-700 mb-3">-가이드1</p>

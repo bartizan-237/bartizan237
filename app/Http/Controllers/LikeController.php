@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\Ddeul;
+use App\Models\Bartizan;
 use App\Models\User;
 use App\Models\Like;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ class LikeController extends Controller
     public function clickLike(Request $request){
         $data = (object) $request->data;
         $like = $data->like;
-        $ddeul_id = $data->ddeul_id;
+        $bartizan_id = $data->bartizan_id;
         $target_type = $data->target_type;
         $target_id = $data->target_id;
         $user_id = $data->user_id;
@@ -25,7 +25,7 @@ class LikeController extends Controller
             // 좋아요
             if(!Like::where($target_column, $target_id)->where("user_id", $user_id)->exists()){
                 Like::create([
-                    'ddeul_id' => $ddeul_id,
+                    'bartizan_id' => $bartizan_id,
                     $target_column => $target_id,
                     'user_id' => $user_id
                 ]);

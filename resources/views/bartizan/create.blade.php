@@ -8,14 +8,14 @@
 {{--    <script type="text/javascript" src="/smarteditor2/js/HuskyEZCreator.js"></script>--}}
 
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <link href="{{ mix('css/ddeul/create.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/bartizan/create.css') }}" rel="stylesheet">
 
     <main class="container mx-auto" style="margin-top:10px; max-width: 500px;">
         <div class=" bg-gray-50" style="">
             <div id="form_app" class="bg-white shadow rounded-lg px-2 py-2" style="padding-bottom: 100px;">
                 <div class="flex flex-col">
                     <div class="mb-6 p-1 m-2">
-                        <h3 class="text-gray-900 mb-3 text-xl">뜰 만들기</h3>
+                        <h3 class="text-gray-900 mb-3 text-xl">망대 만들기</h3>
 {{--                        <p class="text-gray-800 mb-3">-가이드1</p>--}}
 {{--                        <p class="text-gray-800 mb-3">-가이드2</p>--}}
 {{--                        <p class="text-gray-800 mb-3">-가이드3</p>--}}
@@ -31,7 +31,7 @@
                             <label>
                                 <input id="name" name="name" v-model="name" @blur="validateName"
                                        autocomplete="false" tabindex="0" type="text" class="py-1 px-1 pr-5 text-gray-900 outline-none block h-full inline-block text-right">
-                                의 뜰
+                                 망대
                             </label>
                         </p>
                     </div>
@@ -127,5 +127,5 @@
 
 
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-    <script src="{{ asset('js/ddeul/ddeul.js') }}" defer></script>
+    <script src="{{ asset('js/bartizan/bartizan.js') }}" defer></script>
 @endsection

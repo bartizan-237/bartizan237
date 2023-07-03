@@ -1,14 +1,14 @@
-@extends('layouts.ddeul')
+@extends('layouts.bartizan')
 
 @section('content')
 {{--    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>--}}
 {{--    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">--}}
-    <link href="{{ mix('css/ddeul/create.css') }}" rel="stylesheet">
-    <input type="hidden" id="ddeul_id" value="{{$ddeul->id}}">
+    <link href="{{ mix('css/bartizan/create.css') }}" rel="stylesheet">
+    <input type="hidden" id="bartizan_id" value="{{$bartizan->id}}">
     <input type="hidden" id="post_id" value="{{$post->id}}">
 
     <main class="container py-2" style="margin-top:-50px; padding-bottom: 50px;">
-        <button class="bg-green-500 text-white rounded-full text-2xl font-bold" style="position: fixed; line-height: 15px; font-size: 15px; width: 30px; height: 30px; right:30px; bottom:100px;" onclick="location.href='/post/create?ddeul_id='{{$ddeul->id}}">+</button>
+        <button class="bg-green-500 text-white rounded-full text-2xl font-bold" style="position: fixed; line-height: 15px; font-size: 15px; width: 30px; height: 30px; right:30px; bottom:100px;" onclick="location.href='/post/create?bartizan_id='{{$bartizan->id}}">+</button>
         <article class="flex flex-col bg-white w-full" style="padding-bottom: 100px;">
             <!-- TITLE -->
             <div class="p-3 bg-gray-50">

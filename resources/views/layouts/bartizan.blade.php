@@ -32,14 +32,14 @@
 <div id="app" style="max-width: 500px; margin:0 auto;" class="bg-gray-100">
     <header id="header-bar" class="w-full border-b border-gray-100 bg-white fixed top-0 left-0" style="height: 60px; z-index: 10;">
         <div class="w-full" style="padding: 10px; max-width: 500px; margin:0 auto">
-            <a onclick="location.href='/ddeul'" class="inline-block">
+            <a onclick="location.href='/bartizan'" class="inline-block">
                 <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-900 inline-block" style="height: 30px; width: 30px; margin-top:-5px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                 </svg>
             </a>
             <div class="inline-block">
-                <a href="/ddeul/{{$ddeul->id}}" class="text-gray-900 text-xl" style="height: 40px; line-height: 40px;">
-                    {{$ddeul->name}}<span class="text-base">의 뜰</span>
+                <a href="/bartizan/{{$bartizan->id}}" class="text-gray-900 text-xl" style="height: 40px; line-height: 40px;">
+                    {{$bartizan->name}}<span class="text-base"> 망대</span>
                 </a>
             </div>
         </div>
@@ -48,18 +48,18 @@
         @if(!isset($show_post))
         <div id="tab_menu" class="w-full flex bg-white" style="padding: 10px 10px 0px 10px; height: 40px; max-width: 500px; margin:0 auto">
             <div class="py-1 px-3 text-gray-800"
-                 onclick="location.href='/ddeul/{{$ddeul->id}}'"
-                 style=" @if($_SERVER['REQUEST_URI'] == "/ddeul/".$ddeul->id) border-bottom: 2px solid #333; @endif  " >
+                 onclick="location.href='/bartizan/{{$bartizan->id}}'"
+                 style=" @if($_SERVER['REQUEST_URI'] == "/bartizan/".$bartizan->id) border-bottom: 2px solid #333; @endif  " >
                 뜰
             </div>
 {{--            <div class="py-1 px-2 text-gray-800"--}}
-{{--                 onclick="location.href='/ddeul/{{$ddeul->id}}/notices'"--}}
-{{--                 style=" @if(str_contains($_SERVER['REQUEST_URI'], "/ddeul/".$ddeul->id."/notices") !== false) border-bottom: 2px solid #333; @endif  " >--}}
+{{--                 onclick="location.href='/bartizan/{{$bartizan->id}}/notices'"--}}
+{{--                 style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/notices") !== false) border-bottom: 2px solid #333; @endif  " >--}}
 {{--                공지--}}
 {{--            </div>--}}
             <div class="py-1 px-2 text-gray-800"
-                 onclick="location.href='/ddeul/{{$ddeul->id}}/posts'"
-                 style=" @if(str_contains($_SERVER['REQUEST_URI'], "/ddeul/".$ddeul->id."/posts") !== false) border-bottom: 2px solid #333; @endif  " >
+                 onclick="location.href='/bartizan/{{$bartizan->id}}/posts'"
+                 style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/posts") !== false) border-bottom: 2px solid #333; @endif  " >
                 포스트
             </div>
         </div>
@@ -71,7 +71,7 @@
     </section>
 
 
-    @include('layouts.bottom_nav', ['now' => 'ddeul'])
+    @include('layouts.bottom_nav', ['now' => 'bartizan'])
 </div>
 </body>
 

@@ -8,7 +8,7 @@
     {{--    <script type="text/javascript" src="/smarteditor2/js/HuskyEZCreator.js"></script>--}}
 
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <link href="{{ mix('css/ddeul/create.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/bartizan/create.css') }}" rel="stylesheet">
 
     <main class="container mx-auto" style="margin-top:10px; max-width: 500px;">
         <div class=" bg-gray-50" style="">
@@ -129,5 +129,5 @@
 
 
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-    <script src="{{ asset('js/ddeul/ddeul.js') }}" defer></script>
+    <script src="{{ asset('js/bartizan/bartizan.js') }}" defer></script>
 @endsection

@@ -21,9 +21,9 @@ mix
     .js('resources/js/user/*', 'public/js/user/user.js')
     .js('resources/js/post/create.js', 'public/js/post/create.js')
     .js('resources/js/post/show.js', 'public/js/post/show.js')
-    .js('resources/js/ddeul/*', 'public/js/ddeul/ddeul.js')
+    .js('resources/js/bartizan/*', 'public/js/bartizan/bartizan.js')
     .sass('resources/css/layout.scss', 'public/css')
-    .postCss('resources/css/ddeul/create.css', 'public/css/ddeul', [
+    .postCss('resources/css/bartizan/create.css', 'public/css/bartizan', [
         require('postcss-import'),
         require('tailwindcss'),
         require('postcss-nested'),

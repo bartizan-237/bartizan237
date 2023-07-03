@@ -1,12 +1,12 @@
-@extends('layouts.ddeul')
+@extends('layouts.bartizan')
 
 @section('content')
 
     <main class="container py-2">
-        <button class="bg-green-500 text-white rounded-full text-2xl font-bold" style="position: fixed; line-height: 15px; font-size: 15px; width: 30px; height: 30px; right:30px; bottom:100px;" onclick="location.href='/post/create?ddeul_id={{$ddeul->id}}'">+</button>
+        <button class="bg-green-500 text-white rounded-full text-2xl font-bold" style="position: fixed; line-height: 15px; font-size: 15px; width: 30px; height: 30px; right:30px; bottom:100px;" onclick="location.href='/post/create?bartizan_id={{$bartizan->id}}'">+</button>
         <div class="flex flex-col">
             @forelse($posts as $post)
-                <div class="w-full mb-3" onclick="location.href='/ddeul/{{$ddeul->id}}/posts/{{$post->id}}'">
+                <div class="w-full mb-3" onclick="location.href='/bartizan/{{$bartizan->id}}/posts/{{$post->id}}'">
                     <div class="p-3 bg-gray-50">
                         <!-- TITLE -->
                         <p style="font-size : 14px; line-height: 20px" class="text-gray-900 font-medium title-font px-3 py-2">{{$post->title}}</p>

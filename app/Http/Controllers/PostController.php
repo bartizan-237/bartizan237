@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\Ddeul;
+use App\Models\Bartizan;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -28,13 +28,13 @@ class PostController extends Controller
      */
     public function create(Request $request)
     {
-        if(isset($request->ddeul_id)){
-            $ddeul = Ddeul::find($request->ddeul_id);
+        if(isset($request->bartizan_id)){
+            $bartizan = Bartizan::find($request->bartizan_id);
         }else{
-            $ddeul = null;
+            $bartizan = null;
         }
         return view("post.create", [
-            'ddeul' => $ddeul
+            'bartizan' => $bartizan
         ]);
     }
 
@@ -60,7 +60,7 @@ class PostController extends Controller
         Post::create([
             'title' => $data['title'],
             'content' => $data['content'],
-            'ddeul_id' => $data['ddeul_id'],
+            'bartizan_id' => $data['bartizan_id'],
             'user_id' => $user_id,
         ]);
 

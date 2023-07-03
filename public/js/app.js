@@ -27825,10 +27825,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/css/ddeul/create.css":
-/*!****************************************!*\
-  !*** ./resources/css/ddeul/create.css ***!
-  \****************************************/
+/***/ "./resources/css/bartizan/create.css":
+/*!*******************************************!*\
+  !*** ./resources/css/bartizan/create.css ***!
+  \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -28194,7 +28194,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","/home/platform/www"]],"_
 /******/ 			"/js/app": 0,
 /******/ 			"css/main": 0,
 /******/ 			"css/app": 0,
-/******/ 			"css/ddeul/create": 0,
+/******/ 			"css/bartizan/create": 0,
 /******/ 			"css/layout": 0
 /******/ 		};
 /******/ 		
@@ -28245,11 +28245,11 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","/home/platform/www"]],"_
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/main","css/app","css/ddeul/create","css/layout"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/main","css/app","css/ddeul/create","css/layout"], () => (__webpack_require__("./resources/css/layout.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/main","css/app","css/ddeul/create","css/layout"], () => (__webpack_require__("./resources/css/ddeul/create.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/main","css/app","css/ddeul/create","css/layout"], () => (__webpack_require__("./resources/css/app.css")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/main","css/app","css/ddeul/create","css/layout"], () => (__webpack_require__("./resources/css/main.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/main","css/app","css/bartizan/create","css/layout"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/main","css/app","css/bartizan/create","css/layout"], () => (__webpack_require__("./resources/css/layout.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/main","css/app","css/bartizan/create","css/layout"], () => (__webpack_require__("./resources/css/bartizan/create.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/main","css/app","css/bartizan/create","css/layout"], () => (__webpack_require__("./resources/css/app.css")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/main","css/app","css/bartizan/create","css/layout"], () => (__webpack_require__("./resources/css/main.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

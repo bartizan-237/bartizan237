@@ -18,10 +18,10 @@
 {{--        </div>--}}
 {{--    </a>--}}
 
-    <a id="" href="/ddeul" class="nav_btn w-1/5  cursor-pointer flex flex-grow items-center justify-center p-2 @if(isset($now) AND $now == "ddeul") text-green-500 @else text-gray-800 @endif active:text-theme-01">
+    <a id="" href="/bartizan" class="nav_btn w-1/5  cursor-pointer flex flex-grow items-center justify-center p-2 @if(isset($now) AND $now == "bartizan") text-green-500 @else text-gray-800 @endif active:text-theme-01">
         <div class="text-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mb-1 feather feather-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
-            <span class="block text-xs leading-none">뜰</span>
+            <span class="block text-xs leading-none">세계망대</span>
         </div>
     </a>
 
