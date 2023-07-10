@@ -68,6 +68,7 @@ class UserController extends Controller
                 'name' => $data['name'],
                 'nickname' => $data['nickname'],
                 'birth' => $data['birth'],
+                'officer' => $data['officer'],
             ]);
             return response()->json(["code" => 200]);
         }else{

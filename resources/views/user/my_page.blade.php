@@ -51,6 +51,26 @@
                     </div>
 
                     <div class="p-2 w-full">
+                        <div class="relative">
+                            <label for="officer" class="leading-7 text-sm text-gray-600">직분</label>
+                            <p>
+                                <select id="officer" name="officer" v-model="officer"
+                                        class="py-1 px-1 pr-8 outline-none block h-full w-full text-left"
+                                        style=" text-align-last: left; padding-right: 35px;">
+                                    <option style="direction: rtl; padding-right:30px" value="목사" :selected="officer === '목사'">목사</option>
+                                    <option style="direction: rtl; padding-right:30px" value="전도사" :selected="officer === '전도사'">전도사</option>
+                                    <option style="direction: rtl; padding-right:30px" value="장로" :selected="officer === '장로'">장로</option>
+                                    <option style="direction: rtl; padding-right:30px" value="권사" :selected="officer === '권사'">권사</option>
+                                    <option style="direction: rtl; padding-right:30px" value="안수집사" :selected="officer === '안수집사'">안수집사</option>
+                                    <option style="direction: rtl; padding-right:30px" value="집사" :selected="officer === '집사'">집사</option>
+                                    <option style="direction: rtl; padding-right:30px" value="렘넌트" :selected="officer === '렘넌트'">렘넌트</option>
+                                    <option style="direction: rtl; padding-right:30px" value="성도" :selected="officer === '성도'">성도</option>
+                                </select>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="p-2 w-full">
                         <button
                                 @click="submitForm"
                                 class="mx-auto w-full text-center items-center text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">

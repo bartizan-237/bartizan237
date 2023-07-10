@@ -28,7 +28,7 @@ var form_app = new Vue({
 
       var name = this.name;
       console.log("blur ", name);
-      axios.post('/ddeul/validate_name', {
+      axios.post('/bartizan/validate_name', {
         name: name
       }, {
         headers: {
@@ -38,11 +38,11 @@ var form_app = new Vue({
         console.log("response", res);
 
         if (res.data.code == 200) {
-          toast("success", "등록가능한 뜰 이름입니다👍");
+          toast("success", "등록가능한 망대 이름입니다👍");
           _this.name_validation = true;
           return true;
         } else if (res.data.code == 301) {
-          toast("warning", "이미 등록되어있는 뜰 이름입니다. 다른 이름으로 입력해주세요😀");
+          toast("warning", "이미 등록되어있는 망대 이름입니다. 다른 이름으로 입력해주세요😀");
           _this.name_validation = false;
           return false;
         } else {
@@ -61,11 +61,11 @@ var form_app = new Vue({
       console.log("form_data", form_data);
 
       if (!this.name_validation) {
-        toast("warning", "뜰 이름을 먼저 확인해주세요");
+        toast("warning", "망대 이름을 먼저 확인해주세요");
         return false;
       }
 
-      axios.post('/ddeul', {
+      axios.post('/bartizan', {
         data: form_data
       }, {
         headers: {
@@ -75,13 +75,13 @@ var form_app = new Vue({
         console.log("response", res);
 
         if (res.data.code == 200) {
-          toast("success", "뜰이 생성되었습니다😀<br/> 메인화면으로 이동합니다!");
+          toast("success", "망대가 생성되었습니다😀<br/> 메인화면으로 이동합니다!");
           setTimeout(function () {
             location.href = "/home";
           }, 2000);
           return true;
         } else if (res.data.code == 301) {
-          toast("warning", "뜰 생성에 실패했습니다🥲<br/> 잠시 후에 다시 시도해주세요 !");
+          toast("warning", "망대 생성에 실패했습니다🥲<br/> 잠시 후에 다시 시도해주세요 !");
           return false;
         } else {
           toast("warning", "서버에 일시적인 오류가 발생했습니다🥲 <br/>잠시 후에 다시 시도해주시기 바랍니다");

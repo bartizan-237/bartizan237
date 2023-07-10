@@ -5,6 +5,7 @@ var myPage = new Vue({
         name : null,
         nickname : null,
         birth : null,
+        officer : null,
         csrf_token : null,
         nickname_validation : false,
         preset_nickname : null,
