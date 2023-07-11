@@ -61,7 +61,7 @@
 
         </header>
 
-        <section style="margin-top:60px;  height: calc(100vh - 120px)">
+        <section style="margin-top:60px;  height: calc(100vh - 120px);" class="bg-gray-50">
             @yield('content')
         </section>
 

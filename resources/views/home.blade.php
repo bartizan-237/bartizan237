@@ -6,12 +6,7 @@
 
 <main class="sm:container sm:mx-auto" style="max-width: 500px">
     <div class="flex flex-col bg-gray-200 h-screen">
-    @include('post.home_post', [
-        'mainTitle' => "404, page not found ",
-        'mainContent' => "sorry, but the requested page does not exist"
-        ]
-    )
-
-</div>
+    @include('post.home_post')
+    </div>
 </main>
 @endsection
