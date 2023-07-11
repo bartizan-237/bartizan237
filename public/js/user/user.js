@@ -193,6 +193,7 @@ var myPage = new Vue({
     preset_nickname = document.querySelector('input[id="preset_nickname"]').value;
     this.nickname = preset_nickname;
     this.birth = document.querySelector('input[id="preset_birth"]').value;
+    this.officer = document.querySelector('input[id="preset_officer"]').value;
   },
   methods: {
     validateNickname: function validateNickname() {

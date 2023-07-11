@@ -53,9 +53,10 @@
                     <div class="p-2 w-full">
                         <div class="relative">
                             <label for="officer" class="leading-7 text-sm text-gray-600">직분</label>
+                            <input type="hidden" id="preset_officer" value="{{$user->officer}}">
                             <p>
                                 <select id="officer" name="officer" v-model="officer"
-                                        class="py-1 px-1 pr-8 outline-none block h-full w-full text-left"
+                                        class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                         style=" text-align-last: left; padding-right: 35px;">
                                     <option style="direction: rtl; padding-right:30px" value="목사" :selected="officer === '목사'">목사</option>
                                     <option style="direction: rtl; padding-right:30px" value="전도사" :selected="officer === '전도사'">전도사</option>
