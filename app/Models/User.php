@@ -24,6 +24,7 @@ class User extends Authenticatable
         'email',
         'password',
         'officer',
+        'bartizan_id'
     ];
 
     /**
@@ -49,6 +50,14 @@ class User extends Authenticatable
     {
         if(Like::where('user_id', $this->id)->where('post_id', $post_id)->exists()) return true;
         else return false;
+    }
+
+//    public function bartizan(){
+//        return $this->belongsTo(Bartizan::class, 'bartizan_id', 'id');
+//    }
+
+    public function watchman(){
+        return $this->hasMany(Watchman::class, 'user_id', 'id');
     }
 }
 

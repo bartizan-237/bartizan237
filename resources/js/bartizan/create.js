@@ -48,6 +48,7 @@ var form_app = new Vue({
                 });
 
         },
+
         submitForm : function (){
             console.log(quill);
             this.description = document.getElementsByClassName("ql-editor")[0].innerHTML;

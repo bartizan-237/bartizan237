@@ -36,4 +36,12 @@ class Bartizan extends Model
             return $this->created_at;
         }
     }
+
+//    public function watchman(){
+//        return $this->belongsToMany(Watchman::class, 'watchmen','bartizan_id', 'id');
+//    }
+
+    public function watchmen(){
+        return $this->hasMany(Watchman::class, 'bartizan_id', 'id');
+    }
 }

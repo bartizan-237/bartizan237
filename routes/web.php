@@ -7,6 +7,7 @@ use App\Http\Controllers\{
     SocialController,
     UserController,
     BartizanController,
+    NationController,
     PostController,
     CommentController,
     LikeController,
@@ -20,8 +21,8 @@ Route::get('/', function () {
 //    return view('welcome');
 });
 
+// Routes for User Auth
 Auth::routes();
-
 
 Route::get('/test', [HomeController::class, 'test']);
 //Route::get('/test', [MailController::class, 'send']);
@@ -53,6 +54,11 @@ Route::group(['namespace' => 'Bartizan', 'prefix' => 'bartizan'], function() {
     Route::get("/{bartizan}/posts/{post}", [BartizanController::class, 'showPost']);
 });
 
+Route::group(['namespace' => 'Nation', 'prefix' => 'nation'], function() {
+    Route::get("/", [NationController::class, 'index']);
+    Route::get("/{nation}", [NationController::class, 'show']);
+});
+
 
 // USER
 Route::group(['namespace' => 'User',
@@ -72,3 +78,6 @@ Route::get('/fields', [UserController::class, 'myFields']); // 관심분야
 
 // SET JOBS
 Route::get('/set_jobs', [HomeController::class, 'setJobs']);
+
+// JOIN
+Route::post('/join', [WatchmanController::class, 'join']);

@@ -153,4 +153,5 @@ class BartizanController extends Controller
             return response()->json(["code" => 200]);
         }
     }
+    
 }

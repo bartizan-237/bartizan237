@@ -7,8 +7,14 @@
             @if($bartizan->getAdmin() OR $bartizan->getLatestPost())
             <div class="flex-col bg-white rounded-lg mb-3 px-3 py-2 text-gray-900 text-sm">
                 @if($bartizan->getAdmin())
-                <div class="w-full text-left">
+                <div class="w-full text-left flex">
                     <span class="text-gray-500 mx-2 text-xs">망대 관리자</span> {{ $bartizan->getAdmin()->nickname }}
+
+                    <span class="ml-auto">
+                        <form method="POST" action="{{route()}}">
+                            <button onclick="join({{$bartizan->id}})">테스트 버튼</button>
+                        </form>
+                    </span>
                 </div>
                 @endif
 
@@ -52,3 +58,11 @@
         </div>
     </main>
 @endsection
+
+<script>
+    function join(bartizan_id) {
+        console.log('망대 : ', bartizan_id);
+        console.log('사용자 : ', {{\Auth::user()->id}});
+        console.log({{$bartizan->id}});
+    }
+</script>
