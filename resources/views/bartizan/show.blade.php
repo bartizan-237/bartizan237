@@ -10,11 +10,11 @@
                 <div class="w-full text-left flex">
                     <span class="text-gray-500 mx-2 text-xs">망대 관리자</span> {{ $bartizan->getAdmin()->nickname }}
 
-                    <span class="ml-auto">
-                        <form method="POST" action="{{route()}}">
-                            <button onclick="join({{$bartizan->id}})">테스트 버튼</button>
-                        </form>
-                    </span>
+{{--                    <span class="ml-auto">--}}
+{{--                        <form method="POST" action="{{route()}}">--}}
+{{--                            <button onclick="join({{$bartizan->id}})">테스트 버튼</button>--}}
+{{--                        </form>--}}
+{{--                    </span>--}}
                 </div>
                 @endif
 
@@ -62,7 +62,9 @@
 <script>
     function join(bartizan_id) {
         console.log('망대 : ', bartizan_id);
+        @if(Auth::user())
         console.log('사용자 : ', {{\Auth::user()->id}});
+        @endif
         console.log({{$bartizan->id}});
     }
 </script>

@@ -16,6 +16,7 @@ class NationController extends Controller
      */
     public function index()
     {
+//        $nations = Nation::paginate(10);
         $nations = Nation::paginate(10);
         return view('nation.index', [
             'nations' => $nations
