@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bartizan;
 use App\Models\Post;
+use App\Models\Nation;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -29,7 +30,10 @@ class BartizanController extends Controller
      */
     public function create()
     {
-        return view("bartizan.create");
+        $nations = Nation::select('id', 'name')->orderBy("name", "asc")->get();
+        return view("bartizan.create", [
+            "nations" => $nations
+        ]);
     }
 
     /**
@@ -57,11 +61,18 @@ class BartizanController extends Controller
 
         $data = $request->data;
 
+//        Bartizan::create([
+//            'name' => $data['name'],
+//            'category' => $data['category'],
+//            'type' => $data['category'],
+//            'color' => $data['theme_color'],
+//            'description' => $data['description'],
+//            'admin_user_id' => $admin_user_id
+//        ]);
+
         Bartizan::create([
             'name' => $data['name'],
-            'category' => $data['category'],
-            'type' => $data['category'],
-            'color' => $data['theme_color'],
+            'nation_id' => $data['nation_id'],
             'description' => $data['description'],
             'admin_user_id' => $admin_user_id
         ]);

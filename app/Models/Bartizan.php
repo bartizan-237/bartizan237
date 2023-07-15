@@ -42,6 +42,6 @@ class Bartizan extends Model
 //    }
 
     public function watchmen(){
-        return $this->hasMany(Watchman::class, 'bartizan_id', 'id');
+        return $this->hasMany(Watchman::class, 'bartizan_id', 'id'); // watchmen의 외래키, bartizans의 기본키
     }
 }

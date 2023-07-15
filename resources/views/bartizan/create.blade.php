@@ -4,10 +4,6 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-{{--    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>--}}
-{{--    <script type="text/javascript" src="/smarteditor2/js/HuskyEZCreator.js"></script>--}}
-
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link href="{{ mix('css/bartizan/create.css') }}" rel="stylesheet">
 
     <main class="container mx-auto" style="margin-top:10px; max-width: 500px;">
@@ -21,6 +17,23 @@
 {{--                        <p class="text-gray-800 mb-3">-가이드3</p>--}}
                     </div>
 
+                    <div class="border focus-within:border-blue-500 text-gray-800 focus-within:text-gray-900 mb-6 transition-all duration-500 relative rounded p-1 m-2 mr-5">
+                        <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+                            <p>
+                                <label for="nation_id" class="bg-white text-gray-700 px-1 text-base">국가</label>
+                            </p>
+                        </div>
+                        <p>
+                            <select id="nation_id" name="nation_id" v-model="nation_id" @change="setBartizanName()"
+                                    class="py-1 px-1 pr-8 outline-none block h-full w-full"
+                                    style=""
+                            >
+                                @foreach($nations as $nation)
+                                    <option style="padding-left:30px" value="{{$nation->id}}">{{$nation->name}}</option>
+                                @endforeach
+                            </select>
+                        </p>
+                    </div>
                     <div class="border focus-within:border-blue-500 text-gray-800 focus-within:text-gray-900 mb-6 transition-all duration-500 relative rounded p-1 m-2">
                         <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
                             <p>
@@ -29,49 +42,11 @@
                         </div>
                         <p>
                             <label>
-                                <input id="name" name="name" v-model="name" @blur="validateName"
-                                       autocomplete="false" tabindex="0" type="text" class="py-1 px-1 pr-5 text-gray-900 outline-none block h-full inline-block text-right">
+                                <input id="name" name="name" v-model="name" readonly
+                                       autocomplete="false" tabindex="0" type="text" style="width: 350px" class="py-1 px-1 pr-5 text-gray-900 outline-none block h-full inline-block text-right">
                                  망대
                             </label>
                         </p>
-                    </div>
-                    <div class="border focus-within:border-blue-500 text-gray-800 focus-within:text-gray-900 mb-6 transition-all duration-500 relative rounded p-1 m-2 mr-5">
-                        <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
-                            <p>
-                                <label for="category" class="bg-white text-gray-700 px-1 text-base">분류</label>
-                            </p>
-                        </div>
-                        <p>
-                            <select id="category" name="category" v-model="category"
-                                    class="py-1 px-1 pr-8 outline-none block h-full w-full text-right"
-                                    style=" text-align-last: right; padding-right: 35px;"
-                            >
-                                <option style="direction: rtl; padding-right:30px" value="포럼" selected>포럼</option>
-                                <option style="direction: rtl; padding-right:30px" value="취미">취미</option>
-                                <option style="direction: rtl; padding-right:30px" value="활동">활동</option>
-                                <option style="direction: rtl; padding-right:30px" value="산업 인턴십">산업 인턴십</option>
-                                <option style="direction: rtl; padding-right:30px" value="지역 인턴십">지역 인턴십</option>
-                            </select>
-                        </p>
-                    </div>
-                    <div class="w-full border focus-within:border-blue-500 text-gray-800 focus-within:text-gray-900 mb-6 transition-all duration-500 relative rounded p-1 m-2">
-                        <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
-                            <p>
-                                <label for="theme_color" class="bg-white text-gray-700 px-1 text-base">테마색</label>
-                            </p>
-                        </div>
-                        <div class="p-3">
-                            <input v-model="theme_color" name="theme_color" type="radio" value="gray" class="radio m-1 inline-block rounded-full w-4 h-4 inline-block bg-gray-500 checked:bg-gray-500 hover:bg-gray-500 shadow-gray-500 ">
-                            <input v-model="theme_color" name="theme_color" type="radio" value="pink" class="radio m-1 inline-block rounded-full w-4 h-4 inline-block bg-pink-500 checked:bg-pink-500 hover:bg-pink-500 shadow-pink-500 ">
-                            <input v-model="theme_color" name="theme_color" type="radio" value="red" class="radio m-1 inline-block rounded-full w-4 h-4 inline-block bg-red-500 checked:bg-red-500 hover:bg-red-500 shadow-red-500 ">
-                            <input v-model="theme_color" name="theme_color" type="radio" value="orange" class="radio m-1 inline-block rounded-full w-4 h-4 inline-block bg-orange-500 checked:bg-orange-500 hover:bg-orange-500 shadow-orange-500 ">
-                            <input v-model="theme_color" name="theme_color" type="radio" value="yellow" class="radio m-1 inline-block rounded-full w-4 h-4 inline-block bg-yellow-500 checked:bg-yellow-500 hover:bg-yellow-500 shadow-yellow-500 ">
-                            <input v-model="theme_color" name="theme_color" type="radio" value="teal" class="radio m-1 inline-block rounded-full w-4 h-4 inline-block bg-teal-500 checked:bg-teal-500 hover:bg-teal-500 shadow-teal-500 ">
-                            <input v-model="theme_color" name="theme_color" type="radio" value="green" class="radio m-1 inline-block rounded-full w-4 h-4 inline-block bg-green-500 checked:bg-green-500 hover:bg-green-500 shadow-green-500 ">
-                            <input v-model="theme_color" name="theme_color" type="radio" value="sky" class="radio m-1 inline-block rounded-full w-4 h-4 inline-block bg-sky-500 checked:bg-sky-500 hover:bg-sky-500 shadow-sky-500 ">
-                            <input v-model="theme_color" name="theme_color" type="radio" value="blue" class="radio m-1 inline-block rounded-full w-4 h-4 inline-block bg-blue-500 checked:bg-blue-500 hover:bg-blue-500 shadow-blue-500 ">
-                            <input v-model="theme_color" name="theme_color" type="radio" value="purple" class="radio m-1 inline-block rounded-full w-4 h-4 inline-block bg-purple-500 checked:bg-purple-500 hover:bg-purple-500 shadow-purple-500 ">
-                        </div>
                     </div>
                     <div class="border focus-within:border-blue-500 text-gray-800 focus-within:text-gray-900 mb-6 transition-all duration-500 relative rounded p-1 m-2">
                         <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
@@ -111,13 +86,13 @@
                                 </div>
                             </div>
 
-                            <div id="editor" rows="20" class="py-1 px-1 outline-none block h-full w-full" style="min-height: 400px"></div>
+                            <div id="editor" rows="15" class="py-1 px-1 outline-none block h-full w-full" style="min-height: 400px"></div>
 {{--                                <textarea v-model="description" id="description" rows="20" class="py-1 px-1 outline-none block h-full w-full"></textarea>--}}
                         </p>
                     </div>
                 </div>
                 <div class="border-t mt-6 pt-3">
-                    <button @click="submitForm" class="rounded text-gray-100 px-3 py-1 bg-green-500 hover:shadow-inner hover:bg-green-700 transition-all duration-300">
+                    <button @click="submitForm" class="rounded text-gray-100 w-full px-3 py-2 text-lg bg-green-500 hover:shadow-inner hover:bg-green-700 transition-all duration-300">
                         저장
                     </button>
                 </div>

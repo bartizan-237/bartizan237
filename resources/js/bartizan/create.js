@@ -3,52 +3,33 @@ var form_app = new Vue({
     el: '#form_app',
     data: {
         name : null,
-        theme_color : null,
-        category : null,
+        nation_id : null,
         description : null,
         csrf_token : null,
-        name_validation : false
     },
     mounted: function(){
         this.name = null;
-        this.theme_color = null;
+        this.nation_id = null;
         this.category = null;
         this.description = null;
-        this.name_validation = null;
         this.csrf_token = document.querySelector('meta[name="csrf-token"]').content;
     },
+    computed: {
+        selectedtext:  {
+            cache: false,
+            //get selectedtext by jquery
+            get: function(){ return $(this.$el).find(":selected").text();}
+        }
+    },
     methods: {
-        validateName : function (){
-            var name = this.name;
-            console.log("blur ", name);
-            axios.post('/bartizan/validate_name',
-                {
-                    name : name
-                },
-                {
-                    headers: {
-                        'X-CSRF-TOKEN': this.csrf_token
-                    }
-                })
-                .then(res => {
-                    console.log("response", res);
-                    if(res.data.code == 200){
-                        toast("success", "등록가능한 망대 이름입니다👍");
-                        this.name_validation = true;
-                        return true;
-                    }else if(res.data.code == 301){
-                        toast("warning", "이미 등록되어있는 망대 이름입니다. 다른 이름으로 입력해주세요😀");
-                        this.name_validation = false;
-                        return false;
-                    }else{
-                        toast("warning", "서버에 일시적인 오류가 발생했습니다. 잠시 후에 다시 시도해주시기 바랍니다");
-                        this.name_validation = false;
-                        return false;
-                    }
-                });
-
+        setBartizanName : function (){
+            const selectElement = document.querySelector('#nation_id');
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            const selectedOptionText = selectedOption.textContent;
+            this.name = selectedOptionText;
+            console.log("setBartizanName", this.nation_id, this.name);
+            // var nation_name = this.
         },
-
         submitForm : function (){
             console.log(quill);
             this.description = document.getElementsByClassName("ql-editor")[0].innerHTML;
@@ -59,8 +40,8 @@ var form_app = new Vue({
 
             console.log("form_data",form_data);
 
-            if(!this.name_validation) {
-                toast("warning", "망대 이름을 먼저 확인해주세요");
+            if(!this.nation_id) {
+                toast("warning", "국가를 먼저 선택해주세요!");
                 return false;
             }
 

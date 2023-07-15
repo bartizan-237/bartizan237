@@ -26,7 +26,7 @@
             </div>
             @endif
 
-            <div class="bg-white rounded-lg mb-3 p-3 text-gray-900 ql-editor ql-snow text-xs">
+            <div class="bg-white rounded-lg mb-3 p-3 text-gray-900 ql-editor ql-snow">
                 {!! $bartizan->description !!}
             </div>
 
