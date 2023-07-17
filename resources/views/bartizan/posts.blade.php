@@ -43,7 +43,7 @@
                     </div>
                 </div>
             @empty
-                등록된 포스트가 없습니다😢
+                등록된 게시글이 없습니다😢
             @endforelse
         </div>
     </main>

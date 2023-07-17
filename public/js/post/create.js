@@ -10,7 +10,7 @@ var form_app = new Vue({
     title: null,
     content: null,
     csrf_token: null,
-    ddeul_id: null
+    bartizan_id: null
   },
   mounted: function mounted() {
     this.title = null;
@@ -21,7 +21,7 @@ var form_app = new Vue({
     submitForm: function submitForm() {
       console.log(quill);
       this.content = document.getElementsByClassName("ql-editor")[0].innerHTML;
-      this.ddeul_id = document.getElementById("ddeul_id").value;
+      this.bartizan_id = document.getElementById("bartizan_id").value;
       console.log(quill.root.innerHtml);
       console.log(this.content);
       var form_data = this.$data;

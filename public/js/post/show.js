@@ -7,14 +7,14 @@ console.log("POST SHOW JS");
 var postApp = new Vue({
   el: '#postApp',
   data: {
-    ddeul_id: null,
+    bartizan_id: null,
     post_id: null,
     user_id: null,
     csrf_token: null,
     is_like: null
   },
   mounted: function mounted() {
-    this.ddeul_id = document.querySelector('#ddeul_id').value;
+    this.bartizan_id = document.querySelector('#bartizan_id').value;
     this.post_id = document.querySelector('#post_id').value;
     this.user_id = document.querySelector('#user_id').value;
     this.is_like = document.querySelector('#like_by_this_user').value == "1" ? true : false;
@@ -44,7 +44,7 @@ var postApp = new Vue({
       console.log("clickLike TO", to_like);
       var like_data = {
         like: to_like,
-        ddeul_id: this.ddeul_id,
+        bartizan_id: this.bartizan_id,
         target_type: "post",
         // POST or COMMNET
         target_id: this.post_id,

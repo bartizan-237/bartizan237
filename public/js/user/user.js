@@ -207,9 +207,6 @@ var myPage = new Vue({
     }
   },
   methods: {
-    changeAppointment: function changeAppointment() {
-      console.log("changeAppointment", this.appointment);
-    },
     validateNickname: function validateNickname() {
       var _this = this;
 

@@ -12,9 +12,6 @@
                 <div class="flex flex-col">
                     <div class="mb-6 p-1 m-2">
                         <h3 class="text-gray-900 mb-3 text-xl">망대 만들기</h3>
-{{--                        <p class="text-gray-800 mb-3">-가이드1</p>--}}
-{{--                        <p class="text-gray-800 mb-3">-가이드2</p>--}}
-{{--                        <p class="text-gray-800 mb-3">-가이드3</p>--}}
                     </div>
 
                     <div class="border focus-within:border-blue-500 text-gray-800 focus-within:text-gray-900 mb-6 transition-all duration-500 relative rounded p-1 m-2 mr-5">

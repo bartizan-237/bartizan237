@@ -13,7 +13,7 @@
             <div id="form_app" class="bg-white shadow rounded-lg px-3 py-2" style="padding-bottom: 100px;">
                 <div class="flex flex-col">
                     <div class="mb-6 p-1">
-                        <h3 class="text-gray-900 mb-3 text-xl inline-block mr-1">포스트 작성</h3>
+                        <h3 class="text-gray-900 mb-3 text-xl inline-block mr-1">게시글 쓰기</h3>
                         @if(isset($bartizan))
                             <input type="hidden" id="bartizan_id" value="{{$bartizan->id}}">
                             <p class="text-sm inline-block"> <span class="text-green-700">{{$bartizan->name}}</span> 망대에 글쓰기</p>
@@ -21,7 +21,7 @@
                             <input type="hidden" id="bartizan_id" value="">
                         @endif
 
-                        <p class="text-gray-700 mb-3">-가이드1</p>
+{{--                        <p class="text-gray-700 mb-3">-가이드1</p>--}}
                     </div>
 
                     <div class="border focus-within:border-blue-500 text-gray-800 focus-within:text-gray-900 mb-6 transition-all duration-500 relative rounded p-1">

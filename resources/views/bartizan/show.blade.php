@@ -20,7 +20,7 @@
 
                 @if($bartizan->getLatestPost())
                 <div class="w-full text-right">
-                    <span class="text-gray-500 mx-2 text-xs">{{ $bartizan->getLatestPost()->created_at->diffForHumans()}}에 포스트가 업데이트 되었습니다. </span>
+                    <span class="text-gray-500 mx-2 text-xs">{{ $bartizan->getLatestPost()->created_at->diffForHumans()}}에 게시글이 업데이트 되었습니다. </span>
                 </div>
                 @endif
             </div>
@@ -33,7 +33,7 @@
             <div class="bg-white rounded-lg mb-3 p-3 text-gray-900 text-xs">
                 <div class="w-full">
                     <div class="border-b border-1 border-gray-100 pb-2 relative">
-                        <p class="text-gray-900 text-sm font-bold inline-block ml-1">최근 포스트</p>
+                        <p class="text-gray-900 text-sm font-bold inline-block ml-1">최근 게시글</p>
                         <div onclick="location.href='/bartizan/{{$bartizan->id}}/posts'">
                             <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-5 w-5 text-gray-900"
                                  style="position:absolute; right:6px; top:0px;"
@@ -51,7 +51,7 @@
                     </div>
                 @empty
                     <div class=" p-1">
-                        아직 등록된 포스트가 없습니다😢
+                        아직 등록된 게시글이 없습니다😢
                     </div>
                 @endforelse
             </div>
