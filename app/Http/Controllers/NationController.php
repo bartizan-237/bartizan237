@@ -14,13 +14,24 @@ class NationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 //        $nations = Nation::paginate(10);
-        $nations = Nation::paginate(10); //237
+
+        /** 23.7.17.
+         * as-is : 검색기능을 searchNation(), search.blade.php 로 구현
+         * to-be : 검색기능을 index() 에 검색 기능 통합 (url parameter로)
+        */
+        $search_keyword = $request->input('search');
+        if(isset($search_keyword) AND $search_keyword != ""){
+            $nations = Nation::where('name', 'LIKE','%'.$search_keyword.'%')->orWhere('name_en', 'LIKE','%'.$search_keyword.'%')->paginate(10);
+        } else {
+            $nations = Nation::paginate(10);
+        }
+
         return view('nation.index', [
             'nations' => $nations,
-            'search' => false
+            'search_keyword' => $search_keyword
         ]);
     }
 

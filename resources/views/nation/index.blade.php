@@ -3,9 +3,10 @@
 @section('content')
     <main class="sm:mx-auto h-full relative" style="max-width: 500px;">
         <div class="bg-gray-200 min-h-full pb-8">
-            <form action="/nation/search" method="POST" class="text-center">
-                @csrf
-                <input type="text" name="search" id="search"/>
+{{--            <form action="/nation/search" method="POST" class="text-center">--}}
+            <form action="/nation" method="GET" class="text-center">
+{{--                @csrf--}}
+                <input type="text" name="search" id="search" placeholder="검색어를 입력하세요" value="{{$search_keyword ?? ''}}"/>
                 <button type="submit" class="border-2">검색</button>
             </form>
             <div class="p-2 mx-auto">
