@@ -19,7 +19,8 @@ class NationController extends Controller
 //        $nations = Nation::paginate(10);
         $nations = Nation::paginate(10); //237
         return view('nation.index', [
-            'nations' => $nations
+            'nations' => $nations,
+            'search' => false
         ]);
     }
 
@@ -145,4 +146,18 @@ class NationController extends Controller
 
         return view("test");
     }
+
+    public function searchNation(Request $request){
+        $input_value = $request->input('search');
+//        dd($input_value);
+        $nations = Nation::where('name', 'LIKE','%'.$input_value.'%')->orWhere('name_en', 'LIKE','%'.$input_value.'%')->paginate(10);
+//        dd($nations);
+
+        return view('nation.search', [
+            'nations' => $nations,
+            'search' => true
+        ]);
+
+    }
+
 }

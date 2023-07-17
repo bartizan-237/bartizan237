@@ -57,6 +57,7 @@ Route::group(['namespace' => 'Bartizan', 'prefix' => 'bartizan'], function() {
 Route::group(['namespace' => 'Nation', 'prefix' => 'nation'], function() {
     Route::get("/", [NationController::class, 'index']);
     Route::get("/{nation}", [NationController::class, 'show']);
+    Route::post("/search", [NationController::class, 'searchNation']);
 });
 
 

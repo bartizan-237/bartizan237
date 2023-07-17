@@ -3,6 +3,11 @@
 @section('content')
     <main class="sm:mx-auto h-full relative" style="max-width: 500px;">
         <div class="bg-gray-200 min-h-full pb-8">
+            <form action="/nation/search" method="POST" class="text-center">
+                @csrf
+                <input type="text" name="search" id="search"/>
+                <button type="submit" class="border-2">검색</button>
+            </form>
             <div class="p-2 mx-auto">
                 @foreach($nations as $nation)
                 <div class="w-full flex-col mb-2 bg-white rounded-lg">
