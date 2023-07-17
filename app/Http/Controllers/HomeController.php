@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\Nation;
+use App\Models\Post;
+use App\Models\Bartizan;
 
 class HomeController extends Controller
 {
@@ -41,7 +43,14 @@ class HomeController extends Controller
             }
         }
 
-        return view('home');
+        // 메인화면
+        // 최근 망대
+        // 최근 게시글
+
+        $posts = Post::orderBy("id", "desc")->take(3)->get();
+        return view('home', [
+            "posts" => $posts
+        ]);
     }
 
     

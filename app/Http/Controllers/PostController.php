@@ -64,6 +64,13 @@ class PostController extends Controller
             'user_id' => $user_id,
         ]);
 
+        if($bartizan = Bartizan::find($data['bartizan_id'])){
+            $bartizan->update([
+                'post_uploaded_at' => now()
+            ]);
+        }
+
+
         return response()->json([
             'code' => 200
         ]);

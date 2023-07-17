@@ -26,16 +26,24 @@ class Post extends Model
         return $this->hasMany(Comment::class)->get();
     }
 
+    public function getCommentsCount(){
+        return Comment::where("post_id", $this->id)->count();
+    }
+
     public function getLikes(){
         return $this->hasMany(Like::class)->get();
     }
 
     public function getCreatedAt(){
-        if( $this->created_at > date(now() . " -7 days")) {
+        if( $this->created_at > date("Y-m-d H:i:s", strtotime(" -7 days"))) {
             return $this->created_at->diffForHumans();
         }else{
             return date('y-m-d H:i', strtotime($this->created_at));
         }
+    }
+
+    public function getBartizan(){
+        return $this->belongsTo(Bartizan::class, "bartizan_id", "id")->get()->last();
     }
 
 //    public static function getCreatedAtAttribute($value)

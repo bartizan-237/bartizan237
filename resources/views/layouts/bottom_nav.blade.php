@@ -1,6 +1,6 @@
 <!-- BOTTOM NAV BAR -->
 <div class="flex flx-wrap bg-white fixed bottom-0 w-full border-t border-gray-50 flex" style="max-width:500px; margin:0 auto; z-index: 10; height: 60px">
-    <a id="nav_main" href="/home" class="nav_btn w-1/5  cursor-pointer flex flex-grow items-center justify-center p-2 text-gray-800 active:text-theme-01">
+    <a id="nav_main" href="/home" class="nav_btn w-1/5  cursor-pointer flex flex-grow items-center justify-center p-2 @if(str_contains($_SERVER["REQUEST_URI"], "/home")) text-green-500 @else text-gray-800 @endif active:text-theme-01">
         <div class="text-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mb-1" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />

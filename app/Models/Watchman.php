@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 class Watchman extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $table = 'watchmen';
 
