@@ -34,10 +34,10 @@
                             이메일
                         </label>
 
-{{--                        <input id="email" type="email"--}}
-{{--                            class="form-input w-full @error('email') border-red-500 @enderror" name="email"--}}
-{{--                            value="{{ old('email') }}" required autocomplete="email">--}}
-{{--                        <button>인증번호받기</button>--}}
+                        <input id="email" type="email"
+                            class="form-input w-full @error('email') border-red-500 @enderror" name="email"
+                            value="{{ old('email') }}" required autocomplete="email">
+{{--                        <button class="font-bold text-sm underline text-green-500 p-2">인증번호받기</button>--}}
 
                         @error('email')
                         <p class="text-red-500 text-xs italic mt-4">

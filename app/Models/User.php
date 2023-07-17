@@ -24,7 +24,10 @@ class User extends Authenticatable
         'email',
         'password',
         'officer',
-        'bartizan_id'
+        'bartizan_id',
+        'provider',
+        'provider_id',
+        'appointment'
     ];
 
     /**

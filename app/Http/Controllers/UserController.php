@@ -18,7 +18,6 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
         $this->middleware(function ($request, $next) {
             $this->user = \Auth::user();
 
@@ -69,6 +68,7 @@ class UserController extends Controller
                 'nickname' => $data['nickname'],
                 'birth' => $data['birth'],
                 'officer' => $data['officer'],
+                'appointment' => $data['appointment'] ? 1 : 0
             ]);
             return response()->json(["code" => 200]);
         }else{

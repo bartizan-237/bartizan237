@@ -24,12 +24,16 @@ Route::get('/', function () {
 // Routes for User Auth
 Auth::routes();
 
-Route::get('/test', [HomeController::class, 'test']);
-//Route::get('/test', [MailController::class, 'send']);
+//Route::get('/test', [HomeController::class, 'test']);
+Route::get('/test', [MailController::class, 'send']);
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get("/login/{provider}", [SocialController::class, 'redirect']);
 Route::get("/login/{provider}/callback", [SocialController::class, 'Callback']);
 
+// 개인정보처리방침
+Route::get('/privacy', function () {
+    return view('privacy.privacy');
+});
 Route::resources([
 //    'bartizan' => BartizanController::class,
     'post' => PostController::class,
@@ -71,6 +75,7 @@ Route::group(['namespace' => 'User',
     Route::post('/validate_nickname', [UserController::class, 'validateNickname']);
 
     Route::get('/my_page', [UserController::class, 'myPage']);
+    Route::get('/quit', [UserController::class, 'quit']); // 회원 탈퇴
     Route::get('/my_fields', [UserController::class, 'myFields']); // 관심분야
 });
 

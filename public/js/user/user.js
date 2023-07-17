@@ -185,17 +185,31 @@ var myPage = new Vue({
     officer: null,
     csrf_token: null,
     nickname_validation: false,
-    preset_nickname: null
+    preset_nickname: null,
+    appointment: false
   },
   mounted: function mounted() {
     this.csrf_token = document.querySelector('meta[name="csrf-token"]').content;
     this.name = document.querySelector('input[id="preset_name"]').value;
-    preset_nickname = document.querySelector('input[id="preset_nickname"]').value;
+    var preset_nickname = document.querySelector('input[id="preset_nickname"]').value;
+    console.log("preset_nickname", preset_nickname);
+    this.preset_nickname = preset_nickname;
     this.nickname = preset_nickname;
     this.birth = document.querySelector('input[id="preset_birth"]').value;
     this.officer = document.querySelector('input[id="preset_officer"]').value;
+    var preset_appointment = document.querySelector('input[id="preset_appointment"]').value;
+    console.log("preset_appointment", preset_appointment);
+
+    if (preset_appointment == 1 || preset_appointment == "1") {
+      this.appointment = true;
+    } else {
+      this.appointment = false;
+    }
   },
   methods: {
+    changeAppointment: function changeAppointment() {
+      console.log("changeAppointment", this.appointment);
+    },
     validateNickname: function validateNickname() {
       var _this = this;
 
@@ -232,10 +246,14 @@ var myPage = new Vue({
     },
     submitForm: function submitForm() {
       var form_data = this.$data;
+      console.log("submitForm", form_data, this);
 
-      if (!this.nickname_validation) {
-        toast("warning", "닉네임을 먼저 확인해주세요");
-        return false;
+      if (this.preset_nickname != this.nickname) {
+        // 닉네임 변경
+        if (!this.nickname_validation) {
+          toast("warning", "닉네임을 먼저 확인해주세요");
+          return false;
+        }
       }
 
       axios.post('/user/basic_info', {
@@ -248,10 +266,10 @@ var myPage = new Vue({
         console.log("response", res);
 
         if (res.data.code == 200) {
-          toast("success", "정보가 저장되었습니다😀<br/> 메인화면으로 이동합니다!");
-          setTimeout(function () {
-            location.href = "/home";
-          }, 2000);
+          toast("success", "정보가 저장되었습니다😀<br/>"); // setTimeout(function (){
+          //     location.href = "/home";
+          // }, 2000);
+
           return true;
         } else if (res.data.code == 301) {
           toast("warning", "저장에 실패했습니다🥲 잠시 후에 다시 시도해주세요 !");

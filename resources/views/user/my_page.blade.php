@@ -13,7 +13,7 @@
         }
     </style>
 
-    <section class="text-gray-600 body-font relative">
+    <section class="text-gray-900 body-font relative">
         <div id="my_page_form" class="container px-5 py-24 mx-auto">
             <div class="flex flex-col text-center w-full mb-12">
                 <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">마이페이지</h1>
@@ -23,7 +23,7 @@
                 <div class="flex flex-col -m-2">
                     <div class="p-2 w-full">
                         <div class="relative">
-                            <label for="nickname" class="leading-7 text-sm text-gray-600 required">닉네임</label>
+                            <label for="nickname" class="leading-7 text-sm text-gray-900 required">닉네임</label>
                             <input type="hidden" id="preset_nickname" value="{{$user->nickname}}">
                             <input v-model="nickname" v-on:blur="validateNickname" type="text" id="nickname" name="nickname"
                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
@@ -32,7 +32,7 @@
 
                     <div class="p-2 w-full">
                         <div class="relative">
-                            <label for="name" class="leading-7 text-sm text-gray-600">이름</label>
+                            <label for="name" class="leading-7 text-sm text-gray-900">이름</label>
                             <input type="hidden" id="preset_name" value="{{$user->name}}">
                             <input v-model="name" type="text" id="name" name="name"
                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
@@ -42,7 +42,7 @@
 
                     <div class="p-2 w-full">
                         <div class="relative">
-                            <label for="birth" class="leading-7 text-sm text-gray-600">생년월일</label>
+                            <label for="birth" class="leading-7 text-sm text-gray-900">생년월일</label>
                             <input type="hidden" id="preset_birth" value="{{$user->birth}}">
                             <input v-model="birth" type="date" id="birth" name="birth"
                                    min="1901-01-01" max="2021-12-31"
@@ -52,7 +52,7 @@
 
                     <div class="p-2 w-full">
                         <div class="relative">
-                            <label for="officer" class="leading-7 text-sm text-gray-600">직분</label>
+                            <label for="officer" class="leading-7 text-sm text-gray-900">직분</label>
                             <input type="hidden" id="preset_officer" value="{{$user->officer}}">
                             <p>
                                 <select id="officer" name="officer" v-model="officer"
@@ -61,11 +61,13 @@
                                     <option style="direction: rtl; padding-right:30px" value="목사">목사</option>
                                     <option style="direction: rtl; padding-right:30px" value="전도사">전도사</option>
                                     <option style="direction: rtl; padding-right:30px" value="장로">장로</option>
+                                    <option style="direction: rtl; padding-right:30px" value="명예장로">장로</option>
                                     <option style="direction: rtl; padding-right:30px" value="권사">권사</option>
                                     <option style="direction: rtl; padding-right:30px" value="안수집사">안수집사</option>
                                     <option style="direction: rtl; padding-right:30px" value="집사">집사</option>
-                                    <option style="direction: rtl; padding-right:30px" value="렘넌트">렘넌트</option>
                                     <option style="direction: rtl; padding-right:30px" value="성도">성도</option>
+                                    <option style="direction: rtl; padding-right:30px" value="청년">청년</option>
+                                    <option style="direction: rtl; padding-right:30px" value="렘넌트">렘넌트</option>
 {{--                                    <option style="direction: rtl; padding-right:30px" value="목사" :selected="officer === '목사'">목사</option>--}}
 {{--                                    <option style="direction: rtl; padding-right:30px" value="전도사" :selected="officer === '전도사'">전도사</option>--}}
 {{--                                    <option style="direction: rtl; padding-right:30px" value="장로" :selected="officer === '장로'">장로</option>--}}
@@ -76,6 +78,15 @@
 {{--                                    <option style="direction: rtl; padding-right:30px" value="성도" :selected="officer === '성도'">성도</option>--}}
                                 </select>
                             </p>
+
+                            <label for="birth" class="leading-7 text-sm text-gray-700">
+                                임직 대상
+                                <input type="hidden" id="preset_appointment" value="{{$user->appointment}}">
+                                <input v-model="appointment" type="checkbox" id="appointment" name="appointment" 
+                                       class="bg-gray-100 bg-opacity-50 rounded border border-green-700 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-green-700 ml-1 p-2 transition-colors duration-200 ease-in-out">
+                            </label>
+                            <p class="text-red-500 text-xs">2023년 임직대상인 분들은 체크해주세요!</p>
+
                         </div>
                     </div>
 
