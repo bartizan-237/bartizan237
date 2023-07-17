@@ -85,6 +85,26 @@ class UserController extends Controller
         ]);
     }
 
+    public function quitPage()
+    {
+        // 회원 탈퇴
+        return view('user.quit', [
+            'user' => $this->user
+        ]);
+    }
+
+    public function quitUser()
+    {
+        // 회원 탈퇴
+        info(__METHOD__);
+        info("[회원탈퇴] " . $this->user->name . " | " . $this->user->email);
+        $this->user->delete();
+
+        // 카카오 간편가입 유저인 경우, 연동정보 해제 필요
+        
+        return redirect("/home");
+    }
+
     public function myFields()
     {
         // 관심분야 설정

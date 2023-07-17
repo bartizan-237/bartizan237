@@ -75,7 +75,8 @@ Route::group(['namespace' => 'User',
     Route::post('/validate_nickname', [UserController::class, 'validateNickname']);
 
     Route::get('/my_page', [UserController::class, 'myPage']);
-    Route::get('/quit', [UserController::class, 'quit']); // 회원 탈퇴
+    Route::get('/quit', [UserController::class, 'quitPage']); // 회원 탈퇴
+    Route::post('/quit', [UserController::class, 'quitUser'])->name("quit"); // 회원 탈퇴
     Route::get('/my_fields', [UserController::class, 'myFields']); // 관심분야
 });
 
