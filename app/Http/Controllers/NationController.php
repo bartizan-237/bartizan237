@@ -24,9 +24,9 @@ class NationController extends Controller
         */
         $search_keyword = $request->input('search');
         if(isset($search_keyword) AND $search_keyword != ""){
-            $nations = Nation::where('name', 'LIKE','%'.$search_keyword.'%')->orWhere('name_en', 'LIKE','%'.$search_keyword.'%')->paginate(10);
+            $nations = Nation::where('name', 'LIKE','%'.$search_keyword.'%')->orWhere('name_en', 'LIKE','%'.$search_keyword.'%')->paginate(7);
         } else {
-            $nations = Nation::paginate(10);
+            $nations = Nation::paginate(7);
         }
 
         return view('nation.index', [

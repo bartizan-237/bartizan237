@@ -50,6 +50,11 @@ class LoginController extends Controller
         if ($user = User::where('email', $kakao_user->getEmail())->first()) {
             $this->guard()->login($user, true);
 
+            // 23.7.17.
+            $user->update([
+               'last_login_at' => now()
+            ]);
+
             return $this->sendLoginResponse($request);
         }
 

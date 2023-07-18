@@ -56,8 +56,8 @@
 
             <div class="pr-2 w-1/3 mb-3">
                 <div class="bg-white p-3 rounded-lg">
-                    <p class="nation_title">면적</p>
-                    {{number_format($nation->area)}} km²
+                    <p class="nation_title">인구</p>
+                    {{number_format($nation->population)}} 명
                 </div>
             </div>
 

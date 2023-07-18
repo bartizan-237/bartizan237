@@ -22,6 +22,9 @@ var postApp = new Vue({
     console.log(this._data);
   },
   methods: {
+    shareTo: function shareTo() {
+      console.log("shareTo");
+    },
     clickLike: function clickLike() {
       if (this.user_id == "") {
         toast("warning", "좋아요! 하시려면 먼저 로그인해주세요🙏");
@@ -101,13 +104,13 @@ var commentApp = new Vue({
         console.log("response", res);
 
         if (res.data.code == 200) {
-          toast("success", "댓글이 저장되었습니다😀");
+          toast("success", "댓글이 작성 되었습니다😀");
           setTimeout(function () {
             location.reload();
           }, 1000);
           return true;
         } else if (res.data.code == 301) {
-          toast("warning", "댓글 저장에 실패했습니다😢<br/> 잠시 후에 다시 시도해주세요 !");
+          toast("warning", "댓글을 작성하는 중 오류가 발생했습니다😢<br/> 잠시 후에 다시 시도해주세요 !");
           return false;
         } else {
           toast("warning", "서버에 일시적인 오류가 발생했습니다😢<br/>잠시 후에 다시 시도해주시기 바랍니다");
