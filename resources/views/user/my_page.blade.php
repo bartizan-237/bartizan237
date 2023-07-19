@@ -68,14 +68,6 @@
                                     <option style="direction: rtl; padding-right:30px" value="성도">성도</option>
                                     <option style="direction: rtl; padding-right:30px" value="청년">청년</option>
                                     <option style="direction: rtl; padding-right:30px" value="렘넌트">렘넌트</option>
-{{--                                    <option style="direction: rtl; padding-right:30px" value="목사" :selected="officer === '목사'">목사</option>--}}
-{{--                                    <option style="direction: rtl; padding-right:30px" value="전도사" :selected="officer === '전도사'">전도사</option>--}}
-{{--                                    <option style="direction: rtl; padding-right:30px" value="장로" :selected="officer === '장로'">장로</option>--}}
-{{--                                    <option style="direction: rtl; padding-right:30px" value="권사" :selected="officer === '권사'">권사</option>--}}
-{{--                                    <option style="direction: rtl; padding-right:30px" value="안수집사" :selected="officer === '안수집사'">안수집사</option>--}}
-{{--                                    <option style="direction: rtl; padding-right:30px" value="집사" :selected="officer === '집사'">집사</option>--}}
-{{--                                    <option style="direction: rtl; padding-right:30px" value="렘넌트" :selected="officer === '렘넌트'">렘넌트</option>--}}
-{{--                                    <option style="direction: rtl; padding-right:30px" value="성도" :selected="officer === '성도'">성도</option>--}}
                                 </select>
                             </p>
 

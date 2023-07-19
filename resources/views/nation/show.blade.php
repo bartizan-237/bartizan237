@@ -11,8 +11,14 @@
         }
     </style>
     <main class="container p-2 bg-gray-200">
-        <div class="flex flex-wrap p-1">
+        <div class="flex flex-wrap p-1 mb-3 pb-6 relative">
+            <button onclick="toast('info', '준비 중 입니다'); return;"
+                    class="absolute right-5 top-5 p-1 text-xs bg-blue-500 text-white rounded">
+                +선교정보
+            </button>
+
             <div class="p-3 w-full bg-white rounded-lg mb-3">
+
                 <p class="text-sm pb-1 text-gray-800">
                 @switch($nation->continent)
                     @case("Asia") 아시아 @break
@@ -50,21 +56,25 @@
             <div class="pr-2 w-1/3 mb-3">
                 <div class="bg-white p-3 rounded-lg">
                     <p class="nation_title">면적</p>
-                    {{number_format($nation->area)}} km²
+                    <span class="text-sm"> {{number_format($nation->area)}} km² </span>
                 </div>
             </div>
 
             <div class="pr-2 w-1/3 mb-3">
                 <div class="bg-white p-3 rounded-lg">
                     <p class="nation_title">인구</p>
-                    {{number_format($nation->population)}} 명
+                    <span class="text-sm"> {{number_format($nation->population)}} 명 </span>
                 </div>
             </div>
 
             <div class=" w-1/3 mb-3">
                 <div class="bg-white p-3 rounded-lg">
                     <p class="nation_title">GDP</p>
+                    @if($nation->gdp AND $nation->gdp != 0)
                     $ {{number_format($nation->gdp)}}
+                    @else
+                    -
+                    @endif
                 </div>
             </div>
 

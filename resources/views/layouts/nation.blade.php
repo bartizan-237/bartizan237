@@ -23,16 +23,20 @@
             </div>
         </div>
 
-        <!-- TAB MENU -->
-        @if(!isset($show_post))
-            <div id="tab_menu" class="w-full flex bg-white" style="padding: 10px 10px 0px 10px; height: 40px; max-width: 500px; margin:0 auto">
-                <div class="py-1 px-3 text-gray-800"
-                     onclick="location.href='/nation/{{$nation->id}}'"
-                     style=" @if($_SERVER['REQUEST_URI'] == "/nation/".$nation->id) border-bottom: 2px solid #333; @endif  " >
-                    개요
-                </div>
+
+        <div id="tab_menu" class="w-full flex bg-white" style="padding: 10px 10px 0px 10px; height: 40px; max-width: 500px; margin:0 auto">
+            <div class="py-1 px-3 text-gray-800"
+                 onclick="location.href='/nation/{{$nation->id}}'"
+                 style=" @if($_SERVER['REQUEST_URI'] == "/nation/".$nation->id) border-bottom: 2px solid #333; @endif  " >
+                정보
             </div>
-        @endif
+
+            <div class="py-1 px-3 text-gray-800"
+                 onclick="toast('info', '준비 중 입니다'); return; location.href='/nation/{{$nation->id}}/mission'"
+                 style=" @if(str_contains($_SERVER['REQUEST_URI'], "/nation/".$nation->id . "/mission")) border-bottom: 2px solid #333; @endif  " >
+                선교현장
+            </div>
+        </div>
     </header>
 
     <section class="bg-gray-200" style="padding-top:100px; min-height: 100vh;">

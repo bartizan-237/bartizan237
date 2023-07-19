@@ -22,13 +22,14 @@
                         <div class="text-gray-700 text-sm px-3 py-2">
                             @forelse($bartizan->getRecentPosts(3) as $post)
                                 <div onclick="location.href='/bartizan/{{$bartizan->id}}/posts/{{$post->id}}'" class=" p-1 w-full flex text-sm">
-                                    <div class="w-1/2 ">{{$post->title}}</div>
-                                    <div class="w-1/2 right-0 text-xs text-right">{{$post->created_at->diffForHumans()}}</div>
-{{--                                    <div class="w-1/2 right-0 text-xs text-right">{{$post->getCreatedAtAttribute($post->created_at)}}</div>--}}
+                                    <div class="w-3/4 ">{{$post->title}}</div>
+                                    <div class="w-1/4 right-0 text-xs text-right">{{$post->created_at->diffForHumans()}}</div>
                                 </div>
                             @empty
                                 <div class="text-xs p-1">
-                                    아직 등록된 포스트가 없습니다😢
+                                    <div class="w-full">
+                                        아직 등록된 게시글이 없습니다😢
+                                    </div>
                                 </div>
                             @endforelse
                         </div>
