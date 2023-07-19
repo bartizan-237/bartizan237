@@ -57,7 +57,8 @@ Route::group(['namespace' => 'Bartizan', 'prefix' => 'bartizan'], function() {
     Route::post('/validate_name', [BartizanController::class, 'validateName']);
     Route::get("/{bartizan}/posts", [BartizanController::class, 'posts']);
     Route::get("/{bartizan}/posts/{post}", [BartizanController::class, 'showPost']);
-    Route::post("/join", [BartizanController::class, 'join']);
+    Route::post("{bartizan}/join", [BartizanController::class, 'join']);
+    Route::get("{bartizan}/join", [BartizanController::class, 'joinList']);
 });
 
 Route::group(['namespace' => 'Nation', 'prefix' => 'nation'], function() {

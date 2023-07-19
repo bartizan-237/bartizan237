@@ -53,5 +53,6 @@ window.closeModal = () => {
     modal.classList.add("hidden");
 
     var modal_img = document.getElementById("modal_img");
+    modal_img.style.opacity = 0;
     modal_img.src = "";
 }

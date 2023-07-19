@@ -278,5 +278,20 @@ quill = new Quill('#editor', {
 });
 })();
 
+// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
+(() => {
+/*!***************************************!*\
+  !*** ./resources/js/bartizan/join.js ***!
+  \***************************************/
+var join = new Vue({
+  el: '#joinList',
+  method: {
+    accept: function accept() {
+      console.log('accpet');
+    }
+  }
+});
+})();
+
 /******/ })()
 ;

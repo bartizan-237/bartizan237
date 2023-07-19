@@ -61,7 +61,7 @@
                                     <option style="direction: rtl; padding-right:30px" value="목사">목사</option>
                                     <option style="direction: rtl; padding-right:30px" value="전도사">전도사</option>
                                     <option style="direction: rtl; padding-right:30px" value="장로">장로</option>
-                                    <option style="direction: rtl; padding-right:30px" value="명예장로">장로</option>
+                                    <option style="direction: rtl; padding-right:30px" value="명예장로">명예장로</option>
                                     <option style="direction: rtl; padding-right:30px" value="권사">권사</option>
                                     <option style="direction: rtl; padding-right:30px" value="안수집사">안수집사</option>
                                     <option style="direction: rtl; padding-right:30px" value="집사">집사</option>

@@ -9,4 +9,5 @@ class JoinRequest extends Model
 {
     use HasFactory;
     protected $table = 'join_requests';
+    protected $fillable = ['bartizan_id', 'user_id', 'user_name'];
 }

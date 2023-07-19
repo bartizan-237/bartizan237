@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bartizan;
 use App\Models\JoinRequest;
+use App\Models\Watchman;
 use App\Models\Post;
 use App\Models\Nation;
 use Illuminate\Http\Request;
@@ -92,7 +93,8 @@ class BartizanController extends Controller
     public function show(Bartizan $bartizan)
     {
         return view("bartizan.show", [
-            "bartizan" => $bartizan
+            "bartizan" => $bartizan,
+            "join_request" => false
         ]);
     }
 
@@ -166,8 +168,45 @@ class BartizanController extends Controller
         }
     }
 
-    public function join(Request $request){
-        dd($request->input('join_user_id'), $request->input('join_bartizan_id'), $request->input('join_user_name'));
+    public function join(Request $request, Bartizan $bartizan){
+//        dd($request->input('join_user_id'), $request->input('join_bartizan_id'), $request->input('join_user_name'));
+
+        $request_exists = JoinRequest::where('bartizan_id',$request->input('join_bartizan_id'))
+            ->where('user_id',$request->input('join_user_id'))->exists();
+//        $watchman_exists = Watchman::where('bartizan_id', $request->input('join_bartizan_id'))
+//            ->where('user_id', $request->input('join_user_id'))->exists();
+
+        JoinRequest::create([
+                'bartizan_id' => $request->input('join_bartizan_id'),
+                'user_id' => $request->input('join_user_id'),
+                'user_name' => $request->input('join_user_name')
+            ]
+        );
+//        if(@$request_exists and $watchman_exists){
+//
+//        }
+        return view("bartizan.show",[
+            'bartizan'=>$bartizan,
+            'join_request'=>true]);
+//        return redirect('/bartizan/'.$bartizan->id)->with('message', '신청 성공');
+
+//      if(!$request_exists){ // 중복 신청 방지
+//            JoinRequest::create([
+//                    'bartizan_id' => $request->input('join_bartizan_id'),
+//                    'user_id' => $request->input('join_user_id'),
+//                    'user_name' => $request->input('join_user_name')
+//                ]
+//            );
+//        }
+    }
+
+    public function joinList(Bartizan $bartizan){
+        $list = $bartizan->getJoinList;
+
+        return view("bartizan.join",[
+            'bartizan' => $bartizan,
+            'joinList' => $list
+        ]);
     }
     
 }

@@ -57,14 +57,12 @@
             </div>
         </div>
     </main>
+
+    <script>
+        if({{$join_request}}){
+            alert('신청 성공');
+            console.log('신청 성공');
+        }
+    </script>
 @endsection
 
-<script>
-    function join(bartizan_id) {
-        console.log('망대 : ', bartizan_id);
-        @if(Auth::user())
-        console.log('사용자 : ', {{\Auth::user()->id}});
-        @endif
-        console.log({{$bartizan->id}});
-    }
-</script>
