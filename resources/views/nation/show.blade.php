@@ -12,7 +12,9 @@
     </style>
     <main class="container p-2 bg-gray-200">
         <div class="flex flex-wrap p-1 mb-3 pb-6 relative">
-            <button onclick="toast('info', '준비 중 입니다'); return;"
+            <button
+{{--                    onclick="toast('info', '준비 중 입니다'); return;"--}}
+                    onclick="openModal('https://kr.object.ncloudstorage.com/immanuel/bartizan/image/mission/AD.png');"
                     class="absolute right-5 top-5 p-1 text-xs bg-blue-500 text-white rounded">
                 +선교정보
             </button>

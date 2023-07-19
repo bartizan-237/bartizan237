@@ -164,5 +164,9 @@ class BartizanController extends Controller
             return response()->json(["code" => 200]);
         }
     }
+
+    public function join(Bartizan $bartizan){
+        return view("bartizan.join");
+    }
     
 }

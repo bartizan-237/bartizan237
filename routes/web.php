@@ -45,6 +45,7 @@ Route::post("upload_image", [AjaxController::class, 'uploadImage']);
 // Click LIKE
 Route::post("like", [LikeController::class, 'clickLike']);
 
+// Bartizan
 Route::group(['namespace' => 'Bartizan', 'prefix' => 'bartizan'], function() {
     Route::get("/", [BartizanController::class, 'index']);
     Route::get("/create", [BartizanController::class, 'create']);
@@ -56,6 +57,7 @@ Route::group(['namespace' => 'Bartizan', 'prefix' => 'bartizan'], function() {
     Route::post('/validate_name', [BartizanController::class, 'validateName']);
     Route::get("/{bartizan}/posts", [BartizanController::class, 'posts']);
     Route::get("/{bartizan}/posts/{post}", [BartizanController::class, 'showPost']);
+    Route::get("/{bartizan}/join", [BartizanController::class, 'join']);
 });
 
 Route::group(['namespace' => 'Nation', 'prefix' => 'nation'], function() {

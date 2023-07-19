@@ -1,0 +1,4 @@
+@section('content')
+    d
+@endsection
+

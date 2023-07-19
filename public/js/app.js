@@ -5332,6 +5332,22 @@ window.toast = function (type, string) {
   toast.classList.add("reveal"), toast.children[0].innerHTML = string, toast.style.backgroundColor = bg_color;
 };
 
+window.openModal = function (image_url) {
+  console.log("openModal", image_url);
+  var modal = document.getElementById("modal_bg");
+  modal.classList.remove("hidden");
+  var modal_img = document.getElementById("modal_img");
+  modal_img.src = image_url;
+};
+
+window.closeModal = function () {
+  console.log("closeModal");
+  var modal = document.getElementById("modal_bg");
+  modal.classList.add("hidden");
+  var modal_img = document.getElementById("modal_img");
+  modal_img.src = "";
+};
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

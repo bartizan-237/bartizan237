@@ -6,6 +6,8 @@
 {{--<body class="bg-237 antialiased leading-none">--}}
 
 <body class="bg-237 antialiased leading-none">
+
+@include("components.modal")
 <div id="toast"><p></p></div>
 
     <div id="app"  style="max-width: 500px; margin:0 auto;" class="bg-237">

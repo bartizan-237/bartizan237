@@ -38,6 +38,11 @@
                  style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/posts") !== false) border-bottom: 2px solid #333; @endif  " >
                 게시판
             </div>
+            <div class="py-1 px-2 text-gray-800"
+                 onclick="location.href='/bartizan/{{$bartizan->id}}/join'"
+                 style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/join") !== false) border-bottom: 2px solid #333; @endif  " >
+                신청
+            </div>
         </div>
         @endif
     </header>
