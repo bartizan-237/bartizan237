@@ -5337,7 +5337,16 @@ window.openModal = function (image_url) {
   var modal = document.getElementById("modal_bg");
   modal.classList.remove("hidden");
   var modal_img = document.getElementById("modal_img");
-  modal_img.src = image_url;
+
+  modal_img.onload = function () {
+    // 이미지가 로딩된 후에 실행되는 코드
+    console.log("ONLOADED");
+    modal_img.style.opacity = 1; // 이미지를 보여줍니다.
+  };
+
+  setTimeout(function () {
+    modal_img.src = image_url;
+  }, 200);
 };
 
 window.closeModal = function () {

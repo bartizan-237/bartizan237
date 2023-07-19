@@ -2,7 +2,7 @@ require('./bootstrap');
 
 console.log("APP.JS");
 
-window.toast = function (type, string) {
+window.toast = (type, string) => {
     console.log("TOAST ", string, type);
     var toast = document.getElementById("toast");
 
@@ -34,10 +34,20 @@ window.openModal = function (image_url) {
     modal.classList.remove("hidden");
 
     var modal_img = document.getElementById("modal_img");
-    modal_img.src = image_url;
+
+    modal_img.onload = () => {
+        // 이미지가 로딩된 후에 실행되는 코드
+        console.log("ONLOADED");
+        modal_img.style.opacity = 1; // 이미지를 보여줍니다.
+    };
+
+    setTimeout( () => {
+        modal_img.src = image_url;
+    }, 200);
+
 }
 
-window.closeModal = function () {
+window.closeModal = () => {
     console.log("closeModal");
     var modal = document.getElementById("modal_bg");
     modal.classList.add("hidden");

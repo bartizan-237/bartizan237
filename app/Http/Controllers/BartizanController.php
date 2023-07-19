@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bartizan;
+use App\Models\JoinRequest;
 use App\Models\Post;
 use App\Models\Nation;
 use Illuminate\Http\Request;
@@ -165,8 +166,8 @@ class BartizanController extends Controller
         }
     }
 
-    public function join(Bartizan $bartizan){
-        return view("bartizan.join");
+    public function join(Request $request){
+        dd($request->input('join_user_id'), $request->input('join_bartizan_id'), $request->input('join_user_name'));
     }
     
 }

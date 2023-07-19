@@ -38,11 +38,17 @@
                  style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/posts") !== false) border-bottom: 2px solid #333; @endif  " >
                 게시판
             </div>
-            <div class="py-1 px-2 text-gray-800"
-                 onclick="location.href='/bartizan/{{$bartizan->id}}/join'"
-                 style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/join") !== false) border-bottom: 2px solid #333; @endif  " >
-                신청
-            </div>
+            <form action="/bartizan/join" method="POST">
+                @csrf
+                <input type="hidden" name="join_user_id" id="join_user_id" value="{{\Auth::user()->id}}"/>
+                <input type="hidden" name="join_user_name" id="join_user_name" value="{{\Auth::user()->name}}"/>
+                <input type="hidden" name="join_bartizan_id" id="join_bartizan_id" value="{{$bartizan->id}}"/>
+                <button class="py-1 px-2 text-gray-800">
+{{--                        style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/join") !== false) border-bottom: 2px solid #333; @endif  " >--}}
+                    파수꾼 신청
+                </button>
+            </form>
+
         </div>
         @endif
     </header>
