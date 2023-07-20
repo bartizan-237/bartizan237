@@ -6,9 +6,18 @@
 
 <main class="sm:container sm:mx-auto" style="max-width: 500px">
     <div class="flex flex-col bg-gray-200 h-screen">
-    @include('post.home_post', [
-        'posts' => $posts
-    ])
+{{--    @include('post.home_post', [--}}
+{{--        'posts' => $posts--}}
+{{--    ])--}}
+        <link href="https://fonts.googleapis.com/css2?family=Bungee&amp;display=swap" rel="stylesheet">
+
+        <!-- LANDING PAGE -->
+        <div class="flex items-center justify-center w-full h-full bg-gray-100">
+            <div>
+                <p class="text-center text-xl text-green-600 mb-6" style="font-size: 100px; font-family: 'Bungee', cursive">BARTIZANS OF THE WORLD</p>
+            </div>
+        </div>
+
     </div>
 </main>
 @endsection

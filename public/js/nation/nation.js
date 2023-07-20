@@ -881,21 +881,19 @@ var nationList = new Vue({
   },
   mounted: function mounted() {
     console.log("nationList mounted!");
-    this._data.page = 0;
-    this.getNations(0);
+    this._data.page = 0; // this.getNations(0);
+
     this.observingInfiniteScroll();
   },
   methods: {
     getNations: function () {
       var _getNations = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(page) {
-        var has_next_page;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 console.log("getNations", page);
-                has_next_page = null;
-                _context.next = 4;
+                _context.next = 3;
                 return axios.get("/nation/scroll?page=" + page).then(function (response) {
                   var _nationList$_data$nat;
 
@@ -910,19 +908,16 @@ var nationList = new Vue({
                   nationList._data.page++;
 
                   if (nationList._data.nations.length == 0) {
-                    has_next_page = false;
+                    return false;
                   } else {
-                    has_next_page = true;
+                    return true;
                   }
                 })["catch"](function (error) {
                   console.log("error", error);
-                  has_next_page = false;
+                  return false;
                 });
 
-              case 4:
-                return _context.abrupt("return", has_next_page);
-
-              case 5:
+              case 3:
               case "end":
                 return _context.stop();
             }

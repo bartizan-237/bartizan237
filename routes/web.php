@@ -25,8 +25,11 @@ Route::get('/', function () {
 Auth::routes();
 
 //Route::get('/test', [HomeController::class, 'test']);
-Route::get('/test', [MailController::class, 'send']);
+//Route::get('/test', [MailController::class, 'send']);
+Route::get('/test', function () { return view('test'); });
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+// SNS Login for Kakao
 Route::get("/login/{provider}", [SocialController::class, 'redirect']);
 Route::get("/login/{provider}/callback", [SocialController::class, 'Callback']);
 
@@ -34,6 +37,7 @@ Route::get("/login/{provider}/callback", [SocialController::class, 'Callback']);
 Route::get('/privacy', function () {
     return view('privacy.privacy');
 });
+
 Route::resources([
 //    'bartizan' => BartizanController::class,
     'post' => PostController::class,
@@ -62,17 +66,18 @@ Route::group(['namespace' => 'Bartizan', 'prefix' => 'bartizan'], function() {
 });
 
 Route::group(['namespace' => 'Nation', 'prefix' => 'nation'], function() {
-    Route::get("/", [NationController::class, 'index']);
-    Route::get("/scroll", [NationController::class, 'scroll']);
+    Route::get("/", [NationController::class, 'index']); // 237나라 목록
+    Route::get("/main", [NationController::class, 'main']);
+    Route::get("/scroll", [NationController::class, 'scroll']); // infinite scroll
     Route::get("/{nation}", [NationController::class, 'show']);
-    Route::post("/search", [NationController::class, 'searchNation']);
+//    Route::post("/search", [NationController::class, 'searchNation']); // search는 Get parameter로 처리
 });
 
 
 // USER
 Route::group(['namespace' => 'User',
-    'prefix' => 'user',
-    'middleware' => 'auth'
+    'prefix' => 'user', // prefix : /user/*
+    'middleware' => 'auth' // This Route group need AUTH
 ], function() {
     Route::get('/basic_info', [UserController::class, 'basicInfo']);
     Route::post('/basic_info', [UserController::class, 'saveBasicInfo']);

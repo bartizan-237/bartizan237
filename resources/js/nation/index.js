@@ -7,7 +7,7 @@ var nationList = new Vue({
     mounted: function(){
         console.log("nationList mounted!");
         this._data.page = 0;
-        this.getNations(0);
+        // this.getNations(0);
         this.observingInfiniteScroll();
     },
     methods: {

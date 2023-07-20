@@ -9,6 +9,13 @@ use Carbon\Carbon;
 
 class NationController extends Controller
 {
+    public function main(Request $request){
+        // 237 Nations 메인
+        return view('nation.main', [
+
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *

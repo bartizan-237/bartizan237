@@ -8,7 +8,7 @@
 <div id="app" style="max-width: 500px; margin:0 auto;" class="bg-gray-100">
     <header id="header-bar" class="w-full border-b border-gray-100 bg-white fixed top-0 left-0" style="height: 60px; z-index: 10;">
         <div class="w-full" style="padding: 10px; max-width: 500px; margin:0 auto">
-            <a onclick="location.href='/bartizan'" class="inline-block">
+            <a onclick="history.back()" class="inline-block">
                 <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-900 inline-block" style="height: 30px; width: 30px; margin-top:-5px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                 </svg>
