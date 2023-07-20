@@ -171,8 +171,8 @@ class BartizanController extends Controller
     public function join(Request $request, Bartizan $bartizan){
 //        dd($request->input('join_user_id'), $request->input('join_bartizan_id'), $request->input('join_user_name'));
 
-        $request_exists = JoinRequest::where('bartizan_id',$request->input('join_bartizan_id'))
-            ->where('user_id',$request->input('join_user_id'))->exists();
+//        $request_exists = JoinRequest::where('bartizan_id',$request->input('join_bartizan_id'))
+//            ->where('user_id',$request->input('join_user_id'))->exists();
 //        $watchman_exists = Watchman::where('bartizan_id', $request->input('join_bartizan_id'))
 //            ->where('user_id', $request->input('join_user_id'))->exists();
 
@@ -202,7 +202,6 @@ class BartizanController extends Controller
 
     public function joinList(Bartizan $bartizan){
         $list = $bartizan->getJoinList;
-
         return view("bartizan.join",[
             'bartizan' => $bartizan,
             'joinList' => $list
