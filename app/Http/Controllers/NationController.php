@@ -24,16 +24,47 @@ class NationController extends Controller
         */
         $search_keyword = $request->input('search');
         if(isset($search_keyword) AND $search_keyword != ""){
-            $nations = Nation::where('name', 'LIKE','%'.$search_keyword.'%')->orWhere('name_en', 'LIKE','%'.$search_keyword.'%')->paginate(7);
+            $nations = Nation::where('name', 'LIKE','%'.$search_keyword.'%')->orWhere('name_en', 'LIKE','%'.$search_keyword.'%')->paginate(10);
         } else {
-            $nations = Nation::paginate(7);
+            $nations = Nation::paginate(10);
         }
 
-        return view('nation.index', [
+        /** 23.7.20.
+         * as-is : pagination
+         * to-be : infinite scroll
+         */
+        return view('nation.index_scroll', [
             'nations' => $nations,
             'search_keyword' => $search_keyword
         ]);
+
+//        return view('nation.index', [
+//            'nations' => $nations,
+//            'search_keyword' => $search_keyword
+//        ]);
     }
+
+
+    public function scroll(Request $request){
+        // 무한스크롤
+        info(__METHOD__);
+        info($request);
+
+        $NATION_PER_SCROLL = 20;
+        $search_keyword = $request->input('search');
+        $page = $request->page;
+        if(isset($search_keyword) AND $search_keyword != ""){
+            $nations = Nation::where('name', 'LIKE','%'.$search_keyword.'%')->orWhere('name_en', 'LIKE','%'.$search_keyword.'%')
+                ->skip($page * $NATION_PER_SCROLL)->take($NATION_PER_SCROLL)->get();
+        } else {
+            $nations = Nation::skip($page * $NATION_PER_SCROLL)->take($NATION_PER_SCROLL)->get();
+        }
+
+        return response()->json([
+           'nations' => $nations
+        ]);
+    }
+
 
     /**
      * Display the specified resource.
@@ -47,7 +78,6 @@ class NationController extends Controller
             "nation" => $nation
         ]);
     }
-
 
     public function createNations(){
         $file = fopen('../storage/files/237.csv','r');
