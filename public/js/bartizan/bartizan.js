@@ -300,10 +300,6 @@ function reject() {
   // join_requests 테이블에서 user_id가 있는 부분 삭제
   alert('거부');
 }
-
-quill = new Quill('#editor', {
-  theme: 'snow'
-});
 })();
 
 /******/ })()

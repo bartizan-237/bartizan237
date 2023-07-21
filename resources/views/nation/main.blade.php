@@ -13,25 +13,77 @@
                 </div>
 
                 <p> 🌍 5대륙 </p>
-                <div class="w-full grid gap-3 grid-cols-3 mb-2">
-                    <div class="bg-white p-2 h-16 rounded-lg text-center items-center align-items-center justify-center">유럽</div>
-                    <div class="bg-white p-2 h-16 rounded-lg text-center items-center align-items-center justify-center">아시아</div>
-                    <div class="bg-white p-2 rounded-lg text-center items-center align-items-center justify-center row-span-2">아메리카</div>
-                    <div class="bg-white p-2 h-16 rounded-lg text-center items-center align-items-center justify-center">아프리카</div>
-                    <div class="bg-white p-2 h-16 rounded-lg text-center items-center align-items-center justify-center">오세아니아</div>
+{{--                <div class="w-full grid gap-3 grid-cols-3 mb-2">--}}
+{{--                    <div class="bg-white p-2 h-16 rounded-lg text-center items-center align-items-center justify-center">--}}
+{{--                        유럽--}}
+{{--                        <span class="text-xs block my-1">EUROPE</span>--}}
+{{--                    </div>--}}
+{{--                    <div class="bg-white p-2 h-16 rounded-lg text-center items-center align-items-center justify-center">--}}
+{{--                        아시아--}}
+{{--                        <span class="text-xs block my-1">ASIA</span>--}}
+{{--                    </div>--}}
+{{--                    <div class="bg-white p-2 rounded-lg text-center items-center align-items-center justify-center row-span-2">--}}
+{{--                        아메리카--}}
+{{--                        <span class="text-xs block my-1">AMERICA</span>--}}
+{{--                    </div>--}}
+{{--                    <div class="bg-white p-2 h-16 rounded-lg text-center items-center align-items-center justify-center">--}}
+{{--                        아프리카--}}
+{{--                        <span class="text-xs block my-1">AFRICA</span>--}}
+{{--                    </div>--}}
+{{--                    <div class="bg-white p-2 h-16 rounded-lg text-center items-center align-items-center justify-center">--}}
+{{--                        오세아니아--}}
+{{--                        <span class="text-xs block my-1">OCEANIA</span>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+
+                <div class="continent-container w-full mb-2">
+                    <div class="continent-card border border-gray-300 p-2 bg-white h-32 rounded text-center items-center align-items-center justify-center">
+                        <span class="continent-name">유럽</span>
+                        <span class="continent-name-en">EUROPE</span>
+                    </div>
+                    <div class="continent-card border border-gray-300 p-2 bg-white h-32 rounded text-center items-center align-items-center justify-center">
+                        <span class="continent-name">아시아</span>
+                        <span class="continent-name-en">ASIA</span>
+                    </div>
+                    <div class="continent-card border border-gray-300 p-2 bg-white h-32 rounded text-center items-center align-items-center justify-center">
+                        <span class="continent-name">아메리카</span>
+                        <span class="continent-name-en">AMERICA</span>
+                    </div>
+                    <div class="continent-card border border-gray-300 p-2 bg-white h-32 rounded text-center items-center align-items-center justify-center">
+                        <span class="continent-name">아프리카</span>
+                        <span class="continent-name-en">AFRICA</span>
+                    </div>
+                    <div class="continent-card border border-gray-300 p-2 bg-white h-32 rounded text-center items-center align-items-center justify-center">
+                        <span class="continent-name">오세아니아</span>
+                        <span class="continent-name-en">OCEANIA</span>
+                    </div>
                 </div>
+
+
 
                 <p> 🚩 12대교구</p>
                 <div class="w-full grid gap-3 grid-cols-4 mb-2">
-                    <div class="bg-white p-2 rounded-lg text-center items-center align-items-center justify-center"><span class="text-sm block mb-1">유럽</span> EU회원국</div>
-                    <div class="bg-white p-2 rounded-lg text-center items-center align-items-center justify-center"><span class="text-sm block mb-1">유럽</span> EU비회원국</div>
+                    <div class="bg-white p-2 rounded-lg text-center items-center align-items-center justify-center">
+                        <span class="text-xs block my-1">유럽</span>
+                        EU회원국
+                    </div>
+                    <div class="bg-white p-2 rounded-lg text-center items-center align-items-center justify-center">
+                        <span class="text-xs block my-1">유럽</span>
+                        EU비회원국
+                    </div>
                     <div class="bg-white p-2 rounded-lg text-center items-center align-items-center justify-center">러시아권</div>
                     <div class="bg-white p-2 rounded-lg text-center items-center align-items-center justify-center">중화권</div>
                     <div class="bg-white p-2 rounded-lg text-center items-center align-items-center justify-center">힌두권</div>
                     <div class="bg-white p-2 rounded-lg text-center items-center align-items-center justify-center">아시아권</div>
                     <div class="bg-white p-2 rounded-lg text-center items-center align-items-center justify-center">아랍권</div>
-                    <div class="bg-white p-2 rounded-lg text-center items-center align-items-center justify-center"><span class="text-sm block mb-1">아프리카</span> 영어권</div>
-                    <div class="bg-white p-2 rounded-lg text-center items-center align-items-center justify-center"><span class="text-sm block mb-1">아프리카</span> 불어/포르투어권</div>
+                    <div class="bg-white p-2 rounded-lg text-center items-center align-items-center justify-center">
+                        <span class="text-xs block my-1">아프리카</span>
+                        영어권
+                    </div>
+                    <div class="bg-white p-2 rounded-lg text-center items-center align-items-center justify-center">
+                        <span class="text-xs block my-1">아프리카</span>
+                        불어/포르투어권
+                    </div>
                     <div class="bg-white p-2 rounded-lg text-center items-center align-items-center justify-center">오세아니아</div>
                     <div class="bg-white p-2 rounded-lg text-center items-center align-items-center justify-center">북아메리카</div>
                     <div class="bg-white p-2 rounded-lg text-center items-center align-items-center justify-center">중남아메리카</div>
@@ -39,4 +91,5 @@
             </div>
         </div>
     </main>
+
 @endsection

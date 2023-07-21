@@ -96,4 +96,4 @@ Route::get('/fields', [UserController::class, 'myFields']); // 관심분야
 Route::get('/set_jobs', [HomeController::class, 'setJobs']);
 
 // JOIN
-Route::post('/join', [WatchmanController::class, 'join']);
+Route::post('/join/accept', [JoinRequestController::class, 'accept']);
