@@ -3,17 +3,35 @@ var nationList = new Vue({
     data: {
         nations : [],
         page : null,
+        search_keyword : null,
+        province_keyword : null,
+        continent_keyword : null,
     },
     mounted: function(){
         console.log("nationList mounted!");
         this._data.page = 0;
         // this.getNations(0);
         this.observingInfiniteScroll();
+
+        const searchParams = new URLSearchParams(location.search);
+
+        this._data.search_keyword = searchParams.get('search') ?? "";
+        this._data.province_keyword = searchParams.get('province') ?? "";
+        this._data.continent_keyword = searchParams.get('continent') ?? "";
+
+        console.log(this._data.search_keyword, this._data.province_keyword, this._data.continent_keyword);
     },
     methods: {
         getNations : async function (page) {
-            console.log("getNations", page);
-            await axios.get("/nation/scroll?page=" + page)
+
+            let search_keyword = this._data.search_keyword;
+            let province_keyword = this._data.province_keyword;
+            let continent_keyword = this._data.continent_keyword;
+
+            let target_url = `/nation/scroll?page=${page}&continent=${continent_keyword}&province=${province_keyword}&search=${search_keyword}`;
+            console.log("getNations", target_url);
+
+            await axios.get(target_url)
                 .then(function (response) {
                     console.log("response",response);
                     nationList._data.nations.push( ...response.data.nations ); // spread operator

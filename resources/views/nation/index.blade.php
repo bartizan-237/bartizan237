@@ -41,7 +41,7 @@
                                 <p class="text-gray-900 text-sm font-bold">{{$nation->name}}</p>
                                 <span class="text-gray-800 text-xs">{{$nation->name_en}}</span>
                             </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-6 w-6 text-gray-900"style="position:absolute; right:6px; top:12px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-6 w-6 text-gray-900" style="position:absolute; right:6px; top:18px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
                         </div>
                     </div>
                 </div>

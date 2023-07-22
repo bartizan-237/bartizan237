@@ -1,8 +1,25 @@
 var join = new Vue({
     el:'#joinList',
     methods:{
-        accept1 : function(){
-            console.log('accpet');
+        accept : function(user_id, bartizan_id){
+            console.log('accept');
+            console.log('user id : ', user_id);
+            console.log('bartizan id : ', bartizan_id);
+            axios.post('/join/accept',
+                {
+                    data : {
+                        user_id : user_id,
+                        bartizan_id : bartizan_id
+                    }
+                }).then(res=>{
+                    console.log('response : ', res);
+            }).catch(error=>{
+                console.log('error : ', error)
+            });
+            console.log('end')
+        },
+        reject : function(){
+            console.log('reject');
         }
     }
 });

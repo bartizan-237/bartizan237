@@ -23,17 +23,58 @@ class NationController extends Controller
      */
     public function index(Request $request)
     {
-//        $nations = Nation::paginate(10);
-
         /** 23.7.17.
          * as-is : 검색기능을 searchNation(), search.blade.php 로 구현
          * to-be : 검색기능을 index() 에 검색 기능 통합 (url parameter로)
         */
         $search_keyword = $request->input('search');
-        if(isset($search_keyword) AND $search_keyword != ""){
-            $nations = Nation::where('name', 'LIKE','%'.$search_keyword.'%')->orWhere('name_en', 'LIKE','%'.$search_keyword.'%')->paginate(10);
+        $province_keyword = $request->input('province');
+        $continent_keyword = $request->input('continent');
+
+        info(__METHOD__);
+        info("$search_keyword $province_keyword $continent_keyword");
+
+        // /nation no parameter => redirect to /nation/main
+        if($search_keyword == null AND $province_keyword == null AND $continent_keyword == null){
+            return redirect('/nation/main');
+        }
+
+        if(isset($continent_keyword) AND $continent_keyword != ""){
+            $nations = Nation::where('continent', $continent_keyword)
+                ->orderBy("name")
+                ->get();
+            return view('nation.index_scroll', [
+                'nations' => $nations,
+                'search_keyword' => $search_keyword ?? "",
+                'province_keyword' => $province_keyword ?? ""
+            ]);
+
+        }
+
+        if($search_keyword != ""){
+            if($province_keyword != ""){
+                // 키워드 AND 대교구
+                $nations = Nation::where('name', 'LIKE','%'.$search_keyword.'%')
+                    ->orWhere('name_en', 'LIKE','%'.$search_keyword.'%')
+                    ->where('province', $province_keyword)
+                    ->orderBy("name")
+                    ->paginate(10);
+            } else {
+                // 키워드
+                $nations = Nation::where('name', 'LIKE','%'.$search_keyword.'%')
+                    ->orWhere('name_en', 'LIKE','%'.$search_keyword.'%')
+                    ->orderBy("name")
+                    ->paginate(10);
+            }
         } else {
-            $nations = Nation::paginate(10);
+            if($province_keyword != ""){
+                // 대교구
+                $nations = Nation::where('province', $province_keyword)
+                    ->orderBy("name")
+                    ->paginate(10);
+            } else {
+                $nations = Nation::orderBy("name")->paginate(10);
+            }
         }
 
         /** 23.7.20.
@@ -42,7 +83,8 @@ class NationController extends Controller
          */
         return view('nation.index_scroll', [
             'nations' => $nations,
-            'search_keyword' => $search_keyword
+            'search_keyword' => $search_keyword ?? "",
+            'province_keyword' => $province_keyword ?? ""
         ]);
 
 //        return view('nation.index', [
@@ -59,13 +101,51 @@ class NationController extends Controller
 
         $NATION_PER_SCROLL = 20;
         $search_keyword = $request->input('search');
+        $province_keyword = $request->input('province');
+        $continent_keyword = $request->input('continent');
         $page = $request->page;
-        if(isset($search_keyword) AND $search_keyword != ""){
-            $nations = Nation::where('name', 'LIKE','%'.$search_keyword.'%')->orWhere('name_en', 'LIKE','%'.$search_keyword.'%')
-                ->skip($page * $NATION_PER_SCROLL)->take($NATION_PER_SCROLL)->get();
-        } else {
-            $nations = Nation::skip($page * $NATION_PER_SCROLL)->take($NATION_PER_SCROLL)->get();
+
+        if(isset($continent_keyword) AND $continent_keyword != "" ){
+            if($page == 0){
+                $nations = Nation::where('continent', $continent_keyword)
+                    ->orderBy("name")
+                    ->get();
+                return response()->json([
+                    'nations' => $nations
+                ]);
+            } else {
+                return response()->json([
+                    'nations' => null
+                ]);
+            }
+
         }
+
+
+        if($search_keyword != ""){
+            if($province_keyword != ""){
+                // 키워드 AND 대교구
+                $nations = Nation::where('name', 'LIKE','%'.$search_keyword.'%')->orWhere('name_en', 'LIKE','%'.$search_keyword.'%')
+                    ->where('province', $province_keyword)
+                    ->orderBy("name")
+                    ->skip($page * $NATION_PER_SCROLL)->take($NATION_PER_SCROLL)->get();
+            } else {
+                // 키워드
+                $nations = Nation::where('name', 'LIKE','%'.$search_keyword.'%')->orWhere('name_en', 'LIKE','%'.$search_keyword.'%')
+                    ->orderBy("name")
+                    ->skip($page * $NATION_PER_SCROLL)->take($NATION_PER_SCROLL)->get();
+            }
+        } else {
+            if($province_keyword != ""){
+                // 키워드 AND 대교구
+                $nations = Nation::where('province', $province_keyword)
+                    ->orderBy("name")
+                    ->skip($page * $NATION_PER_SCROLL)->take($NATION_PER_SCROLL)->get();
+            } else {
+                $nations = Nation::orderBy("name")->skip($page * $NATION_PER_SCROLL)->take($NATION_PER_SCROLL)->get();
+            }
+        }
+
 
         return response()->json([
            'nations' => $nations

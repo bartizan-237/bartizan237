@@ -6,8 +6,24 @@ var __webpack_exports__ = {};
 var join = new Vue({
   el: '#joinList',
   methods: {
-    accept1: function accept1() {
-      console.log('accpet');
+    accept: function accept(user_id, bartizan_id) {
+      console.log('accept');
+      console.log('user id : ', user_id);
+      console.log('bartizan id : ', bartizan_id);
+      axios.post('/join/accept', {
+        data: {
+          user_id: user_id,
+          bartizan_id: bartizan_id
+        }
+      }).then(function (res) {
+        console.log('response : ', res);
+      })["catch"](function (error) {
+        console.log('error : ', error);
+      });
+      console.log('end');
+    },
+    reject: function reject() {
+      console.log('reject');
     }
   }
 });

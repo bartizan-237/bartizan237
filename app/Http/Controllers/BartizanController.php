@@ -175,7 +175,7 @@ class BartizanController extends Controller
 //            ->where('user_id',$request->input('join_user_id'))->exists();
 //        $watchman_exists = Watchman::where('bartizan_id', $request->input('join_bartizan_id'))
 //            ->where('user_id', $request->input('join_user_id'))->exists();
-
+//        dd($request);
         JoinRequest::create([
                 'bartizan_id' => $request->input('join_bartizan_id'),
                 'user_id' => $request->input('join_user_id'),

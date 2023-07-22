@@ -11,7 +11,8 @@ use App\Http\Controllers\{
     PostController,
     CommentController,
     LikeController,
-    AjaxController
+    AjaxController,
+    JoinRequestController
 };
 
 Route::get('/', function () {
@@ -96,4 +97,9 @@ Route::get('/fields', [UserController::class, 'myFields']); // 관심분야
 Route::get('/set_jobs', [HomeController::class, 'setJobs']);
 
 // JOIN
+//Route::group(['namespace' => 'JoinRequest'
+//], function(){
+//    Route::post('/join/accept', [JoinRequestController::class, 'accept']);
+//});
+
 Route::post('/join/accept', [JoinRequestController::class, 'accept']);

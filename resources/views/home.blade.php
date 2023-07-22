@@ -12,10 +12,11 @@
         <link href="https://fonts.googleapis.com/css2?family=Bungee&amp;display=swap" rel="stylesheet">
 
         <!-- LANDING PAGE -->
-        <div class="flex items-center justify-center w-full h-full bg-gray-100">
+        <div class="flex flex-col items-center justify-center w-full h-full bg-gray-100">
+
             <div>
                 <p class="text-center text-xl text-green-600 mb-6" style="font-size: 30px; font-family: 'Bungee', cursive">
-                    BARTIZANS OF THE WORLD
+                    Bartizans 237
                 </p>
             </div>
         </div>

@@ -12,9 +12,10 @@
                     <span>이름 : {{$row->getJoinRequestUsers()->get()->last()->name}}</span>
 {{--                    <span>이름 : {{$row->user_name}}</span>--}}
 {{--                    <button class="border border-gray-300 px-2 py-1 rounded" onclick="accept1()">수락</button>--}}
-                    <button class="border border-gray-300 px-2 py-1 rounded" @click="accept1()">수락</button>
+                    <button class="border border-gray-300 px-2 py-1 rounded" @click="accept({{$row->user_id}},{{$bartizan->id}})">승인</button>
+                    <button class="border border-gray-300 px-2 py-1 rounded" @click="reject()">반려</button>
 {{--                    <button class="border border-gray-300 px-2 py-1 rounded" onclick="accept({{$bartizan->id}},{{$row->user_id}})">수락</button>--}}
-{{--                    <button class="border border-gray-300 px-2 py-1 rounded" onclick="reject()">거부</button>--}}
+
                 </div>
             </div>
             @endforeach

@@ -4,16 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\JoinRequest;
+use App\Models\Watchman;
 
 class JoinRequestController extends Controller
 {
-
     public function accept(Request $request){
-        $data = $request->data;
-        return response()->json([
-            'code' => 200
-        ]);
-        dd($data);
+        info($request);
+
+        $user_id = $request->data['user_id'];
+        $bartizan_id = $request->data['bartizan_id'];
+//        dd($data); // dd가 안됨
+        if(Watchman::where('bartizan_id', $bartizan_id)->where('user_id', $user_id)->exists()){
+            return response()->json([
+               'code' => 301,
+                'message' => 'Exists'
+            ]);
+        }else{
+            Watchman::create([
+                'user_id' => $user_id,
+                'bartizan_id' => $bartizan_id
+            ]);
+            return response()->json([
+                'code' => 200,
+            ]);
+        }
 
     }
 //    public function join(Request $request){

@@ -877,24 +877,39 @@ var nationList = new Vue({
   el: '#nation_list',
   data: {
     nations: [],
-    page: null
+    page: null,
+    search_keyword: null,
+    province_keyword: null,
+    continent_keyword: null
   },
   mounted: function mounted() {
+    var _searchParams$get, _searchParams$get2, _searchParams$get3;
+
     console.log("nationList mounted!");
     this._data.page = 0; // this.getNations(0);
 
     this.observingInfiniteScroll();
+    var searchParams = new URLSearchParams(location.search);
+    this._data.search_keyword = (_searchParams$get = searchParams.get('search')) !== null && _searchParams$get !== void 0 ? _searchParams$get : "";
+    this._data.province_keyword = (_searchParams$get2 = searchParams.get('province')) !== null && _searchParams$get2 !== void 0 ? _searchParams$get2 : "";
+    this._data.continent_keyword = (_searchParams$get3 = searchParams.get('continent')) !== null && _searchParams$get3 !== void 0 ? _searchParams$get3 : "";
+    console.log(this._data.search_keyword, this._data.province_keyword, this._data.continent_keyword);
   },
   methods: {
     getNations: function () {
       var _getNations = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(page) {
+        var search_keyword, province_keyword, continent_keyword, target_url;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                console.log("getNations", page);
-                _context.next = 3;
-                return axios.get("/nation/scroll?page=" + page).then(function (response) {
+                search_keyword = this._data.search_keyword;
+                province_keyword = this._data.province_keyword;
+                continent_keyword = this._data.continent_keyword;
+                target_url = "/nation/scroll?page=".concat(page, "&continent=").concat(continent_keyword, "&province=").concat(province_keyword, "&search=").concat(search_keyword);
+                console.log("getNations", target_url);
+                _context.next = 7;
+                return axios.get(target_url).then(function (response) {
                   var _nationList$_data$nat;
 
                   console.log("response", response);
@@ -917,12 +932,12 @@ var nationList = new Vue({
                   return false;
                 });
 
-              case 3:
+              case 7:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee);
+        }, _callee, this);
       }));
 
       function getNations(_x) {
