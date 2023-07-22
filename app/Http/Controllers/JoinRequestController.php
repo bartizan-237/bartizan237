@@ -9,7 +9,12 @@ class JoinRequestController extends Controller
 {
 
     public function accept(Request $request){
-        dd($request);
+        $data = $request->data;
+        return response()->json([
+            'code' => 200
+        ]);
+        dd($data);
+
     }
 //    public function join(Request $request){
 //        $data = $request->data;

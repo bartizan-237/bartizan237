@@ -22,6 +22,7 @@ mix
     .js('resources/js/post/create.js', 'public/js/post/create.js')
     .js('resources/js/post/show.js', 'public/js/post/show.js')
     .js('resources/js/bartizan/*', 'public/js/bartizan/bartizan.js')
+    .js('resources/js/watchman/*', 'public/js/watchman/watchman.js')
     .js('resources/js/nation/*', 'public/js/nation/nation.js')
     .sass('resources/css/layout.scss', 'public/css')
     .postCss('resources/css/bartizan/create.css', 'public/css/bartizan', [

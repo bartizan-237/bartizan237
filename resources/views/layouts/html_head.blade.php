@@ -3,7 +3,7 @@
 
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<meta name="og:image" content="https://kr.object.ncloudstorage.com/immanuel/ddeul/ddeul237.png">
+<meta name="og:image" content="https://kr.object.ncloudstorage.com/immanuel/bartizan/image/bartizan_logo.png">
 
 <title>{{ config('app.name', 'Laravel') }}</title>
 

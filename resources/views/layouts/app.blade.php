@@ -15,7 +15,7 @@
             <div class="mx-auto sm:w-full md:w-full lg:w-2/3 xl:w-2/3" style="min-width: 500px;">
                 <div class="" style="padding:20px">
                     <a href="/home">
-                        <img width="100" height="40" src="https://kr.object.ncloudstorage.com/immanuel/ddeul/ddeul237.png">
+                        <img width="150" height="60" src="https://kr.object.ncloudstorage.com/immanuel/bartizan/image/bartizan_logo.png">
                     </a>
                 </div>
 

@@ -29,16 +29,18 @@
                 망대
             </div>
             <div class="py-1 px-2 text-gray-800"
-                 onclick="location.href='/bartizan/{{$bartizan->id}}/watchmen'"
+{{--                 onclick="location.href='/bartizan/{{$bartizan->id}}/watchmen'"--}}
+                 onclick="toast('info','준비 중 입니다.')"
                  style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/watchmen") !== false) border-bottom: 2px solid #333; @endif  " >
                 파수꾼
             </div>
             <div class="py-1 px-2 text-gray-800"
-                 onclick="location.href='/bartizan/{{$bartizan->id}}/posts'"
+{{--                 onclick="location.href='/bartizan/{{$bartizan->id}}/posts'"--}}
+                 onclick="toast('info','준비 중 입니다.')"
                  style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/posts") !== false) border-bottom: 2px solid #333; @endif  " >
                 게시판
             </div>
-            @if(\Auth::user()->id!==$bartizan->admin_user_id)
+            @if(\Auth::user() !== null AND \Auth::user()->id!==$bartizan->admin_user_id)
                 <form action="/bartizan/{{$bartizan->id}}/join" method="POST">
                     @csrf
                     <input type="hidden" name="join_user_id" id="join_user_id" value="{{\Auth::user()->id}}"/>
