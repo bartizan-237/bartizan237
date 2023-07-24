@@ -58,11 +58,10 @@
         </div>
     </main>
 
-    <script>
-        if({{$join_request}}){
-            alert('신청 성공');
-            console.log('신청 성공');
-        }
-    </script>
+{{--    <script>--}}
+{{--        if({{$join_request}}){--}}
+{{--            alert('신청 성공');--}}
+{{--            console.log('신청 성공');--}}
+{{--        }--}}
+{{--    </script>--}}
 @endsection
-

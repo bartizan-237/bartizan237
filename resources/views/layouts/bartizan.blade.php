@@ -41,28 +41,33 @@
                 게시판
             </div>
             @if(\Auth::user() !== null AND \Auth::user()->id!==$bartizan->admin_user_id)
-                <form action="/bartizan/{{$bartizan->id}}/join" method="POST">
-                    @csrf
-                    <input type="hidden" name="join_user_id" id="join_user_id" value="{{\Auth::user()->id}}"/>
-                    <input type="hidden" name="join_user_name" id="join_user_name" value="{{\Auth::user()->name}}"/>
-                    <input type="hidden" name="join_bartizan_id" id="join_bartizan_id" value="{{$bartizan->id}}"/>
-                    <button class="py-1 px-2 text-gray-800">
+{{--                <form action="/bartizan/{{$bartizan->id}}/join" method="POST">--}}
+{{--                    @csrf--}}
+{{--                    <input type="hidden" name="join_user_id" id="join_user_id" value="{{\Auth::user()->id}}"/>--}}
+{{--                    <input type="hidden" name="join_bartizan_id" id="join_bartizan_id" value="{{$bartizan->id}}"/>--}}
+                <div id="joinRequest">
+                    <button class="py-1 px-2 text-gray-800" @click="join_request({{\Auth::user()->id}},{{$bartizan->id}})">
                         {{--                        style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/join") !== false) border-bottom: 2px solid #333; @endif  " >--}}
                         파수꾼 신청
                     </button>
-                </form>
+                </div>
+{{--                </form>--}}
+            @elseif(Auth::user() === null)
+                {{-- 망대 관리자만 볼 수 있는 파수꾼 신청 목록이 로그인 상태가 아닐 경우 누구에게나 보이는 문제--}}
             @else
-                <form action="/bartizan/{{$bartizan->id}}/join" method="GET">
+                <div>
                     <button class="py-1 px-2 text-gray-800"
                             onclick="location.href='/bartizan/{{$bartizan->id}}/joinlist'">
                         파수꾼 신청 목록
                     </button>
-                </form>
+                </div>
+
             @endif
 
 
         </div>
         @endif
+        <script src="{{ asset('js/watchman/watchman.js') }}" defer></script>
     </header>
 
     <section class="bg-gray-200" style="padding-top:100px; min-height: 100vh;">
