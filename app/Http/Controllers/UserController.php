@@ -23,7 +23,6 @@ class UserController extends Controller
 
             return $next($request);
         });
-
     }
 
     /**
@@ -37,6 +36,23 @@ class UserController extends Controller
         return view('user.basic_info');
     }
 
+    public function validateMemberId(Request $request){
+        $member_id = $request->member_id;
+        info(__METHOD__);
+        info($member_id);
+        if(User::where('member_id', $member_id)->exists()){
+            return response()->json(["code" => 301, "message" => "That member_id is already registered"]);
+        }else{
+            $is_keyword_available = isKeywordAvailable($member_id); // array
+
+            if(!$is_keyword_available){
+                return response()->json(["code" => 302, "message" => "That member_id is not allowed!"]);
+            }
+            info("\$is_keyword_available = $is_keyword_available");
+
+            return response()->json(["code" => 200]);
+        }
+    }
     public function validateNickname(Request $request){
         $nickname = $request->nickname;
         info(__METHOD__);

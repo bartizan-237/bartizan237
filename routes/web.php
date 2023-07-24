@@ -62,7 +62,8 @@ Route::group(['namespace' => 'Bartizan', 'prefix' => 'bartizan'], function() {
     Route::post('/validate_name', [BartizanController::class, 'validateName']);
     Route::get("/{bartizan}/posts", [BartizanController::class, 'posts']);
     Route::get("/{bartizan}/posts/{post}", [BartizanController::class, 'showPost']);
-    Route::post("{bartizan}/join", [BartizanController::class, 'join']);
+//    Route::post("{bartizan}/join", [BartizanController::class, 'join']);
+    Route::post("join", [BartizanController::class, 'join']);
     Route::get("{bartizan}/joinlist", [BartizanController::class, 'joinList']);
 });
 
@@ -76,6 +77,8 @@ Route::group(['namespace' => 'Nation', 'prefix' => 'nation'], function() {
 
 
 // USER
+// Route::post('/validate_member_id', [UserController::class, 'validateMemberId']); // UserController는 Auth 미들웨어 적용되어있어서, 로그인세션없이는 접근 불가
+
 Route::group(['namespace' => 'User',
     'prefix' => 'user', // prefix : /user/*
     'middleware' => 'auth' // This Route group need AUTH
@@ -83,6 +86,7 @@ Route::group(['namespace' => 'User',
     Route::get('/basic_info', [UserController::class, 'basicInfo']);
     Route::post('/basic_info', [UserController::class, 'saveBasicInfo']);
     Route::post('/validate_nickname', [UserController::class, 'validateNickname']);
+    Route::post('/validate_member_id', [UserController::class, 'validateMemberId'])->withoutMiddleware("auth");
 
     Route::get('/my_page', [UserController::class, 'myPage']);
     Route::get('/quit', [UserController::class, 'quitPage']); // 회원 탈퇴

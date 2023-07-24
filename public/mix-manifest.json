@@ -1,6 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/appbar.js": "/js/appbar.js",
+    "/js/auth/auth.js": "/js/auth/auth.js",
     "/js/user/user.js": "/js/user/user.js",
     "/js/post/create.js": "/js/post/create.js",
     "/js/post/show.js": "/js/post/show.js",

@@ -18,6 +18,7 @@ const mix = require('laravel-mix');
 mix
     .js('resources/js/app.js', 'public/js')
     .js('resources/js/appbar.js', 'public/js')
+    .js('resources/js/auth/*', 'public/js/auth/auth.js')
     .js('resources/js/user/*', 'public/js/user/user.js')
     .js('resources/js/post/create.js', 'public/js/post/create.js')
     .js('resources/js/post/show.js', 'public/js/post/show.js')

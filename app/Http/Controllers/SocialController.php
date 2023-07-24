@@ -27,6 +27,10 @@ class SocialController extends Controller
                 'provider' => $provider,
             ]);
         }
+
+        $user->update([
+           'last_login_at' => now()
+        ]);
         Auth::login($user);
         return redirect("/home");
     }

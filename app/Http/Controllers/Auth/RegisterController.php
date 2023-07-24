@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\AuthCode;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -50,8 +51,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'member_id' => ['required', 'string', 'max:25', 'unique:users'], // member_id
+//            'name' => ['required', 'string', 'max:255'],
+//            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -64,10 +66,31 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+//        return User::create([
+//            'name' => $data['name'],
+//            'email' => $data['email'],
+//            'password' => Hash::make($data['password']),
+//        ]);
+
+        /** 회원가입 로직 변경
+         *  as-is : Laravel Validation and return USER
+         *  to-be : VueJS Validation
+         */
+
+        info(__METHOD__);
+        info($data);
+        $user = User::create([
+            'member_id' => $data['member_id'],
             'password' => Hash::make($data['password']),
         ]);
+
+        if($user){
+            $auth_code = AuthCode::generateCode($user->id);
+            // 회원가입 후 /home 으로 리디렉션 될 때 auth_code 인증으로 Auth session 추가
+            return response()->json(["code" => 200, "auth_code" => $auth_code]);
+        } else {
+            // 회원가입 실패
+            return response()->json(["code" => 301]);
+        }
     }
 }

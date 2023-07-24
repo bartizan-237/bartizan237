@@ -28,6 +28,12 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
 
+    /** 23.7.24 Using member id instead of Email */
+    public function username(){
+        return 'member_id';
+    }
+
+
     /**
      * Redirect the user to the GitHub authentication page.
      *

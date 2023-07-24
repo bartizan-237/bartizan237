@@ -8,16 +8,32 @@
                 <form class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8" method="POST" action="{{ route('login') }}">
                     @csrf
 
+{{--                    <div class="flex flex-wrap">--}}
+{{--                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">--}}
+{{--                            이메일--}}
+{{--                        </label>--}}
+
+{{--                        <input id="email" type="email"--}}
+{{--                            class="form-input w-full @error('email') border-red-500 @enderror" name="email"--}}
+{{--                            value="{{ old('email') }}" required autocomplete="email" autofocus>--}}
+
+{{--                        @error('email')--}}
+{{--                        <p class="text-red-500 text-xs italic mt-4">--}}
+{{--                            {{ $message }}--}}
+{{--                        </p>--}}
+{{--                        @enderror--}}
+{{--                    </div>--}}
+
                     <div class="flex flex-wrap">
-                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
-                            이메일
+                        <label for="member_id" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
+                            아이디
                         </label>
 
-                        <input id="email" type="email"
-                            class="form-input w-full @error('email') border-red-500 @enderror" name="email"
-                            value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        <input id="member_id" type="text"
+                               class="form-input w-full @error('member_id') border-red-500 @enderror" name="member_id"
+                               value="{{ old('member_id') }}" required autocomplete="member_id" autofocus>
 
-                        @error('email')
+                        @error('member_id')
                         <p class="text-red-500 text-xs italic mt-4">
                             {{ $message }}
                         </p>

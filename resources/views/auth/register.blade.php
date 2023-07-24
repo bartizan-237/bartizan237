@@ -3,16 +3,18 @@
 @section('content')
 <main class="sm:container sm:mx-auto sm:max-w-lg sm:mt-10">
     <div class="flex">
-        <div class="w-full">
+        <div id="register" class="w-full">
             <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
                 <header class="font-semibold bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
                     회원가입
                 </header>
 
-                <form class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8" method="POST"
-                    action="{{ route('register') }}">
-                    @csrf
+
+                <form class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8"
+{{--                      method="POST" action="{{ route('register') }}"--}}
+                >
+{{--                    @csrf--}}
 
 {{--                    <div class="flex flex-wrap">--}}
 {{--                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">--}}
@@ -29,22 +31,38 @@
 {{--                        @enderror--}}
 {{--                    </div>--}}
 
-                    <div class="flex flex-wrap">
-                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
-                            이메일
-                        </label>
+                        <div class="flex flex-wrap">
+                            <label for="member_id" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
+                                아이디
+                            </label>
 
-                        <input id="email" type="email"
-                            class="form-input w-full @error('email') border-red-500 @enderror" name="email"
-                            value="{{ old('email') }}" required autocomplete="email">
+                            <input id="member_id" type="text" v-model="member_id" v-on:blur="validateMemberId"
+                                   class="form-input w-full @error('member_id') border-red-500 @enderror" name="member_id"
+                                   value="{{ old('member_id') }}" required autocomplete="member_id">
+
+                            @error('member_id')
+                            <p class="text-red-500 text-xs italic mt-4">
+                                {{ $message }}
+                            </p>
+                            @enderror
+                        </div>
+
+{{--                    <div class="flex flex-wrap">--}}
+{{--                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">--}}
+{{--                            이메일--}}
+{{--                        </label>--}}
+
+{{--                        <input id="email" type="email"--}}
+{{--                            class="form-input w-full @error('email') border-red-500 @enderror" name="email"--}}
+{{--                            value="{{ old('email') }}" required autocomplete="email">--}}
 {{--                        <button class="font-bold text-sm underline text-green-500 p-2">인증번호받기</button>--}}
 
-                        @error('email')
-                        <p class="text-red-500 text-xs italic mt-4">
-                            {{ $message }}
-                        </p>
-                        @enderror
-                    </div>
+{{--                        @error('email')--}}
+{{--                        <p class="text-red-500 text-xs italic mt-4">--}}
+{{--                            {{ $message }}--}}
+{{--                        </p>--}}
+{{--                        @enderror--}}
+{{--                    </div>--}}
 
                     <div class="flex flex-wrap">
                         <label for="password" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
@@ -72,8 +90,14 @@
                     </div>
 
                     <div class="flex flex-wrap">
-                        <button type="submit"
-                            class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-green-500 hover:bg-green-700 sm:py-4">
+{{--                        <button type="submit"--}}
+{{--                            class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-green-500 hover:bg-green-700 sm:py-4">--}}
+{{--                            가입하기--}}
+{{--                        </button>--}}
+
+                        <button
+                                @click="submitForm"
+                                class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-green-500 hover:bg-green-700 sm:py-4">
                             가입하기
                         </button>
 
@@ -90,4 +114,6 @@
         </div>
     </div>
 </main>
+
+<script src="{{ asset('js/auth/auth.js') }}" defer></script>
 @endsection

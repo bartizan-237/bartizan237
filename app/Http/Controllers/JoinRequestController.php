@@ -16,6 +16,20 @@ class JoinRequestController extends Controller
         $user_id = $request->data['user_id'];
         $bartizan_id = $request->data['bartizan_id'];
 
+        /**
+         * 23.7.24. 제안
+         * JoinRequest를 Accept 하고나서 JoinRequest를 soft delete 하는 것보다
+         * 기록 남기는 역할할 수 있는 컬럼을 추가하는게 좋아보임 => 이후에 망대관리자가 joinRequest 신청목록(명단, 수락 시간 등) 확인할 수도 있게
+         * 예시)
+         * as-is : JoinRequest::where('bartizan_id', $bartizan_id)->where('user_id', $user_id)->delete();
+         * to-be : JoinRequest::where('bartizan_id', $bartizan_id)->where('user_id', $user_id)->update(['accepted_at', now()]);
+         *
+         * 변경 후, /bartizan/{bartizan_id/joinlist 에서는 아래처럼 조회하면 좋을것같아
+         * as-is : Bartizan::getJoinList() ... $this->hasMany(JoinRequest::class, 'bartizan_id', 'id');
+         * to-be : Bartizan::getJoinList() ... $this->hasMany(JoinRequest::class, 'bartizan_id', 'id')->where("accepted_at" , null);
+         *
+        */
+
         if(Watchman::where('bartizan_id', $bartizan_id)->where('user_id', $user_id)->exists()){
             JoinRequest::where('bartizan_id', $bartizan_id)->where('user_id', $user_id)->delete();
             return response()->json([

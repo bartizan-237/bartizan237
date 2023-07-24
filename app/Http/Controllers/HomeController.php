@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\Nation;
+use App\Models\User;
+use App\Models\AuthCode;
 use App\Models\Post;
 use App\Models\Bartizan;
 
@@ -25,7 +27,6 @@ class HomeController extends Controller
 //            $this->user = \Auth::user();
 //            return $next($request);
 //        });
-
     }
 
     /**
@@ -33,8 +34,19 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        // 23.7.24. 회원가입 완료 후 리디렉션될 때 유저 세션 추가
+        if(isset($request->code) AND strlen($request->code) == 10){
+            info("HOME : AUTH CODE = $request->code");
+            if($auth_code = AuthCode::where('code', $request->code)->get()->last()){
+                if($user_of_auth = User::find($auth_code->user_id)){
+                    info("HOME : CREATE LOGIN SESSION = $user_of_auth->member_id");
+                    \Auth::login($user_of_auth);
+                }
+            }
+        }
+
         if(isset($this->user)){
             $USER = $this->user;
             if($USER->name == null OR $USER->nickname == null){
