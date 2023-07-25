@@ -27,7 +27,11 @@ class Post extends Model
     }
 
     public function getCommentsCount(){
-        return Comment::where("post_id", $this->id)->count();
+        if(Comment::where("post_id", $this->id)->exists()){
+            return Comment::where("post_id", $this->id)->count();
+        } else {
+            return 0;
+        }
     }
 
     public function getLikes(){

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Nation;
 use App\Models\Post;
+use App\Models\Bartizan;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -166,7 +167,22 @@ class NationController extends Controller
         ]);
     }
 
+
+    public function createBartizans(){
+        $nations = Nation::get();
+        foreach ($nations as $nation){
+            if(Bartizan::where('nation_id', $nation->id)->exists()){
+
+            } else{
+                Bartizan::create([
+
+                ]);
+            }
+        }
+    }
+
     public function createNations(){
+        // csv to db
         $file = fopen('../storage/files/237.csv','r');
         $i = 0;
         while(!feof($file)) {

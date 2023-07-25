@@ -57,6 +57,8 @@ Route::group(['namespace' => 'Bartizan', 'prefix' => 'bartizan'], function() {
     Route::post("/", [BartizanController::class, 'store']);
     Route::get("/{bartizan}", [BartizanController::class, 'show']);
     Route::get("/{bartizan}/edit", [BartizanController::class, 'edit']);
+    Route::put("/{bartizan}", [BartizanController::class, 'update']);
+
 //    Route::post("/{bartizan}", [BartizanController::class, 'update']);
     Route::delete("/{bartizan}", [BartizanController::class, 'delete']);
     Route::post('/validate_name', [BartizanController::class, 'validateName']);

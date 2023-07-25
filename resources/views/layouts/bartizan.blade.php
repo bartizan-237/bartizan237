@@ -17,6 +17,14 @@
                 <a href="/bartizan/{{$bartizan->id}}" class="text-gray-900 text-xl" style="height: 40px; line-height: 40px;">
                     {{$bartizan->name}}<span class="text-base"> 망대</span>
                 </a>
+
+                @if(\Auth::user() AND \Auth::user()->id == $bartizan->admin_user_id)
+                    <!-- 망대 정보 수정 -->
+                    <button class="bg-green-500 text-white rounded-full" style="line-height: 15px; font-size: 15px; width: 30px; height: 30px;"
+                            onclick="location.href='/bartizan/{{$bartizan->id}}/edit'">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit" style="margin: auto; "><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                    </button>
+                @endif
             </div>
         </div>
 
@@ -57,12 +65,12 @@
                     {{-- 파수꾼 신청 모달창 --}}
                 </div>
                 {{-- TEST용 --}}
-                <div>
-                    <button class="py-1 px-2 text-gray-800"
-                            onclick="location.href='/bartizan/{{$bartizan->id}}/join_request_list'">
-                        파수꾼 신청 목록
-                    </button>
-                </div>
+{{--                <div>--}}
+{{--                    <button class="py-1 px-2 text-gray-800"--}}
+{{--                            onclick="location.href='/bartizan/{{$bartizan->id}}/join_request_list'">--}}
+{{--                        파수꾼 신청 목록--}}
+{{--                    </button>--}}
+{{--                </div>--}}
                 {{-- TEST용 --}}
             @elseif(Auth::user() === null)
                 {{-- 망대 관리자만 볼 수 있는 파수꾼 신청 목록이 로그인 상태가 아닐 경우 누구에게나 보이는 문제 --}}
@@ -78,7 +86,11 @@
             @endif
         </div>
         @endif
-        <script src="{{ asset('js/watchman/watchman.js') }}" defer></script>
+
+        <!-- 23.7.25
+         아래 asset('js/watchman/watchman.js') 에서 에러발생으로 다른 페이지(/bartizan/9/posts) 에서 Vue Component가 로드되지 않아서 임시로 주석처리함
+-->
+{{--        <script src="{{ asset('js/watchman/watchman.js') }}" defer></script>--}}
     </header>
 
     <section class="bg-gray-200" style="padding-top:100px; min-height: 100vh;">

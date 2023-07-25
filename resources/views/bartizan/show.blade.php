@@ -3,9 +3,12 @@
 @section('content')
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <main class="container p-2 bg-gray-200">
+
         <div class="flex flex-col">
+
             @if($bartizan->getAdmin() OR $bartizan->getLatestPost())
             <div class="flex-col bg-white rounded-lg mb-3 px-3 py-2 text-gray-900 text-sm">
+
                 @if($bartizan->getAdmin())
                 <div class="w-full text-left flex">
                     <span class="text-gray-500 mx-2 text-xs">망대 관리자</span> {{ $bartizan->getAdmin()->nickname }}

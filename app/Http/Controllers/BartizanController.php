@@ -144,7 +144,26 @@ class BartizanController extends Controller
      */
     public function update(Request $request, Bartizan $bartizan)
     {
-        //
+        info(__METHOD__);
+        $user = \Auth::user();
+        if($user){
+
+        }else{
+            return response()->json([
+                'code' => 301, "message" => "User is not admin of the bartizan"
+            ]);
+        }
+
+        info($request);
+        $data = $request->data;
+
+        $bartizan->update([
+            'description' => $data['description'],
+        ]);
+
+        return response()->json([
+            'code' => 200
+        ]);
     }
 
     /**
