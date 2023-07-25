@@ -63,8 +63,9 @@ Route::group(['namespace' => 'Bartizan', 'prefix' => 'bartizan'], function() {
     Route::get("/{bartizan}/posts", [BartizanController::class, 'posts']);
     Route::get("/{bartizan}/posts/{post}", [BartizanController::class, 'showPost']);
 //    Route::post("{bartizan}/join", [BartizanController::class, 'join']);
-    Route::post("join", [BartizanController::class, 'join']);
-    Route::get("{bartizan}/joinlist", [BartizanController::class, 'joinList']);
+    Route::post("/join", [BartizanController::class, 'join']);
+    Route::get("{bartizan}/join_request_list", [BartizanController::class, 'joinRequestList']);
+    Route::get("{bartizan}/watchmen", [BartizanController::class, 'showWatchmen']);
 });
 
 Route::group(['namespace' => 'Nation', 'prefix' => 'nation'], function() {

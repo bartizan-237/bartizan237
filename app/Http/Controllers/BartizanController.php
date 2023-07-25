@@ -168,30 +168,45 @@ class BartizanController extends Controller
         }
     }
 
+    public function showWatchmen(Bartizan $bartizan){
+        $watchmen = $bartizan->getWatchmen;
+//        dd($watchmen);
+        return view("bartizan.watchman",[
+            "bartizan" => $bartizan,
+            "watchmen" => $watchmen
+        ]);
+    }
     public function join(Request $request){
-//        dd($request->input('join_user_id'), $request->input('join_bartizan_id'), $request->input('join_user_name'));
-
-//        $request_exists = JoinRequest::where('bartizan_id',$request->input('join_bartizan_id'))
-//            ->where('user_id',$request->input('join_user_id'))->exists();
-//        $watchman_exists = Watchman::where('bartizan_id', $request->input('join_bartizan_id'))
-//            ->where('user_id', $request->input('join_user_id'))->exists();
-//        dd($request);
         $user_id = $request->data['user_id'];
         $bartizan_id = $request->data['bartizan_id'];
-        dd($user_id);
-        JoinRequest::create([
-                'bartizan_id' => $user_id,
-                'user_id' => $bartizan_id
-            ]
-        );
+
+        $request_exists = JoinRequest::where('bartizan_id', $bartizan_id)->where('user_id', $user_id)->exists();
+        $watchman_exists = Watchman::where('bartizan_id', $bartizan_id)->where('user_id', $user_id)->exists();
+
+        if($request_exists){
+            return response()->json([
+                "code" => 301,
+            ]);
+        } elseif($watchman_exists){
+            return response()->json([
+                "code" => 302,
+            ]);
+        } else{
+            JoinRequest::create(
+                [
+                    "user_id" => $user_id,
+                    "bartizan_id" => $bartizan_id
+                ]
+            );
+            return response()->json([
+               "code" => 200
+            ]);
+        }
+
 //        if(@$request_exists and $watchman_exists){
 //
 //        }
 
-        return response()->json([
-            'code' => 200,
-            'message' => 'Success'
-        ]);
 
 //        return view("bartizan.show",[
 //            'bartizan'=>$bartizan
@@ -208,19 +223,29 @@ class BartizanController extends Controller
 //        }
     }
 
-    public function joinList(Bartizan $bartizan){
+    public function joinRequestList(Bartizan $bartizan){
+        if(\Auth::user()==null){
+            return redirect("/bartizan");
+        }
+
         $list = $bartizan->getJoinList;
         $admin_id = $bartizan->admin_user_id;
         $user_id = \Auth::user()->id;
-        if($admin_id == $user_id){
-            return view("bartizan.join_list",[
-                'bartizan' => $bartizan,
-                'joinList' => $list
-            ]);
-        }
-        else{
-            return redirect("/bartizan");
-        }
+
+        return view("bartizan.join_request_list",[
+            'bartizan' => $bartizan,
+            'joinList' => $list
+        ]);
+
+//        if($admin_id == $user_id){
+//            return view("bartizan.join_list",[
+//                'bartizan' => $bartizan,
+//                'joinList' => $list
+//            ]);
+//        }
+//        else{
+//            return redirect("/bartizan");
+//        }
     }
     
 }

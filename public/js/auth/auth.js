@@ -38,7 +38,7 @@ var register = new Vue({
           _this.id_validation = true;
           return true;
         } else if (res.data.code == 301) {
-          toast("warning", "이미 등록되어있는 아이디입니다🥲 다른 아이디를 입력해주세요😀");
+          toast("warning", "이미 등록되어있는 아이디입니다🥲<br/> 다른 아이디를 입력해주세요😀");
           _this.id_validation = false;
           return false;
         } else if (res.data.code == 302) {

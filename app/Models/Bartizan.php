@@ -41,7 +41,7 @@ class Bartizan extends Model
 //        return $this->belongsToMany(Watchman::class, 'watchmen','bartizan_id', 'id');
 //    }
 
-    public function watchmen(){
+    public function getWatchmen(){
         return $this->hasMany(Watchman::class, 'bartizan_id', 'id'); // watchmen의 외래키, bartizans의 기본키
     }
 

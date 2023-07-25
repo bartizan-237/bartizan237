@@ -14,11 +14,11 @@ class Watchman extends Model
 
     protected $table = 'watchmen';
     protected $fillable = ['user_id', 'bartizan_id'];
-    public function users(){
+    public function getUsers(){
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function bartizans(){
+    public function getBartizans(){
         return $this->belongstTo(Bartizan::class, 'bartizan_id', 'id');
     }
     

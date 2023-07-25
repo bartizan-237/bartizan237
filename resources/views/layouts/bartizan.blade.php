@@ -5,7 +5,7 @@
 </head>
 <body class="bg-gray-100 antialiased leading-none">
 <div id="toast"><p></p></div>
-<div id="app" style="max-width: 500px; margin:0 auto;" class="bg-gray-100">
+<div id="joinRequest" style="max-width: 500px; margin:0 auto;" class="bg-gray-100">
     <header id="header-bar" class="w-full border-b border-gray-100 bg-white fixed top-0 left-0" style="height: 60px; z-index: 10;">
         <div class="w-full" style="padding: 10px; max-width: 500px; margin:0 auto">
             <a onclick="history.back()" class="inline-block">
@@ -41,30 +41,41 @@
                 게시판
             </div>
             @if(\Auth::user() !== null AND \Auth::user()->id!==$bartizan->admin_user_id)
-{{--                <form action="/bartizan/{{$bartizan->id}}/join" method="POST">--}}
-{{--                    @csrf--}}
-{{--                    <input type="hidden" name="join_user_id" id="join_user_id" value="{{\Auth::user()->id}}"/>--}}
-{{--                    <input type="hidden" name="join_bartizan_id" id="join_bartizan_id" value="{{$bartizan->id}}"/>--}}
-                <div id="joinRequest">
-                    <button class="py-1 px-2 text-gray-800" @click="join_request({{\Auth::user()->id}},{{$bartizan->id}})">
-                        {{--                        style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/join") !== false) border-bottom: 2px solid #333; @endif  " >--}}
-                        파수꾼 신청
+                <div>
+                    <button class="py-1 px-2 text-gray-800" @click="showModal">파수꾼 신청</button>
+
+                    {{-- 파수꾼 신청 모달창 --}}
+                    <div id="watchmen-modal" class="watchmen-modal">
+                        <div class="modal-content">
+                            <p class="text-center">파수꾼 신청을 하시겠습니까?</p><br/>
+                            <div class="text-center">
+                                <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded" @click="join_request({{\Auth::user()->id}},{{$bartizan->id}})">예</button>
+                                <button class="bg-red-500 text-white font-bold py-2 px-4 rounded" @click="onCancel">아니오</button>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- 파수꾼 신청 모달창 --}}
+                </div>
+                {{-- TEST용 --}}
+                <div>
+                    <button class="py-1 px-2 text-gray-800"
+                            onclick="location.href='/bartizan/{{$bartizan->id}}/join_request_list'">
+                        파수꾼 신청 목록
                     </button>
                 </div>
-{{--                </form>--}}
+                {{-- TEST용 --}}
             @elseif(Auth::user() === null)
-                {{-- 망대 관리자만 볼 수 있는 파수꾼 신청 목록이 로그인 상태가 아닐 경우 누구에게나 보이는 문제--}}
+                {{-- 망대 관리자만 볼 수 있는 파수꾼 신청 목록이 로그인 상태가 아닐 경우 누구에게나 보이는 문제 --}}
+
             @else
                 <div>
                     <button class="py-1 px-2 text-gray-800"
-                            onclick="location.href='/bartizan/{{$bartizan->id}}/joinlist'">
+                            onclick="location.href='/bartizan/{{$bartizan->id}}/join_request_list'">
                         파수꾼 신청 목록
                     </button>
                 </div>
 
             @endif
-
-
         </div>
         @endif
         <script src="{{ asset('js/watchman/watchman.js') }}" defer></script>
@@ -76,7 +87,35 @@
 
 
     @include('layouts.bottom_nav', ['now' => 'bartizan'])
+
 </div>
 </body>
 
 </html>
+
+<style>
+    .watchmen-modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 30% auto;
+        padding: 20px;
+        /*border: 1px solid #888;*/
+        width: 51%;
+    }
+
+    /* 버튼 스타일 */
+    button {
+        margin-right: 10px;
+    }
+</style>

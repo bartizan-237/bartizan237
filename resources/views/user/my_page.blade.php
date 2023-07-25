@@ -14,7 +14,7 @@
     </style>
 
     <section class="text-gray-900 body-font relative">
-        <div id="my_page_form" class="container px-5 py-24 mx-auto">
+        <div id="my_page_form" class="container px-5 py-30 mx-auto">
             <div class="flex flex-col text-center w-full mb-12">
                 <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">마이페이지</h1>
                 <p class="lg:w-2/3 mx-auto leading-relaxed text-base">  </p>
@@ -78,7 +78,14 @@
                                        class="bg-gray-100 bg-opacity-50 rounded border border-green-700 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-green-700 ml-1 p-2 transition-colors duration-200 ease-in-out">
                             </label>
                             <p class="text-red-500 text-xs">2023년 임직대상인 분들은 체크해주세요!</p>
+                        </div>
+                    </div>
 
+                    <div class="p-2 w-full">
+                        <div class="relative">
+                            <label class="leading-7 text-sm text-gray-900">나의 망대</label>
+                            <input type="text" value="대한민국" disabled
+                                   class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
                     </div>
 

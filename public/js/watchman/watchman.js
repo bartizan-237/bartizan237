@@ -2,29 +2,15 @@
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
 (() => {
-/*!********************************************!*\
-  !*** ./resources/js/watchman/join_list.js ***!
-  \********************************************/
-var join = new Vue({
-  el: '#joinList',
+/*!****************************************************!*\
+  !*** ./resources/js/watchman/join_request_list.js ***!
+  \****************************************************/
+var join_request_list = new Vue({
+  el: '#joinRequestList',
   methods: {
-    // join_request : function (user_id, bartizan_id){
-    //     console.log('join');
-    //     axios.post('/join',
-    //         {
-    //             data : {
-    //                 user_id : user_id,
-    //                 bartizan_id : bartizan_id
-    //             }
-    //         }).then(res => {
-    //         console.log('response : ', message);
-    //         if (res.data.code == 200) {
-    //             toast("신청 성공");
-    //         }
-    //     }).catch(error => {
-    //         console.log('Error : ', error);
-    //     });
-    // },
+    test: function test() {
+      console.log('test');
+    },
     accept: function accept(user_id, bartizan_id) {
       console.log('accept');
       console.log('user id : ', user_id);
@@ -59,12 +45,7 @@ var join = new Vue({
     }
   }
 });
-console.log("watchman join_list js -> vue"); // function accept1(){ // watchmen 테이블에 user_id와 bartizan_id 삽입
-//     console.log('수락');
-// }
-// function reject(){ // join_requests 테이블에서 user_id가 있는 부분 삭제
-//     alert('거부');
-// }
+console.log("watchman join_list js -> vue");
 })();
 
 // This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
@@ -72,25 +53,42 @@ console.log("watchman join_list js -> vue"); // function accept1(){ // watchmen 
 /*!***********************************************!*\
   !*** ./resources/js/watchman/join_request.js ***!
   \***********************************************/
-var join = new Vue({
+var join_request = new Vue({
   el: '#joinRequest',
   methods: {
+    showModal: function showModal() {
+      var modal = document.getElementById("watchmen-modal");
+      modal.style.display = "block";
+    },
     join_request: function join_request(user_id, bartizan_id) {
       console.log('join');
-      axios.post('/join', {
+      var modal = document.getElementById("watchmen-modal");
+      modal.style.display = "none";
+      console.log("예");
+      axios.post('/bartizan/join', {
         data: {
           user_id: user_id,
           bartizan_id: bartizan_id
         }
       }).then(function (res) {
-        console.log('response : ', message);
+        console.log('response : ', res.data.message);
 
         if (res.data.code == 200) {
-          toast("신청 성공");
+          toast("success", "신청 성공");
+        } else if (res.data.code == 301) {
+          toast("warning", "이미 신청되었습니다.");
+        } else if (res.data.code == 302) {
+          toast("warning", "이미 파수꾼입니다.");
         }
       })["catch"](function (error) {
         console.log('Error : ', error);
       });
+    },
+    onCancel: function onCancel() {
+      var modal = document.getElementById("watchmen-modal");
+      modal.style.display = "none";
+      toast("info", "취소");
+      console.log("아니오");
     }
   }
 });
