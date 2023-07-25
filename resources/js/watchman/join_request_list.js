@@ -51,4 +51,4 @@ var join_request_list = new Vue({
     }
 });
 
-console.log("watchman join_list js -> vue");
+console.log("watchman join_request_list js -> vue");

@@ -12,6 +12,5 @@
         </div>
     </main>
 
-{{--    <script src="{{ asset('js/watchman/watchman.js') }}" defer></script>--}}
 @endsection
 

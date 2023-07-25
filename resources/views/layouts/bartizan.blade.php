@@ -50,6 +50,7 @@
             </div>
             @if(\Auth::user() !== null AND \Auth::user()->id!==$bartizan->admin_user_id)
                 <div>
+                    <script src="{{ asset('js/watchman/join_request.js') }}" defer></script>
                     <button class="py-1 px-2 text-gray-800" @click="showModal">파수꾼 신청</button>
                     {{-- 파수꾼 신청 모달창 --}}
                     <div id="watchmen-modal" class="watchmen-modal">
@@ -63,17 +64,8 @@
                     </div>
                     {{-- 파수꾼 신청 모달창 --}}
                 </div>
-                {{-- TEST용 --}}
-{{--                <div>--}}
-{{--                    <button class="py-1 px-2 text-gray-800"--}}
-{{--                            onclick="location.href='/bartizan/{{$bartizan->id}}/join_request_list'">--}}
-{{--                        파수꾼 신청 목록--}}
-{{--                    </button>--}}
-{{--                </div>--}}
-                {{-- TEST용 --}}
             @elseif(Auth::user() === null)
                 {{-- 망대 관리자만 볼 수 있는 파수꾼 신청 목록이 로그인 상태가 아닐 경우 누구에게나 보이는 문제 --}}
-
             @else
                 <div>
                     <button class="py-1 px-2 text-gray-800"
@@ -81,14 +73,12 @@
                         파수꾼 신청 목록
                     </button>
                 </div>
-
             @endif
         </div>
         @endif
 
         <!-- 23.7.25
-         아래 asset('js/watchman/watchman.js') 에서 에러발생으로 다른 페이지(/bartizan/9/posts) 에서 Vue Component가 로드되지 않아서 임시로 주석처리함
--->
+         아래 asset('js/watchman/watchman.js') 에서 에러발생으로 다른 페이지(/bartizan/9/posts) 에서 Vue Component가 로드되지 않아서 임시로 주석처리함 -->
 {{--        <script src="{{ asset('js/watchman/watchman.js') }}" defer></script>--}}
 {{--        <script src="{{ asset('js/join_request/join_request.js') }}" defer></script>--}}
     </header>

@@ -220,11 +220,11 @@ class BartizanController extends Controller
         $request_exists = JoinRequest::where('bartizan_id', $bartizan_id)->where('user_id', $user_id)->exists();
         $watchman_exists = Watchman::where('bartizan_id', $bartizan_id)->where('user_id', $user_id)->exists();
 
-        if($request_exists){
+        if($watchman_exists){
             return response()->json([
                 "code" => 301,
             ]);
-        } elseif($watchman_exists){
+        } elseif($request_exists){
             return response()->json([
                 "code" => 302,
             ]);
@@ -239,25 +239,6 @@ class BartizanController extends Controller
                "code" => 200
             ]);
         }
-
-//        if(@$request_exists and $watchman_exists){
-//
-//        }
-
-
-//        return view("bartizan.show",[
-//            'bartizan'=>$bartizan
-//        ]);
-//        return redirect('/bartizan/'.$bartizan->id)->with('message', '신청 성공');
-
-//      if(!$request_exists){ // 중복 신청 방지
-//            JoinRequest::create([
-//                    'bartizan_id' => $request->input('join_bartizan_id'),
-//                    'user_id' => $request->input('join_user_id'),
-//                    'user_name' => $request->input('join_user_name')
-//                ]
-//            );
-//        }
     }
 
     public function joinRequestList(Bartizan $bartizan){
@@ -265,7 +246,7 @@ class BartizanController extends Controller
             return redirect("/bartizan");
         }
 
-        $list = $bartizan->getJoinList;
+        $list = $bartizan->getJoinList->where('accepted_at', null);
         $admin_id = $bartizan->admin_user_id;
         $user_id = \Auth::user()->id;
 

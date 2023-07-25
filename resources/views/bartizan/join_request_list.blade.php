@@ -18,7 +18,8 @@
         </div>
     </main>
 
-    <script src="{{ asset('js/watchman/watchman.js') }}" defer></script>
+{{--    <script src="{{ asset('js/watchman/test.js') }}" defer></script>--}}
+    <script src="{{ asset('js/watchman/join_request_list.js') }}" defer></script>
 
 @endsection
 

@@ -28,6 +28,7 @@ class JoinRequestController extends Controller
          * as-is : Bartizan::getJoinList() ... $this->hasMany(JoinRequest::class, 'bartizan_id', 'id');
          * to-be : Bartizan::getJoinList() ... $this->hasMany(JoinRequest::class, 'bartizan_id', 'id')->where("accepted_at" , null);
          *
+         * 23.7.25. 제안을 토대로 수정
         */
 
         if(Watchman::where('bartizan_id', $bartizan_id)->where('user_id', $user_id)->exists()){
@@ -41,7 +42,7 @@ class JoinRequestController extends Controller
                 'user_id' => $user_id,
                 'bartizan_id' => $bartizan_id
             ]);
-            JoinRequest::where('bartizan_id', $bartizan_id)->where('user_id', $user_id)->update(['accepted_at', now()]);
+            JoinRequest::where('bartizan_id', $bartizan_id)->where('user_id', $user_id)->update(['accepted_at'=>now()]);
             return response()->json([
                 'code' => 200,
                 'message' => 'Success'
