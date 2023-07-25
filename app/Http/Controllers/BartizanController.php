@@ -18,11 +18,29 @@ class BartizanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $bartizans = Bartizan::paginate(10);
-        return view('bartizan.index', [
-           'bartizans' => $bartizans
+        /** 23.7.25.
+         * as-is : just index
+         * to-be : infinite scroll
+        */
+
+        $search_keyword = $request->input('search');
+
+        info(__METHOD__);
+        info("$search_keyword");
+
+        if(isset($search_keyword) AND $search_keyword != ""){
+            $bartizans = Bartizan::where('name', $search_keyword)
+                ->orderBy("name")
+                ->get();
+        }else{
+            $bartizans = Bartizan::orderBy("name")->get();
+        }
+
+        return view('bartizan.index_scroll', [
+            'bartizans' => $bartizans,
+            'search_keyword' => $search_keyword ?? "",
         ]);
     }
 
@@ -266,5 +284,29 @@ class BartizanController extends Controller
 //            return redirect("/bartizan");
 //        }
     }
-    
+
+    public function scroll(Request $request)
+    {
+        // 무한스크롤
+        info(__METHOD__);
+        info($request);
+
+        $BARTIZAN_PER_SCROLL = 20;
+        $search_keyword = $request->input('search');
+        $page = $request->page;
+
+        if ($search_keyword != "") {
+            // 키워드
+            $bartizans = Bartizan::where('name', 'LIKE', '%' . $search_keyword . '%')
+                ->orderBy("name")
+                ->skip($page * $BARTIZAN_PER_SCROLL)->take($BARTIZAN_PER_SCROLL)->get();
+        } else {
+            $bartizans = Bartizan::orderBy("name")
+                ->skip($page * $BARTIZAN_PER_SCROLL)->take($BARTIZAN_PER_SCROLL)->get();
+        }
+
+        return response()->json([
+            'bartizans' => $bartizans
+        ]);
+    }
 }

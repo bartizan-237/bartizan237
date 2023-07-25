@@ -171,11 +171,9 @@ class NationController extends Controller
     public function createBartizans(){
         $nations = Nation::get();
         foreach ($nations as $nation){
-            if(Bartizan::where('nation_id', $nation->id)->exists()){
-
-            } else{
-                Bartizan::create([
-
+            if($bartizan = Bartizan::where('nation_id', $nation->id)->get()->last()){
+                $bartizan->update([
+                    'country_code' => $nation->country_code
                 ]);
             }
         }

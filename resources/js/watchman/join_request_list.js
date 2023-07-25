@@ -15,7 +15,13 @@ var join_request_list = new Vue({
                         bartizan_id : bartizan_id
                     }
                 }).then(res=>{
-                console.log('response : ', res);
+                console.log('response : ', res.data.message);
+                if(res.data.code == 200){
+                    toast("success", "승인");
+                }
+                else if(res.data.code == 301){
+                    toast("warning", "이미 존재하는 파수꾼입니다.")
+                }
                 location.reload();
             }).catch(error=>{
                 console.log('error : ', error);
@@ -33,7 +39,10 @@ var join_request_list = new Vue({
                         bartizan_id : bartizan_id
                     }
                 }).then(res=>{
-                console.log('response : ', res);
+                console.log('response : ', res.data.message);
+                if(res.data.code == 200){
+                    toast("info", "반려")
+                }
                 location.reload();
             }).catch(error=>{
                 console.log('error : ', error)

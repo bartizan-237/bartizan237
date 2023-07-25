@@ -5,6 +5,7 @@
     "/js/user/user.js": "/js/user/user.js",
     "/js/post/create.js": "/js/post/create.js",
     "/js/post/show.js": "/js/post/show.js",
+    "/js/bartizan/index.js": "/js/bartizan/index.js",
     "/js/bartizan/create.js": "/js/bartizan/create.js",
     "/js/bartizan/edit.js": "/js/bartizan/edit.js",
     "/js/watchman/watchman.js": "/js/watchman/watchman.js",

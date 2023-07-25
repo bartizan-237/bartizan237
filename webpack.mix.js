@@ -22,9 +22,11 @@ mix
     .js('resources/js/user/*', 'public/js/user/user.js')
     .js('resources/js/post/create.js', 'public/js/post/create.js')
     .js('resources/js/post/show.js', 'public/js/post/show.js')
+    .js('resources/js/bartizan/index.js', 'public/js/bartizan/index.js')
     .js('resources/js/bartizan/create.js', 'public/js/bartizan/create.js')
     .js('resources/js/bartizan/edit.js', 'public/js/bartizan/edit.js')
     .js('resources/js/watchman/*', 'public/js/watchman/watchman.js')
+    // .js('resources/js/join_request/*', 'public/js/join_request/join_request.js')
     .js('resources/js/nation/*', 'public/js/nation/nation.js')
     .sass('resources/css/layout.scss', 'public/css')
     .postCss('resources/css/bartizan/create.css', 'public/css/bartizan', [

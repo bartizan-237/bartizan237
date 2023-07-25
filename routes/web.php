@@ -30,6 +30,8 @@ Auth::routes();
 Route::get('/test', function () { return view('test'); });
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+//Route::get('/make', [NationController::class, 'createBartizans']);
+
 // SNS Login for Kakao
 Route::get("/login/{provider}", [SocialController::class, 'redirect']);
 Route::get("/login/{provider}/callback", [SocialController::class, 'Callback']);
@@ -52,8 +54,10 @@ Route::post("like", [LikeController::class, 'clickLike']);
 
 // Bartizan
 Route::group(['namespace' => 'Bartizan', 'prefix' => 'bartizan'], function() {
-    Route::get("/", [BartizanController::class, 'index']);
+    Route::get("/", [BartizanController::class, 'index']); // 망대 목록 : 무한스크롤
+    Route::get("/main", [BartizanController::class, 'main']); // 망대 메인 : 최근 게시글, 추천 게시글, 공지사항 등
     Route::get("/create", [BartizanController::class, 'create']);
+    Route::get("/scroll", [BartizanController::class, 'scroll']); // infinite scroll
     Route::post("/", [BartizanController::class, 'store']);
     Route::get("/{bartizan}", [BartizanController::class, 'show']);
     Route::get("/{bartizan}/edit", [BartizanController::class, 'edit']);

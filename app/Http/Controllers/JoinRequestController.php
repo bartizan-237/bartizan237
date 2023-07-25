@@ -41,9 +41,10 @@ class JoinRequestController extends Controller
                 'user_id' => $user_id,
                 'bartizan_id' => $bartizan_id
             ]);
-            JoinRequest::where('bartizan_id', $bartizan_id)->where('user_id', $user_id)->delete();
+            JoinRequest::where('bartizan_id', $bartizan_id)->where('user_id', $user_id)->update(['accepted_at', now()]);
             return response()->json([
                 'code' => 200,
+                'message' => 'Success'
             ]);
 
         }
@@ -57,6 +58,7 @@ class JoinRequestController extends Controller
             JoinRequest::where('bartizan_id', $bartizan_id)->where('user_id', $user_id)->delete();
             return response()->json([
                 'code' => 200,
+                'message' => 'Success'
             ]);
         }else{
             return response()->json([
@@ -64,18 +66,5 @@ class JoinRequestController extends Controller
                 'message' => 'It does not exist'
             ]);
         }
-
     }
-
-//    public function join(Request $request){
-//        $data = $request->data;
-//        dd($request->input('join_user_id'), $request->input('join_bartizan_id'), $request->input('join_user_name'));
-//        JoinRequest::create([
-//            'bartizan_id' => $data['join_bartizan_id'],
-//            'user_id' => $data['join_user_id'],
-//            'user_name' => $data['join_user_name']
-//            ]
-//        );
-//    }
-
 }

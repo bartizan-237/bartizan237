@@ -15,8 +15,6 @@
                     </div>
                 </div>
             @endforeach
-            <button type="button" @click="test">테스트 버튼1</button> {{-- 버튼이 안눌러짐 --}}
-                <button type="button" onclick="test2()">테스트 버튼2</button>
         </div>
     </main>
 
