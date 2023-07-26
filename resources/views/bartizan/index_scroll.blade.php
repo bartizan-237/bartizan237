@@ -55,7 +55,9 @@
 {{--                        </div>--}}
 {{--                    </div>--}}
 
-                    <div class="relative bg-white p-3 rounded-3xl my-2 shadow-xl">
+                    <div
+                            @click="moveToBartizanDetail(bartizan.id)"
+                            class="relative bg-white p-3 rounded-3xl my-2 shadow-xl">
                         <div class="flex">
                             <div class="bg-contain bg-no-repeat bg-center rounded-full flex-none"
                                  :style="getRoundFlagImage(bartizan.country_code)"

@@ -13,6 +13,15 @@ use Carbon\Carbon;
 
 class BartizanController extends Controller
 {
+
+    public function main(Request $request){
+        // 237 Bartizans 메인
+        // 5대륙 12대교구
+        return view('bartizan.main', [
+
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *

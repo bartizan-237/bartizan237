@@ -15,12 +15,7 @@ use App\Http\Controllers\{
     JoinRequestController
 };
 
-Route::get('/', function () {
-//    return redirect('https://www.naver.com');
-    return redirect('/home');
-//    $user = \Auth::user();
-//    return view('welcome');
-});
+Route::get('/', function () { return redirect('/home'); });
 
 // Routes for User Auth
 Auth::routes();
@@ -29,18 +24,17 @@ Route::get('/welcome', function () { return view('welcome'); }); // 회원가입
 //Route::get('/test', [HomeController::class, 'test']);
 //Route::get('/test', [MailController::class, 'send']);
 Route::get('/test', function () { return view('test'); });
+//Route::get('/make', [NationController::class, 'createBartizans']);
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/make', [NationController::class, 'createBartizans']);
 
 // SNS Login for Kakao
 Route::get("/login/{provider}", [SocialController::class, 'redirect']);
 Route::get("/login/{provider}/callback", [SocialController::class, 'Callback']);
 
 // 개인정보처리방침
-Route::get('/privacy', function () {
-    return view('privacy.privacy');
-});
+Route::get('/privacy', function () { return view('privacy.privacy'); });
 
 Route::resources([
 //    'bartizan' => BartizanController::class,

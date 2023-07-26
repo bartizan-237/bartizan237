@@ -4,6 +4,7 @@
     @include("layouts.html_head")
 </head>
 <body class="bg-gray-100 antialiased leading-none">
+@include("components.modal")
 <div id="toast"><p></p></div>
 <div id="joinRequest" style="max-width: 500px; margin:0 auto;" class="bg-gray-100">
     <header id="header-bar" class="w-full border-b border-gray-100 bg-white fixed top-0 left-0" style="height: 60px; z-index: 10;">

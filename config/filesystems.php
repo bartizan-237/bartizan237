@@ -61,6 +61,8 @@ return [
             'bucket' => env('NCLOUD_BUCKET'),
             'endpoint' => env('NCLOUD_URL'),
             'version' => "latest",
+            'visibility' => "public",
+            'cacheControl' => "max-age=2529000"
         ],
 
     ],

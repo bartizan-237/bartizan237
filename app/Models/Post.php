@@ -19,7 +19,11 @@ class Post extends Model
     ];
 
     public function getUserNickName(){
-        return $this->belongsTo(User::class, "user_id", "id")->get()->last()->nickname;
+        if($user = User::where('id', $this->user_id)->get()->last()){
+            return $user->nickname ?? $user->member_id;
+        } else {
+            return "(탈퇴한 회원입니다)";
+        }
     }
 
     public function getComments(){

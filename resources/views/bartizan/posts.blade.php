@@ -43,7 +43,13 @@
                     </div>
                 </div>
             @empty
-                등록된 게시글이 없습니다😢
+                <div class="w-full mb-3">
+                    <div class="p-3 bg-gray-50">
+                        <p class="text-gray-900 font-medium title-font px-3 py-2">
+                            등록된 게시글이 없습니다😢
+                        </p>
+                    </div>
+                </div>
             @endforelse
 
         </div>
