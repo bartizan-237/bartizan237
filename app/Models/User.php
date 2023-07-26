@@ -51,6 +51,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+    // 기본적으로는 email 필드를 사용하도록 되어 있으므로 이를 member_id로 변경
+    public function findForPassport($username) {
+        return $this->where('member_id', $username)->first();
+    }
+
     public function doesUserLikeThisPost($post_id): bool
     {
         if(Like::where('user_id', $this->id)->where('post_id', $post_id)->exists()) return true;

@@ -11,10 +11,10 @@
                 </header>
 
 
-                <form class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8"
-{{--                      method="POST" action="{{ route('register') }}"--}}
+                <form id="register_form" class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8"
+                      method="POST" action="{{ route('register') }}"
                 >
-{{--                    @csrf--}}
+                    @csrf
 
 {{--                    <div class="flex flex-wrap">--}}
 {{--                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">--}}
@@ -36,7 +36,7 @@
                                 아이디
                             </label>
 
-                            <input id="member_id" type="text" v-model="member_id" v-on:blur="validateMemberId"
+                            <input id="member_id" type="text" v-model="member_id" @blur="validateMemberId"
                                    class="form-input w-full @error('member_id') border-red-500 @enderror" name="member_id"
                                    value="{{ old('member_id') }}" required autocomplete="member_id">
 
@@ -69,7 +69,7 @@
                             비밀번호
                         </label>
 
-                        <input id="password" type="password"
+                        <input id="password" type="password" v-model="password" @blur="validatePassword"
                             class="form-input w-full @error('password') border-red-500 @enderror" name="password"
                             required autocomplete="new-password">
 
@@ -85,16 +85,11 @@
                             비밀번호확인
                         </label>
 
-                        <input id="password-confirm" type="password" class="form-input w-full"
+                        <input id="password-confirm" type="password" class="form-input w-full" v-model="password_confirm" @blur="validatePasswordConfirm"
                             name="password_confirmation" required autocomplete="new-password">
                     </div>
 
                     <div class="flex flex-wrap">
-{{--                        <button type="submit"--}}
-{{--                            class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-green-500 hover:bg-green-700 sm:py-4">--}}
-{{--                            가입하기--}}
-{{--                        </button>--}}
-
                         <button
                                 @click="submitForm"
                                 class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-green-500 hover:bg-green-700 sm:py-4">

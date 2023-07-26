@@ -31,23 +31,23 @@
         <!-- TAB MENU -->
         @if(!isset($show_post))
         <div id="tab_menu" class="w-full flex bg-white" style="padding: 10px 10px 0px 10px; height: 40px; max-width: 500px; margin:0 auto">
-            <div class="py-1 px-3 text-gray-800"
+            <div class="@if($_SERVER['REQUEST_URI'] == "/bartizan/".$bartizan->id) current-open-menu @endif py-1 px-3 text-gray-800"
                  onclick="location.href='/bartizan/{{$bartizan->id}}'"
-                 style=" @if($_SERVER['REQUEST_URI'] == "/bartizan/".$bartizan->id) border-bottom: 2px solid #333; @endif  " >
+            >
                 망대
             </div>
-            <div class="py-1 px-2 text-gray-800"
+            <div class="@if($_SERVER['REQUEST_URI'] == "/bartizan/".$bartizan->id."/nation") current-open-menu @endif py-1 px-2 text-gray-800"
                  onclick="location.href='/bartizan/{{$bartizan->id}}/nation'"
                  style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/watchmen") !== false) border-bottom: 2px solid #333; @endif  " >
                 나라 정보
             </div>
-            <div class="py-1 px-2 text-gray-800"
+            <div class="@if($_SERVER['REQUEST_URI'] == "/bartizan/".$bartizan->id."/watchmen") current-open-menu @endif py-1 px-2 text-gray-800"
 {{--                 onclick="location.href='/bartizan/{{$bartizan->id}}/watchmen'"--}}
                  onclick="toast('info','준비 중 입니다.')"
                  style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/watchmen") !== false) border-bottom: 2px solid #333; @endif  " >
                 파수꾼
             </div>
-            <div class="py-1 px-2 text-gray-800"
+            <div class="@if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/posts" )) current-open-menu @endif py-1 px-2 text-gray-800"
 {{--                 onclick="location.href='/bartizan/{{$bartizan->id}}/posts'"--}}
                  onclick="toast('info','준비 중 입니다.')"
                  style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/posts") !== false) border-bottom: 2px solid #333; @endif  " >

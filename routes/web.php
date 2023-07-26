@@ -24,6 +24,7 @@ Route::get('/', function () {
 
 // Routes for User Auth
 Auth::routes();
+Route::get('/welcome', function () { return view('welcome'); }); // 회원가입 완료 후 리디렉션
 
 //Route::get('/test', [HomeController::class, 'test']);
 //Route::get('/test', [MailController::class, 'send']);
