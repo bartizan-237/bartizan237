@@ -30,7 +30,7 @@ Auth::routes();
 Route::get('/test', function () { return view('test'); });
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-//Route::get('/make', [NationController::class, 'createBartizans']);
+Route::get('/make', [NationController::class, 'createBartizans']);
 
 // SNS Login for Kakao
 Route::get("/login/{provider}", [SocialController::class, 'redirect']);
@@ -72,6 +72,7 @@ Route::group(['namespace' => 'Bartizan', 'prefix' => 'bartizan'], function() {
     Route::post("/join", [BartizanController::class, 'join']);
     Route::get("{bartizan}/join_request_list", [BartizanController::class, 'joinRequestList']);
     Route::get("{bartizan}/watchmen", [BartizanController::class, 'showWatchmen']);
+    Route::get("{bartizan}/nation", [BartizanController::class, 'showNation']); // 23.7.26. 망대 - 나라 페이지 통합
 });
 
 Route::group(['namespace' => 'Nation', 'prefix' => 'nation'], function() {

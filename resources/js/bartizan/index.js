@@ -4,6 +4,8 @@ var bartizanList = new Vue({
         bartizans : [],
         page : null,
         search_keyword : null,
+        province_keyword : null,
+        continent_keyword : null,
     },
     mounted: function(){
         console.log("bartizanList mounted!");
@@ -11,14 +13,38 @@ var bartizanList = new Vue({
         // this.getBartizans(0);
         this.observingInfiniteScroll();
         const searchParams = new URLSearchParams(location.search);
+
         this._data.search_keyword = searchParams.get('search') ?? "";
-        console.log(this._data.search_keyword);
+        this._data.province_keyword = searchParams.get('province') ?? "";
+        this._data.continent_keyword = searchParams.get('continent') ?? "";
+
+        console.log(this._data.search_keyword, this._data.province_keyword, this._data.continent_keyword);
     },
     methods: {
-        getBartizans : async function (page) {
+        refineBartizanName : function (name){
+            // 국가명에서 () 괄호 안의 텍스트 폰트크기를 작게 변환
+            // ex) 그린란드(덴마크령) 에서 (덴마크령) 을 작게
 
+            // 괄호 안의 문자열을 추출하는 정규식
+            const regex = /\((.*?)\)/;
+            // 정규식과 일치하는 부분을 추출
+            const matches = name.match(regex);
+            let result;
+            if(matches && matches.length > 0) {
+                let small_text = matches[0];
+                let change_text = "<span class='text-xs'>" + small_text + "</span>";
+                result = name.replace(small_text, change_text);
+                return result;
+            }else {
+                return name;
+            }
+        },
+        getBartizans : async function (page) {
             let search_keyword = this._data.search_keyword;
-            let target_url = `/bartizan/scroll?page=${page}&search=${search_keyword}`;
+            let province_keyword = this._data.province_keyword;
+            let continent_keyword = this._data.continent_keyword;
+
+            let target_url = `/bartizan/scroll?page=${page}&continent=${continent_keyword}&province=${province_keyword}&search=${search_keyword}`;
             console.log("getBartizans", target_url);
 
             await axios.get(target_url)

@@ -25,23 +25,28 @@ class BartizanController extends Controller
          * to-be : infinite scroll
         */
 
+        $province_keyword = $request->input('province');
         $search_keyword = $request->input('search');
 
-        info(__METHOD__);
-        info("$search_keyword");
-
-        if(isset($search_keyword) AND $search_keyword != ""){
-            $bartizans = Bartizan::where('name', $search_keyword)
-                ->orderBy("name")
-                ->get();
-        }else{
-            $bartizans = Bartizan::orderBy("name")->get();
-        }
-
         return view('bartizan.index_scroll', [
-            'bartizans' => $bartizans,
+//            'bartizans' => $bartizans, // 망대 데이터는 vue js에서 데이터 호출
             'search_keyword' => $search_keyword ?? "",
+            'province_keyword' => $province_keyword ?? ""
         ]);
+
+
+//        if(isset($search_keyword) AND $search_keyword != ""){
+//            $bartizans = Bartizan::where('name', $search_keyword)
+//                ->orderBy("name")
+//                ->get();
+//        }else{
+//            $bartizans = Bartizan::orderBy("name")->get();
+//        }
+//
+//        return view('bartizan.index_scroll', [
+//            'bartizans' => $bartizans,
+//            'search_keyword' => $search_keyword ?? "",
+//        ]);
     }
 
     /**
@@ -205,6 +210,14 @@ class BartizanController extends Controller
         }
     }
 
+    public function showNation(Bartizan $bartizan){
+        $nation = $bartizan->getNation;
+//        dd($watchmen);
+        return view("bartizan.nation",[
+            "bartizan" => $bartizan,
+            "nation" => $nation
+        ]);
+    }
     public function showWatchmen(Bartizan $bartizan){
         $watchmen = $bartizan->getWatchmen;
 //        dd($watchmen);
@@ -272,19 +285,37 @@ class BartizanController extends Controller
         info(__METHOD__);
         info($request);
 
-        $BARTIZAN_PER_SCROLL = 20;
+        // 각각의 keyword는 AND 조건으로 검색
+        $continent_keyword = $request->input('continent');
+        $province_keyword = $request->input('province');
         $search_keyword = $request->input('search');
-        $page = $request->page;
+        $page = $request->input('page');
 
-        if ($search_keyword != "") {
-            // 키워드
-            $bartizans = Bartizan::where('name', 'LIKE', '%' . $search_keyword . '%')
-                ->orderBy("name")
-                ->skip($page * $BARTIZAN_PER_SCROLL)->take($BARTIZAN_PER_SCROLL)->get();
-        } else {
-            $bartizans = Bartizan::orderBy("name")
-                ->skip($page * $BARTIZAN_PER_SCROLL)->take($BARTIZAN_PER_SCROLL)->get();
+        info("$continent_keyword | $province_keyword | $search_keyword");
+
+        $BARTIZAN_PER_SCROLL = 20;
+
+
+        // 기본 쿼리 빌더 객체 생성
+        $query = Bartizan::query();
+
+        // continent 키워드가 있다면
+        if (isset($continent_keyword) AND $continent_keyword != "") {
+            $query->where('continent', $continent_keyword);
         }
+
+        // province 키워드가 있다면
+        if (isset($province_keyword) AND $province_keyword != "") {
+            $query->where('province', $province_keyword);
+        }
+
+        // search 키워드가 있다면
+        if (isset($search_keyword) AND $search_keyword != "") {
+            $query->where('name', 'like', '%'. $search_keyword . '%')->orWhere('name_en', 'like', '%' . $search_keyword . '%');
+        }
+
+        // 최종적으로 결과를 가져옴
+        $bartizans = $query->orderBy("name")->skip($page * $BARTIZAN_PER_SCROLL)->take($BARTIZAN_PER_SCROLL)->get();
 
         return response()->json([
             'bartizans' => $bartizans

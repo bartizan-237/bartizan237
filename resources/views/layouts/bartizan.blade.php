@@ -37,6 +37,11 @@
                 망대
             </div>
             <div class="py-1 px-2 text-gray-800"
+                 onclick="location.href='/bartizan/{{$bartizan->id}}/nation'"
+                 style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/watchmen") !== false) border-bottom: 2px solid #333; @endif  " >
+                나라 정보
+            </div>
+            <div class="py-1 px-2 text-gray-800"
 {{--                 onclick="location.href='/bartizan/{{$bartizan->id}}/watchmen'"--}}
                  onclick="toast('info','준비 중 입니다.')"
                  style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/watchmen") !== false) border-bottom: 2px solid #333; @endif  " >

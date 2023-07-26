@@ -877,10 +877,12 @@ var bartizanList = new Vue({
   data: {
     bartizans: [],
     page: null,
-    search_keyword: null
+    search_keyword: null,
+    province_keyword: null,
+    continent_keyword: null
   },
   mounted: function mounted() {
-    var _searchParams$get;
+    var _searchParams$get, _searchParams$get2, _searchParams$get3;
 
     console.log("bartizanList mounted!");
     this._data.page = 0; // this.getBartizans(0);
@@ -888,20 +890,42 @@ var bartizanList = new Vue({
     this.observingInfiniteScroll();
     var searchParams = new URLSearchParams(location.search);
     this._data.search_keyword = (_searchParams$get = searchParams.get('search')) !== null && _searchParams$get !== void 0 ? _searchParams$get : "";
-    console.log(this._data.search_keyword);
+    this._data.province_keyword = (_searchParams$get2 = searchParams.get('province')) !== null && _searchParams$get2 !== void 0 ? _searchParams$get2 : "";
+    this._data.continent_keyword = (_searchParams$get3 = searchParams.get('continent')) !== null && _searchParams$get3 !== void 0 ? _searchParams$get3 : "";
+    console.log(this._data.search_keyword, this._data.province_keyword, this._data.continent_keyword);
   },
   methods: {
+    refineBartizanName: function refineBartizanName(name) {
+      // 국가명에서 () 괄호 안의 텍스트 폰트크기를 작게 변환
+      // ex) 그린란드(덴마크령) 에서 (덴마크령) 을 작게
+      // 괄호 안의 문자열을 추출하는 정규식
+      var regex = /\((.*?)\)/; // 정규식과 일치하는 부분을 추출
+
+      var matches = name.match(regex);
+      var result;
+
+      if (matches && matches.length > 0) {
+        var small_text = matches[0];
+        var change_text = "<span class='text-xs'>" + small_text + "</span>";
+        result = name.replace(small_text, change_text);
+        return result;
+      } else {
+        return name;
+      }
+    },
     getBartizans: function () {
       var _getBartizans = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(page) {
-        var search_keyword, target_url;
+        var search_keyword, province_keyword, continent_keyword, target_url;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 search_keyword = this._data.search_keyword;
-                target_url = "/bartizan/scroll?page=".concat(page, "&search=").concat(search_keyword);
+                province_keyword = this._data.province_keyword;
+                continent_keyword = this._data.continent_keyword;
+                target_url = "/bartizan/scroll?page=".concat(page, "&continent=").concat(continent_keyword, "&province=").concat(province_keyword, "&search=").concat(search_keyword);
                 console.log("getBartizans", target_url);
-                _context.next = 5;
+                _context.next = 7;
                 return axios.get(target_url).then(function (response) {
                   var _bartizanList$_data$b;
 
@@ -925,7 +949,7 @@ var bartizanList = new Vue({
                   return false;
                 });
 
-              case 5:
+              case 7:
               case "end":
                 return _context.stop();
             }

@@ -173,7 +173,11 @@ class NationController extends Controller
         foreach ($nations as $nation){
             if($bartizan = Bartizan::where('nation_id', $nation->id)->get()->last()){
                 $bartizan->update([
-                    'country_code' => $nation->country_code
+//                    'country_code' => $nation->country_code
+                    'continent' => $nation->continent,
+                    'province' => $nation->province,
+                    'name_en' => $nation->name_en,
+//                    'district' => $nation->district,
                 ]);
             }
         }
