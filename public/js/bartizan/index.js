@@ -868,6 +868,12 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -929,9 +935,35 @@ var bartizanList = new Vue({
                 return axios.get(target_url).then(function (response) {
                   var _bartizanList$_data$b;
 
-                  console.log("response", response);
+                  console.log("response", response); // 23.7.27. bartizan.watchman_info (JSON) 추가됨 >> DB 쿼리 최소화
+                  // bartizan.watchman_info 를 JSON 파싱하여
+                  // bartizan.watchman_obj 에 세팅
 
-                  (_bartizanList$_data$b = bartizanList._data.bartizans).push.apply(_bartizanList$_data$b, _toConsumableArray(response.data.bartizans)); // spread operator
+                  // 23.7.27. bartizan.watchman_info (JSON) 추가됨 >> DB 쿼리 최소화
+                  // bartizan.watchman_info 를 JSON 파싱하여
+                  // bartizan.watchman_obj 에 세팅
+                  var new_bartizans = response.data.bartizans; // 로드된 망대 데이터
+
+                  // 로드된 망대 데이터
+                  new_bartizans = new_bartizans.map(function (bartizan) {
+                    if (bartizan.watchman_infos != null) {
+                      var watchman_obj = JSON.parse(bartizan.watchman_infos);
+                      console.log(bartizan.name + " has watchman_infos!", watchman_obj);
+                      return _objectSpread(_objectSpread({}, bartizan), {}, {
+                        // 기존 object
+                        watchman_obj: watchman_obj // 파싱된 데이터 추가
+
+                      });
+                    } else {
+                      return _objectSpread(_objectSpread({}, bartizan), {}, {
+                        // 기존 object
+                        watchman_obj: {}
+                      });
+                    }
+                  }); // bartizanList._data.bartizans.push( ...response.data.bartizans ); // spread operator
+
+                  // bartizanList._data.bartizans.push( ...response.data.bartizans ); // spread operator
+                  (_bartizanList$_data$b = bartizanList._data.bartizans).push.apply(_bartizanList$_data$b, _toConsumableArray(new_bartizans)); // spread operator
                   // page up
 
 
@@ -963,6 +995,60 @@ var bartizanList = new Vue({
 
       return getBartizans;
     }(),
+    getBgColor: function getBgColor(user_id) {
+      console.log("getBgColor", user_id);
+      var token = user_id % 8;
+      var bg_color_class = "";
+
+      switch (token) {
+        case 0:
+          bg_color_class = "bg-blue-500";
+          break;
+
+        case 1:
+          bg_color_class = "bg-orange-500";
+          break;
+
+        case 2:
+          bg_color_class = "bg-pink-500";
+          break;
+
+        case 3:
+          bg_color_class = "bg-purple-500";
+          break;
+
+        case 4:
+          bg_color_class = "bg-green-500";
+          break;
+
+        case 5:
+          bg_color_class = "bg-teal-500";
+          break;
+
+        case 6:
+          bg_color_class = "bg-sky-500";
+          break;
+
+        case 7:
+          bg_color_class = "bg-yellow-500";
+          break;
+
+        default:
+          bg_color_class = "bg-blue-500";
+      }
+
+      return bg_color_class;
+    },
+    getRepresentativeName: function getRepresentativeName(bartizan) {
+      var _bartizan$watchman_ob, _bartizan$watchman_ob2, _bartizan$watchman_ob3;
+
+      return (_bartizan$watchman_ob = bartizan === null || bartizan === void 0 ? void 0 : (_bartizan$watchman_ob2 = bartizan.watchman_obj) === null || _bartizan$watchman_ob2 === void 0 ? void 0 : (_bartizan$watchman_ob3 = _bartizan$watchman_ob2.representative) === null || _bartizan$watchman_ob3 === void 0 ? void 0 : _bartizan$watchman_ob3.name) !== null && _bartizan$watchman_ob !== void 0 ? _bartizan$watchman_ob : "-";
+    },
+    getTychicusName: function getTychicusName(bartizan) {
+      var _bartizan$watchman_ob4, _bartizan$watchman_ob5, _bartizan$watchman_ob6;
+
+      return (_bartizan$watchman_ob4 = bartizan === null || bartizan === void 0 ? void 0 : (_bartizan$watchman_ob5 = bartizan.watchman_obj) === null || _bartizan$watchman_ob5 === void 0 ? void 0 : (_bartizan$watchman_ob6 = _bartizan$watchman_ob5.tychicus) === null || _bartizan$watchman_ob6 === void 0 ? void 0 : _bartizan$watchman_ob6.name) !== null && _bartizan$watchman_ob4 !== void 0 ? _bartizan$watchman_ob4 : "-";
+    },
     getRoundFlagImage: function getRoundFlagImage(country_code) {
       var image_url = IMAGE_PATH + "/round/" + country_code.toLowerCase() + ".svg";
       return {

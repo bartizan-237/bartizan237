@@ -34,13 +34,21 @@ class BartizanController extends Controller
          * to-be : infinite scroll
         */
 
+        $continent_keyword = $request->input('continent');
         $province_keyword = $request->input('province');
         $search_keyword = $request->input('search');
+
+        // /bartizan no parameter => redirect to /bartizan/main
+        if($search_keyword == null AND $province_keyword == null AND $continent_keyword == null){
+            return redirect('/bartizan/main');
+        }
+
 
         return view('bartizan.index_scroll', [
 //            'bartizans' => $bartizans, // 망대 데이터는 vue js에서 데이터 호출
             'search_keyword' => $search_keyword ?? "",
-            'province_keyword' => $province_keyword ?? ""
+            'province_keyword' => $province_keyword ?? "",
+            "continent_keyword" => $continent_keyword ?? ""
         ]);
 
 
@@ -302,8 +310,7 @@ class BartizanController extends Controller
 
         info("$continent_keyword | $province_keyword | $search_keyword");
 
-        $BARTIZAN_PER_SCROLL = 20;
-
+        $BARTIZAN_PER_SCROLL = 12;
 
         // 기본 쿼리 빌더 객체 생성
         $query = Bartizan::query();

@@ -1,11 +1,20 @@
+const colors = require('tailwindcss/colors'); // default color sets
+
 module.exports = {
 
   darkMode : 'class',
-  purge: [
+  // purge: [
+  //   './resources/views/**/*.blade.php',
+  //   './resources/css/**/*.css',
+  // ],
+  content: [
     './resources/views/**/*.blade.php',
     './resources/css/**/*.css',
   ],
   theme: {
+    colors : {
+      ...colors,
+    },
     extend: {
       screens: {
         light: { raw: "(prefers-color-scheme: light)" },

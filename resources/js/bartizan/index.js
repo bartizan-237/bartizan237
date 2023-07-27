@@ -50,7 +50,31 @@ var bartizanList = new Vue({
             await axios.get(target_url)
                 .then(function (response) {
                     console.log("response",response);
-                    bartizanList._data.bartizans.push( ...response.data.bartizans ); // spread operator
+
+                    // 23.7.27. bartizan.watchman_info (JSON) 추가됨 >> DB 쿼리 최소화
+                    // bartizan.watchman_info 를 JSON 파싱하여
+                    // bartizan.watchman_obj 에 세팅
+
+                    let new_bartizans = response.data.bartizans; // 로드된 망대 데이터
+
+                    new_bartizans = new_bartizans.map(function(bartizan) {
+                        if(bartizan.watchman_infos != null){
+                            let watchman_obj = JSON.parse(bartizan.watchman_infos);
+                            console.log(bartizan.name + " has watchman_infos!", watchman_obj);
+                            return {
+                                ...bartizan, // 기존 object
+                                watchman_obj: watchman_obj // 파싱된 데이터 추가
+                            };
+                        } else {
+                            return {
+                                ...bartizan, // 기존 object
+                                watchman_obj: {}
+                            };
+                        }
+                    });
+
+                    // bartizanList._data.bartizans.push( ...response.data.bartizans ); // spread operator
+                    bartizanList._data.bartizans.push( ...new_bartizans ); // spread operator
 
                     // page up
                     bartizanList._data.page++;
@@ -63,6 +87,29 @@ var bartizanList = new Vue({
                     console.log("error", error);
                     return false;
                 });
+        },
+        getBgColor : function (user_id){
+            console.log("getBgColor", user_id);
+            let token = user_id % 8;
+            let bg_color_class = "";
+            switch (token){
+                case 0 : bg_color_class = "bg-blue-500"; break;
+                case 1 : bg_color_class = "bg-orange-500"; break;
+                case 2 : bg_color_class = "bg-pink-500"; break;
+                case 3 : bg_color_class = "bg-purple-500"; break;
+                case 4 : bg_color_class = "bg-green-500"; break;
+                case 5 : bg_color_class = "bg-teal-500"; break;
+                case 6 : bg_color_class = "bg-sky-500"; break;
+                case 7 : bg_color_class = "bg-yellow-500"; break;
+                default : bg_color_class = "bg-blue-500";
+            }
+            return bg_color_class;
+        },
+        getRepresentativeName : function (bartizan){
+            return bartizan?.watchman_obj?.representative?.name ?? "-";
+        },
+        getTychicusName : function (bartizan){
+            return bartizan?.watchman_obj?.tychicus?.name ?? "-";
         },
         getRoundFlagImage : function (country_code) {
             let image_url = IMAGE_PATH + "/round/" + country_code.toLowerCase() + ".svg";

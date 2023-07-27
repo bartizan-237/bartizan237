@@ -80,3 +80,13 @@ html {
 .post-commnet-nav {
     height: 40px; border-bottom: 1px solid rgb(210, 214, 220);
 }
+
+.circle {
+    display: inline-block;
+    width: 20px; /* 원형 span의 너비 */
+    height: 20px; /* 원형 span의 높이 */
+    line-height: 20px; /* 수직 정렬을 위해 높이와 동일한 값 사용 */
+    text-align: center; /* 수평 정렬을 위해 텍스트 가운데 정렬 */
+    border-radius: 50%; /* 원형으로 만들기 위해 50% 값 사용 */
+    font-size: 12px; /* 텍스트 크기 (원하는 크기로 변경 가능) */
+}
