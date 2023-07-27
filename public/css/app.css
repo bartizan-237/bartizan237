@@ -679,6 +679,9 @@ select {
 .mr-2 {
   margin-right: 0.5rem;
 }
+.mt-12 {
+  margin-top: 3rem;
+}
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -693,9 +696,6 @@ select {
 }
 .mb-12 {
   margin-bottom: 3rem;
-}
-.mt-12 {
-  margin-top: 3rem;
 }
 .mr-auto {
   margin-right: auto;
@@ -1358,6 +1358,10 @@ select {
 .text-gray-300 {
   --tw-text-opacity: 1;
   color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+.text-green-900 {
+  --tw-text-opacity: 1;
+  color: rgb(20 83 45 / var(--tw-text-opacity));
 }
 .text-gray-50 {
   --tw-text-opacity: 1;

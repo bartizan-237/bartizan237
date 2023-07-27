@@ -83,7 +83,11 @@
                             </div>
                         </div>
                     @empty
-                        등록된 댓글이 없습니다😢
+                        <div class="flex-col p-3 mb-2 border-b border-gray-300">
+                            <div>
+                                <p class="text-gray-700 mb-1">등록된 댓글이 없습니다😢</p>
+                            </div>
+                        </div>
                     @endforelse
                 </div>
             </div>
@@ -93,21 +97,19 @@
     </main>
 
 
-
-
     @if(\Auth::user() AND \Auth::user()->id == $post->user_id)
     <div class="z-10 fixed bg-gray-50 flex flex-col" style="bottom:140px; height: 40px; width: 100%; max-width: 500px;">
-        <div id="userAction" class="p-2 post-action-nav">
+        <div id="userActionApp" class="p-2 post-action-nav">
             <div class="flex flex-wrap">
                 <!-- 게시글 수정 -->
                 <div class="w-1/2 text-blue-500 text-sm text-center cursor-pointer">
-                    <button onclick="location.href='/post/{{$post->id}}/edit'">
+                    <button @click="editPost">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 inline-block mr-1" ><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                         게시글 수정
                     </button>
                 </div>
                 <div class="w-1/2 text-red-500 text-sm text-center cursor-pointer">
-                    <button onclick="location.href='/post/{{$post->id}}/edit'">
+                    <button @click="deletePost">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 inline-block mr-1"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
                         게시글 삭제
                     </button>

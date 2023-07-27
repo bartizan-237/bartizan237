@@ -3,17 +3,13 @@
 @section('content')
     <link href="{{ mix('css/bartizan/create.css') }}" rel="stylesheet">
 
-    {{--    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>--}}
-    {{--    <script type="text/javascript" src="/smarteditor2/js/HuskyEZCreator.js"></script>--}}
-
-
-
     <main class="container mx-auto" style="margin-top:10px; max-width: 500px;">
         <div class=" bg-gray-50" style="">
             <div id="form_app" class="bg-white shadow rounded-lg px-3 py-2" style="padding-bottom: 100px;">
                 <div class="flex flex-col">
                     <div class="mb-6 p-1">
                         <h3 class="text-gray-900 mb-3 text-xl inline-block mr-1">게시글 수정</h3>
+                        <input type="hidden" id="post_id" value="{{$post->id}}">
                         @if(isset($bartizan))
                             <input type="hidden" id="bartizan_id" value="{{$bartizan->id}}">
                             <p class="text-sm inline-block"> <span class="text-green-700">{{$bartizan->name}}</span> 망대에 작성한 게시글 수정하기</p>
@@ -87,6 +83,11 @@
             </div>
         </div>
     </main>
+
+    <script>
+        // preset data
+        var post_data = @json($post);
+    </script>
 
 
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>

@@ -85,9 +85,11 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $post->increment("hit");
- 
+
+        $bartizan = Bartizan::find($post->bartizan_id);
         return view("post.show", [
-            "post" => $post
+            "post" => $post,
+            "bartizan" => $bartizan
         ]);
     }
 
@@ -112,8 +114,10 @@ class PostController extends Controller
         if($user = \Auth::user()){
             info("SESSION USER ID = " . $user->id);
             if($user->id == $post->user_id){
+                $bartizan = Bartizan::find($post->bartizan_id);
                 return view("post.edit", [
-                    "post" => $post
+                    "post" => $post,
+                    'bartizan' => $bartizan
                 ]);
             } else {
                 return view("errors.message", [ "message" => "게시글을 수정할 권한이 없습니다."]);
@@ -128,11 +132,31 @@ class PostController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, Post $post)
     {
-        //
+        info(__METHOD__ . " POST ID = " . $post->id . " | Writer User ID = " . $post->user_id);
+        info($request);
+
+        if($user = \Auth::user()){
+            info("SESSION USER ID = " . $user->id);
+            if($user->id == $post->user_id){
+                $data = $request->data;
+                $post->update([
+                    'title' => $data['title'],
+                    'content' => $data['content'],
+                ]);
+
+                return response()->json([
+                    'code' => 200,
+                ]);
+            } else {
+                return response()->json([ 'code' => 301, "message" => "게시글을 수정할 권한이 없습니다."]);
+            }
+        }else {
+            return response()->json([ 'code' => 301, "message" => "게시글을 수정할 권한이 없습니다."]);
+        }
     }
 
     /**
@@ -141,9 +165,24 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Request $request, Post $post)
     {
-        //
+        info(__METHOD__ . " POST ID = " . $post->id . " | Writer User ID = " . $post->user_id);
+        info($request);
+
+        if($user = \Auth::user()){
+            info("SESSION USER ID = " . $user->id);
+            if($user->id == $post->user_id){
+                $post->delete();
+                return response()->json([
+                    'code' => 200,
+                ]);
+            } else {
+                return response()->json([ 'code' => 301, "message" => "게시글을 삭제할 권한이 없습니다."]);
+            }
+        }else {
+            return response()->json([ 'code' => 301, "message" => "게시글을 삭제할 권한이 없습니다."]);
+        }
     }
 
 

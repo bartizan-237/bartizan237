@@ -120,5 +120,53 @@ var commentApp = new Vue({
     }
   }
 });
+var userActionApp = new Vue({
+  el: '#userActionApp',
+  data: {
+    bartizan_id: null,
+    post_id: null,
+    user_id: null,
+    csrf_token: null
+  },
+  mounted: function mounted() {
+    this.bartizan_id = document.querySelector('#bartizan_id').value;
+    this.post_id = document.querySelector('#post_id').value;
+    this.user_id = document.querySelector('#user_id').value;
+    this.csrf_token = document.querySelector('meta[name="csrf-token"]').content;
+  },
+  methods: {
+    editPost: function editPost() {
+      location.href = '/post/' + this.post_id + '/edit';
+    },
+    deletePost: function deletePost() {
+      if (!confirm("게시글을 정말 삭제하시겠습니까?")) return false;
+      var post_id = this.post_id;
+      var bartizan_id = this.bartizan_id;
+      axios["delete"]('/post/' + post_id, {
+        data: null
+      }, {
+        headers: {
+          'X-CSRF-TOKEN': this.csrf_token
+        }
+      }).then(function (res) {
+        console.log("response", res);
+
+        if (res.data.code == 200) {
+          toast("success", "게시글이 삭제 되었습니다😀<br/> 잠시 후 이전 페이지로 이동합니다!");
+          setTimeout(function () {
+            location.href = "/bartizan/" + bartizan_id + "/posts";
+          }, 1500);
+          return true;
+        } else if (res.data.code == 301) {
+          toast("warning", "게시글 삭제 중 오류가 발생했습니다😢<br/> 잠시 후에 다시 시도해주세요 !");
+          return false;
+        } else {
+          toast("warning", "서버에 일시적인 오류가 발생했습니다😢<br/>잠시 후에 다시 시도해주시기 바랍니다");
+          return false;
+        }
+      });
+    }
+  }
+});
 /******/ })()
 ;

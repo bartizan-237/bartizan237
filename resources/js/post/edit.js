@@ -1,15 +1,19 @@
+console.log("POST EDIT");
 var quill = null;
 var form_app = new Vue({
     el: '#form_app',
     data: {
+        post_id : null,
         title : null,
         content : null,
         csrf_token : null,
         bartizan_id : null,
     },
     mounted: function(){
-        this.title = null;
-        this.content = null;
+        console.log(post_data);
+        this.title = post_data.title;
+        this.content = post_data.content;
+        this.post_id = document.querySelector('#post_id').value;
         this.csrf_token = document.querySelector('meta[name="csrf-token"]').content;
     },
     methods: {
@@ -24,7 +28,8 @@ var form_app = new Vue({
 
             console.log("form_data",form_data);
 
-            axios.post('/post',
+            let post_id = this.post_id;
+            axios.put('/post/' + post_id,
                 {
                     data : form_data
                 },
@@ -36,9 +41,9 @@ var form_app = new Vue({
                 .then(res => {
                     console.log("response", res);
                     if(res.data.code == 200){
-                        toast("success", "게시글이 저장되었습니다😀<br/> 잠시 후 망대 페이지로 이동합니다!");
+                        toast("success", "게시글이 수정되었습니다😀<br/> 잠시 후 이전 페이지로 이동합니다!");
                         setTimeout(function (){
-                            location.href = "/bartizan/" + bartizan_id + "/posts";
+                            location.href = "/bartizan/" + bartizan_id + "/posts/" + post_id;
                         }, 1500);
                         return true;
                     }else if(res.data.code == 301){
@@ -150,4 +155,4 @@ quill = new Quill('#editor', {
 });
 
 quill.getModule("toolbar").addHandler("image", selectLocalImage);
-
+quill.clipboard.dangerouslyPasteHTML(post_data.content); // 이전 게시글 데이터
