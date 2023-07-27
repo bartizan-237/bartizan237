@@ -1,10 +1,8 @@
 /******/ (() => { // webpackBootstrap
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
-(() => {
-/*!*************************************!*\
-  !*** ./resources/js/post/create.js ***!
-  \*************************************/
+/*!***********************************!*\
+  !*** ./resources/js/post/edit.js ***!
+  \***********************************/
 var quill = null;
 var form_app = new Vue({
   el: '#form_app',
@@ -12,7 +10,7 @@ var form_app = new Vue({
     title: null,
     content: null,
     csrf_token: null,
-    ddeul_id: null
+    bartizan_id: null
   },
   mounted: function mounted() {
     this.title = null;
@@ -23,9 +21,10 @@ var form_app = new Vue({
     submitForm: function submitForm() {
       console.log(quill);
       this.content = document.getElementsByClassName("ql-editor")[0].innerHTML;
-      this.ddeul_id = document.getElementById("ddeul_id").value;
+      this.bartizan_id = document.getElementById("bartizan_id").value;
       console.log(quill.root.innerHtml);
       console.log(this.content);
+      var bartizan_id = this.bartizan_id;
       var form_data = this.$data;
       console.log("form_data", form_data);
       axios.post('/post', {
@@ -38,10 +37,10 @@ var form_app = new Vue({
         console.log("response", res);
 
         if (res.data.code == 200) {
-          toast("success", "저장되었습니다😀");
+          toast("success", "게시글이 저장되었습니다😀<br/> 잠시 후 망대 페이지로 이동합니다!");
           setTimeout(function () {
-            location.href = "/home";
-          }, 2000);
+            location.href = "/bartizan/" + bartizan_id + "/posts";
+          }, 1500);
           return true;
         } else if (res.data.code == 301) {
           toast("warning", "저장에 실패했습니다🥲<br/> 잠시 후에 다시 시도해주세요 !");
@@ -93,10 +92,61 @@ var toolbarOptions = [['bold', 'italic', 'underline', 'strike'], // toggled butt
   'align': []
 }], ['clean'] // remove formatting button
 ];
+
+function selectLocalImage() {
+  var input = document.createElement('input');
+  input.setAttribute('type', 'file');
+  input.click();
+
+  input.onchange = function () {
+    var file = input.files[0];
+
+    if (/^image\//.test(file.type)) {
+      saveToServer(file);
+    } else {
+      console.warn('You could only upload images.');
+    }
+  };
+}
+
+function saveToServer(file) {
+  var fd = new FormData();
+  fd.append('image', file);
+  console.log("FormData", fd);
+  fetch('/upload_image', {
+    method: 'POST',
+    body: fd
+  }).then(function (response) {
+    return response.json();
+  }).then(function (json) {
+    console.log("saveToServer response json", json);
+    insertToEditor(json.url);
+  });
+}
+
+function insertToEditor(url) {
+  console.log("insertToEditor", url);
+  var range = quill.getSelection();
+
+  if (url.indexOf("http") != -1) {
+    quill.insertEmbed(range.index, 'image', url);
+  } else {
+    quill.insertEmbed(range.index, 'image', "https://platform.237.co.kr/" + url);
+  }
+}
+
 quill = new Quill('#editor', {
   theme: 'snow',
   modules: {
-    toolbar: '#toolbar' // toolbar : toolbarOptions
+    toolbar: '#toolbar' // handlers: {
+    //     'image': function() {
+    //         // 23.3.9. Dynamic Image Upload
+    //         // POST data to server
+    //         // UPLOAD image to CLOUD
+    //         selectLocalImage();
+    //     }
+    // }
+    // toolbar : toolbarOptions
     // toolbar:    [
     //     [ { header: [1, 2, false] }],
     //     ['bold', 'italic', 'underline'],
@@ -110,33 +160,6 @@ quill = new Quill('#editor', {
   },
   placeholder: '내용을 입력하세요'
 });
-})();
-
-// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
-(() => {
-/*!***********************************!*\
-  !*** ./resources/js/post/show.js ***!
-  \***********************************/
-var commentApp = new Vue({
-  el: '#commentApp',
-  data: {
-    post_id: null,
-    user_id: null,
-    writer: null,
-    content: null,
-    csrf_token: null
-  },
-  mounted: function mounted() {
-    this.post_id = document.querySelector('#post_id').val;
-    this.user_id = document.querySelector('#user_id').val;
-    this.content = document.querySelector('#comment_text').text;
-    this.csrf_token = document.querySelector('meta[name="csrf-token"]').content;
-  },
-  methods: {
-    createComment: function createComment() {}
-  }
-});
-})();
-
+quill.getModule("toolbar").addHandler("image", selectLocalImage);
 /******/ })()
 ;

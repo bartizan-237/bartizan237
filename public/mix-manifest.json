@@ -4,6 +4,7 @@
     "/js/auth/auth.js": "/js/auth/auth.js",
     "/js/user/user.js": "/js/user/user.js",
     "/js/post/create.js": "/js/post/create.js",
+    "/js/post/edit.js": "/js/post/edit.js",
     "/js/post/show.js": "/js/post/show.js",
     "/js/bartizan/index.js": "/js/bartizan/index.js",
     "/js/bartizan/create.js": "/js/bartizan/create.js",

@@ -108,9 +108,19 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view("post.edit", [
-            "post" => $post
-        ]);
+        info(__METHOD__ . " POST ID = " . $post->id . " | Writer User ID = " . $post->user_id);
+        if($user = \Auth::user()){
+            info("SESSION USER ID = " . $user->id);
+            if($user->id == $post->user_id){
+                return view("post.edit", [
+                    "post" => $post
+                ]);
+            } else {
+                return view("errors.message", [ "message" => "게시글을 수정할 권한이 없습니다."]);
+            }
+        }else {
+            return view("errors.message", [ "message" => "게시글을 수정할 권한이 없습니다."]);
+        }
     }
 
     /**

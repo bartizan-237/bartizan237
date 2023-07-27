@@ -21,6 +21,7 @@ mix
     .js('resources/js/auth/*', 'public/js/auth/auth.js')
     .js('resources/js/user/*', 'public/js/user/user.js')
     .js('resources/js/post/create.js', 'public/js/post/create.js')
+    .js('resources/js/post/edit.js', 'public/js/post/edit.js')
     .js('resources/js/post/show.js', 'public/js/post/show.js')
     .js('resources/js/bartizan/index.js', 'public/js/bartizan/index.js')
     .js('resources/js/bartizan/create.js', 'public/js/bartizan/create.js')

@@ -24,6 +24,7 @@ var form_app = new Vue({
       this.bartizan_id = document.getElementById("bartizan_id").value;
       console.log(quill.root.innerHtml);
       console.log(this.content);
+      var bartizan_id = this.bartizan_id;
       var form_data = this.$data;
       console.log("form_data", form_data);
       axios.post('/post', {
@@ -36,10 +37,10 @@ var form_app = new Vue({
         console.log("response", res);
 
         if (res.data.code == 200) {
-          toast("success", "저장되었습니다😀");
+          toast("success", "게시글이 저장되었습니다😀<br/> 잠시 후 망대 페이지로 이동합니다!");
           setTimeout(function () {
-            location.href = "/home";
-          }, 2000);
+            location.href = "/bartizan/" + bartizan_id + "/posts";
+          }, 1500);
           return true;
         } else if (res.data.code == 301) {
           toast("warning", "저장에 실패했습니다🥲<br/> 잠시 후에 다시 시도해주세요 !");
@@ -120,17 +121,7 @@ function saveToServer(file) {
   }).then(function (json) {
     console.log("saveToServer response json", json);
     insertToEditor(json.url);
-  }); // Change the URL below to your PHP script that handles the image upload
-  // fetch('upload.php', {
-  //     method: 'POST',
-  //     body: fd
-  // })
-  //     .then(function(response) {
-  //         return response.json();
-  //     })
-  //     .then(function(json) {
-  //         insertToEditor(json.url);
-  //     });
+  });
 }
 
 function insertToEditor(url) {

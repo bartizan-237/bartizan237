@@ -8,10 +8,12 @@
     <main class="container py-2" style="margin-top:-50px; padding-bottom: 50px;">
         <button class="bg-green-500 text-white rounded-full text-2xl font-bold" style="position: fixed; line-height: 15px; font-size: 15px; width: 30px; height: 30px; right:30px; bottom:100px;" onclick="location.href='/post/create?bartizan_id='{{$bartizan->id}}">+</button>
         <article class="flex flex-col bg-white w-full" style="padding-bottom: 100px;">
-            <!-- TITLE -->
             <div class="p-3 bg-gray-50">
-                <!-- TITLE -->
-                <p style="font-size : 16px; line-height: 20px" class="text-gray-900 font-medium title-font px-3 py-2">{{$post->title}}</p>
+                    <!-- TITLE -->
+                <div class="px-3 py-2">
+                    <p style="font-size : 16px; line-height: 24px" class="text-gray-900 title-font">{{$post->title}}</p>
+                </div>
+
                 <div class="flex border-t border-gray-100 px-3 py-2 text-gray-700">
                     <div class="w-1/2 left-0">
                         <p style="font-size:12px;" class="inline-block mr-2  ">
@@ -90,13 +92,39 @@
         </article>
     </main>
 
+
+
+
+    @if(\Auth::user() AND \Auth::user()->id == $post->user_id)
+    <div class="z-10 fixed bg-gray-50 flex flex-col" style="bottom:140px; height: 40px; width: 100%; max-width: 500px;">
+        <div id="userAction" class="p-2 post-action-nav">
+            <div class="flex flex-wrap">
+                <!-- 게시글 수정 -->
+                <div class="w-1/2 text-blue-500 text-sm text-center cursor-pointer">
+                    <button onclick="location.href='/post/{{$post->id}}/edit'">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 inline-block mr-1" ><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                        게시글 수정
+                    </button>
+                </div>
+                <div class="w-1/2 text-red-500 text-sm text-center cursor-pointer">
+                    <button onclick="location.href='/post/{{$post->id}}/edit'">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 inline-block mr-1"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                        게시글 삭제
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+
+
     <div class="z-10 fixed bg-gray-50 flex flex-col" style="bottom:60px; height: 80px; width: 100%; max-width: 500px;">
         <!-- ACTION -->
-        <div  id="postApp" class="p-2 w-full" style="height: 40px; border-top : 1px solid rgb(210, 214, 220); border-bottom: 1px solid rgb(210, 214, 220);">
+        <div id="postApp" class="p-2 post-action-nav">
             <input type="hidden" id="like_by_this_user" value="{{$post->like_by_this_user ?? 0}}">
             <div class="flex flex-wrap">
                 <div @click="clickLike"
-                     v-bind:class="{'text-green-500' : is_like, 'text-gray-500' : !is_like}"
+                     :class="{'text-green-500' : is_like, 'text-gray-500' : !is_like}"
                      class="w-1/2 text-sm text-center cursor-pointer" style="border-right: 1px solid #DDD">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
@@ -114,8 +142,8 @@
         </div>
 
         <!-- CREATE COMMENT AREA -->
-        <div id="commentApp" class="p-1 flex w-full" style="height: 40px; border-bottom: 1px solid rgb(210, 214, 220);">
-            <div class="p-1 flex-none" style="width: 30px;">
+        <div id="commentApp" class="p-1 flex post-comment-nav">
+            <div class="p-1 flex-none " style="width: 30px;">
                 <svg xmlns="http://www.w3.org/2000/svg" class="" style="width: 24px; height: 24px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
                 </svg>
