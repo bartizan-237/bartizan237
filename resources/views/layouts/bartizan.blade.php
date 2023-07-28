@@ -3,10 +3,10 @@
 <head>
     @include("layouts.html_head")
 </head>
-<body class="bg-gray-100 antialiased leading-none">
+<body class="bg-237 antialiased leading-none">
 @include("components.modal")
 <div id="toast"><p></p></div>
-<div id="joinRequest" style="max-width: 500px; margin:0 auto;" class="bg-gray-100">
+<div id="joinRequest" style="max-width: 500px; margin:0 auto;" class="bg-gray-50">
     <header id="header-bar" class="w-full border-b border-gray-100 bg-white fixed top-0 left-0" style="height: 60px; z-index: 10;">
         <div class="w-full" style="padding: 10px; max-width: 500px; margin:0 auto">
             <a onclick="history.back()" class="inline-block">

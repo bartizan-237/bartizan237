@@ -1480,6 +1480,9 @@ select {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(209 213 219 / var(--tw-ring-opacity));
 }
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
 .transition-all {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -1566,20 +1569,16 @@ html {
     display: flex;
 }
 .continent-card {
-    flex-grow: 1;
-    width: 15%;
-    transition: width 0.8s, opacity 0.5s;
-    transition-timing-function: ease-in-out;
-}
-.continent-card:hover {
-    width: 35%;
-    border : 1px solid darkgreen;
+    width: 160px; height: 180px; padding: 5px; margin-right:10px
 }
 .continent-name {
-    display:block; font-size: 14px; font-weight: bold; margin-bottom: 5px;
+    display:block; font-size: 15px; font-weight: bold; letter-spacing : 3px; margin-bottom: 5px;
 }
 .continent-name-en {
-    display:block; font-size: 11px; font-weight: bold; letter-spacing : 2px;
+    display:block; font-size: 12px; font-weight: bold; letter-spacing : 3px; margin-bottom: 5px;
+}
+.continent-country-count {
+    display:block; font-size: 12px; margin-bottom: 5px;
 }
 .current-open-menu {
     border-bottom: 2px solid #333;
@@ -2066,3 +2065,4 @@ html {
     width: 80%;
   }
 }
+

@@ -3,9 +3,9 @@
 <head>
     @include("layouts.html_head")
 </head>
-{{--<body class="bg-237 antialiased leading-none">--}}
-
 <body class="bg-237 antialiased leading-none">
+
+{{--<body class="bg-gray-200 antialiased leading-none">--}}
 
 @include("components.modal")
 <div id="toast"><p></p></div>
@@ -39,7 +39,7 @@
 
         </header>
 
-        <section style="margin-top:60px;  height: calc(100vh - 120px);" class="bg-gray-50">
+        <section style="margin-top:60px;  height: calc(100vh - 120px);" class="bg-237">
             @yield('content')
         </section>
 
