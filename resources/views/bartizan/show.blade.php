@@ -11,7 +11,7 @@
 
                 @if($bartizan->getAdmin())
                 <div class="w-full text-left flex">
-                    <span class="text-gray-500 mx-2 text-xs">망대 관리자</span> {{ $bartizan->getAdmin()->nickname }}
+                    <span class="text-gray-500 mr-2 text-xs">망대 관리자</span> {{ $bartizan->getAdmin()->nickname }}
 
 {{--                    <span class="ml-auto">--}}
 {{--                        <form method="POST" action="{{route()}}">--}}
@@ -27,11 +27,18 @@
                 </div>
                 @endif
             </div>
+            @else
+
+            <div class="flex-col bg-white rounded-lg mb-3 px-3 py-2 text-gray-900 text-sm">
+                아직 등록된 망대 정보가 없습니다😢
+            </div>
             @endif
 
+            @if($bartizan->description)
             <div class="bg-white rounded-lg mb-3 p-3 text-gray-900 ql-editor ql-snow">
                 {!! $bartizan->description !!}
             </div>
+            @endif
 
             <div class="bg-white rounded-lg mb-3 p-3 text-gray-900 text-xs">
                 <div class="w-full">
@@ -48,8 +55,8 @@
                 </div>
                 @forelse($bartizan->getRecentPosts(3) as $post)
                     <div class=" p-1 w-full flex text-sm">
-                        <div class="w-1/2 " onclick="location.href='/bartizan/{{$bartizan->id}}/posts/{{$post->id}}'">{{$post->title}}</div>
-                        <div class="w-1/2 right-0 text-xs text-right">{{$post->created_at->diffForHumans()}}</div>
+                        <div class="w-5/6 " onclick="location.href='/bartizan/{{$bartizan->id}}/posts/{{$post->id}}'">{{$post->title}}</div>
+                        <div class="w-1/6 right-0 text-xs text-right">{{$post->created_at->diffForHumans()}}</div>
                         {{--                                    <div class="w-1/2 right-0 text-xs text-right">{{$post->getCreatedAtAttribute($post->created_at)}}</div>--}}
                     </div>
                 @empty

@@ -26,45 +26,45 @@
                             <div style="width: 150px; height:100px; background-image : url('/image/europe.jpg'); background-size: cover; border-radius: 5px">
                             </div>
                             <div class="flex flex-col p-3 text-left">
-                                <span class="continent-name font-bold">유럽</span>
+                                <p class="continent-name font-bold">유럽<span style="font-size: 10px; letter-spacing: 0px">(52나라)</span></p>
                                 <span class="continent-name-en">EUROPE</span>
-                                <span class="continent-country-count">52개의 나라</span>
+                                <span class="continent-country-count">빈 곳 51 나라</span>
                             </div>
                         </div>
                         <div onclick="location.href='/bartizan?continent=Asia'" style="" class=" continent-card text-center items-center align-items-center justify-center bg-white rounded-lg">
                             <div style="width: 150px; height:100px; background-image : url('/image/asia.jpg'); background-size: cover; border-radius: 5px">
                             </div>
                             <div class="flex flex-col p-3 text-left">
-                                <span class="continent-name font-bold">아시아</span>
+                                <span class="continent-name font-bold">아시아<span style="font-size: 10px; letter-spacing: 0px">(47나라)</span></span>
                                 <span class="continent-name-en">ASIA</span>
-                                <span class="continent-country-count">47개의 나라</span>
+                                <span class="continent-country-count">빈 곳 46 나라</span>
                             </div>
                         </div>
                         <div onclick="location.href='/bartizan?continent=America'" style="" class=" continent-card text-center items-center align-items-center justify-center bg-white rounded-lg">
                             <div style="width: 150px; height:100px; background-image : url('/image/america.jpg'); background-size: cover; border-radius: 5px">
                             </div>
                             <div class="flex flex-col p-3 text-left">
-                                <span class="continent-name font-bold">아메리카</span>
+                                <span class="continent-name font-bold">아메리카<span style="font-size: 10px; letter-spacing: 0px">(54나라)</span></span>
                                 <span class="continent-name-en">AMERICA</span>
-                                <span class="continent-country-count">54개의 나라</span>
+                                <span class="continent-country-count">빈 곳 54 나라</span>
                             </div>
                         </div>
                         <div onclick="location.href='/bartizan?continent=Africa'" style="" class=" continent-card text-center items-center align-items-center justify-center bg-white rounded-lg">
                             <div style="width: 150px; height:100px; background-image : url('/image/africa.jpg'); background-size: cover; border-radius: 5px">
                             </div>
                             <div class="flex flex-col p-3 text-left">
-                                <span class="continent-name font-bold">아프리카</span>
+                                <span class="continent-name font-bold">아프리카<span style="font-size: 10px; letter-spacing: 0px">(59나라)</span></span>
                                 <span class="continent-name-en">AFRICA</span>
-                                <span class="continent-country-count">59개의 나라</span>
+                                <span class="continent-country-count">빈 곳 59 나라</span>
                             </div>
                         </div>
                         <div onclick="location.href='/bartizan?continent=Oceania'" style="" class=" continent-card text-center items-center align-items-center justify-center bg-white rounded-lg">
                             <div style="width: 150px; height:100px; background-image : url('/image/oceania.jpg'); background-size: cover; border-radius: 5px">
                             </div>
                             <div class="flex flex-col p-3 text-left">
-                                <span class="continent-name font-bold">오세아니아</span>
+                                <span class="continent-name font-bold">오세아니아<span style="font-size: 10px; letter-spacing: 0px">(25나라)</span></span>
                                 <span class="continent-name-en">OCEANIA</span>
-                                <span class="continent-country-count">25개의 나라</span>
+                                <span class="continent-country-count">빈 곳 25 나라</span>
                             </div>
                         </div>
                     </div>

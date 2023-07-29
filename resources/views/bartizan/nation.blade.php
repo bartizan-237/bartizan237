@@ -14,7 +14,7 @@
         <div class="flex flex-wrap p-1 mb-3 pb-6 relative">
             <button
                     onclick="openModal('https://kr.object.ncloudstorage.com/immanuel/bartizan/image/mission/{{$nation->country_code}}.png');"
-                    class="absolute right-3 top-5 py-1 px-2 text-xs bg-green-500 text-white rounded">
+                    class="absolute right-3 top-5 py-2 px-3 bg-green-500 text-white rounded">
                 🌍 선교정보
             </button>
 

@@ -10,7 +10,7 @@
                     <div class="p-3 bg-gray-50">
                         <!-- TITLE -->
                         <p style="font-size : 15px; line-height: 20px" class="text-gray-900 font-medium title-font px-3 py-2">{{$post->title}}</p>
-                        <div style="font-size : 11px; line-height: 20px; height: 40px; width: 100%; overflow:hidden; text-overflow:ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;"
+                        <div style="font-size : 12px; line-height: 18px; height: 40px; width: 100%; overflow:hidden; text-overflow:ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;"
                            class="text-gray-700 px-3 py-1">
                             {{strip_tags($post->content)}}
                         </div>

@@ -7,7 +7,7 @@
 @include("components.modal")
 <div id="toast"><p></p></div>
 <div id="joinRequest" style="max-width: 500px; margin:0 auto;" class="bg-gray-50">
-    <header id="header-bar" class="w-full border-b border-gray-100 bg-white fixed top-0 left-0" style="height: 60px; z-index: 10;">
+    <header id="header-bar" class="w-full border-b border-gray-200 bg-white fixed top-0 left-0" style="height: 60px; z-index: 10;">
         <div class="w-full" style="padding: 10px; max-width: 500px; margin:0 auto">
             <a onclick="history.back()" class="inline-block">
                 <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-900 inline-block" style="height: 30px; width: 30px; margin-top:-5px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -37,10 +37,17 @@
             >
                 망대
             </div>
-            <div class="@if($_SERVER['REQUEST_URI'] == "/bartizan/".$bartizan->id."/nation") current-open-menu @endif py-1 px-2 text-gray-800"
+            <div class="@if($_SERVER['REQUEST_URI'] == "/bartizan/".$bartizan->id."/nation") current-open-menu @endif py-1 px-2 text-gray-800 relative"
                  onclick="location.href='/bartizan/{{$bartizan->id}}/nation'"
                  style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/watchmen") !== false) border-bottom: 2px solid #333; @endif  " >
                 나라 정보
+                <span aria-hidden="true" class="absolute top-0 right-0 inline-block transform translate-x-1 -translate-y-1 bg-red-500 rounded-full " style="height: 5px; width: 5px; top: 5px; right: 5px"></span>
+            </div>
+            <div class="@if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/posts" )) current-open-menu @endif py-1 px-2 text-gray-800"
+                 onclick="location.href='/bartizan/{{$bartizan->id}}/posts'"
+                 {{--                 onclick="toast('info','준비 중 입니다.')"--}}
+                 style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/posts") !== false) border-bottom: 2px solid #333; @endif  " >
+                게시판
             </div>
             <div class="@if($_SERVER['REQUEST_URI'] == "/bartizan/".$bartizan->id."/watchmen") current-open-menu @endif py-1 px-2 text-gray-800"
 {{--                 onclick="location.href='/bartizan/{{$bartizan->id}}/watchmen'"--}}
@@ -48,38 +55,32 @@
                  style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/watchmen") !== false) border-bottom: 2px solid #333; @endif  " >
                 파수꾼
             </div>
-            <div class="@if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/posts" )) current-open-menu @endif py-1 px-2 text-gray-800"
-{{--                 onclick="location.href='/bartizan/{{$bartizan->id}}/posts'"--}}
-                 onclick="toast('info','준비 중 입니다.')"
-                 style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/posts") !== false) border-bottom: 2px solid #333; @endif  " >
-                게시판
-            </div>
-            @if(\Auth::user() !== null AND \Auth::user()->id!==$bartizan->admin_user_id)
-                <div>
-                    <script src="{{ asset('js/watchman/join_request.js') }}" defer></script>
-                    <button class="py-1 px-2 text-gray-800" @click="showModal">파수꾼 신청</button>
-                    {{-- 파수꾼 신청 모달창 --}}
-                    <div id="watchmen-modal" class="watchmen-modal">
-                        <div class="modal-content">
-                            <p class="text-center">파수꾼 신청을 하시겠습니까?</p><br/>
-                            <div class="text-center">
-                                <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded" @click="join_request({{\Auth::user()->id}},{{$bartizan->id}})">예</button>
-                                <button class="bg-red-500 text-white font-bold py-2 px-4 rounded" @click="onCancel">아니오</button>
-                            </div>
-                        </div>
-                    </div>
-                    {{-- 파수꾼 신청 모달창 --}}
-                </div>
-            @elseif(Auth::user() === null)
-                {{-- 망대 관리자만 볼 수 있는 파수꾼 신청 목록이 로그인 상태가 아닐 경우 누구에게나 보이는 문제 --}}
-            @else
-                <div>
-                    <button class="py-1 px-2 text-gray-800"
-                            onclick="location.href='/bartizan/{{$bartizan->id}}/join_request_list'">
-                        파수꾼 신청 목록
-                    </button>
-                </div>
-            @endif
+{{--            @if(\Auth::user() !== null AND \Auth::user()->id!==$bartizan->admin_user_id)--}}
+{{--                <div>--}}
+{{--                    <script src="{{ asset('js/watchman/join_request.js') }}" defer></script>--}}
+{{--                    <button class="py-1 px-2 text-gray-800" @click="showModal">파수꾼 신청</button>--}}
+{{--                    --}}{{-- 파수꾼 신청 모달창 --}}
+{{--                    <div id="watchmen-modal" class="watchmen-modal">--}}
+{{--                        <div class="modal-content">--}}
+{{--                            <p class="text-center">파수꾼 신청을 하시겠습니까?</p><br/>--}}
+{{--                            <div class="text-center">--}}
+{{--                                <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded" @click="join_request({{\Auth::user()->id}},{{$bartizan->id}})">예</button>--}}
+{{--                                <button class="bg-red-500 text-white font-bold py-2 px-4 rounded" @click="onCancel">아니오</button>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    --}}{{-- 파수꾼 신청 모달창 --}}
+{{--                </div>--}}
+{{--            @elseif(Auth::user() === null)--}}
+{{--                --}}{{-- 망대 관리자만 볼 수 있는 파수꾼 신청 목록이 로그인 상태가 아닐 경우 누구에게나 보이는 문제 --}}
+{{--            @else--}}
+{{--                <div>--}}
+{{--                    <button class="py-1 px-2 text-gray-800"--}}
+{{--                            onclick="location.href='/bartizan/{{$bartizan->id}}/join_request_list'">--}}
+{{--                        파수꾼 신청 목록--}}
+{{--                    </button>--}}
+{{--                </div>--}}
+{{--            @endif--}}
         </div>
         @endif
 

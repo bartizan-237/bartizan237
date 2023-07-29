@@ -70,13 +70,22 @@ Route::group(['namespace' => 'Bartizan', 'prefix' => 'bartizan'], function() {
     Route::get("{bartizan}/nation", [BartizanController::class, 'showNation']); // 23.7.26. 망대 - 나라 페이지 통합
 });
 
-Route::group(['namespace' => 'Nation', 'prefix' => 'nation'], function() {
-    Route::get("/", [NationController::class, 'index']); // 237나라 목록
-    Route::get("/main", [NationController::class, 'main']);
-    Route::get("/scroll", [NationController::class, 'scroll']); // infinite scroll
-    Route::get("/{nation}", [NationController::class, 'show']);
-//    Route::post("/search", [NationController::class, 'searchNation']); // search는 Get parameter로 처리
+
+// 23.7.29. Redirect : nation -> bartizan
+Route::get("/nation",function (){
+    return redirect("/bartizan/main");
 });
+Route::get("/nation/main",function (){
+    return redirect("/bartizan/main");
+});
+
+//Route::group(['namespace' => 'Nation', 'prefix' => 'nation'], function() {
+//    Route::get("/", [NationController::class, 'index']); // 237나라 목록
+//    Route::get("/main", [NationController::class, 'main']);
+//    Route::get("/scroll", [NationController::class, 'scroll']); // infinite scroll
+//    Route::get("/{nation}", [NationController::class, 'show']);
+////    Route::post("/search", [NationController::class, 'searchNation']); // search는 Get parameter로 처리
+//});
 
 
 // USER
