@@ -14,12 +14,21 @@ class Watchman extends Model
 
     protected $table = 'watchmen';
     protected $fillable = ['user_id', 'bartizan_id'];
-    public function getUsers(){
+    public function getUser(){
+        /** 23.8.2. 메소드명 수정
+         * as-is : getUsers
+         * to-be : getUser
+         */
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function getBartizans(){
-        return $this->belongstTo(Bartizan::class, 'bartizan_id', 'id');
+
+    public function getBartizan(){
+        /** 23.8.2. 메소드명 수정
+         * as-is : getBartizans
+         * to-be : getBartizan
+         */
+        return $this->belongsTo(Bartizan::class, 'bartizan_id', 'id');
     }
     
 }

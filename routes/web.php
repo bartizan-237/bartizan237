@@ -100,10 +100,11 @@ Route::group(['namespace' => 'User',
     Route::post('/validate_nickname', [UserController::class, 'validateNickname']);
     Route::post('/validate_member_id', [UserController::class, 'validateMemberId'])->withoutMiddleware("auth");
 
-    Route::get('/my_page', [UserController::class, 'myPage']);
-    Route::get('/my_page/edit', [UserController::class, 'myPageEdit']);
-    Route::get('/bartizan', [UserController::class, 'userBartizan']);
-    Route::get('/post', [UserController::class, 'userPost']);
+    Route::get('/my_page', [UserController::class, 'myPage']); // 유저 정보
+    Route::get('/my_page/edit', [UserController::class, 'myPageEdit']); // 유저 정보 수정
+    Route::get('/bartizan', [UserController::class, 'userBartizan']); // 유저가 속해있는 망대목록
+    Route::get('/post', [UserController::class, 'userPost']); // 유저가 작성한 게시글 / 댓글
+    Route::get('/like', [UserController::class, 'userLike']); // 유저가 좋아요 누른 게시글
 
     Route::get('/quit', [UserController::class, 'quitPage']); // 회원 탈퇴
     Route::post('/quit', [UserController::class, 'quitUser'])->name("quit"); // 회원 탈퇴

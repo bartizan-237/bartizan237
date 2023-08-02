@@ -67,7 +67,11 @@ class User extends Authenticatable
 //        return $this->belongsTo(Bartizan::class, 'bartizan_id', 'id');
 //    }
 
-    public function watchman(){
+    public function getWatchmen(){
+        /** 23.8.2. 메소드명 수정
+         * as-is : watchman
+         * to-be : getWatchmen
+         */
         return $this->hasMany(Watchman::class, 'user_id', 'id');
     }
 }

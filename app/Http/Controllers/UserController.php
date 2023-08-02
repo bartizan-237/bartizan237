@@ -108,6 +108,28 @@ class UserController extends Controller
         ]);
     }
 
+    public function userBartizan(){
+        $bartizans = [];
+        $watchmen = $this->user->getWatchmen; // RELATION TABLE user_id bartizan_id
+        if($watchmen){
+            foreach ($watchmen as $watchman){
+                $bartizan = $watchman->getBartizan;
+                $bartizans[] = $bartizan;
+            }
+        }
+        return view('user.bartizan', [
+            'user' => $this->user,
+            'watchmen' => $watchmen,
+            "bartizans" => $bartizans
+        ]);
+    }
+
+    public function userPost(){
+        return view('user.post', [
+            'user' => $this->user
+        ]);
+    }
+
     public function quitPage()
     {
         // 회원 탈퇴
