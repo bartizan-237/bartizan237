@@ -101,6 +101,13 @@ class UserController extends Controller
         ]);
     }
 
+    public function myPageEdit(){
+        // 기본정보 & 추가정보 수정페이지
+        return view('user.my_page_edit', [
+            'user' => $this->user
+        ]);
+    }
+
     public function quitPage()
     {
         // 회원 탈퇴

@@ -36,10 +36,9 @@
 {{--            <div id="bartizan_list" class="p-2 mx-auto">--}}
             <div id="bartizan_list" class="p-2 mx-auto grid grid-cols-2 gap-3">
                 <template v-for="bartizan in _data.bartizans">
-                    <div class="relative bg-white p-3 rounded-3xl my-2 shadow-xl">
-                        <div
-                                @click="moveToBartizanDetail(bartizan.id)"
-                                class="flex">
+                    <div  @click="moveToBartizanDetail(bartizan.id)"
+                          class="relative bg-white p-3 rounded-3xl my-2 shadow-xl">
+                        <div class="flex">
                             <div class="bg-contain bg-no-repeat bg-center rounded-full flex-none"
                                  :style="getRoundFlagImage(bartizan.country_code)"
                                  style="width :40px; height: 40px;">

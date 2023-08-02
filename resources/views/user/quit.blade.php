@@ -12,9 +12,10 @@
 
     <section class="w-full mt-12">
         <div class="p-2 mx-auto text-center items-center ">
-            <a class="text-gray-700 font-bold py-2 px-8 hover:text-green-900 rounded text-lg hover:underline hover:underline-offset-4"
-               href="{{ route('quit') }}" onclick="if(!confirm('정말로 회원 탈퇴하시겠습니까?')) { event.preventDefault(); document.getElementById('quit-form').submit(); }">
-                회원 탈퇴
+            <a class="text-red-500 font-bold py-2 px-8 hover:text-red-300 rounded text-lg hover:underline hover:underline-offset-4"
+               href="{{ route('quit') }}"
+               onclick="confirmQuit()">
+                회원 탈퇴하기
             </a>
         </div>
 
@@ -25,6 +26,13 @@
 
 
     <script>
+        function confirmQuit(event) {
+            if (!confirm('정말로 회원 탈퇴하시겠습니까?')) {
+                return false;
+            }
+            event.preventDefault();
+            document.getElementById('quit-form').submit();
+        }
 
     </script>
 
