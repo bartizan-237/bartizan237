@@ -36,6 +36,7 @@ Route::get("/login/{provider}/callback", [SocialController::class, 'Callback']);
 // 개인정보처리방침
 Route::get('/privacy', function () { return view('privacy.privacy'); });
 
+Route::post("/comment/delete", [CommentController::class, 'destroy']); // custom comment-delete
 Route::resources([
 //    'bartizan' => BartizanController::class,
     'post' => PostController::class,

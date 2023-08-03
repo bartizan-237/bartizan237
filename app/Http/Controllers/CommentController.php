@@ -100,14 +100,25 @@ class CommentController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Comment $comment)
+    public function destroy(Request $request)
     {
-        //
+        info(__METHOD__);
+        info($request);
+
+        $data = $request->data;
+        if($user = \Auth::user()){
+            $comment = Comment::find($data['comment_id']);
+            info("SESSION USER ID = " . $user->id);
+            if($user->id == $comment->user_id){
+                $comment->delete();
+                return response()->json([
+                    'code' => 200,
+                ]);
+            } else {
+                return response()->json([ 'code' => 301, "message" => "게시글을 삭제할 권한이 없습니다."]);
+            }
+        }else {
+            return response()->json([ 'code' => 301, "message" => "게시글을 삭제할 권한이 없습니다."]);
+        }
     }
 }

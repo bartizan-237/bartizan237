@@ -120,10 +120,67 @@ var commentApp = new Vue({
                         return false;
                     }
                 });
-        }
+        },
     }
 });
 
+var commentList = new Vue({
+    el: '#commentList',
+    data: {
+        post_id : null,
+        user_id : null,
+        writer : null,
+        csrf_token : null,
+    },
+    mounted: function(){
+        this.post_id = document.querySelector('#post_id').value;
+        this.user_id = document.querySelector('#user_id').value;
+        this.csrf_token = document.querySelector('meta[name="csrf-token"]').content;
+    },
+    methods: {
+        deleteComment : function (comment_id){
+            console.log("deleteComment", this.post_id, this.user_id, comment_id);
+            if(this.user_id == ""){
+                toast("warning", "댓글을 삭제할 권한이 없습니다");
+                return false;
+            }
+
+            if(!confirm("댓글을 정말 삭제하시겠습니까?")) return false;
+
+            var comment_data = {
+                post_id : this.post_id,
+                user_id : this.user_id,
+                comment_id : comment_id
+            };
+
+            axios.post('/comment/delete',
+                {
+                    data : comment_data
+                },
+                {
+                    headers: {
+                        'X-CSRF-TOKEN': this.csrf_token
+                    }
+                })
+                .then(res => {
+                    console.log("response", res);
+                    if(res.data.code == 200){
+                        toast("success", "댓글이 삭제 되었습니다");
+                        setTimeout(function (){
+                            location.reload()
+                        }, 1500);
+                        return true;
+                    }else if(res.data.code == 301){
+                        toast("warning", "댓글을 삭제하는 중 오류가 발생했습니다😢<br/> 잠시 후에 다시 시도해주세요 !");
+                        return false;
+                    }else{
+                        toast("warning", "서버에 일시적인 오류가 발생했습니다😢<br/>잠시 후에 다시 시도해주시기 바랍니다");
+                        return false;
+                    }
+                });
+        }
+    }
+});
 
 var userActionApp = new Vue({
     el: '#userActionApp',

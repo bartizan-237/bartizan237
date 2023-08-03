@@ -1,3 +1,8 @@
+<!-- tailwind css
+23.8.3. npm run dev 로 default color 가 반영되지 않는 이슈 ex) bg-green-600, ...
+임시방편으로 이 블레이드 파일 생성
+-->
+
 <div class="bg-red-50 text-red-50"></div>
 <div class="bg-red-100 text-red-100"></div>
 <div class="bg-red-200 text-red-200"></div>
