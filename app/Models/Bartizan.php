@@ -17,6 +17,19 @@ class Bartizan extends Model
 
     ];
 
+    public function getThemeColor(){
+        // 대륙별 테마 색상
+        switch ($this->continent) {
+            case 'Asia' : $color = 'orange-400'; break;
+            case 'Africa' : $color = 'yellow-600'; break;
+            case 'Europe' : $color = 'green-600'; break;
+            case 'America' : $color = 'pink-500'; break;
+            case 'Oceania' : $color = 'sky-500'; break;
+            default : $color = 'gray-700';
+        }
+        return $color;
+    }
+
     public function getRecentPosts($count){
         return $this->hasMany(Post::class)->orderBy('id', 'desc')->take(3)->get();
     }

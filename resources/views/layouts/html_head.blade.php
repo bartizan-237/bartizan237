@@ -25,7 +25,6 @@
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <input id="user_id" type="hidden" value="{{Auth::user()->id ?? ''}}">
 
-
 <style>
     .watchmen-modal {
         display: none;

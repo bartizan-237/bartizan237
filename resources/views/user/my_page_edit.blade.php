@@ -91,36 +91,6 @@
             </div>
         </section>
 
-        @auth
-            <section class="w-full mt-12">
-                <div class="p-2 mx-auto text-center items-center ">
-                    <a class="text-gray-700 font-bold py-2 px-8 hover:text-green-900 rounded text-lg hover:underline hover:underline-offset-4"
-                       href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        로그아웃
-                    </a>
-                </div>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
-            </section>
-        @else
-            <section class="w-full mt-12">
-                <div class="p-2 mx-auto text-center items-center ">
-                    <a class="text-gray-700 font-bold py-2 px-8 hover:text-green-900 rounded text-lg hover:underline hover:underline-offset-4"
-                       href="{{ route('login') }}">
-                        로그인
-                    </a>
-                </div>
-                <div class="p-2 mx-auto text-center items-center mt-6">
-                    <a class="mx-auto w-full text-center items-center text-green-500 font-bold py-2 px-8 hover:text-green-700 rounded text-lg"
-                       href="{{ route('register') }}">
-                        회원가입
-                    </a>
-                </div>
-            </section>
-        @endauth
-
     </main>
 
     {{--    <script src="{{ asset('js/user/basic_info.js') }}" defer></script>--}}

@@ -124,9 +124,16 @@ class UserController extends Controller
         ]);
     }
 
-    public function userPost(){
+    public function userPost(Request $request){
+        $posts = $this->user->getPosts()->orderBy('id', 'desc')->paginate(10); // Relation & Pagination
+        if($posts){
+            foreach ($posts as $post){
+                $post->bartizan = $post->getBartizan();
+            }
+        }
         return view('user.post', [
-            'user' => $this->user
+            'user' => $this->user,
+            'posts' => $posts
         ]);
     }
 

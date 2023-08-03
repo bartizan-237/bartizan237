@@ -44,8 +44,8 @@
                 <span aria-hidden="true" class="absolute top-0 right-0 inline-block transform translate-x-1 -translate-y-1 bg-red-500 rounded-full " style="height: 5px; width: 5px; top: 5px; right: 5px"></span>
             </div>
             <div class="@if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/posts" )) current-open-menu @endif py-1 px-2 text-gray-800"
-                 onclick="location.href='/bartizan/{{$bartizan->id}}/posts'"
-                 {{--                 onclick="toast('info','준비 중 입니다.')"--}}
+{{--                 onclick="location.href='/bartizan/{{$bartizan->id}}/posts'"--}}
+                  onclick="toast('info','준비 중 입니다.')"
                  style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/posts") !== false) border-bottom: 2px solid #333; @endif  " >
                 게시판
             </div>

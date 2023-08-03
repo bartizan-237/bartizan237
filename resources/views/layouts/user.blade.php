@@ -34,10 +34,15 @@
                 나의 망대
             </div>
             <div class="@if(str_contains($_SERVER['REQUEST_URI'], "/user/post" )) current-open-menu @endif py-1 px-2 text-gray-800"
-                 onclick="location.href='/user/watchman'"
+                 onclick="location.href='/user/post'"
                  style=" @if(str_contains($_SERVER['REQUEST_URI'], "/user/post") !== false) border-bottom: 2px solid #333; @endif  " >
                 작성글
             </div>
+{{--            <div class="@if(str_contains($_SERVER['REQUEST_URI'], "/user/like" )) current-open-menu @endif py-1 px-2 text-gray-800"--}}
+{{--                 onclick="location.href='/user/post'"--}}
+{{--                 style=" @if(str_contains($_SERVER['REQUEST_URI'], "/user/like") !== false) border-bottom: 2px solid #333; @endif  " >--}}
+{{--                좋아요--}}
+{{--            </div>--}}
             <div class="@if($_SERVER['REQUEST_URI'] == "/user/notification") current-open-menu @endif py-1 px-2 text-gray-800"
                  {{--                 onclick="location.href='/bartizan/{{$bartizan->id}}/watchmen'"--}}
                  onclick="toast('info','준비 중 입니다.')"

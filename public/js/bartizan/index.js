@@ -866,7 +866,7 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symb
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -923,68 +923,66 @@ var bartizanList = new Vue({
       var _getBartizans = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(page) {
         var search_keyword, province_keyword, continent_keyword, target_url;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                search_keyword = this._data.search_keyword;
-                province_keyword = this._data.province_keyword;
-                continent_keyword = this._data.continent_keyword;
-                target_url = "/bartizan/scroll?page=".concat(page, "&continent=").concat(continent_keyword, "&province=").concat(province_keyword, "&search=").concat(search_keyword);
-                console.log("getBartizans", target_url);
-                _context.next = 7;
-                return axios.get(target_url).then(function (response) {
-                  var _bartizanList$_data$b;
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              search_keyword = this._data.search_keyword;
+              province_keyword = this._data.province_keyword;
+              continent_keyword = this._data.continent_keyword;
+              target_url = "/bartizan/scroll?page=".concat(page, "&continent=").concat(continent_keyword, "&province=").concat(province_keyword, "&search=").concat(search_keyword);
+              console.log("getBartizans", target_url);
+              _context.next = 7;
+              return axios.get(target_url).then(function (response) {
+                var _bartizanList$_data$b;
 
-                  console.log("response", response); // 23.7.27. bartizan.watchman_info (JSON) 추가됨 >> DB 쿼리 최소화
-                  // bartizan.watchman_info 를 JSON 파싱하여
-                  // bartizan.watchman_obj 에 세팅
+                console.log("response", response); // 23.7.27. bartizan.watchman_info (JSON) 추가됨 >> DB 쿼리 최소화
+                // bartizan.watchman_info 를 JSON 파싱하여
+                // bartizan.watchman_obj 에 세팅
 
-                  // 23.7.27. bartizan.watchman_info (JSON) 추가됨 >> DB 쿼리 최소화
-                  // bartizan.watchman_info 를 JSON 파싱하여
-                  // bartizan.watchman_obj 에 세팅
-                  var new_bartizans = response.data.bartizans; // 로드된 망대 데이터
+                // 23.7.27. bartizan.watchman_info (JSON) 추가됨 >> DB 쿼리 최소화
+                // bartizan.watchman_info 를 JSON 파싱하여
+                // bartizan.watchman_obj 에 세팅
+                var new_bartizans = response.data.bartizans; // 로드된 망대 데이터
 
-                  // 로드된 망대 데이터
-                  new_bartizans = new_bartizans.map(function (bartizan) {
-                    if (bartizan.watchman_infos != null) {
-                      var watchman_obj = JSON.parse(bartizan.watchman_infos);
-                      console.log(bartizan.name + " has watchman_infos!", watchman_obj);
-                      return _objectSpread(_objectSpread({}, bartizan), {}, {
-                        // 기존 object
-                        watchman_obj: watchman_obj // 파싱된 데이터 추가
+                // 로드된 망대 데이터
+                new_bartizans = new_bartizans.map(function (bartizan) {
+                  if (bartizan.watchman_infos != null) {
+                    var watchman_obj = JSON.parse(bartizan.watchman_infos);
+                    console.log(bartizan.name + " has watchman_infos!", watchman_obj);
+                    return _objectSpread(_objectSpread({}, bartizan), {}, {
+                      // 기존 object
+                      watchman_obj: watchman_obj // 파싱된 데이터 추가
 
-                      });
-                    } else {
-                      return _objectSpread(_objectSpread({}, bartizan), {}, {
-                        // 기존 object
-                        watchman_obj: {}
-                      });
-                    }
-                  }); // bartizanList._data.bartizans.push( ...response.data.bartizans ); // spread operator
-
-                  // bartizanList._data.bartizans.push( ...response.data.bartizans ); // spread operator
-                  (_bartizanList$_data$b = bartizanList._data.bartizans).push.apply(_bartizanList$_data$b, _toConsumableArray(new_bartizans)); // spread operator
-                  // page up
-
-
-                  // spread operator
-                  // page up
-                  bartizanList._data.page++;
-
-                  if (bartizanList._data.bartizans.length == 0) {
-                    return false;
+                    });
                   } else {
-                    return true;
+                    return _objectSpread(_objectSpread({}, bartizan), {}, {
+                      // 기존 object
+                      watchman_obj: {}
+                    });
                   }
-                })["catch"](function (error) {
-                  console.log("error", error);
-                  return false;
-                });
+                }); // bartizanList._data.bartizans.push( ...response.data.bartizans ); // spread operator
 
-              case 7:
-              case "end":
-                return _context.stop();
-            }
+                // bartizanList._data.bartizans.push( ...response.data.bartizans ); // spread operator
+                (_bartizanList$_data$b = bartizanList._data.bartizans).push.apply(_bartizanList$_data$b, _toConsumableArray(new_bartizans)); // spread operator
+                // page up
+
+
+                // spread operator
+                // page up
+                bartizanList._data.page++;
+
+                if (bartizanList._data.bartizans.length == 0) {
+                  return false;
+                } else {
+                  return true;
+                }
+              })["catch"](function (error) {
+                console.log("error", error);
+                return false;
+              });
+
+            case 7:
+            case "end":
+              return _context.stop();
           }
         }, _callee, this);
       }));
@@ -1040,14 +1038,14 @@ var bartizanList = new Vue({
       return bg_color_class;
     },
     getRepresentativeName: function getRepresentativeName(bartizan) {
-      var _bartizan$watchman_ob, _bartizan$watchman_ob2, _bartizan$watchman_ob3;
+      var _bartizan$watchman_ob, _bartizan$watchman_ob2;
 
-      return (_bartizan$watchman_ob = bartizan === null || bartizan === void 0 ? void 0 : (_bartizan$watchman_ob2 = bartizan.watchman_obj) === null || _bartizan$watchman_ob2 === void 0 ? void 0 : (_bartizan$watchman_ob3 = _bartizan$watchman_ob2.representative) === null || _bartizan$watchman_ob3 === void 0 ? void 0 : _bartizan$watchman_ob3.name) !== null && _bartizan$watchman_ob !== void 0 ? _bartizan$watchman_ob : "-";
+      return (_bartizan$watchman_ob = bartizan === null || bartizan === void 0 || (_bartizan$watchman_ob2 = bartizan.watchman_obj) === null || _bartizan$watchman_ob2 === void 0 || (_bartizan$watchman_ob2 = _bartizan$watchman_ob2.representative) === null || _bartizan$watchman_ob2 === void 0 ? void 0 : _bartizan$watchman_ob2.name) !== null && _bartizan$watchman_ob !== void 0 ? _bartizan$watchman_ob : "-";
     },
     getTychicusName: function getTychicusName(bartizan) {
-      var _bartizan$watchman_ob4, _bartizan$watchman_ob5, _bartizan$watchman_ob6;
+      var _bartizan$watchman_ob3, _bartizan$watchman_ob4;
 
-      return (_bartizan$watchman_ob4 = bartizan === null || bartizan === void 0 ? void 0 : (_bartizan$watchman_ob5 = bartizan.watchman_obj) === null || _bartizan$watchman_ob5 === void 0 ? void 0 : (_bartizan$watchman_ob6 = _bartizan$watchman_ob5.tychicus) === null || _bartizan$watchman_ob6 === void 0 ? void 0 : _bartizan$watchman_ob6.name) !== null && _bartizan$watchman_ob4 !== void 0 ? _bartizan$watchman_ob4 : "-";
+      return (_bartizan$watchman_ob3 = bartizan === null || bartizan === void 0 || (_bartizan$watchman_ob4 = bartizan.watchman_obj) === null || _bartizan$watchman_ob4 === void 0 || (_bartizan$watchman_ob4 = _bartizan$watchman_ob4.tychicus) === null || _bartizan$watchman_ob4 === void 0 ? void 0 : _bartizan$watchman_ob4.name) !== null && _bartizan$watchman_ob3 !== void 0 ? _bartizan$watchman_ob3 : "-";
     },
     getRoundFlagImage: function getRoundFlagImage(country_code) {
       var image_url = IMAGE_PATH + "/round/" + country_code.toLowerCase() + ".svg";
@@ -1078,40 +1076,38 @@ var bartizanList = new Vue({
           var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(entry) {
             var scroll_page, has_next_page;
             return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-              while (1) {
-                switch (_context2.prev = _context2.next) {
-                  case 0:
-                    if (!entry.isIntersecting) {
-                      _context2.next = 11;
-                      break;
-                    }
-
-                    console.log('무한 스크롤 실행');
-                    scroll_page = bartizanList._data.page;
-                    has_next_page = bartizanList.getBartizans(scroll_page);
-                    console.log('scroll_page: ' + scroll_page);
-                    console.log('has_next_page: ' + has_next_page);
-
-                    if (!(has_next_page == false)) {
-                      _context2.next = 9;
-                      break;
-                    }
-
-                    observer.unobserve(scroll_point); // 특정 대상(요소)에 대한 관찰 중단
-
-                    return _context2.abrupt("return");
-
-                  case 9:
-                    _context2.next = 12;
+              while (1) switch (_context2.prev = _context2.next) {
+                case 0:
+                  if (!entry.isIntersecting) {
+                    _context2.next = 11;
                     break;
+                  }
 
-                  case 11:
-                    console.log('무한 스크롤 X');
+                  console.log('무한 스크롤 실행');
+                  scroll_page = bartizanList._data.page;
+                  has_next_page = bartizanList.getBartizans(scroll_page);
+                  console.log('scroll_page: ' + scroll_page);
+                  console.log('has_next_page: ' + has_next_page);
 
-                  case 12:
-                  case "end":
-                    return _context2.stop();
-                }
+                  if (!(has_next_page == false)) {
+                    _context2.next = 9;
+                    break;
+                  }
+
+                  observer.unobserve(scroll_point); // 특정 대상(요소)에 대한 관찰 중단
+
+                  return _context2.abrupt("return");
+
+                case 9:
+                  _context2.next = 12;
+                  break;
+
+                case 11:
+                  console.log('무한 스크롤 X');
+
+                case 12:
+                case "end":
+                  return _context2.stop();
               }
             }, _callee2);
           }));

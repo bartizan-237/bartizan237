@@ -98,7 +98,7 @@ Route::group(['namespace' => 'User',
     Route::get('/basic_info', [UserController::class, 'basicInfo']);
     Route::post('/basic_info', [UserController::class, 'saveBasicInfo']);
     Route::post('/validate_nickname', [UserController::class, 'validateNickname']);
-    Route::post('/validate_member_id', [UserController::class, 'validateMemberId'])->withoutMiddleware("auth");
+    Route::post('/validate_member_id', [UserController::class, 'validateMemberId'])->withoutMiddleware("auth"); // middleware 예외
 
     Route::get('/my_page', [UserController::class, 'myPage']); // 유저 정보
     Route::get('/my_page/edit', [UserController::class, 'myPageEdit']); // 유저 정보 수정

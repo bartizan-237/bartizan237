@@ -1,8 +1,7 @@
 const colors = require('tailwindcss/colors'); // default color sets
-
+// console.log("colors", colors)
 module.exports = {
-
-  darkMode : 'class',
+  // darkMode : 'class',
   // purge: [
   //   './resources/views/**/*.blade.php',
   //   './resources/css/**/*.css',
@@ -12,14 +11,46 @@ module.exports = {
     './resources/css/**/*.css',
   ],
   theme: {
-    colors : {
-      ...colors,
-    },
+    // colors : {
+    //   ...colors,
+    //   transparent: 'transparent',
+    //   current: 'currentColor',
+    //   red : colors.red,
+    //   orange: colors.orange,
+    //   black: colors.black,
+    //   white: colors.white,
+    //   gray: colors.slate,
+    //   green: colors.green,
+    //   teal: colors.teal,
+    //   purple: colors.violet,
+    //   blue: colors.blue,
+    //   sky: colors.sky,
+    //   lime: colors.lime,
+    //   yellow: colors.amber,
+    //   pink: colors.fuchsia,
+    // },
     extend: {
-      screens: {
-        light: { raw: "(prefers-color-scheme: light)" },
-        dark: { raw: "(prefers-color-scheme: dark)" }
-      }
+      colors : {
+        transparent: 'transparent',
+        current: 'currentColor',
+        red : colors.red,
+        orange: colors.orange,
+        black: colors.black,
+        white: colors.white,
+        gray: colors.slate,
+        green: colors.green,
+        teal: colors.teal,
+        purple: colors.violet,
+        blue: colors.blue,
+        sky: colors.sky,
+        lime: colors.lime,
+        yellow: colors.amber,
+        pink: colors.fuchsia,
+      },
+      // screens: {
+      //   light: { raw: "(prefers-color-scheme: light)" },
+      //   dark: { raw: "(prefers-color-scheme: dark)" }
+      // }
     }
   },
   variants: {},

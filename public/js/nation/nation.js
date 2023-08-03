@@ -867,7 +867,7 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symb
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
@@ -900,42 +900,40 @@ var nationList = new Vue({
       var _getNations = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(page) {
         var search_keyword, province_keyword, continent_keyword, target_url;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                search_keyword = this._data.search_keyword;
-                province_keyword = this._data.province_keyword;
-                continent_keyword = this._data.continent_keyword;
-                target_url = "/nation/scroll?page=".concat(page, "&continent=").concat(continent_keyword, "&province=").concat(province_keyword, "&search=").concat(search_keyword);
-                console.log("getNations", target_url);
-                _context.next = 7;
-                return axios.get(target_url).then(function (response) {
-                  var _nationList$_data$nat;
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              search_keyword = this._data.search_keyword;
+              province_keyword = this._data.province_keyword;
+              continent_keyword = this._data.continent_keyword;
+              target_url = "/nation/scroll?page=".concat(page, "&continent=").concat(continent_keyword, "&province=").concat(province_keyword, "&search=").concat(search_keyword);
+              console.log("getNations", target_url);
+              _context.next = 7;
+              return axios.get(target_url).then(function (response) {
+                var _nationList$_data$nat;
 
-                  console.log("response", response);
+                console.log("response", response);
 
-                  (_nationList$_data$nat = nationList._data.nations).push.apply(_nationList$_data$nat, _toConsumableArray(response.data.nations)); // spread operator
-                  // page up
+                (_nationList$_data$nat = nationList._data.nations).push.apply(_nationList$_data$nat, _toConsumableArray(response.data.nations)); // spread operator
+                // page up
 
 
-                  // spread operator
-                  // page up
-                  nationList._data.page++;
+                // spread operator
+                // page up
+                nationList._data.page++;
 
-                  if (nationList._data.nations.length == 0) {
-                    return false;
-                  } else {
-                    return true;
-                  }
-                })["catch"](function (error) {
-                  console.log("error", error);
+                if (nationList._data.nations.length == 0) {
                   return false;
-                });
+                } else {
+                  return true;
+                }
+              })["catch"](function (error) {
+                console.log("error", error);
+                return false;
+              });
 
-              case 7:
-              case "end":
-                return _context.stop();
-            }
+            case 7:
+            case "end":
+              return _context.stop();
           }
         }, _callee, this);
       }));
@@ -975,40 +973,38 @@ var nationList = new Vue({
           var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(entry) {
             var scroll_page, has_next_page;
             return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-              while (1) {
-                switch (_context2.prev = _context2.next) {
-                  case 0:
-                    if (!entry.isIntersecting) {
-                      _context2.next = 11;
-                      break;
-                    }
-
-                    console.log('무한 스크롤 실행');
-                    scroll_page = nationList._data.page;
-                    has_next_page = nationList.getNations(scroll_page);
-                    console.log('scroll_page: ' + scroll_page);
-                    console.log('has_next_page: ' + has_next_page);
-
-                    if (!(has_next_page == false)) {
-                      _context2.next = 9;
-                      break;
-                    }
-
-                    observer.unobserve(scroll_point); // 특정 대상(요소)에 대한 관찰 중단
-
-                    return _context2.abrupt("return");
-
-                  case 9:
-                    _context2.next = 12;
+              while (1) switch (_context2.prev = _context2.next) {
+                case 0:
+                  if (!entry.isIntersecting) {
+                    _context2.next = 11;
                     break;
+                  }
 
-                  case 11:
-                    console.log('무한 스크롤 X');
+                  console.log('무한 스크롤 실행');
+                  scroll_page = nationList._data.page;
+                  has_next_page = nationList.getNations(scroll_page);
+                  console.log('scroll_page: ' + scroll_page);
+                  console.log('has_next_page: ' + has_next_page);
 
-                  case 12:
-                  case "end":
-                    return _context2.stop();
-                }
+                  if (!(has_next_page == false)) {
+                    _context2.next = 9;
+                    break;
+                  }
+
+                  observer.unobserve(scroll_point); // 특정 대상(요소)에 대한 관찰 중단
+
+                  return _context2.abrupt("return");
+
+                case 9:
+                  _context2.next = 12;
+                  break;
+
+                case 11:
+                  console.log('무한 스크롤 X');
+
+                case 12:
+                case "end":
+                  return _context2.stop();
               }
             }, _callee2);
           }));

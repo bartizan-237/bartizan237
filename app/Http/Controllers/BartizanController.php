@@ -133,6 +133,7 @@ class BartizanController extends Controller
      */
     public function show(Bartizan $bartizan)
     {
+        info(__METHOD__ . " " . $bartizan->name);
         return view("bartizan.show", [
             "bartizan" => $bartizan
         ]);
@@ -230,6 +231,7 @@ class BartizanController extends Controller
     public function showNation(Bartizan $bartizan){
         $nation = $bartizan->getNation;
 //        dd($watchmen);
+        info(__METHOD__ . " " . $bartizan->name);
         return view("bartizan.nation",[
             "bartizan" => $bartizan,
             "nation" => $nation
