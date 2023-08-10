@@ -11,7 +11,7 @@ class JoinRequest extends Model
     use HasFactory;
     use SoftDeletes;
     protected $table = 'join_requests';
-    protected $fillable = ['bartizan_id', 'user_id'];
+    protected $fillable = ['bartizan_id', 'user_id', 'reason'];
 
     public function getJoinRequestUsers(){
         return $this->belongsTo(User::class, 'user_id', 'id');

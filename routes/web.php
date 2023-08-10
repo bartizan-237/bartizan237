@@ -66,6 +66,7 @@ Route::group(['namespace' => 'Bartizan', 'prefix' => 'bartizan'], function() {
     Route::get("/{bartizan}/posts/{post}", [BartizanController::class, 'showPost']);
 //    Route::post("{bartizan}/join", [BartizanController::class, 'join']);
     Route::post("/join", [BartizanController::class, 'join']);
+    Route::get("/{bartizan}/join_request", [BartizanController::class, 'joinRequest']);
     Route::get("{bartizan}/join_request_list", [BartizanController::class, 'joinRequestList']);
     Route::get("{bartizan}/watchmen", [BartizanController::class, 'showWatchmen']);
     Route::get("{bartizan}/nation", [BartizanController::class, 'showNation']); // 23.7.26. 망대 - 나라 페이지 통합

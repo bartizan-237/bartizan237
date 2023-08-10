@@ -55,32 +55,24 @@
                  style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/watchmen") !== false) border-bottom: 2px solid #333; @endif  " >
                 파수꾼
             </div>
-{{--            @if(\Auth::user() !== null AND \Auth::user()->id!==$bartizan->admin_user_id)--}}
-{{--                <div>--}}
-{{--                    <script src="{{ asset('js/watchman/join_request.js') }}" defer></script>--}}
-{{--                    <button class="py-1 px-2 text-gray-800" @click="showModal">파수꾼 신청</button>--}}
-{{--                    --}}{{-- 파수꾼 신청 모달창 --}}
-{{--                    <div id="watchmen-modal" class="watchmen-modal">--}}
-{{--                        <div class="modal-content">--}}
-{{--                            <p class="text-center">파수꾼 신청을 하시겠습니까?</p><br/>--}}
-{{--                            <div class="text-center">--}}
-{{--                                <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded" @click="join_request({{\Auth::user()->id}},{{$bartizan->id}})">예</button>--}}
-{{--                                <button class="bg-red-500 text-white font-bold py-2 px-4 rounded" @click="onCancel">아니오</button>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    --}}{{-- 파수꾼 신청 모달창 --}}
-{{--                </div>--}}
-{{--            @elseif(Auth::user() === null)--}}
-{{--                --}}{{-- 망대 관리자만 볼 수 있는 파수꾼 신청 목록이 로그인 상태가 아닐 경우 누구에게나 보이는 문제 --}}
-{{--            @else--}}
-{{--                <div>--}}
-{{--                    <button class="py-1 px-2 text-gray-800"--}}
-{{--                            onclick="location.href='/bartizan/{{$bartizan->id}}/join_request_list'">--}}
-{{--                        파수꾼 신청 목록--}}
-{{--                    </button>--}}
-{{--                </div>--}}
-{{--            @endif--}}
+
+            @if(\Auth::user() !== null AND \Auth::user()->id!==$bartizan->admin_user_id)
+                <div>
+                    <button class="py-1 px-2 text-gray-800"
+                            onclick="location.href='/bartizan/{{$bartizan->id}}/join_request'">
+                        파수꾼 신청
+                    </button>
+                </div>
+            @elseif(Auth::user() === null)
+
+            @else
+                <div>
+                    <button class="py-1 px-2 text-gray-800"
+                            onclick="location.href='/bartizan/{{$bartizan->id}}/join_request_list'">
+                        파수꾼 신청 목록
+                    </button>
+                </div>
+            @endif
         </div>
         @endif
 
@@ -101,3 +93,16 @@
 </body>
 
 </html>
+
+
+{{--파수꾼 신청 모달창--}}
+{{--<div id="watchmen-modal" class="watchmen-modal">--}}
+{{--    <div class="modal-content">--}}
+{{--        <p class="text-center">파수꾼 신청을 하시겠습니까?</p><br/>--}}
+{{--        <div class="text-center">--}}
+{{--            <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded" @click="join_request({{\Auth::user()->id}},{{$bartizan->id}})">예</button>--}}
+{{--            <button class="bg-red-500 text-white font-bold py-2 px-4 rounded" @click="onCancel">아니오</button>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
+{{--파수꾼 신청 모달창--}}

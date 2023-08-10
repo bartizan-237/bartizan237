@@ -1,21 +1,35 @@
 var join_request = new Vue({
     el: '#joinRequest',
     methods: {
-        showModal: function (){
-            var modal = document.getElementById("watchmen-modal");
-            modal.style.display = "block";
-        },
+        // showModal: function (){
+        //     var modal = document.getElementById("watchmen-modal");
+        //     modal.style.display = "block";
+        // },
 
-        join_request: function (user_id, bartizan_id) {
+        request: function (user_id, bartizan_id) {
             console.log('join');
-            var modal = document.getElementById("watchmen-modal");
-            modal.style.display = "none";
+            // var modal = document.getElementById("watchmen-modal");
+            // modal.style.display = "none";
             console.log("예");
+            const name = document.getElementById('name').textContent;
+            const reason = document.getElementById('reason').value;
+            console.log('네임값 : ', name);
+            console.log('사유값 : ', reason);
+            if(name==""){
+                toast("warning", "마이페이지에서 이름을 작성해주세요.");
+                return
+            }
+            if(reason==""){
+                toast("warning", "신청 사유를 작성해주세요.");
+                return
+            }
+
             axios.post('/bartizan/join',
                 {
                     data: {
                         user_id: user_id,
-                        bartizan_id: bartizan_id
+                        bartizan_id: bartizan_id,
+                        reason : reason
                     }
                 }).then(res => {
                 console.log('response : ', res.data.message);
@@ -33,12 +47,12 @@ var join_request = new Vue({
             });
         },
 
-        onCancel: function (){
-            var modal = document.getElementById("watchmen-modal");
-            modal.style.display = "none";
-            toast("info", "취소");
-            console.log("아니오");
-        },
+        // onCancel: function (){
+        //     var modal = document.getElementById("watchmen-modal");
+        //     modal.style.display = "none";
+        //     toast("info", "취소");
+        //     console.log("아니오");
+        // },
 
 
 
