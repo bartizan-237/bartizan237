@@ -3,9 +3,14 @@
 
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<meta name="og:image" content="https://kr.object.ncloudstorage.com/immanuel/bartizan/image/bartizan_logo.png">
 
-<title>{{ config('app.name', 'Laravel') }}</title>
+<title>세계망대플랫폼</title>
+<meta name="description" content="237나라에 망대를 세우는 세계망대플랫폼입니다.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="세계망대플랫폼">
+<meta property="og:description" content="237나라에 망대를 세우는 세계망대플랫폼입니다.">
+<meta name="og:image" content="https://kr.object.ncloudstorage.com/immanuel/bartizan/image/bartizan_logo.png">
+<meta property="og:url" content="https://platform.237.co.kr">
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" defer></script>

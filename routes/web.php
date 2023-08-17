@@ -15,7 +15,8 @@ use App\Http\Controllers\{
     JoinRequestController
 };
 
-Route::get('/', function () { return redirect('/home'); });
+//Route::get('/', function () { return redirect('/home'); });
+Route::get('/', function () { return redirect('/bartizan/main'); });
 
 // Routes for User Auth
 Auth::routes();

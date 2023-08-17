@@ -2,6 +2,9 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     @include("layouts.html_head")
+
+    <!-- Naver Webmaster -->
+        <meta name="naver-site-verification" content="9f187befa336e371c6d7a39df8bf86123f9e2a93" />
 </head>
 <body class="bg-237 antialiased leading-none">
 

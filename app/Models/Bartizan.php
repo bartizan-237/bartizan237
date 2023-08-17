@@ -21,10 +21,10 @@ class Bartizan extends Model
         // 대륙별 테마 색상
         switch ($this->continent) {
             case 'Asia' : $color = 'orange-400'; break;
-            case 'Africa' : $color = 'yellow-600'; break;
-            case 'Europe' : $color = 'green-600'; break;
-            case 'America' : $color = 'pink-500'; break;
-            case 'Oceania' : $color = 'sky-500'; break;
+            case 'Africa' : $color = 'yellow-400'; break;
+            case 'Europe' : $color = 'green-400'; break;
+            case 'America' : $color = 'pink-400'; break;
+            case 'Oceania' : $color = 'sky-400'; break;
             default : $color = 'gray-700';
         }
         return $color;

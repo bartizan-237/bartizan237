@@ -59,9 +59,11 @@ class HomeController extends Controller
         // 최근 망대
         // 최근 게시글
 
-        $posts = Post::orderBy("id", "desc")->take(3)->get();
+        $new_posts = Post::orderBy("id", "desc")->take(3)->get();
+        $hot_posts = Post::orderBy("id", "desc")->take(3)->get();
         return view('home', [
-            "posts" => $posts
+            "new_posts" => $new_posts,
+            "hot_posts" => $hot_posts,
         ]);
     }
 

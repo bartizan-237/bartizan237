@@ -1,15 +1,16 @@
-<p>최근 게시글</p>
 @foreach($posts as $post)
-<div class="w-full mb-3">
-    <div class="p-3 bg-gray-50">
+<div class="w-full mb-2 ">
+    <div class="py-1 bg-white border-b border-gray-100">
         <!-- TITLE -->
-        <span class="inline-block text-xs p-1 ml-3 rounded-lg text-gray-900">{{$post->getBartizan()->name}}</span>
-        <p style="font-size : 14px; line-height: 20px" class="text-gray-900 font-medium title-font px-3 py-2">{{$post->title}}</p>
-        <div style="font-size : 11px; line-height: 20px; height: 40px; width: 100%; overflow:hidden; text-overflow:ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;"
-             class="text-gray-700 px-3 py-1">
-            {{strip_tags($post->content)}}
-        </div>
-        <div class="flex border-t border-gray-100 px-3 py-2 text-gray-700">
+        <p style="font-size : 14px; line-height: 20px" class="text-gray-900 font-medium title-font">
+            <span style="font-size: 11px; padding : 3px 5px; border-radius: 4px" class="text-xs font-bold mr-1 text-white bg-{{$post->getBartizan()->getThemeColor()}}">{{$post->getBartizan()->name}}</span>
+            {{$post->title}}
+        </p>
+{{--        <div style="font-size : 11px; line-height: 20px; height: 40px; width: 100%; overflow:hidden; text-overflow:ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;"--}}
+{{--             class="text-gray-700 px-3 py-1">--}}
+{{--            {{strip_tags($post->content)}}--}}
+{{--        </div>--}}
+        <div class="flex py-2 text-gray-700">
             <div class="w-1/2 left-0">
                 <a style="font-size:12px;" class="inline-block mr-2">{{$post->getCreatedAt()}}</a>
             </div>
