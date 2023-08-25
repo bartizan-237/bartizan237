@@ -23,6 +23,9 @@ class Comment extends Model
         }else{
             return $this->created_at;
         }
+    }
 
+    public function getPost(){
+        return $this->hasOne(Post::class, 'post_id', 'id');
     }
 }

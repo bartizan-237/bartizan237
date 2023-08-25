@@ -29,7 +29,8 @@ class User extends Authenticatable
         'bartizan_id',
         'provider',
         'provider_id',
-        'appointment'
+        'appointment',
+        'device_token'
     ];
 
     /**
