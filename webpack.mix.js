@@ -48,7 +48,8 @@ mix
         require('tailwindcss'),
         require('postcss-nested'),
         require('autoprefixer'),
-    ]);
+    ])
+    .version();
 
 if (mix.inProduction()) {
     mix

@@ -2118,12 +2118,22 @@ select {
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
+.outline {
+  outline-style: solid;
+}
 .ring-gray-300 {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(203 213 225 / var(--tw-ring-opacity));
 }
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.transition {
+  transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 .transition-all {
   transition-property: all;
@@ -2132,13 +2142,6 @@ select {
 }
 .transition-opacity {
   transition-property: opacity;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-.transition {
-  transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -2211,7 +2214,7 @@ html {
     display: flex;
 }
 .continent-card {
-    width: 160px; height: 210px; padding: 5px; margin-right:10px
+    width: 160px; height: 170px; padding: 5px; margin-right:10px
 }
 .continent-name {
     display:block; font-size: 15px; font-weight: bold; letter-spacing : 3px; margin-bottom: 5px;
@@ -2239,6 +2242,43 @@ html {
     text-align: center; /* 수평 정렬을 위해 텍스트 가운데 정렬 */
     border-radius: 50%; /* 원형으로 만들기 위해 50% 값 사용 */
     font-size: 12px; /* 텍스트 크기 (원하는 크기로 변경 가능) */
+}
+.main-search-container {
+    margin: 20px auto;
+    position: relative;
+    width: 300px;
+}
+.main-search-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+    transition: border-color 1s ease-in-out;
+}
+.main-search-input:focus {
+    border-color: #3498db;
+}
+.main-search-button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    /*background-color: #3498db;*/
+    background-color: #0093E9; background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    /*padding: 8px 15px;*/
+    padding: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease-in-out;
+}
+.main-search-button:hover {
+    background-color: #2980b9;
 }
 .checked\:bg-gray-500:checked {
   --tw-bg-opacity: 1;

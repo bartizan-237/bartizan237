@@ -44,7 +44,7 @@
 
 
                <!-- 23.8.26. 선교정보보러가기 수정 -->
-                <div class="pr-2 w-full mb-3">
+                <div class="w-full mb-3">
                     <div class="bg-white p-3 rounded-lg text-center cursor-pointer"
                          style="color:white; font-size : 15px; font-weight:bold; background-color: #0093E9; background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);"
                          onclick="openModal('https://kr.object.ncloudstorage.com/immanuel/bartizan/image/mission/{{$nation->country_code}}.png');"
@@ -97,7 +97,7 @@
 
 
                 @if(isset($nation->tribes) AND $nation->tribes != "")
-                    <div class="pr-2 w-full mb-3">
+                    <div class="w-full mb-3">
                         <div class="bg-white p-3 rounded-lg">
                             <p class="nation_title">종족</p>
                             {{$nation->tribes}}

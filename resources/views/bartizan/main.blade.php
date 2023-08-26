@@ -6,11 +6,11 @@
         {{--        <div class="bg-gray-50 p-2 min-h-full" style="font-family: 'Nanum Myeongjo', serif;">--}}
         <div class="bg-gray-100 p-2 min-h-full" >
             <div class="h-full mb-16">
-                <div class=" rounded-lg mx-auto p-3 my-2 mb-3 bg-white">
-                    <p style="font-weight:bold; font-size: 15px; line-height: 25px; text-align: center;">
-                        나의 237나라, 빈 곳 작정
-                    </p>
-                </div>
+{{--                <div class=" rounded-lg mx-auto p-3 my-2 mb-3 bg-white">--}}
+{{--                    <p style="font-weight:bold; font-size: 15px; line-height: 25px; text-align: center;">--}}
+{{--                        나의 237나라, 빈 곳 작정--}}
+{{--                    </p>--}}
+{{--                </div>--}}
 
                 <div class=" rounded-lg mx-auto p-3 my-2 mb-3 bg-white">
                     <p style="font-size: 13px; line-height: 20px; text-align: center;">
@@ -20,6 +20,25 @@
                         나에게 주신 한 나라는 어디인가요?
                     </p>
                 </div>
+
+{{--                @if(str_contains($_SERVER['REQUEST_URI'], "test") !== false)--}}
+                <div class="main-search-container">
+                    <input id="main_search_input" type="text" class="main-search-input" placeholder="237나라를 검색해보세요!">
+                    <button id="main_search_btn" class="main-search-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
+                </div>
+                <script>
+                    const searchButton = document.getElementById("main_search_btn");
+                    // <select> 요소의 선택이 변경될 때 실행되는 함수
+                    searchButton.addEventListener("click", function() {
+                        // 선택된 옵션의 값과 텍스트를 가져옴
+                        const searchInput = document.getElementById("main_search_input");
+                        const searchValue = searchInput.value;
+                        location.href = "https://platform.237.co.kr/bartizan?province=전체&search=" + searchValue;
+                    });
+                </script>
+{{--                @endif--}}
 
 {{--                <div class=" rounded-lg mx-auto p-3 my-2 mb-3 bg-white text-center justify-center">--}}
 {{--                    <a target="_blank" href="https://youtu.be/ij12Z5nLu2c" style="font-weight:bold; font-size: 15px; color: #0b5ed7; line-height: 20px; cursor:pointer;">--}}

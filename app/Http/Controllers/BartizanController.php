@@ -13,7 +13,6 @@ use Carbon\Carbon;
 
 class BartizanController extends Controller
 {
-
     public function main(Request $request){
         // 237 Bartizans 메인
         // 5대륙 12대교구
@@ -333,7 +332,11 @@ class BartizanController extends Controller
 
         // province 키워드가 있다면
         if (isset($province_keyword) AND $province_keyword != "") {
-            $query->where('province', $province_keyword);
+            if($province_keyword == "전체"){
+                
+            } else {
+                $query->where('province', $province_keyword);
+            }
         }
 
         // search 키워드가 있다면
