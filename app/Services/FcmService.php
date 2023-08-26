@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\Http;
 
 class FcmService
 {
-    private $fcmServerKey = 'AAAA6KbL1zc:APA91bFuwEHG67By0uRWo965q1NcLwQovmh_9entqsmNbe6PUVuup1QMeLWWNVCUlo5EhrWMrvx7H0p4wdI5KIVNdcmGTY7xgwpyl59W4gxngulILW2WeenYQafTIs81_ktUbR-apzxk';
+    public function __construct()
+    {
+        $this->fcmServerKey = env('FCM_SERVER_KEY');
+    }
 
     public function sendPushNotification($targetToken, $title, $body, $data){
         try{

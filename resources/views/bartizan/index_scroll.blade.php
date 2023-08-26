@@ -33,6 +33,21 @@
                     </div>
                 </div>
             </form>
+
+
+            <script>
+            // 23.8.26. 셀렉트박스 선택 시, 바로 해당 대교구 목록으로 이동
+            const selectBox = document.getElementById("province");
+            selectBox.addEventListener("change", function() {
+                const selectedValue = selectBox.value;
+                const selectedText = selectBox.options[selectBox.selectedIndex].text;
+                console.log(`Selected Value: ${selectedValue}, Selected Text: ${selectedText}`);
+
+                location.href = "/bartizan?province=" + selectedValue;
+            });
+
+            </script>
+
 {{--            <div id="bartizan_list" class="p-2 mx-auto">--}}
             <div id="bartizan_list" class="p-2 mx-auto grid grid-cols-2 gap-3">
                 <template v-for="bartizan in _data.bartizans">

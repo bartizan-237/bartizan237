@@ -1054,7 +1054,9 @@ var bartizanList = new Vue({
       };
     },
     moveToBartizanDetail: function moveToBartizanDetail(bartizan_id) {
-      location.href = "/bartizan/" + bartizan_id;
+      // location.href = "/bartizan/" + bartizan_id;
+      // 23.8.26. 임시 변경
+      location.href = "/bartizan/" + bartizan_id + "/nation";
     },
     observingInfiniteScroll: function observingInfiniteScroll() {
       console.log("observingInfiniteScroll");

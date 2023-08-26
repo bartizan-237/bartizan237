@@ -66,7 +66,7 @@ class CommentController extends Controller
 //                info($targetToken);
             $title = "{$user_row->nickname}님이 게시물에 댓글을 남겼습니다.";
 //            $title = "테스트 타이틀";
-            $body = "{$data['comment_text']}";
+            $body = $data['comment_text'];
             $data = null; // 사용자 지정 데이터, 추가 정보
 
             $response = $fcmService->sendPushNotification($targetToken, $title, $body, $data);

@@ -21,12 +21,12 @@
                     </p>
                 </div>
 
-                <div class=" rounded-lg mx-auto p-3 my-2 mb-3 bg-white text-center justify-center">
-                    <a target="_blank" href="https://youtu.be/ij12Z5nLu2c" style="font-weight:bold; font-size: 15px; color: #0b5ed7; line-height: 20px; cursor:pointer;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block mr-1 text-red-600"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
-                        <span>나의 237찾기(237망대) 강의영상 보러가기</span>
-                    </a>
-                </div>
+{{--                <div class=" rounded-lg mx-auto p-3 my-2 mb-3 bg-white text-center justify-center">--}}
+{{--                    <a target="_blank" href="https://youtu.be/ij12Z5nLu2c" style="font-weight:bold; font-size: 15px; color: #0b5ed7; line-height: 20px; cursor:pointer;">--}}
+{{--                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block mr-1 text-red-600"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>--}}
+{{--                        <span>나의 237찾기(237망대) 강의영상 보러가기</span>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
 
                 <p class="my-2 font-bold text-xl"> 🌍 5대륙 </p>
                 <div class="w-full mb-2" style="overflow :scroll">
@@ -37,7 +37,7 @@
                             <div class="flex flex-col p-3 text-left">
                                 <p class="continent-name font-bold">유럽<span style="font-size: 10px; letter-spacing: 0px">(52나라)</span></p>
                                 <span class="continent-name-en">EUROPE</span>
-                                <span class="continent-country-count">빈 곳 51 나라</span>
+{{--                                <span class="continent-country-count">빈 곳 51 나라</span>--}}
                             </div>
                         </div>
                         <div onclick="location.href='/bartizan?continent=Asia'" style="" class=" continent-card text-center items-center align-items-center justify-center bg-white rounded-lg">
@@ -46,7 +46,7 @@
                             <div class="flex flex-col p-3 text-left">
                                 <span class="continent-name font-bold">아시아<span style="font-size: 10px; letter-spacing: 0px">(47나라)</span></span>
                                 <span class="continent-name-en">ASIA</span>
-                                <span class="continent-country-count">빈 곳 46 나라</span>
+{{--                                <span class="continent-country-count">빈 곳 46 나라</span>--}}
                             </div>
                         </div>
                         <div onclick="location.href='/bartizan?continent=America'" style="" class=" continent-card text-center items-center align-items-center justify-center bg-white rounded-lg">
@@ -55,7 +55,7 @@
                             <div class="flex flex-col p-3 text-left">
                                 <span class="continent-name font-bold">아메리카<span style="font-size: 10px; letter-spacing: 0px">(54나라)</span></span>
                                 <span class="continent-name-en">AMERICA</span>
-                                <span class="continent-country-count">빈 곳 54 나라</span>
+{{--                                <span class="continent-country-count">빈 곳 54 나라</span>--}}
                             </div>
                         </div>
                         <div onclick="location.href='/bartizan?continent=Africa'" style="" class=" continent-card text-center items-center align-items-center justify-center bg-white rounded-lg">
@@ -64,7 +64,7 @@
                             <div class="flex flex-col p-3 text-left">
                                 <span class="continent-name font-bold">아프리카<span style="font-size: 10px; letter-spacing: 0px">(59나라)</span></span>
                                 <span class="continent-name-en">AFRICA</span>
-                                <span class="continent-country-count">빈 곳 59 나라</span>
+{{--                                <span class="continent-country-count">빈 곳 59 나라</span>--}}
                             </div>
                         </div>
                         <div onclick="location.href='/bartizan?continent=Oceania'" style="" class=" continent-card text-center items-center align-items-center justify-center bg-white rounded-lg">
