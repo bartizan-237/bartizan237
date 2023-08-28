@@ -51,14 +51,19 @@ html {
 }
 
 .continent-card {
-    width: 160px; height: 170px; padding: 5px; margin-right:10px
+    position: relative; width: 160px; height: 185px; padding: 5px; margin-right:10px;
+}
+
+.continent-bg-image {
+    width: 150px; height:100px;  background-size: cover; border-radius: 5px; filter:brightness(0.8)
 }
 
 .continent-name {
     display:block; font-size: 15px; font-weight: bold; letter-spacing : 3px; margin-bottom: 5px;
 }
 .continent-name-en {
-    display:block; font-size: 12px; font-weight: bold; letter-spacing : 3px; margin-bottom: 5px;
+    top: 50%; left: 50%; transform: translate(-50%, -230%); font-size: 20px;  color:white;
+    position: absolute; display:block; font-weight: bold; letter-spacing : 3px; margin-bottom: 5px;
 }
 .continent-country-count {
     display:block; font-size: 12px; margin-bottom: 5px;

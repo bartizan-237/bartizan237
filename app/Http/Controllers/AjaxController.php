@@ -17,7 +17,6 @@ class AjaxController extends Controller
     public function clickLike(Request $request){
         $user_id = $request->user_id;
         $target_id = $request->target_type;
-
     }
 
 

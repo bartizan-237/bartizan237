@@ -24,7 +24,8 @@ Route::get('/welcome', function () { return view('welcome'); }); // 회원가입
 
 //Route::get('/test', [HomeController::class, 'test']);
 //Route::get('/test', [MailController::class, 'send']);
-Route::get('/test', function () { return view('test'); });
+//Route::get('/test', function () { return view('test'); });
+Route::get('/test2', function () { return view('test2'); });
 //Route::get('/make', [NationController::class, 'createBartizans']);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
