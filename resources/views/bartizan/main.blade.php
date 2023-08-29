@@ -110,8 +110,9 @@
                         <div class="w-full">
                             <div class="border-b border-1 border-gray-200 pb-2 relative">
                                 <p class="text-gray-900 font-bold inline-block ml-1"> 유럽 EU회원국 <span class="text-gray-700 text-xs font-medium ml-2"> 22개 나라</span> </p>
-                                <div onclick="location.href='/bartizan?province=EU회원국'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <div onclick="location.href='/bartizan?province=EU회원국'"
+                                     class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
                                     </svg>
                                 </div>
@@ -127,8 +128,9 @@
                         <div class="w-full">
                             <div class="border-b border-1 border-gray-200 pb-2 relative">
                                 <p class="text-gray-900 font-bold inline-block ml-1"> 유럽 EU비회원국 <span class="text-gray-700 text-xs font-medium ml-2"> 25개 나라</span> </p>
-                                <div onclick="location.href='/bartizan?province=EU비회원국'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <div onclick="location.href='/bartizan?province=EU비회원국'"
+                                     class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
                                     </svg>
                                 </div>
@@ -144,8 +146,9 @@
                         <div class="w-full">
                             <div class="border-b border-1 border-gray-200 pb-2 relative">
                                 <p class="text-gray-900 font-bold inline-block ml-1"> 러시아권 <span class="text-gray-700 text-xs font-medium ml-2"> 9개 나라</span></p>
-                                <div onclick="location.href='/bartizan?province=러시아권'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <div onclick="location.href='/bartizan?province=러시아권'"
+                                     class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
                                     </svg>
                                 </div>
@@ -161,8 +164,9 @@
                         <div class="w-full">
                             <div class="border-b border-1 border-gray-200 pb-2 relative">
                                 <p class="text-gray-900 font-bold inline-block ml-1"> 중화권 <span class="text-gray-700 text-xs font-medium ml-2"> 6개 나라</span> </p>
-                                <div onclick="location.href='/bartizan?province=중화권'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <div onclick="location.href='/bartizan?province=중화권'"
+                                     class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
                                     </svg>
                                 </div>
@@ -178,8 +182,9 @@
                         <div class="w-full">
                             <div class="border-b border-1 border-gray-200 pb-2 relative">
                                 <p class="text-gray-900 font-bold inline-block ml-1"> 힌두권 <span class="text-gray-700 text-xs font-medium ml-2"> 4개 나라</span> </p>
-                                <div onclick="location.href='/bartizan?province=힌두권'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <div onclick="location.href='/bartizan?province=힌두권'"
+                                     class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
                                     </svg>
                                 </div>
@@ -195,8 +200,9 @@
                         <div class="w-full">
                             <div class="border-b border-1 border-gray-200 pb-2 relative">
                                 <p class="text-gray-900 font-bold inline-block ml-1"> 아시아권 <span class="text-gray-700 text-xs font-medium ml-2"> 12개 나라</span> </p>
-                                <div onclick="location.href='/bartizan?province=아시아권'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <div onclick="location.href='/bartizan?province=아시아권'"
+                                     class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
                                     </svg>
                                 </div>
@@ -212,8 +218,9 @@
                         <div class="w-full">
                             <div class="border-b border-1 border-gray-200 pb-2 relative">
                                 <p class="text-gray-900 font-bold inline-block ml-1"> 아랍권 <span class="text-gray-700 text-xs font-medium ml-2"> 32개 나라</span> </p>
-                                <div onclick="location.href='/bartizan?province=아랍권'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <div onclick="location.href='/bartizan?province=아랍권'"
+                                     class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
                                     </svg>
                                 </div>
@@ -228,8 +235,9 @@
                         <div class="w-full">
                             <div class="border-b border-1 border-gray-200 pb-2 relative">
                                 <p class="text-gray-900 font-bold inline-block ml-1"> 아프리카 영어권 <span class="text-gray-700 text-xs font-medium ml-2"> 25개 나라</span></p>
-                                <div onclick="location.href='/bartizan?province=아프리카1(영어권)'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <div onclick="location.href='/bartizan?province=아프리카1(영어권)'"
+                                     class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
                                     </svg>
                                 </div>
@@ -244,8 +252,9 @@
                         <div class="w-full">
                             <div class="border-b border-1 border-gray-200 pb-2 relative">
                                 <p class="text-gray-900 font-bold inline-block ml-1"> 아프리카 불어/포르투어권 <span class="text-gray-700 text-xs font-medium ml-2"> 23개 나라</span></p>
-                                <div onclick="location.href='/bartizan?province=아프리카2(포르투어권)'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <div onclick="location.href='/bartizan?province=아프리카2(포르투어권)'"
+                                     class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
                                     </svg>
                                 </div>
@@ -261,8 +270,9 @@
                         <div class="w-full">
                             <div class="border-b border-1 border-gray-200 pb-2 relative">
                                 <p class="text-gray-900 font-bold inline-block ml-1"> 오세아니아 <span class="text-gray-700 text-xs font-medium ml-2"> 25개 나라</span> </p>
-                                <div onclick="location.href='/bartizan?province=오세아니아'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <div onclick="location.href='/bartizan?province=오세아니아'"
+                                     class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
                                     </svg>
                                 </div>
@@ -278,8 +288,9 @@
                         <div class="w-full">
                             <div class="border-b border-1 border-gray-200 pb-2 relative">
                                 <p class="text-gray-900 font-bold inline-block ml-1"> 북아메리카 <span class="text-gray-700 text-xs font-medium ml-2"> 7개 나라</span></p>
-                                <div onclick="location.href='/bartizan?province=북아메리카'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <div onclick="location.href='/bartizan?province=북아메리카'"
+                                     class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
                                     </svg>
                                 </div>
@@ -294,8 +305,9 @@
                         <div class="w-full">
                             <div class="border-b border-1 border-gray-200 pb-2 relative">
                                 <p class="text-gray-900 font-bold inline-block ml-1"> 중남아메리카 <span class="text-gray-700 text-xs font-medium ml-2"> 47개 나라</span></p>
-                                <div onclick="location.href='/bartizan?province=중남아메리카'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <div onclick="location.href='/bartizan?province=중남아메리카'"
+                                     class="absolute h-5 w-5 text-gray-900" style="position:absolute; right:6px; top:0px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
                                     </svg>
                                 </div>

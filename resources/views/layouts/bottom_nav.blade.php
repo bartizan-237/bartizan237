@@ -52,8 +52,11 @@
 {{--        </div>--}}
 {{--    </a>--}}
 
-{{--    <a id="" href="/user/my_page" class="nav_btn w-1/5  cursor-pointer flex flex-grow items-center justify-center p-2 @if(str_contains($_SERVER["REQUEST_URI"], "/user")) text-green-500 @else text-gray-800 @endif active:text-theme-01">--}}
+    @if(\Auth::user())
+    <a id="" href="/user/my_page" class="nav_btn w-1/5  cursor-pointer flex flex-grow items-center justify-center p-2 @if(str_contains($_SERVER["REQUEST_URI"], "/user")) text-green-500 @else text-gray-800 @endif active:text-theme-01">
+    @else
     <a onclick="toast('info', '준비 중 입니다')" class="nav_btn w-1/5  cursor-pointer flex flex-grow items-center justify-center p-2 @if(str_contains($_SERVER["REQUEST_URI"], "/user")) text-green-500 @else text-gray-800 @endif active:text-theme-01">
+    @endif
         <div class="text-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mb-1" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />

@@ -53,12 +53,12 @@
                  style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/posts") !== false) border-bottom: 2px solid #333; @endif  " >
                 게시판
             </div>
-            <div class="@if($_SERVER['REQUEST_URI'] == "/bartizan/".$bartizan->id."/watchmen") current-open-menu @endif py-1 px-2 text-gray-800"
+{{--            <div class="@if($_SERVER['REQUEST_URI'] == "/bartizan/".$bartizan->id."/watchmen") current-open-menu @endif py-1 px-2 text-gray-800"--}}
 {{--                 onclick="location.href='/bartizan/{{$bartizan->id}}/watchmen'"--}}
-                 onclick="toast('info','준비 중 입니다.')"
-                 style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/watchmen") !== false) border-bottom: 2px solid #333; @endif  " >
-                파수꾼
-            </div>
+{{--                 onclick="toast('info','준비 중 입니다.')"--}}
+{{--                 style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/watchmen") !== false) border-bottom: 2px solid #333; @endif  " >--}}
+{{--                파수꾼--}}
+{{--            </div>--}}
 
             @if(\Auth::user() !== null AND \Auth::user()->id!==$bartizan->admin_user_id)
                 <div>
