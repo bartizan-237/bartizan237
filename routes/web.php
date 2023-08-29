@@ -15,6 +15,10 @@ use App\Http\Controllers\{
     JoinRequestController
 };
 
+use App\Http\Controllers\Admin\{
+    DashboardController
+};
+
 //Route::get('/', function () { return redirect('/home'); });
 Route::get('/', function () { return redirect('/bartizan/main'); });
 
@@ -114,6 +118,29 @@ Route::group(['namespace' => 'User',
     Route::post('/quit', [UserController::class, 'quitUser'])->name("quit"); // 회원 탈퇴
     Route::get('/my_fields', [UserController::class, 'myFields']); // 관심분야
 });
+
+
+
+Route::group(['prefix' => 'admin', // prefix : /user/*
+    'middleware' => 'admin' // This Route group need AUTH
+], function() {
+    Route::get('/', [DashboardController::class, 'dashboard']);
+//    Route::post('/basic_info', [UserController::class, 'saveBasicInfo']);
+//    Route::post('/validate_nickname', [UserController::class, 'validateNickname']);
+//    Route::post('/validate_member_id', [UserController::class, 'validateMemberId'])->withoutMiddleware("auth"); // middleware 예외
+//
+//    Route::get('/my_page', [UserController::class, 'myPage']); // 유저 정보
+//    Route::get('/my_page/edit', [UserController::class, 'myPageEdit']); // 유저 정보 수정
+//    Route::get('/bartizan', [UserController::class, 'userBartizan']); // 유저가 속해있는 망대목록
+//    Route::get('/post', [UserController::class, 'userPost']); // 유저가 작성한 게시글 / 댓글
+//    Route::get('/like', [UserController::class, 'userLike']); // 유저가 좋아요 누른 게시글
+//
+//    Route::get('/quit', [UserController::class, 'quitPage']); // 회원 탈퇴
+//    Route::post('/quit', [UserController::class, 'quitUser'])->name("quit"); // 회원 탈퇴
+//    Route::get('/my_fields', [UserController::class, 'myFields']); // 관심분야
+});
+
+
 
 // 전체 분야
 Route::get('/fields', [UserController::class, 'myFields']); // 관심분야
