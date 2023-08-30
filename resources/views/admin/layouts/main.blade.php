@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
+<html x-data="data()" lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{csrf_token()}}">
-    <title>Chatis Dashboard</title>
+    <title>세계망대플랫폼 관리자페이지</title>
     <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
             rel="stylesheet"
@@ -56,70 +56,9 @@
         :class="{ 'overflow-hidden': isSideMenuOpen }"
 >
     @include('admin.layouts.sidebar')
-
     @yield('content')
 
 </div>
-</div>
-
-
-<div class="fab_wrapper flex-col" style="position:fixed;">
-    <input id="fab_checkbox" type="checkbox" class="fab_checkbox" />
-    <label id="kakao_quick_btn" class="fab cursor-pointer" for="fab_checkbox">
-        <span class="fab_dots fab_dots_1"></span>
-        <span class="fab_dots fab_dots_2"></span>
-        <span class="fab_dots fab_dots_3"></span>
-    </label>
-
-    <div class="fab_wheel">
-        <a id="btn_3" class="btn_wrap  cursor-pointer">
-            <div class="fab_action_text">[KQ] Mall_ID : <input id="kq_quick_mall_id" type="text" value=""/> </div>
-            <div id="kq_quick_btn" class="fab_action">
-                <i class="fas fa-search"></i>
-            </div>
-        </a>
-        <a id="btn_2" class="btn_wrap  cursor-pointer">
-            <div class="fab_action_text">[SR] Mall_ID : <input id="sr_quick_mall_id" type="text" value=""/> </div>
-            <div id="sr_quick_btn" class="fab_action">
-                <i class="fas fa-search"></i>
-            </div>
-        </a>
-        <a id="btn_1" class="btn_wrap  cursor-pointer">
-            <div class="fab_action_text">[IS] Mall_ID : <input id="is_quick_mall_id" type="text" value=""/> </div>
-            <div id="is_quick_btn" class="fab_action">
-                <i class="fas fa-search"></i>
-            </div>
-        </a>
-    </div>
-</div>
-
-<script>
-    $("#is_quick_btn").click(function(){
-       location.href = '/app/is?search_field=mall_id&search_keyword=' + $("#is_quick_mall_id").val();
-    });
-    $("#sr_quick_btn").click(function(){
-        location.href = '/app/sr?search_field=mall_id&search_keyword=' + $("#sr_quick_mall_id").val();
-    });
-    $("#kq_quick_btn").click(function(){
-        location.href = '/app/kq?search_field=mall_id&search_keyword=' + $("#kq_quick_mall_id").val();
-    });
-
-    $("#is_quick_mall_id").on("keyup", function (e){
-        if(e.keyCode == 13){
-            $('#is_quick_btn').trigger('click');
-        }
-    });
-    $("#sr_quick_mall_id").on("keyup", function (e){
-        if(e.keyCode == 13){
-            $('#sr_quick_btn').trigger('click');
-        }
-    });
-    $("#kq_quick_mall_id").on("keyup", function (e){
-        if(e.keyCode == 13){
-            $('#kq_quick_btn').trigger('click');
-        }
-    });
-</script>
 
 </body>
 </html>
