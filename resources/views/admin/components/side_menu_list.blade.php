@@ -1,4 +1,8 @@
 <li class="relative px-6 py-3">
+    @if(strpos($_SERVER['REQUEST_URI'], "/admin/bartizan") !== false)
+        <span class="absolute inset-y-0 left-0 w-1 bg-green-600  rounded-tr-lg rounded-br-lg" aria-hidden="true" ></span>
+    @endif
+
     <button
             class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 "
             @click="togglePagesMenu1"
@@ -32,38 +36,33 @@
                 class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50  "
                 aria-label="submenu"
         >
-            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800  @if(strpos($_SERVER['REQUEST_URI'], "/admin/bartizans") !== false)  text-purple-600 @endif" >
-                <a class="w-full" href="/admin/bartizans">
+            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800  @if($_SERVER['REQUEST_URI'] == "/admin/bartizan")  text-green-600 font-bold @endif" >
+                <a class="w-full" href="/admin/bartizan">
                     전체
                 </a>
             </li>
-            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800  @if(strpos($_SERVER['REQUEST_URI'], "/admin/bartizan/asia") !== false)  text-purple-600 @endif" >
-                <a class="w-full" href="/admin/bartizan/asia">
+            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800  @if(strpos($_SERVER['REQUEST_URI'], "/admin/bartizans?continent=asia") !== false)  text-green-600 font-bold @endif" >
+                <a class="w-full" href="/admin/bartizan?continent=asia">
                     아시아
                 </a>
             </li>
-            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800  @if(strpos($_SERVER['REQUEST_URI'], "/admin/bartizan/europe") !== false)  text-purple-600 @endif" >
-                <a class="w-full" href="/admin/bartizan/europe">
+            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800  @if(strpos($_SERVER['REQUEST_URI'], "/admin/bartizan/europe") !== false)  text-green-600 font-bold @endif" >
+                <a class="w-full" href="/admin/bartizan?continent=europe">
                     유럽
                 </a>
             </li>
-            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800  @if(strpos($_SERVER['REQUEST_URI'], "/admin/bartizan/north_america") !== false)  text-purple-600 @endif" >
-                <a class="w-full" href="/admin/bartizan/north_america">
-                    북아메리카
+            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800  @if(strpos($_SERVER['REQUEST_URI'], "/admin/bartizan?continent=america") !== false)  text-green-600 font-bold @endif" >
+                <a class="w-full" href="/admin/bartizan?continent=america">
+                    아메리카
                 </a>
             </li>
-            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800  @if(strpos($_SERVER['REQUEST_URI'], "/admin/bartizan/south_america") !== false)  text-purple-600 @endif" >
-                <a class="w-full" href="/admin/bartizan/south_america">
-                    중남아메리카
-                </a>
-            </li>
-            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800  @if(strpos($_SERVER['REQUEST_URI'], "/admin/bartizan/oceania") !== false)  text-purple-600 @endif" >
-                <a class="w-full" href="/admin/bartizan/oceania">
+            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800  @if(strpos($_SERVER['REQUEST_URI'], "/admin/bartizan?continent=oceania") !== false)  text-green-600 font-bold @endif" >
+                <a class="w-full" href="/admin/bartizan?continent=oceania">
                     오세아니아
                 </a>
             </li>
-            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800  @if(strpos($_SERVER['REQUEST_URI'], "/admin/bartizan/africa") !== false)  text-purple-600 @endif" >
-                <a class="w-full" href="/admin/bartizan/africa">
+            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800  @if(strpos($_SERVER['REQUEST_URI'], "/admin/bartizan?continent=africa") !== false)  text-green-600 font-bold @endif" >
+                <a class="w-full" href="/admin/bartizan?continent=africa">
                     아프리카
                 </a>
             </li>

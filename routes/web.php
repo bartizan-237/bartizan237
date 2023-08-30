@@ -16,7 +16,8 @@ use App\Http\Controllers\{
 };
 
 use App\Http\Controllers\Admin\{
-    DashboardController
+    DashboardController,
+    BartizanController as AdminBartizanController,
 };
 
 //Route::get('/', function () { return redirect('/home'); });
@@ -125,6 +126,8 @@ Route::group(['prefix' => 'admin', // prefix : /user/*
     'middleware' => 'admin' // This Route group need AUTH
 ], function() {
     Route::get('/', [DashboardController::class, 'dashboard']);
+
+    Route::get('/bartizan', [AdminBartizanController::class, 'index']);
 //    Route::post('/basic_info', [UserController::class, 'saveBasicInfo']);
 //    Route::post('/validate_nickname', [UserController::class, 'validateNickname']);
 //    Route::post('/validate_member_id', [UserController::class, 'validateMemberId'])->withoutMiddleware("auth"); // middleware 예외

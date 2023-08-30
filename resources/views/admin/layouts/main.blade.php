@@ -16,9 +16,9 @@
     />
 {{--    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">--}}
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="{{ asset('css/jerry_custom.css') }}">
-    <link rel="stylesheet" href="/css/fab.css">
-    <link rel="stylesheet" href="/css/dark_custom.css">
+{{--    <link rel="stylesheet" href="{{ asset('css/jerry_custom.css') }}">--}}
+{{--    <link rel="stylesheet" href="/css/fab.css">--}}
+{{--    <link rel="stylesheet" href="/css/dark_custom.css">--}}
 
     <style>
         html{font-family: 'Noto Sans KR', sans-serif;}
@@ -52,7 +52,7 @@
 </head>
 <body>
 <div
-        class="flex h-screen bg-gray-50 "
+        class="flex h-screen bg-gray-200 "
         :class="{ 'overflow-hidden': isSideMenuOpen }"
 >
     @include('admin.layouts.sidebar')
