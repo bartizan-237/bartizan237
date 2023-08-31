@@ -22,6 +22,7 @@ class AdminMiddleware
     public function handle($request, Closure $next)
     {
         if (auth()->user() && auth()->user()->isAdmin()) {
+//            config(['session.after_login_redirect' => '/admin']);
             return $next($request);
         }
 
