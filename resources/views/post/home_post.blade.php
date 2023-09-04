@@ -1,9 +1,11 @@
 @foreach($posts as $post)
 <div class="w-full mb-2 ">
-    <div class="py-1 bg-white border-b border-gray-100">
+    <div
+            onclick="location.href='/bartizan/{{$post->bartizan_id}}/posts/{{$post->id}}'"
+            class="py-1 bg-white border-b border-gray-100">
         <!-- TITLE -->
         <p style="font-size : 14px; line-height: 20px" class="text-gray-900 font-medium title-font">
-            <span style="font-size: 11px; padding : 3px 5px; border-radius: 4px" class="text-xs font-bold mr-1 text-white bg-{{$post->getBartizan()->getThemeColor()}}">{{$post->getBartizan()->name}}</span>
+            <span style="font-size: 11px; padding : 3px 5px; border-radius: 4px" class="text-xs mr-1 text-gray-900 bg-{{$post->getBartizan()->getThemeColor()}}">{{$post->getBartizan()->name}}</span>
             {{$post->title}}
         </p>
 {{--        <div style="font-size : 11px; line-height: 20px; height: 40px; width: 100%; overflow:hidden; text-overflow:ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;"--}}

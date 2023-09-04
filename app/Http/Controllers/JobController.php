@@ -13,6 +13,11 @@ class JobController extends Controller
      * 전체 직종 목록
      */
     public function index(Request $request){
-        
+        $fields = Job::select('id', 'industry', 'name')->get()->groupBy("industry");
+//        dd($fields);
+        return view('fields.index', [
+            'title' => "MY JOBS",
+            'fields' => $fields,
+        ]);
     }
 }

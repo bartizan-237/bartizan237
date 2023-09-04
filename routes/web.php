@@ -12,7 +12,8 @@ use App\Http\Controllers\{
     CommentController,
     LikeController,
     AjaxController,
-    JoinRequestController
+    JoinRequestController,
+    JobController
 };
 
 use App\Http\Controllers\Admin\{
@@ -146,10 +147,11 @@ Route::group(['prefix' => 'admin', // prefix : /user/*
 
 
 // 전체 분야
-Route::get('/fields', [UserController::class, 'myFields']); // 관심분야
+//Route::get('/fields', [UserController::class, 'myFields']); // 관심분야
+Route::get('/fields', [JobController::class, 'index']); // 관심분야
 
 // SET JOBS
-Route::get('/set_jobs', [HomeController::class, 'setJobs']);
+//Route::get('/set_jobs', [HomeController::class, 'setJobs']);
 
 // JOIN
 //Route::group(['namespace' => 'JoinRequest'
