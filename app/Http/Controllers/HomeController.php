@@ -8,6 +8,7 @@ use App\Models\Nation;
 use App\Models\User;
 use App\Models\AuthCode;
 use App\Models\Post;
+use App\Models\OfficialVideo;
 use App\Models\Bartizan;
 
 class HomeController extends Controller
@@ -61,9 +62,12 @@ class HomeController extends Controller
 
         $new_posts = Post::orderBy("id", "desc")->take(3)->get();
         $hot_posts = Post::orderBy("id", "desc")->take(3)->get();
+
+        $youtubes = OfficialVideo::orderBy("id", "desc")->take(5)->get();
         return view('home', [
             "new_posts" => $new_posts,
             "hot_posts" => $hot_posts,
+            "youtubes" => $youtubes
         ]);
     }
 

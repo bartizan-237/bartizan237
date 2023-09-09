@@ -30,7 +30,8 @@ class User extends Authenticatable
         'provider',
         'provider_id',
         'appointment',
-        'device_token'
+        'device_token',
+        'last_login_at',
     ];
 
     /**
