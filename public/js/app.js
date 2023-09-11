@@ -5358,6 +5358,16 @@ window.closeModal = function () {
   modal_img.src = "";
 };
 
+window.showTooltip = function (flag) {
+  console.log("showTooltip", flag);
+  document.getElementById(flag).classList.remove("hidden");
+};
+
+window.hideTooltip = function (flag) {
+  console.log("hideTooltip", flag);
+  document.getElementById(flag).classList.add("hidden");
+};
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

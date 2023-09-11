@@ -56,3 +56,12 @@ window.closeModal = () => {
     modal_img.style.opacity = 0;
     modal_img.src = "";
 }
+
+window.showTooltip = (flag) => {
+    console.log("showTooltip", flag);
+    document.getElementById(flag).classList.remove("hidden");
+}
+window.hideTooltip = (flag) => {
+    console.log("hideTooltip", flag);
+    document.getElementById(flag).classList.add("hidden");
+}

@@ -76,7 +76,9 @@
                     </div>
                 </div>
                 <div class="border-t mt-6 pt-3">
-                    <button @click="submitForm" class="rounded text-gray-100 px-3 py-1 bg-green-500 hover:shadow-inner hover:bg-green-700 transition-all duration-300">
+                    <button click="submitForm"
+                            style="float: right; margin-right: 10px"
+                            class="rounded text-gray-100 px-3 py-2 bg-green-500 hover:shadow-inner hover:bg-green-700 transition-all duration-300">
                         저장
                     </button>
                 </div>

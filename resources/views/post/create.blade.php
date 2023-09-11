@@ -6,8 +6,6 @@
 {{--    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>--}}
 {{--    <script type="text/javascript" src="/smarteditor2/js/HuskyEZCreator.js"></script>--}}
 
-
-
     <main class="container mx-auto" style="margin-top:10px; max-width: 500px;">
         <div class=" bg-gray-50" style="">
             <div id="form_app" class="bg-white shadow rounded-lg px-3 py-2" style="padding-bottom: 100px;">
@@ -21,7 +19,29 @@
                             <input type="hidden" id="bartizan_id" value="">
                         @endif
 
-{{--                        <p class="text-gray-700 mb-3">-가이드1</p>--}}
+                        <!-- 플랫폼 게시판 이용정책 -->
+                        <a tabindex="0" role="link" aria-label="tooltip 1" class="focus:outline-none focus:ring-gray-300 rounded-full focus:ring-offset-2 focus:ring-2 focus:bg-gray-200 relative mt-20 md:mt-0"
+                           onmouseover="showTooltip('tooltip1')"
+                           onfocus="showTooltip('tooltip1')"
+                           onmouseout="hideTooltip('tooltip1')">
+                            <div class=" cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info text-gray-800 inline-block"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                                <span class="cursor-pointer underline" style="font-size:12px;">플랫폼 게시판 이용정책</span>
+                                <div id="tooltip1" style="width: 400px; border:1px solid lightblue" role="tooltip" class="z-20 mt-2 absolute transition duration-150 ease-in-out  shadow-lg bg-white p-3 rounded hidden">
+                                    <p style="font-size: 11px">
+                                        <span class="inline-block mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check inline-block"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                            세계망대플랫폼은 237나라에 망대를 세워, 복음 운동과 전도·선교 운동을 위하여 기도와 자료를 소통하는 플랫폼입니다.
+                                        </span>
+                                        <span class="inline-block mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check inline-block"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                            플랫폼의 목적과 다른 목적의 컨텐츠나 불건전한 컨텐츠를 게시하는 경우에는 작성자의 동의없이 게시글이 삭제될 수 있습니다.
+                                        </span>
+                                        <span class="inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check inline-block"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                        게시글을 작성하실 때 위 내용에 동의하시는 것으로 간주되며, 세계망대플랫폼에 게시되는 모든 컨텐츠는 운영팀에 의해 관리되고 있습니다.
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
 
                     <div class="border focus-within:border-blue-500 text-gray-800 focus-within:text-gray-900 mb-6 transition-all duration-500 relative rounded p-1">
@@ -80,7 +100,9 @@
                     </div>
                 </div>
                 <div class="border-t mt-6 pt-3">
-                    <button @click="submitForm" class="rounded text-gray-100 px-3 py-1 bg-green-500 hover:shadow-inner hover:bg-green-700 transition-all duration-300">
+                    <button click="submitForm"
+                            style="float: right; margin-right: 10px"
+                            class="rounded text-gray-100 px-3 py-2 bg-green-500 hover:shadow-inner hover:bg-green-700 transition-all duration-300">
                         저장
                     </button>
                 </div>

@@ -9,7 +9,7 @@
 <!-- SWIPER -->
 
 <main class="h-full relative" style="max-width: 500px;">
-    <div class="bg-gray-100 p-2 min-h-full" >
+    <div class="bg-gray-100 p-2 min-h-full pb-16" >
 {{--    @include('post.home_post', [--}}
 {{--        'posts' => $posts--}}
 {{--    ])--}}
