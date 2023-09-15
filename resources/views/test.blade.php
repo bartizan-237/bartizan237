@@ -29,7 +29,8 @@
             .backgroundImageUrl('//unpkg.com/three-globe/example/img/night-sky.png')
             .lineHoverPrecision(0)
             .polygonsData(countries.features.filter(d => d.properties.ISO_A2 !== 'AQ'))
-            .polygonAltitude(0.06)
+            // .polygonAltitude(0.06)
+            .polygonAltitude(0.005)
             // .polygonCapColor(feat => { colorScale(getVal(feat)) } )
             .polygonCapColor(feat => {
                 let continent = feat.properties.CONTINENT;

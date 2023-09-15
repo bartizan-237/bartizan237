@@ -53,6 +53,17 @@
                     </div>
                 </div>
 
+                <!-- 23.8.26. 선교정보보러가기 수정 -->
+                <div class="w-full mb-3">
+                    <div class="bg-white p-3 rounded-lg text-center cursor-pointer"
+                         style="color:white; font-size : 15px; font-weight:bold; background-color: #0093E9; background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);"
+                         onclick="location.href='/bartizan/{{$bartizan->id}}/pledges'"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block feather feather-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                        작정자 목록 보러가기
+                    </div>
+                </div>
+
 
                 <div class="pr-2 w-1/2 mb-3">
                     <div class="bg-white p-3 rounded-lg">

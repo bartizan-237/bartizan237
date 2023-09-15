@@ -8,6 +8,15 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <!-- SWIPER -->
 
+<style>
+    .ytp-chrome-top {
+        display: none;
+    }
+    .ytp-watermark {
+        display: none;
+    }
+</style>
+
 <main class="h-full relative" style="max-width: 500px;">
     <div class="bg-gray-100 p-2 min-h-full pb-16" >
 {{--    @include('post.home_post', [--}}

@@ -13,7 +13,8 @@ use App\Http\Controllers\{
     LikeController,
     AjaxController,
     JoinRequestController,
-    JobController
+    JobController,
+    WatchmanController
 };
 
 use App\Http\Controllers\Admin\{
@@ -21,8 +22,8 @@ use App\Http\Controllers\Admin\{
     BartizanController as AdminBartizanController,
 };
 
-//Route::get('/', function () { return redirect('/home'); });
-Route::get('/', function () { return redirect('/bartizan/main'); });
+Route::get('/', function () { return redirect('/home'); });
+//Route::get('/', function () { return redirect('/bartizan/main'); });
 
 // Routes for User Auth
 Auth::routes();
@@ -30,9 +31,10 @@ Route::get('/welcome', function () { return view('welcome'); }); // 회원가입
 
 //Route::get('/test', [HomeController::class, 'test']);
 //Route::get('/test', [MailController::class, 'send']);
-//Route::get('/test', function () { return view('test'); });
-Route::get('/test2', function () { return view('test2'); });
+Route::get('/test', function () { return view('test'); });
+//Route::get('/test2', function () { return view('test2'); });
 //Route::get('/make', [NationController::class, 'createBartizans']);
+Route::get('/sync', [WatchmanController::class, 'sync']); // 작정자 명단 동기화
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -78,6 +80,8 @@ Route::group(['namespace' => 'Bartizan', 'prefix' => 'bartizan'], function() {
     Route::get("{bartizan}/join_request_list", [BartizanController::class, 'joinRequestList']);
     Route::get("{bartizan}/watchmen", [BartizanController::class, 'showWatchmen']);
     Route::get("{bartizan}/nation", [BartizanController::class, 'showNation']); // 23.7.26. 망대 - 나라 페이지 통합
+
+    Route::get("{bartizan}/pledges", [BartizanController::class, 'showPledges']); // 23.9.14. 작정자 명단
 });
 
 

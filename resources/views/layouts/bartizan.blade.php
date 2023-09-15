@@ -41,6 +41,13 @@
                 <span aria-hidden="true" class="absolute top-0 right-0 inline-block transform translate-x-1 -translate-y-1 bg-red-500 rounded-full " style="height: 5px; width: 5px; top: 5px; right: 5px"></span>
             </div>
 
+            <div class="@if($_SERVER['REQUEST_URI'] == "/bartizan/".$bartizan->id."/pledges") current-open-menu @endif py-1 px-2 text-gray-800 relative"
+                 onclick="location.href='/bartizan/{{$bartizan->id}}/pledges'"
+                 style=" @if(str_contains($_SERVER['REQUEST_URI'], "/bartizan/".$bartizan->id."/watchmen") !== false) border-bottom: 2px solid #333; @endif  " >
+                작정 목록
+                <span aria-hidden="true" class="absolute top-0 right-0 inline-block transform translate-x-1 -translate-y-1 bg-red-500 rounded-full " style="height: 5px; width: 5px; top: 5px; right: 5px"></span>
+            </div>
+
             <div class="@if($_SERVER['REQUEST_URI'] == "/bartizan/".$bartizan->id) current-open-menu @endif py-1 px-3 text-gray-800"
                  onclick="location.href='/bartizan/{{$bartizan->id}}'"
             >

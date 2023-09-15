@@ -244,6 +244,16 @@ class BartizanController extends Controller
             "watchmen" => $watchmen
         ]);
     }
+
+    public function showPledges(Bartizan $bartizan){
+        $pledges = json_decode($bartizan->watchman_infos);
+//        dd($watchmen);
+        return view("bartizan.pledge",[
+            "bartizan" => $bartizan,
+            "pledges" => $pledges
+        ]);
+    }
+
     public function join(Request $request){
         $user_id = $request->data['user_id'];
         $bartizan_id = $request->data['bartizan_id'];

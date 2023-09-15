@@ -90,6 +90,9 @@ var bartizanList = new Vue({
         },
         getBgColor : function (user_id){
             console.log("getBgColor", user_id);
+            if(user_id == null || user_id == ""){
+                user_id = Math.floor(Math.random() * 8); // 0부터 7 사이의 랜덤 정수 생성
+            }
             let token = user_id % 8;
             let bg_color_class = "";
             switch (token){

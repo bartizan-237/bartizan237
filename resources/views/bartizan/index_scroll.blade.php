@@ -77,7 +77,19 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
                                 <p style="padding-top:2px">대표장로</p>
-                                <p class="pl-1 text-gray-900 text-sm" v-text="getRepresentativeName(bartizan)"></p>
+{{--                                <p class="pl-1 text-gray-900 text-sm" v-text="getRepresentativeName(bartizan)"></p>--}}
+                                <div v-if="bartizan.watchman_obj.representative">
+                                    <template v-for="represent in bartizan.watchman_obj.representative">
+                                        <img v-if="represent.profile_image != '' && represent.profile_image != null" src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                                             class="w-6 h-6 rounded-full inline-block" style="margin-right:2px;"/>
+                                        <p v-else :title="represent.name + ' ' + represent.position" v-text="represent.name.substr(0,1)"
+                                           :class="getBgColor(represent.user_id)"
+                                           class="circle text-xs text-white" style="margin-right:2px;"></p>
+                                    </template>
+                                </div>
+                                <div v-else>
+                                    -
+                                </div>
                             </div>
                             <div class="flex space-x-1 text-gray-700 text-xs my-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -95,11 +107,11 @@
 {{--                                             class="w-6 h-6 rounded-full"/>--}}
                                         <div v-if="bartizan.watchman_obj.watchmen">
                                             <template v-for="watchman in bartizan.watchman_obj.watchmen">
-                                                <img v-if="watchman.profile_image != ''" src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                                                     class="w-6 h-6 rounded-full"/>
-                                                <p v-else :title="watchman.name" v-text="watchman.name.substr(0,1)"
+                                                <img v-if="watchman.profile_image != '' && watchman.profile_image != null" src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                                                     class="w-6 h-6 rounded-full inline-block" style="margin-right:2px;"/>
+                                                <p v-else :title="watchman.name + ' ' + watchman.position" v-text="watchman.name.substr(0,1)"
                                                    :class="getBgColor(watchman.user_id)"
-                                                   class="circle text-xs text-white"></p>
+                                                   class="circle text-xs text-white" style="margin-right:2px;"></p>
                                             </template>
                                         </div>
                                         <div v-else>
@@ -107,26 +119,26 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="my-1">
-                                    <p class="mb-1">정탐꾼</p>
-                                    <div class="flex space-x-1">
+{{--                                <div class="my-1">--}}
+{{--                                    <p class="mb-1">정탐꾼</p>--}}
+{{--                                    <div class="flex space-x-1">--}}
 {{--                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxSqK0tVELGWDYAiUY1oRrfnGJCKSKv95OGUtm9eKG9HQLn769YDujQi1QFat32xl-BiY&usqp=CAU"--}}
 {{--                                                 class="w-6 h-6 rounded-full"/>--}}
 
-                                        <div v-if="bartizan.watchman_obj.spy">
-                                            <template v-for="spy in bartizan.watchman_obj.spy">
-                                                <img v-if="spy.profile_image != ''" src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                                                     class="w-6 h-6 rounded-full"/>
-                                                <p v-else :title="spy.name" v-text="spy.name.substr(0,1)"
-                                                   :class="getBgColor(spy.user_id)"
-                                                   class="circle text-xs text-white"></p>
-                                            </template>
-                                        </div>
-                                        <div v-else>
-                                            -
-                                        </div>
-                                    </div>
-                                </div>
+{{--                                        <div v-if="bartizan.watchman_obj.spy">--}}
+{{--                                            <template v-for="spy in bartizan.watchman_obj.spy">--}}
+{{--                                                <img v-if="spy.profile_image != ''" src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"--}}
+{{--                                                     class="w-6 h-6 rounded-full"/>--}}
+{{--                                                <p v-else :title="spy.name" v-text="spy.name.substr(0,1)"--}}
+{{--                                                   :class="getBgColor(spy.user_id)"--}}
+{{--                                                   class="circle text-xs text-white"></p>--}}
+{{--                                            </template>--}}
+{{--                                        </div>--}}
+{{--                                        <div v-else>--}}
+{{--                                            ---}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                     </template>

@@ -30,8 +30,8 @@
         <header id="header-bar" class="flex w-full border-b border border-gray-200 bg-white fixed top-0 left-0" style="height: 60px; z-index: 10;">
             <div class="mx-auto " style="min-width: 500px;">
                 <div class="" style="padding:20px">
-{{--                    <a href="/home">--}}
-                    <a href="/bartizan/main">
+                    <a href="/home">
+{{--                    <a href="/bartizan/main">--}}
                         <img width="150" height="60" src="https://kr.object.ncloudstorage.com/immanuel/bartizan/image/bartizan_logo.png">
                     </a>
                 </div>
