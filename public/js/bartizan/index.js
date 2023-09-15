@@ -993,51 +993,48 @@ var bartizanList = new Vue({
 
       return getBartizans;
     }(),
-    getBgColor: function getBgColor(user_id) {
-      console.log("getBgColor", user_id);
-
-      if (user_id == null || user_id == "") {
-        user_id = Math.floor(Math.random() * 8); // 0부터 7 사이의 랜덤 정수 생성
-      }
-
-      var token = user_id % 8;
+    // getBgColor : function (user_id){
+    //     console.log("getBgColor", user_id);
+    //     if(user_id == null || user_id == ""){
+    //         user_id = Math.floor(Math.random() * 8); // 0부터 7 사이의 랜덤 정수 생성
+    //     }
+    //     let token = user_id % 8;
+    //     let bg_color_class = "";
+    //     switch (token){
+    //         case 0 : bg_color_class = "bg-blue-500"; break;
+    //         case 1 : bg_color_class = "bg-orange-500"; break;
+    //         case 2 : bg_color_class = "bg-pink-500"; break;
+    //         case 3 : bg_color_class = "bg-purple-500"; break;
+    //         case 4 : bg_color_class = "bg-green-500"; break;
+    //         case 5 : bg_color_class = "bg-teal-500"; break;
+    //         case 6 : bg_color_class = "bg-sky-500"; break;
+    //         case 7 : bg_color_class = "bg-yellow-500"; break;
+    //         default : bg_color_class = "bg-blue-500";
+    //     }
+    //     return bg_color_class;
+    // },
+    getBgColor: function getBgColor(position) {
       var bg_color_class = "";
 
-      switch (token) {
-        case 0:
+      switch (position) {
+        case "장로":
           bg_color_class = "bg-blue-500";
           break;
 
-        case 1:
-          bg_color_class = "bg-orange-500";
+        case "권사":
+          bg_color_class = "bg-orange-400";
           break;
 
-        case 2:
-          bg_color_class = "bg-pink-500";
-          break;
-
-        case 3:
-          bg_color_class = "bg-purple-500";
-          break;
-
-        case 4:
+        case "RT":
           bg_color_class = "bg-green-500";
           break;
 
-        case 5:
-          bg_color_class = "bg-teal-500";
-          break;
-
-        case 6:
-          bg_color_class = "bg-sky-500";
-          break;
-
-        case 7:
-          bg_color_class = "bg-yellow-500";
+        case "성도":
+          bg_color_class = "bg-sky-300";
           break;
 
         default:
-          bg_color_class = "bg-blue-500";
+          bg_color_class = "bg-sky-300";
       }
 
       return bg_color_class;

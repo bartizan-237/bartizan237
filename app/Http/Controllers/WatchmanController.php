@@ -87,7 +87,7 @@ class WatchmanController extends Controller
                 'user_id' => null,
                 'profile_image' => null,
                 'position' => "장로",
-                'district' => $district,
+                'district' => $this->getDistrict($district),
             ];
         }
 
@@ -110,7 +110,7 @@ class WatchmanController extends Controller
                 'user_id' => null,
                 'profile_image' => null,
                 'position' => "권사",
-                'district' => $district,
+                'district' => $this->getDistrict($district),
             ];
         }
 
@@ -133,7 +133,7 @@ class WatchmanController extends Controller
                 'user_id' => null,
                 'profile_image' => null,
                 'position' => "안수집사",
-                'district' => $district,
+                'district' => $this->getDistrict($district),
             ];
         }
 
@@ -157,7 +157,7 @@ class WatchmanController extends Controller
                 'user_id' => null,
                 'profile_image' => null,
                 'position' => "RT",
-                'district' => $district,
+                'district' => $this->getDistrict($district),
             ];
         }
 
@@ -180,7 +180,7 @@ class WatchmanController extends Controller
                 'user_id' => null,
                 'profile_image' => null,
                 'position' => "성도",
-                'district' => $district,
+                'district' => $this->getDistrict($district),
             ];
         }
 
@@ -212,7 +212,7 @@ class WatchmanController extends Controller
                 'nation' => $nation_name,
                 'nation_region' => $nation_region,
                 'name' => $name,
-                'district' => $district,
+                'district' => $this->getDistrict($district),
                 'position' => "장로",
             ]);
         }
@@ -236,7 +236,7 @@ class WatchmanController extends Controller
                 'nation' => $nation_name,
                 'nation_region' => $nation_region,
                 'name' => $name,
-                'district' => $district,
+                'district' => $this->getDistrict($district),
                 'position' => "권사",
             ]);
         }
@@ -259,7 +259,7 @@ class WatchmanController extends Controller
                 'nation' => $nation_name,
                 'nation_region' => $nation_region,
                 'name' => $name,
-                'district' => $district,
+                'district' => $this->getDistrict($district),
                 'position' => "안수집사",
             ]);
         }
@@ -283,7 +283,7 @@ class WatchmanController extends Controller
                 'nation' => $nation_name,
                 'nation_region' => $nation_region,
                 'name' => $name,
-                'district' => $district,
+                'district' => $this->getDistrict($district),
                 'position' => "RT",
             ]);
         }
@@ -306,11 +306,64 @@ class WatchmanController extends Controller
                 'nation' => $nation_name,
                 'nation_region' => $nation_region,
                 'name' => $name,
-                'district' => $district,
+                'district' => $this->getDistrict($district),
                 'position' => "성도",
             ]);
         }
 
+    }
+
+
+    function getDistrict($district){
+        if($district == null) return null;
+        $result = null;
+        $district = trim($district);
+        switch ($district){
+            case "통영" :
+            case "통지" :
+            case "통영지" :
+            case "통영지교회" : $result = "통영지교회";
+                break;
+            case "해지" :
+            case "해운대지교회" :
+            case "해운대지" :$result = "해운대지교회";
+                break;
+            case "창원" :
+            case "창원지교회" :
+            case "창지" :$result = "창원지교회";
+                break;
+            case "해" :
+            case "해운대" : $result = "해운대";
+                break;
+            case "북지" :
+            case "북지교회" : $result = "북지교회";
+                break;
+            case "기장" :
+            case "기장지" :
+            case "기장지교회" : $result = "기장지교회";
+                break;
+            case "이천" :
+            case "이천지" :
+            case "이천지교회" : $result = "이천지교회";
+                break;
+            case "거제" :
+            case "거지" :
+            case "거제지" :
+            case "거제지교회" : $result = "거제지교회";
+                break;
+            case "거창" :
+            case "거창지" :
+            case "거창지교회" : $result = "거창지교회";
+                break;
+            case "중" :
+            case "동" :
+            case "서" : $result = "중동서";
+                break;
+            default :
+                $result = $district;
+        }
+
+        return $result;
     }
 }
 

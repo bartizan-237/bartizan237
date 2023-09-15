@@ -83,7 +83,7 @@
                                         <img v-if="represent.profile_image != '' && represent.profile_image != null" src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
                                              class="w-6 h-6 rounded-full inline-block" style="margin-right:2px;"/>
                                         <p v-else :title="represent.name + ' ' + represent.position" v-text="represent.name.substr(0,1)"
-                                           :class="getBgColor(represent.user_id)"
+                                           :class="getBgColor(represent.position)"
                                            class="circle text-xs text-white" style="margin-right:2px;"></p>
                                     </template>
                                 </div>
@@ -110,7 +110,7 @@
                                                 <img v-if="watchman.profile_image != '' && watchman.profile_image != null" src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
                                                      class="w-6 h-6 rounded-full inline-block" style="margin-right:2px;"/>
                                                 <p v-else :title="watchman.name + ' ' + watchman.position" v-text="watchman.name.substr(0,1)"
-                                                   :class="getBgColor(watchman.user_id)"
+                                                   :class="getBgColor(watchman.position)"
                                                    class="circle text-xs text-white" style="margin-right:2px;"></p>
                                             </template>
                                         </div>
@@ -130,7 +130,7 @@
 {{--                                                <img v-if="spy.profile_image != ''" src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"--}}
 {{--                                                     class="w-6 h-6 rounded-full"/>--}}
 {{--                                                <p v-else :title="spy.name" v-text="spy.name.substr(0,1)"--}}
-{{--                                                   :class="getBgColor(spy.user_id)"--}}
+{{--                                                   :class="getBgColor(spy.position)"--}}
 {{--                                                   class="circle text-xs text-white"></p>--}}
 {{--                                            </template>--}}
 {{--                                        </div>--}}
