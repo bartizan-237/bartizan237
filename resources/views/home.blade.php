@@ -18,7 +18,7 @@
 </style>
 
 <main class="h-full relative" style="max-width: 500px;">
-    <div class="bg-gray-100 p-2 min-h-full pb-16" >
+    <div class="bg-gray-100 p-2 min-h-full pb-16 mb-6" >
 {{--    @include('post.home_post', [--}}
 {{--        'posts' => $posts--}}
 {{--    ])--}}
@@ -111,6 +111,10 @@
 {{--            </div>--}}
 {{--            @include('post.home_post', ['posts' => $hot_posts])--}}
 {{--        </div>--}}
+
+        @if(str_contains($_SERVER["REQUEST_URI"], "test=1"))
+            @include("components.faq")
+        @endif
 
         <div class="bg-white w-full shadow rounded mx-auto p-3 my-3">
             <div class="mb-2">

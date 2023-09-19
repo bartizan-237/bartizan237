@@ -4,7 +4,7 @@
 
     <main class="container p-2 bg-gray-200">
         <div class="flex flex-col">
-            <div class="flex-col bg-gray-200 rounded-lg mb-3 px-3 py-2 text-gray-900">
+            <div class="flex-col bg-gray-200 rounded-lg mb-3 px-3 py-2 pb-16 text-gray-900">
                 <div class="bg-white p-3 mb-3 rounded-lg">
 {{--                    <p class="text-left text-gray-900 text-sm">--}}
 {{--                        <span class="font-bold text-base">{{$bartizan->name}}</span>을 마음에 담고 작정하신 분들입니다.--}}

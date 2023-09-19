@@ -64,10 +64,29 @@ class HomeController extends Controller
         $hot_posts = Post::orderBy("id", "desc")->take(3)->get();
 
         $youtubes = OfficialVideo::orderBy("id", "desc")->take(5)->get();
+
+
+        // FAQ
+        $faqs = [
+            [
+                'question' => "Question 1",
+                'answer' => "Answer 1",
+            ],
+            [
+                'question' => "Question 2",
+                'answer' => "Answer 2",
+            ],
+            [
+                'question' => "Question 3",
+                'answer' => "Answer 3",
+            ],
+        ];
+
         return view('home', [
             "new_posts" => $new_posts,
             "hot_posts" => $hot_posts,
-            "youtubes" => $youtubes
+            "youtubes" => $youtubes,
+            "faqs" => $faqs
         ]);
     }
 
