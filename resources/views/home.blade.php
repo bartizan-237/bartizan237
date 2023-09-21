@@ -113,7 +113,9 @@
 {{--        </div>--}}
 
         @if(str_contains($_SERVER["REQUEST_URI"], "test=1"))
-            @include("components.faq")
+            <div class="bg-white w-full shadow rounded mx-auto p-3 my-3">
+                @include("components.faq")
+            </div>
         @endif
 
         <div class="bg-white w-full shadow rounded mx-auto p-3 my-3">

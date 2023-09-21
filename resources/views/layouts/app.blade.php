@@ -4,7 +4,7 @@
     @include("layouts.html_head")
 
     <!-- Naver Webmaster -->
-        <meta name="naver-site-verification" content="9f187befa336e371c6d7a39df8bf86123f9e2a93" />
+    <meta name="naver-site-verification" content="9f187befa336e371c6d7a39df8bf86123f9e2a93" />
 </head>
 
 <!-- Google tag (gtag.js) -->
