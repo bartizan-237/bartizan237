@@ -26,18 +26,40 @@
 <body class="bg-237 antialiased leading-none" style="width: 100vw; height: 100vh">
 
 <div class="carousel rounded-box flex flex-wrap" style="height: 500px;">
-    <div class="w-1/3 carousel-item bg-red-100" style="height: 500px;">
+    @foreach($bartizans as $bartizan)
+    <div class="w-1/3 carousel-item p-3" style="height: 500px;">
+        <div class="p-3 w-full rounded-lg mb-3" style="background : rgba(237, 237, 237, 0.1)">
+            <p class="text-sm pb-1 text-gray-800">
+                @switch($bartizan->nation->continent)
+                    @case("Asia") 아시아 @break
+                    @case("Oceania") 오세아니아 @break
+                    @case("Africa") 아프리카 @break
+                    @case("North America") 북아메리카 @break
+                    @case("South America") 남아메리카 @break
+                    @case("Europe") 유럽 @break
+                @endswitch
 
-    </div>
-    <div class="w-1/3 carousel-item bg-yellow-100" style="height: 500px;">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 inline text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+                    {{$bartizan->nation->province}}
+                </span>
+            </p>
+            <div class="flex">
+{{--                <img src="{{env("NCLOUD_FLAG_PATH")}}/{{strtolower($bartizan->nation->country_code)}}.png" class="inline-block"--}}
+                <img src="{{env("NCLOUD_FLAG_PATH")}}/{{strtolower($bartizan->nation->country_code)}}.svg" class="inline-block"
+                     style="object-fit: contain; height: 50px; width: auto; padding-bottom: 5px" alt="img.."/>
 
+                <div class="flex flex-col">
+                    <p class="text-2xl pb-1 font-bold ml-3 ">
+                        {{$bartizan->nation->name}}
+                    </p>
+                    <span class="text-gray-800 text-lg ml-2">{{$bartizan->nation->name_en}}</span>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="w-1/3 carousel-item bg-green-100" style="height: 500px;">
+    @endforeach
 
-    </div>
-    <div class="w-1/3 carousel-item bg-blue-100" style="height: 500px;">
-
-    </div>
 </div>
 </body>
 

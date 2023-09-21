@@ -13,7 +13,8 @@ class WatchmanController extends Controller
     public function sync(){
         // 작정자명단 CSV 파일을 Bartizan에 동기화
 //        $file = fopen('../storage/files/watchmen_230913.csv','r');
-        $file = fopen('../storage/files/watchmen_230913_2.csv','r');
+//        $file = fopen('../storage/files/watchmen_230913_2.csv','r');
+        $file = fopen('../storage/files/watchmen_230921_2.csv','r');
 
         $line_number = 0;
         $nation_name = "";
@@ -35,20 +36,31 @@ class WatchmanController extends Controller
         // UPDATE pledges TO BARTIZAN
         while(!feof($file)) {
             $line_number++;
-            echo $line_number . " ";
             info($line_number);
             $data = fgetcsv($file);
             if($data[1] == ""){
                 // 나라명 없는 경우, 1나라 여러지역
+                $data[0] = $nation_no;
                 $data[1] = $nation_name;
             }
+
+            $nation_no = $data[0];
             $nation_name = $data[1];
+            echo $line_number . " " . $nation_name . "<br/>";
+
             $this->pledgeToBartizan($data);
         }
     }
 
     public function pledgeToBartizan($data){
         $nation_name = $data[1];
+
+        if($nation_name == "토켈라우제도") $nation_name = "토켈라우 제도";
+        if($nation_name == "바하마제도") $nation_name = "바하마";
+        if($nation_name == "도미니카 연방") $nation_name = "도미니카";
+        if($nation_name == "카보베르데") $nation_name = "카부베르드";
+        if($nation_name == "터키") $nation_name = "튀르키예";
+
         if($bartizan_row = Bartizan::where('name', $nation_name)->get()->last()){
 
         }else{
@@ -185,7 +197,8 @@ class WatchmanController extends Controller
         }
 
         $bartizan_row->update([
-            'watchman_infos' => json_encode($watchman_info)
+            'watchman_infos' => json_encode($watchman_info),
+            'dashboard_id' => $data[0]
         ]);
 //        dd($watchman_info);
     }

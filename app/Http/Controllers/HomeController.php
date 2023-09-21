@@ -99,7 +99,13 @@ class HomeController extends Controller
     }
 
     public function bartizanCarousel(Request $request){
-        return view('bartizan_carousel');
+        $bartizans = Bartizan::orderBy('dashboard_id')->take(10)->get();
+        foreach ($bartizans as $bartizan){
+            $bartizan->nation = $bartizan->getNation;
+        }
+        return view('bartizan_carousel', [
+            "bartizans" => $bartizans
+        ]);
     }
     
     public function updateCountryCode(){
