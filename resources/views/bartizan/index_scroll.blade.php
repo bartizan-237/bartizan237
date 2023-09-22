@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <main class="sm:mx-auto h-full relative" style="max-width: 500px;">
     <div class="bg-gray-200 min-h-full pb-8">
         <form action="/bartizan" method="GET" class="text-center">
@@ -62,7 +63,7 @@
                         </div>
                         <div class="flex flex-col">
                             <div class="pl-2">
-                                <p class="font-bold inline" v-html="refineBartizanName(bartizan.name)"></p>
+                                <p class="font-bold inline" v-html="refineBartizanName(bartizan.name, bartizan.district)"></p>
                                 <span class="text-xs">망대</span>
                             </div>
                             <div class="pl-2">
@@ -72,10 +73,7 @@
                     </div>
                     <div class="mt-3">
                         <div class="flex space-x-1 text-gray-700 text-xs">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
+                            <img width="16" height="16" style="margin-top:2px; margin-right: 2px" src="https://kr.object.ncloudstorage.com/immanuel/bartizan/image/icon/flag.png">
                             <p style="padding-top:2px">대표장로</p>
 {{--                                <p class="pl-1 text-gray-900 text-sm" v-text="getRepresentativeName(bartizan)"></p>--}}
                             <div v-if="bartizan.watchman_obj.representative">
@@ -92,9 +90,7 @@
                             </div>
                         </div>
                         <div class="flex space-x-1 text-gray-700 text-xs my-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
+                            <img width="16" height="16" style="margin-top:2px; margin-right: 2px" src="https://kr.object.ncloudstorage.com/immanuel/bartizan/image/icon/antenna.png">
                             <p style="padding-top:2px">두기고</p>
                             <p class="pl-1 text-gray-900 text-sm" v-text="getTychicusName(bartizan)"></p>
                         </div>

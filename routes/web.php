@@ -35,6 +35,7 @@ Route::get('/welcome', function () { return view('welcome'); }); // 회원가입
 //Route::get('/test2', function () { return view('test2'); });
 //Route::get('/make', [NationController::class, 'createBartizans']);
 //Route::get('/sync', [WatchmanController::class, 'sync']); // 작정자 명단 동기화
+Route::get('/sync2', [WatchmanController::class, 'updateBartizan']);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/slide', [HomeController::class, 'bartizanCarousel']);

@@ -21,11 +21,17 @@ var bartizanList = new Vue({
         console.log(this._data.search_keyword, this._data.province_keyword, this._data.continent_keyword);
     },
     methods: {
-        refineBartizanName : function (name){
+        refineBartizanName : function (name, district){
             // 국가명에서 () 괄호 안의 텍스트 폰트크기를 작게 변환
             // ex) 그린란드(덴마크령) 에서 (덴마크령) 을 작게
 
             // 괄호 안의 문자열을 추출하는 정규식
+
+            // 지역 추가
+            if(district != null && district != ""){
+                name += " " + district;
+            }
+
             const regex = /\((.*?)\)/;
             // 정규식과 일치하는 부분을 추출
             const matches = name.match(regex);
@@ -38,6 +44,7 @@ var bartizanList = new Vue({
             }else {
                 return name;
             }
+
         },
         getBartizans : async function (page) {
             let search_keyword = this._data.search_keyword;

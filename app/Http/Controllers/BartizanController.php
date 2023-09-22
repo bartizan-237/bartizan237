@@ -228,7 +228,7 @@ class BartizanController extends Controller
     }
 
     public function showNation(Bartizan $bartizan){
-        $nation = $bartizan->getNation;
+        $nation = $bartizan->getNation();
 //        dd($watchmen);
         info(__METHOD__ . " " . $bartizan->name);
         return view("bartizan.nation",[

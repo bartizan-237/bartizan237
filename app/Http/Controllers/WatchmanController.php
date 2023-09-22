@@ -52,6 +52,64 @@ class WatchmanController extends Controller
         }
     }
 
+    public function updateBartizan()
+    {
+        $bartizans = Bartizan::get();
+        foreach ($bartizans as $i => $bartizan){
+            info($i . " " . $bartizan->name);
+            $watchman_info = (object) [
+                'representative' => [],
+                'tychicus' => [],
+                'watchmen' => [],
+                'spy' => []
+            ];
+
+            if($bartizan->district != null AND $bartizan->district != ""){
+                // 지역
+                info("지역 : $bartizan->district");
+                $pledges = Pledge::where('nation', $bartizan->name)->where('nation_region', 'like', '%'.$bartizan->district.'%')->get();
+            } else {
+                $pledges = Pledge::where('nation', $bartizan->name)->get();
+            }
+
+            foreach ($pledges as $pledge){
+                $name = $pledge->name;
+                $district = $pledge->district;
+                $position = $pledge->position;
+                if($position == "장로"){
+                    $watchman_info->representative[] = [
+                        'name' => $name,
+                        'user_id' => null,
+                        'profile_image' => null,
+                        'position' => "장로",
+                        'district' => $district,
+                    ];
+                } else if ($position == "안수집사"){
+                    $watchman_info->tychicus[] = [
+                        'name' => $name,
+                        'user_id' => null,
+                        'profile_image' => null,
+                        'position' => "안수집사",
+                        'district' => $district,
+                    ];
+                } else {
+                    $watchman_info->watchmen[] = [
+                        'name' => $name,
+                        'user_id' => null,
+                        'profile_image' => null,
+                        'position' => $position,
+                        'district' => $district,
+                    ];
+                }
+            }
+
+            $bartizan->update([
+                "watchman_infos" => json_encode($watchman_info)
+            ]);
+
+        }
+    }
+
     public function pledgeToBartizan($data){
         $nation_name = $data[1];
 

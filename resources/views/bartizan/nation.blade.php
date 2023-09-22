@@ -24,15 +24,18 @@
                         @case("Asia") 아시아 @break
                         @case("Oceania") 오세아니아 @break
                         @case("Africa") 아프리카 @break
-                        @case("North America") 북아메리카 @break
-                        @case("South America") 남아메리카 @break
+{{--                        @case("North America") 북아메리카 @break--}}
+{{--                        @case("South America") 남아메리카 @break--}}
+                        @case("America") 아메리카 @break
                         @case("Europe") 유럽 @break
                     @endswitch
 
+                    @if($nation->province != "오세아니아")
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 inline text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
                         {{$nation->province}}
                     </span>
+                    @endif
                 </p>
                 <p class="text-2xl pb-1 font-bold ">
                     <img src="{{env("NCLOUD_FLAG_PATH")}}/{{strtolower($nation->country_code)}}.png" class="inline-block"

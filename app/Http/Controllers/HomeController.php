@@ -102,6 +102,7 @@ class HomeController extends Controller
         $bartizans = Bartizan::orderBy('dashboard_id')->take(10)->get();
         foreach ($bartizans as $bartizan){
             $bartizan->nation = $bartizan->getNation;
+            $bartizan->pledges = json_decode($bartizan->watchman_infos);
         }
         return view('bartizan_carousel', [
             "bartizans" => $bartizans
