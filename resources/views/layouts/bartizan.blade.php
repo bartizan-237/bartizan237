@@ -18,7 +18,7 @@
             </a>
             <div class="inline-block">
                 <a href="/bartizan/{{$bartizan->id}}" class="text-gray-900 text-xl" style="height: 40px; line-height: 40px;">
-                    {{$bartizan->name}}<span class="text-base"> 망대</span>
+                    {{$bartizan->name}} {{$bartizan->district}}<span class="text-base"> 망대</span>
                 </a>
 
                 @if(\Auth::user() AND \Auth::user()->id == $bartizan->admin_user_id)

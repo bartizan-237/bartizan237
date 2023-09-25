@@ -112,21 +112,19 @@
 {{--            @include('post.home_post', ['posts' => $hot_posts])--}}
 {{--        </div>--}}
 
-        @if(str_contains($_SERVER["REQUEST_URI"], "test=1"))
-            <div class="bg-white w-full shadow rounded mx-auto p-3 my-3">
-                @include("components.faq")
-            </div>
-        @endif
-
-        <div class="bg-white w-full shadow rounded mx-auto p-3 my-3">
-            <div class="mb-2">
-                <p class="font-bold text-gray-900">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600 inline-block mr-1 " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                    최근 게시글
-                </p>
-            </div>
-            @include('post.home_post', ['posts' => $new_posts])
+        <div class="bg-white w-full shadow rounded mx-auto p-3 my-5">
+            @include("components.faq")
         </div>
+
+{{--        <div class="bg-white w-full shadow rounded mx-auto p-3 my-5">--}}
+{{--            <div class="mb-2">--}}
+{{--                <p class="font-bold text-gray-900">--}}
+{{--                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600 inline-block mr-1 " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>--}}
+{{--                    최근 게시글--}}
+{{--                </p>--}}
+{{--            </div>--}}
+{{--            @include('post.home_post', ['posts' => $new_posts])--}}
+{{--        </div>--}}
 
                 {{--        <link href="https://fonts.googleapis.com/css2?family=Bungee&amp;display=swap" rel="stylesheet">--}}
 
