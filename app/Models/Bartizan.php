@@ -68,7 +68,7 @@ class Bartizan extends Model
 //    }
 
     public function getNation(){
-        info("Bartizan->getNation ID : " . $this->nation_id);
+//        info("Bartizan->getNation ID : " . $this->nation_id);
         return Nation::find($this->nation_id);
 //        return $this->hasOne(Nation::class);
     }

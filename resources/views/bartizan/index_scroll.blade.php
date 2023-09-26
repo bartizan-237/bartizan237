@@ -52,8 +52,8 @@
         </script>
 
 {{--            <div id="bartizan_list" class="p-2 mx-auto">--}}
-        <div id="bartizan_list" class="p-2 mx-auto grid grid-cols-2 gap-3">
-            <template v-for="bartizan in _data.bartizans">
+        <div id="bartizan_list" class="relative p-2 mx-auto grid grid-cols-2 gap-3">
+            <template v-for="bartizan in _data.bartizans" class="">
                 <div  @click="moveToBartizanDetail(bartizan.id)"
                       class="relative bg-white p-3 rounded-3xl my-2 shadow-xl">
                     <div class="flex">

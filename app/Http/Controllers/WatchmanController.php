@@ -15,41 +15,42 @@ class WatchmanController extends Controller
 //        $file = fopen('../storage/files/watchmen_230913.csv','r');
 //        $file = fopen('../storage/files/watchmen_230913_2.csv','r');
         $file = fopen('../storage/files/watchmen_230921_2.csv','r');
+        $file = fopen('../storage/files/watchmen_230926.csv','r');
 
         $line_number = 0;
         $nation_name = "";
         $nation_region = "";
 
         // INSERT pledges TO DB
-//        while(!feof($file)) {
-//            $line_number++;
-//            info($line_number);
-//            $data = fgetcsv($file);
-//            if($data[1] == ""){
-//                // 나라명 없는 경우, 1나라 여러지역
-//                $data[1] = $nation_name;
-//            }
-//            $nation_name = $data[1];
-//             $this->updatePledge($data);
-//        }
-
-        // UPDATE pledges TO BARTIZAN
         while(!feof($file)) {
             $line_number++;
             info($line_number);
             $data = fgetcsv($file);
             if($data[1] == ""){
                 // 나라명 없는 경우, 1나라 여러지역
-                $data[0] = $nation_no;
                 $data[1] = $nation_name;
             }
-
-            $nation_no = $data[0];
             $nation_name = $data[1];
-            echo $line_number . " " . $nation_name . "<br/>";
-
-            $this->pledgeToBartizan($data);
+             $this->updatePledge($data);
         }
+
+        // UPDATE pledges TO BARTIZAN
+//        while(!feof($file)) {
+//            $line_number++;
+//            info($line_number);
+//            $data = fgetcsv($file);
+//            if($data[1] == ""){
+//                // 나라명 없는 경우, 1나라 여러지역
+//                $data[0] = $nation_no;
+//                $data[1] = $nation_name;
+//            }
+//
+//            $nation_no = $data[0];
+//            $nation_name = $data[1];
+//            echo $line_number . " " . $nation_name . "<br/>";
+//
+//            $this->pledgeToBartizan($data);
+//        }
     }
 
     public function updateBartizan()

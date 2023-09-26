@@ -9,7 +9,7 @@
 {{--                    <p class="text-left text-gray-900 text-sm">--}}
 {{--                        <span class="font-bold text-base">{{$bartizan->name}}</span>을 마음에 담고 작정하신 분들입니다.--}}
 {{--                    </p>--}}
-                    <p class="text-right text-gray-700 text-xs">업데이트 2023.9.20.</p>
+                    <p class="text-right text-gray-700 text-xs">업데이트 2023.9.25.</p>
                 </div>
 
                 <div class="bg-white p-3 mb-3 rounded-lg border border-blue-500">
