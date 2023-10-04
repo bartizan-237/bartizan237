@@ -10,6 +10,56 @@ use Illuminate\Http\Request;
 
 class WatchmanController extends Controller
 {
+    public function test(){
+        $bartizans = Bartizan::orderBy('dashboard_id')->get();
+
+        $available_elder = 0;
+        $available_kwonsa = 0;
+        $available_ansoo = 0;
+        $available_remnant = 0;
+        $available_member = 0;
+        foreach ($bartizans as $bartizan){
+            echo "$bartizan->name >> $bartizan->count_elder  $bartizan->count_kwonsa   $bartizan->count_ansoo   $bartizan->count_remnant   $bartizan->count_member <br/>";
+
+            if($bartizan->count_elder < 1) $available_elder++;
+            if($bartizan->count_kwonsa < 3) $available_kwonsa++;
+            if($bartizan->count_ansoo < 1) $available_ansoo++;
+            if($bartizan->count_remnant < 2) $available_remnant++;
+            if($bartizan->count_member < 5) $available_member++;
+        }
+        echo "available_elder = $available_elder <br/>";
+        echo "available_kwonsa = $available_kwonsa <br/>";
+        echo "available_ansoo = $available_ansoo <br/>";
+        echo "available_remnant = $available_remnant <br/>";
+        echo "available_member = $available_member <br/>";
+
+    }
+
+    public function dashboard(Request $request){
+        $bartizans = Bartizan::orderBy("dashboard_id")->get();
+        return view("watchman.dashboard", [
+            "bartizans" => $bartizans
+        ]);
+    }
+
+    public function pledgeIndex(Request $request){
+        $pledges = Pledge::paginate(20);
+        return view("watchman.dashboard", [
+            "pledges" => $pledges
+        ]);
+    }
+
+    public function pledgeCreate(Request $request){
+
+        return view("watchman.create", [
+
+        ]);
+    }
+
+    public function pledgeStore(Request $request){
+
+    }
+
     public function sync(){
         // 작정자명단 CSV 파일을 Bartizan에 동기화
 //        $file = fopen('../storage/files/watchmen_230913.csv','r');
@@ -56,6 +106,7 @@ class WatchmanController extends Controller
     public function updateBartizan()
     {
         $bartizans = Bartizan::get();
+
         foreach ($bartizans as $i => $bartizan){
             info($i . " " . $bartizan->name);
             $watchman_info = (object) [
@@ -64,6 +115,12 @@ class WatchmanController extends Controller
                 'watchmen' => [],
                 'spy' => []
             ];
+
+            $count_elder = 0;
+            $count_kwonsa = 0;
+            $count_ansoo = 0;
+            $count_remnant = 0;
+            $count_member = 0;
 
             if($bartizan->district != null AND $bartizan->district != ""){
                 // 지역
@@ -85,6 +142,7 @@ class WatchmanController extends Controller
                         'position' => "장로",
                         'district' => $district,
                     ];
+                    $count_elder++;
                 } else if ($position == "안수집사"){
                     $watchman_info->tychicus[] = [
                         'name' => $name,
@@ -93,6 +151,7 @@ class WatchmanController extends Controller
                         'position' => "안수집사",
                         'district' => $district,
                     ];
+                    $count_ansoo++;
                 } else {
                     $watchman_info->watchmen[] = [
                         'name' => $name,
@@ -101,11 +160,23 @@ class WatchmanController extends Controller
                         'position' => $position,
                         'district' => $district,
                     ];
+                    if($position == "권사"){
+                        $count_kwonsa++;
+                    } elseif ($position == "RT"){
+                        $count_remnant++;
+                    } else {
+                        $count_member++;
+                    }
                 }
             }
 
             $bartizan->update([
-                "watchman_infos" => json_encode($watchman_info)
+                "watchman_infos" => json_encode($watchman_info),
+                "count_elder" => $count_elder,
+                "count_kwonsa" => $count_kwonsa,
+                "count_ansoo" => $count_ansoo,
+                "count_remnant" => $count_remnant,
+                "count_member" => $count_member,
             ]);
 
         }

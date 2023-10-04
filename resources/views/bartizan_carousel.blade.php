@@ -53,7 +53,7 @@
         </div>
         <div class="p-3 w-full rounded-lg border-{{$bartizan->getColor()}}-500 border-2 rounded shadow bg-gray-200 ">
             <div class="bg-white rounded-lg p-3">
-                <p class="text-sm pb-1 text-gray-800">
+                <p class="text-lg pb-1 text-gray-800">
                     @switch($bartizan->nation->continent)
                         @case("Asia") 아시아 @break
                         @case("Oceania") 오세아니아 @break
@@ -72,10 +72,10 @@
                          style="border:1px solid #ddd; object-fit: contain; height: 50px; width: auto; " alt="img.."/>
 
                     <div class="flex flex-col" style="height: 50px;">
-                        <p class="text-base pb-1 font-bold ml-3 ">
+                        <p class="text-lg pb-1 font-bold ml-3 ">
                             {{$bartizan->nation->name}}
                         </p>
-                        <span class="text-gray-800 text-sm ml-3">{{$bartizan->nation->name_en}}</span>
+                        <span class="text-gray-800 text-lg ml-3">{{$bartizan->nation->name_en}}</span>
                     </div>
                 </div>
             </div>
@@ -83,43 +83,43 @@
             <div class="flex flex-wrap mt-2">
                 <div class="flex flex-col w-1/2 p-1">
                     <div class="bg-white p-2 mb-2 rounded">
-                        <h1 class="text-xs font-bold mb-1">망대 대표 (장로)</h1>
+                        <h1 class="text-sm font-bold mb-1">망대 대표 (장로)</h1>
                         @forelse($bartizan->pledges->representative as $represent)
-                            <div class="w-full justify-between text-sm">
-                                <p class="text-gray-900 font-bold mb-1">{{$represent->name}} <span class="text-gray-800 font-medium text-xs"> {{$represent->district}}</span></p>
+                            <div class="w-full justify-between text-lg">
+                                <p class="text-gray-900 font-bold mb-1">{{$represent->name}} <span class="text-gray-800 font-medium text-sm"> {{$represent->district}}</span></p>
                             </div>
                         @empty
-                            <div class="w-full justify-between text-sm">
+                            <div class="w-full justify-between text-lg">
                                 -
                             </div>
                         @endforelse
                     </div>
 
                     <div class="bg-white p-2 mb-2 rounded">
-                        <h1 class="text-xs font-bold mb-1">권사</h1>
+                        <h1 class="text-sm font-bold mb-1">권사</h1>
                         @forelse($bartizan->pledges->watchmen as $watchman)
                             @if($watchman->position == "권사")
-                                <div class="w-full justify-between text-sm">
-                                    <p class="text-gray-900 font-bold mb-1">{{$watchman->name}} <span class="text-gray-800 font-medium text-xs"> {{$watchman->district}}</span></p>
+                                <div class="w-full justify-between text-lg">
+                                    <p class="text-gray-900 font-bold mb-1">{{$watchman->name}} <span class="text-gray-800 font-medium text-sm"> {{$watchman->district}}</span></p>
                                 </div>
                             @endif
                         @empty
-                            <div class="w-full justify-between text-sm">
+                            <div class="w-full justify-between text-lg">
                                 -
                             </div>
                         @endforelse
                     </div>
 
                     <div class="bg-white p-2 mb-2 rounded">
-                        <h1 class="text-xs font-bold mb-1">안수집사</h1>
+                        <h1 class="text-sm font-bold mb-1">안수집사</h1>
                         @forelse($bartizan->pledges->tychicus as $tychicus)
                             @if($tychicus->position == "안수집사")
-                                <div class="w-full justify-between text-sm">
-                                    <p class="text-gray-900 font-bold mb-1">{{$tychicus->name}} <span class="text-gray-800 font-medium text-xs"> {{$tychicus->district}}</span></p>
+                                <div class="w-full justify-between text-lg">
+                                    <p class="text-gray-900 font-bold mb-1">{{$tychicus->name}} <span class="text-gray-800 font-medium text-sm"> {{$tychicus->district}}</span></p>
                                 </div>
                             @endif
                         @empty
-                            <div class="w-full justify-between text-sm">
+                            <div class="w-full justify-between text-lg">
                                 -
                             </div>
                         @endforelse
@@ -129,30 +129,30 @@
 
                 <div class="flex flex-col w-1/2 p-1">
                     <div class="bg-white p-2 mb-2 rounded">
-                        <h1 class="text-xs font-bold mb-1">렘넌트</h1>
+                        <h1 class="text-sm font-bold mb-1">렘넌트</h1>
                         @forelse($bartizan->pledges->watchmen as $watchman)
                             @if($watchman->position == "RT")
-                                <div class="w-full justify-between text-sm">
-                                    <p class="text-gray-900 font-bold mb-1">{{$watchman->name}} <span class="text-gray-800 font-medium text-xs"> {{$watchman->district}}</span></p>
+                                <div class="w-full justify-between text-lg">
+                                    <p class="text-gray-900 font-bold mb-1">{{$watchman->name}} <span class="text-gray-800 font-medium text-sm"> {{$watchman->district}}</span></p>
                                 </div>
                             @endif
                         @empty
-                            <div class="w-full justify-between text-sm">
+                            <div class="w-full justify-between text-lg">
                                 -
                             </div>
                         @endforelse
                     </div>
 
                     <div class="bg-white p-2 mb-2 rounded">
-                        <h1 class="text-xs font-bold mb-1">성도</h1>
+                        <h1 class="text-sm font-bold mb-1">성도</h1>
                         @forelse($bartizan->pledges->watchmen as $watchman)
                             @if($watchman->position == "성도")
-                                <div class="w-full justify-between text-sm">
-                                    <p class="text-gray-900 font-bold mb-1">{{$watchman->name}} <span class="text-gray-800 font-medium text-xs"> {{$watchman->district}}</span></p>
+                                <div class="w-full justify-between text-lg">
+                                    <p class="text-gray-900 font-bold mb-1">{{$watchman->name}} <span class="text-gray-800 font-medium text-sm"> {{$watchman->district}}</span></p>
                                 </div>
                             @endif
                         @empty
-                            <div class="w-full justify-between text-sm">
+                            <div class="w-full justify-between text-lg">
                                 -
                             </div>
                         @endforelse
@@ -179,7 +179,7 @@
         int_fun =setInterval(function (){
             scrollRow(row_index);
             row_index++;
-        }, 10000);
+        }, 6000);
     }
 
     $(document).ready(function () {

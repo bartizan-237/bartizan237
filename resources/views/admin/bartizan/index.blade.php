@@ -45,11 +45,18 @@
                     <table class="table_hover w-full whitespace-no-wrap" style="min-width: 1200px;">
                         <thead>
                         <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b  bg-green-900" >
-                            <th class="px-4 py-3 text-center">망대번호</th>
-                            <th class="px-4 py-3 text-center">국가명</th>
-                            <th class="px-4 py-3 text-center">대륙</th>
-                            <th class="px-4 py-3 text-center">대교구</th>
-                            <th class="px-4 py-3 text-center">파수꾼 정보</th>
+                            <th rowspan="2" class="px-4 py-3 text-center">망대번호</th>
+                            <th rowspan="2" class="px-4 py-3 text-center">국가명</th>
+                            <th rowspan="2" class="px-4 py-3 text-center">대륙</th>
+                            <th rowspan="2" class="px-4 py-3 text-center">대교구</th>
+                            <th colspan="5" class="px-4 py-3 text-center">파수꾼</th>
+                        </tr>
+                        <tr class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b  bg-green-900" >
+                            <th class="px-4 py-3 text-center">장로</th>
+                            <th class="px-4 py-3 text-center">권사</th>
+                            <th class="px-4 py-3 text-center">안수집사</th>
+                            <th class="px-4 py-3 text-center">렘넌트</th>
+                            <th class="px-4 py-3 text-center">성도</th>
                         </tr>
                         </thead>
                         <tbody class="bg-white divide-y  ">
@@ -77,29 +84,55 @@
                                     </td>
 
                                     <td class="px-4 py-3 text-xs">
-                                        @if(isset($bartizan->watchman_infos))
-                                            @foreach(json_decode($bartizan->watchman_infos) as $role => $member_info)
-                                                @switch($role)
-                                                    @case("spy") 정탐꾼 : @break
-                                                    @case("tychicus") 두기고 : @break
-                                                    @case("watchmen") 파수꾼 : @break
-                                                    @case("representative") 망대대표 : @break
-                                                @endswitch
-
-
-                                                @if($role == "watchmen" OR $role == "spy")
-                                                    @foreach($member_info as $member)
-                                                        {{$member->name}} <span style="font-size:10px;">{{$member->position}}, </span>
-                                                    @endforeach
-                                                @else
-                                                    {{$member_info->name}} <span style="font-size:10px;">{{$member_info->position}}, </span>
-                                                @endif
-
+                                    @foreach(json_decode($bartizan->watchman_infos) as $role => $member_info)
+                                        @foreach($member_info as $member)
+                                            @if($member->position == "장로")
+                                                {{$member->name ?? ""}} <span style="font-size:10px;">{{$member->position ?? ""}}</span>
                                                 <br/>
-                                            @endforeach
-                                        @endif
+                                           @endif
+                                        @endforeach
+                                    @endforeach
                                     </td>
-
+                                    <td class="px-4 py-3 text-xs">
+                                   @foreach(json_decode($bartizan->watchman_infos) as $role => $member_info)
+                                        @foreach($member_info as $member)
+                                            @if($member->position == "권사")
+                                                {{$member->name ?? ""}} <span style="font-size:10px;">{{$member->position ?? ""}}</span>
+                                                <br/>
+                                           @endif
+                                        @endforeach
+                                    @endforeach
+                                    </td>
+                                    <td class="px-4 py-3 text-xs">
+                                   @foreach(json_decode($bartizan->watchman_infos) as $role => $member_info)
+                                        @foreach($member_info as $member)
+                                            @if($member->position == "안수집사")
+                                                {{$member->name ?? ""}} <span style="font-size:10px;">{{$member->position ?? ""}}</span>
+                                                <br/>
+                                           @endif
+                                        @endforeach
+                                    @endforeach
+                                    </td>
+                                    <td class="px-4 py-3 text-xs">
+                                   @foreach(json_decode($bartizan->watchman_infos) as $role => $member_info)
+                                        @foreach($member_info as $member)
+                                            @if($member->position == "RT")
+                                                {{$member->name ?? ""}} <span style="font-size:10px;">{{$member->position ?? ""}}</span>
+                                                <br/>
+                                           @endif
+                                        @endforeach
+                                    @endforeach
+                                    </td>
+                                    <td class="px-4 py-3 text-xs">
+                                   @foreach(json_decode($bartizan->watchman_infos) as $role => $member_info)
+                                        @foreach($member_info as $member)
+                                            @if($member->position == "성도")
+                                                {{$member->name ?? ""}} <span style="font-size:10px;">{{$member->position ?? ""}}</span>
+                                                <br/>
+                                           @endif
+                                        @endforeach
+                                    @endforeach
+                                    </td>
                                 </tr>
                             @endforeach
                         @endif

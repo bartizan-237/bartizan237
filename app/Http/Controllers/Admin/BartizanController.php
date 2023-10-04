@@ -23,7 +23,7 @@ class BartizanController extends Controller
         $province_keyword = $request->province;
 
         $page = $request->page;
-        $BARTIZAN_PER_PAGE = 10;
+        $BARTIZAN_PER_PAGE = 250;
 
         $query = Bartizan::query();
 
