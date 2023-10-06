@@ -100,12 +100,25 @@ class HomeController extends Controller
 
     public function bartizanCarousel(Request $request){
 //        $bartizans = Bartizan::orderBy('dashboard_id')->take(32)->get();
-        $bartizans = Bartizan::orderBy('dashboard_id')->get();
+        $bartizans = Bartizan::where('name', "미국")->orderBy('dashboard_id')->take(32)->get();
+//        $bartizans = Bartizan::orderBy('dashboard_id')->get();
         foreach ($bartizans as $bartizan){
             $bartizan->nation = $bartizan->getNation();
             $bartizan->pledges = json_decode($bartizan->watchman_infos);
         }
         return view('bartizan_carousel', [
+            "bartizans" => $bartizans
+        ]);
+    }
+
+    public function bartizanCarousel2(Request $request){
+        $bartizans = Bartizan::orderBy('dashboard_id')->take(32)->get();
+//        $bartizans = Bartizan::orderBy('dashboard_id')->get();
+        foreach ($bartizans as $bartizan){
+            $bartizan->nation = $bartizan->getNation();
+            $bartizan->pledges = json_decode($bartizan->watchman_infos);
+        }
+        return view('bartizan_carousel2', [
             "bartizans" => $bartizans
         ]);
     }

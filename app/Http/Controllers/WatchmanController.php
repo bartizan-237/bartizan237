@@ -18,6 +18,7 @@ class WatchmanController extends Controller
         $available_ansoo = 0;
         $available_remnant = 0;
         $available_member = 0;
+        $total = 0;
         foreach ($bartizans as $bartizan){
             echo "$bartizan->name >> $bartizan->count_elder  $bartizan->count_kwonsa   $bartizan->count_ansoo   $bartizan->count_remnant   $bartizan->count_member <br/>";
 
@@ -27,11 +28,14 @@ class WatchmanController extends Controller
             if($bartizan->count_remnant < 2) $available_remnant++;
             if($bartizan->count_member < 5) $available_member++;
         }
+
+        $total =  $available_elder + $available_kwonsa + $available_ansoo + $available_remnant + $available_member;
         echo "available_elder = $available_elder <br/>";
         echo "available_kwonsa = $available_kwonsa <br/>";
         echo "available_ansoo = $available_ansoo <br/>";
         echo "available_remnant = $available_remnant <br/>";
         echo "available_member = $available_member <br/>";
+        echo "TOTAL = $total <br/>";
 
     }
 
@@ -51,21 +55,129 @@ class WatchmanController extends Controller
 
     public function pledgeCreate(Request $request){
 
-        return view("watchman.create", [
+        $empty_bartizans = \DB::table('bartizans')
+            ->where(function($query) {
+                $query->orWhere('count_elder', "=", 0)
+                    ->orWhere('count_kwonsa', "<", 3)
+                    ->orWhere('count_ansoo', "<", 1)
+                    ->orWhere('count_remnant', "<", 2)
+                    ->orWhere('count_member', "<", 5);
+            })->orderBy('dashboard_id')->get();
 
+        return view("watchman.create", [
+            'bartizans' => $empty_bartizans
         ]);
     }
 
     public function pledgeStore(Request $request){
+        info($request);
+        $name = $request->name;
+        $district = $request->district;
+        $district = $this->getDistrict($district);
+        $position = $request->position;
+        $bartizan_id = $request->bartizan_id;
 
+        $bartizan_row = Bartizan::find($bartizan_id);
+
+
+        $available = true;
+        $before_watchmen = json_decode($bartizan_row->watchman_infos);
+
+        // update bartizan
+        if($position == "장로"){
+            if($bartizan_row->count_elder > 0) $available = false;
+            $bartizan_row->count_elder++;
+
+            $before_watchmen->representative[] = [
+                'name' => $name,
+                'user_id' => null,
+                'profile_image' => null,
+                'position' => "장로",
+                'district' => $district,
+            ];
+        } else if($position == "권사"){
+            if($bartizan_row->count_kwonsa > 2) $available = false;
+            $bartizan_row->count_kwonsa++;
+
+             $before_watchmen->representative[] = [
+                'name' => $name,
+                'user_id' => null,
+                'profile_image' => null,
+                'position' => "장로",
+                'district' => $district,
+            ];
+        } else if($position == "안수집사"){
+            if($bartizan_row->count_ansoo > 0) $available = false;
+            $bartizan_row->count_ansoo++;
+
+             $before_watchmen->tychicus[] = [
+                'name' => $name,
+                'user_id' => null,
+                'profile_image' => null,
+                'position' => "안수집사",
+                'district' => $district,
+            ];
+        } else if($position == "RT"){
+            if($bartizan_row->count_remnant > 1) $available = false;
+            $bartizan_row->count_remnant++;
+
+             $before_watchmen->watchmen[] = [
+                'name' => $name,
+                'user_id' => null,
+                'profile_image' => null,
+                'position' => "RT",
+                'district' => $district,
+            ];
+        } else {
+            // 성도
+            if($bartizan_row->count_member > 4) $available = false;
+            $bartizan_row->count_member++;
+
+             $before_watchmen->watchmen[] = [
+                'name' => $name,
+                'user_id' => null,
+                'profile_image' => null,
+                'position' => "성도",
+                'district' => $district,
+            ];
+        }
+
+        if($available == false){
+            $message = "$bartizan_row->name 나라의 $position 작정자는 이미 마감되었습니다. 다른 나라를 선택해주세요";
+            info("[FAILED] $message");
+            return response()->json([
+                'success' => false,
+                'message' => $message
+            ]);
+        }
+
+        $after_watchmen = $before_watchmen;
+        $bartizan_row->watchman_infos = json_encode($after_watchmen);
+        $bartizan_row->update();
+
+        // create pledge
+        Pledge::create([
+            'bartizan_id' => $bartizan_id,
+            'nation' => $bartizan_row->name,
+            'nation_region' => "",
+            'name' => $name,
+            'district' => $district,
+            'position' => $position,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => "$bartizan_row->name 나라의 $position 직분에 작정되었습니다!"
+        ]);
     }
 
     public function sync(){
         // 작정자명단 CSV 파일을 Bartizan에 동기화
 //        $file = fopen('../storage/files/watchmen_230913.csv','r');
 //        $file = fopen('../storage/files/watchmen_230913_2.csv','r');
-        $file = fopen('../storage/files/watchmen_230921_2.csv','r');
-        $file = fopen('../storage/files/watchmen_230926.csv','r');
+//        $file = fopen('../storage/files/watchmen_230921_2.csv','r');
+//        $file = fopen('../storage/files/watchmen_230926.csv','r');
+        $file = fopen('../storage/files/watchmen_231004.csv','r');
 
         $line_number = 0;
         $nation_name = "";
