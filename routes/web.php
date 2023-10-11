@@ -14,7 +14,8 @@ use App\Http\Controllers\{
     AjaxController,
     JoinRequestController,
     JobController,
-    WatchmanController
+    WatchmanController,
+    CsrfController
 };
 
 use App\Http\Controllers\Admin\{
@@ -35,14 +36,16 @@ Route::get('/test', function () { return view('test'); });
 //Route::get('/test2', function () { return view('test2'); });
 //Route::get('/make', [NationController::class, 'createBartizans']);
 //Route::get('/sync', [WatchmanController::class, 'sync']); // 작정자 명단 동기화
-//Route::get('/sync2', [WatchmanController::class, 'updateBartizan']);
-//Route::get('/sync3', [WatchmanController::class, 'test']);
+Route::get('/sync2', [WatchmanController::class, 'updateBartizan']);
+Route::get('/sync3', [WatchmanController::class, 'test']);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/slide', [HomeController::class, 'bartizanCarousel']);
 //Route::get('/slide2', [HomeController::class, 'bartizanCarousel']);
 
-
+Route::get('/online', [WatchmanController::class, 'onlineCreate']);
+Route::get('/online/empty', [WatchmanController::class, 'getEmptyCount']);
+Route::post('/online/validate', [WatchmanController::class, 'validateInfo']);
 Route::get('/watchman', [WatchmanController::class, 'pledgeCreate']);
 Route::post('/watchman', [WatchmanController::class, 'pledgeStore']);
 
@@ -173,3 +176,6 @@ Route::get('/fields', [JobController::class, 'index']); // 관심분야
 
 Route::post('/join/accept', [JoinRequestController::class, 'accept']);
 Route::post('/join/reject', [JoinRequestController::class, 'reject']);
+
+
+//Route::get('/csrf', [CsrfController::class, 'getCsrf']);

@@ -74,6 +74,17 @@
                                 수정하러가기
                             </button>
                         </div>
+
+                        @auth
+                            <a class="font-bold mt-5 mx-auto"
+                               href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                로그아웃
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        @endauth
+
                     </div>
                 </div>
             </div>

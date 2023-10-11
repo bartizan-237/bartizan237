@@ -88,7 +88,6 @@
 
         var formData = $(this).serialize();
         console.log("formData", formData);
-        return false;
         $.ajax({
             url: '/watchman',
             type: 'POST',
@@ -96,6 +95,7 @@
             success: function(response) {
                 console.log("SUCCESS", response);
                 alert(response.message);
+                location.reload()
             },
             error: function(error) {
                 console.log('에러 발생: ' + error.statusText);

@@ -169,4 +169,10 @@ class UserController extends Controller
         ]);
     }
 
+    public function getCsrf(){
+        $csrf = csrf_token();
+        info($csrf);
+        return $csrf;
+    }
+
 }

@@ -27,6 +27,7 @@ mix
     .js('resources/js/bartizan/create.js', 'public/js/bartizan/create.js')
     .js('resources/js/bartizan/edit.js', 'public/js/bartizan/edit.js')
     // .js('resources/js/watchman/*', 'public/js/watchman/test.js')
+    .js('resources/js/watchman/step.js', 'public/js/watchman/step.js')
     .js('resources/js/watchman/join_request.js', 'public/js/watchman/join_request.js')
     .js('resources/js/watchman/join_request_list.js', 'public/js/watchman/join_request_list.js')
     .js('resources/js/nation/*', 'public/js/nation/nation.js')

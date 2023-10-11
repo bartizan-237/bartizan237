@@ -10,6 +10,39 @@ use Illuminate\Http\Request;
 
 class WatchmanController extends Controller
 {
+    public function onlineCreate(Request $request){
+        return view("watchman.online");
+    }
+
+    public function getEmptyCount(Request $request){
+        info(__METHOD__);
+        info($request);
+        return response()->json([
+            'count' => 10
+        ]);
+    }
+
+    public function validateInfo(Request $request){
+        info(__METHOD__);
+        info($request);
+
+        $name = $request->name;
+        $district = $request->district;
+        $position = $request->position;
+
+        if($pledge_row = Pledge::where("name", $name)->get()->last()){
+            // 이미 작정
+            return response()->json([
+                'code' => 301, "nation_name" => $pledge_row->nation
+            ]);
+        } else {
+            // 제비뽑기 가능
+            return response()->json([
+                'code' => 200
+            ]);
+        }
+    }
+
     public function test(){
         $bartizans = Bartizan::orderBy('dashboard_id')->get();
 
@@ -19,23 +52,56 @@ class WatchmanController extends Controller
         $available_remnant = 0;
         $available_member = 0;
         $total = 0;
-        foreach ($bartizans as $bartizan){
-            echo "$bartizan->name >> $bartizan->count_elder  $bartizan->count_kwonsa   $bartizan->count_ansoo   $bartizan->count_remnant   $bartizan->count_member <br/>";
+//        foreach ($bartizans as $bartizan){
+//            echo "$bartizan->name >> $bartizan->count_elder  $bartizan->count_kwonsa   $bartizan->count_ansoo   $bartizan->count_remnant   $bartizan->count_member <br/>";
+//
+//            if($bartizan->count_elder < 1) $available_elder++;
+//            if($bartizan->count_kwonsa < 3) $available_kwonsa++;
+//            if($bartizan->count_ansoo < 1) $available_ansoo++;
+//            if($bartizan->count_remnant < 2) $available_remnant++;
+//            if($bartizan->count_member < 5) $available_member++;
+//        }
+//
+//        $total =  $available_elder + $available_kwonsa + $available_ansoo + $available_remnant + $available_member;
+//        echo "available_elder = $available_elder <br/>";
+//        echo "available_kwonsa = $available_kwonsa <br/>";
+//        echo "available_ansoo = $available_ansoo <br/>";
+//        echo "available_remnant = $available_remnant <br/>";
+//        echo "available_member = $available_member <br/>";
+//        echo "TOTAL = $total <br/>";
 
-            if($bartizan->count_elder < 1) $available_elder++;
-            if($bartizan->count_kwonsa < 3) $available_kwonsa++;
-            if($bartizan->count_ansoo < 1) $available_ansoo++;
-            if($bartizan->count_remnant < 2) $available_remnant++;
-            if($bartizan->count_member < 5) $available_member++;
+        $available =0;
+        $target = "member";
+        $target = "count_" . $target;
+        foreach ($bartizans as $bartizan){
+            if($bartizan->$target < 1) {
+                $available++;
+                echo "$bartizan->dashboard_id $bartizan->name <br/>";
+            }
         }
 
-        $total =  $available_elder + $available_kwonsa + $available_ansoo + $available_remnant + $available_member;
-        echo "available_elder = $available_elder <br/>";
-        echo "available_kwonsa = $available_kwonsa <br/>";
-        echo "available_ansoo = $available_ansoo <br/>";
-        echo "available_remnant = $available_remnant <br/>";
-        echo "available_member = $available_member <br/>";
-        echo "TOTAL = $total <br/>";
+        echo "<br/>완전 빈 곳 : $available <br/><br/><br/>";
+
+
+        $available = 0;
+        foreach ($bartizans as $bartizan){
+            if($bartizan->$target >= 1 && $bartizan->$target < 2) {
+                $available++;
+                echo "$bartizan->dashboard_id $bartizan->name <br/>";
+            }
+        }
+
+        echo "<br/>조금 빈 곳 : $available <br/><br/><br/>";
+
+        $available = 0;
+        foreach ($bartizans as $bartizan){
+            if($bartizan->$target >= 2 && $bartizan->$target < 3) {
+                $available++;
+                echo "$bartizan->dashboard_id $bartizan->name <br/>";
+            }
+        }
+
+        echo "<br/>조금 빈 곳 : $available <br/>";
 
     }
 
@@ -177,7 +243,8 @@ class WatchmanController extends Controller
 //        $file = fopen('../storage/files/watchmen_230913_2.csv','r');
 //        $file = fopen('../storage/files/watchmen_230921_2.csv','r');
 //        $file = fopen('../storage/files/watchmen_230926.csv','r');
-        $file = fopen('../storage/files/watchmen_231004.csv','r');
+//        $file = fopen('../storage/files/watchmen_231004.csv','r');
+        $file = fopen('../storage/files/watchmen_231005.csv','r');
 
         $line_number = 0;
         $nation_name = "";
@@ -219,6 +286,7 @@ class WatchmanController extends Controller
     {
         $bartizans = Bartizan::get();
 
+        $total = 0;
         foreach ($bartizans as $i => $bartizan){
             info($i . " " . $bartizan->name);
             $watchman_info = (object) [
@@ -236,13 +304,13 @@ class WatchmanController extends Controller
 
             if($bartizan->district != null AND $bartizan->district != ""){
                 // 지역
-                info("지역 : $bartizan->district");
                 $pledges = Pledge::where('nation', $bartizan->name)->where('nation_region', 'like', '%'.$bartizan->district.'%')->get();
             } else {
                 $pledges = Pledge::where('nation', $bartizan->name)->get();
             }
 
             foreach ($pledges as $pledge){
+                $total++;
                 $name = $pledge->name;
                 $district = $pledge->district;
                 $position = $pledge->position;
@@ -292,6 +360,8 @@ class WatchmanController extends Controller
             ]);
 
         }
+
+        dd("TOTAL = $total");
     }
 
     public function pledgeToBartizan($data){
