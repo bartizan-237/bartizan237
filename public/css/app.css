@@ -638,6 +638,10 @@ select {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
 }
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -858,9 +862,6 @@ select {
 .w-1\/5 {
   width: 20%;
 }
-.w-10 {
-  width: 2.5rem;
-}
 .w-64 {
   width: 16rem;
 }
@@ -872,6 +873,9 @@ select {
 }
 .w-auto {
   width: auto;
+}
+.w-10 {
+  width: 2.5rem;
 }
 .min-w-0 {
   min-width: 0px;

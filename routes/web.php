@@ -43,9 +43,12 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/slide', [HomeController::class, 'bartizanCarousel']);
 //Route::get('/slide2', [HomeController::class, 'bartizanCarousel']);
 
+Route::get('/draw', [WatchmanController::class, 'onlineCreate']);
 Route::get('/online', [WatchmanController::class, 'onlineCreate']);
+Route::get('/online2', [WatchmanController::class, 'onlineCreate2']);
 Route::get('/online/empty', [WatchmanController::class, 'getEmptyCount']);
 Route::post('/online/validate', [WatchmanController::class, 'validateInfo']);
+Route::post('/online/pledge', [WatchmanController::class, 'onlinePledge']);
 Route::get('/watchman', [WatchmanController::class, 'pledgeCreate']);
 Route::post('/watchman', [WatchmanController::class, 'pledgeStore']);
 

@@ -9,7 +9,9 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="임마누엘교회 세계망대">
 <meta property="og:description" content="237나라에 망대를 세우는 임마누엘교회의 세계망대플랫폼입니다.">
-<meta name="og:image" content="https://kr.object.ncloudstorage.com/immanuel/bartizan/image/bartizan_logo.png">
+<meta property="og:image" content="https://kr.object.ncloudstorage.com/immanuel/bartizan/image/ogimage.png">
+{{--<meta name="og:image" content="https://kr.object.ncloudstorage.com/immanuel/bartizan/image/bartizan_logo.png">--}}
+{{--<meta name="og:image" content="https://platform.237.co.kr/image/ogimage.png">--}}
 <meta property="og:url" content="https://platform.237.co.kr">
 
 <!-- Scripts -->

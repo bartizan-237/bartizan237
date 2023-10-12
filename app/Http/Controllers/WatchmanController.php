@@ -14,11 +14,197 @@ class WatchmanController extends Controller
         return view("watchman.online");
     }
 
+    public function onlineCreate2(Request $request){
+        return view("watchman.online2");
+    }
+
     public function getEmptyCount(Request $request){
         info(__METHOD__);
         info($request);
+        $available =0;
+        $position = $request->position;
+
+        $max = 0;
+        switch ($position){
+            case "장로" :
+                $target = "elder";
+                $max = 1;
+                break;
+            case "권사" :
+                $target = "kwonsa";
+                $max = 2;
+                break;
+            case "안수집사" :
+                $target = "ansoo";
+                $max = 1;
+                break;
+            case "렘넌트" :
+            case "RT" :
+            case "remnant" :
+                $target = "remnant";
+                $max = 2;
+                break;
+            case "성도" :
+                $target = "member";
+                $max = 2;
+                break;
+            default : $target = null;
+        }
+
+        if($target){
+            $target = "count_" . $target;
+
+            // 완전 빈곳
+            $bartizans = Bartizan::get();
+            foreach ($bartizans as $bartizan){
+                if($bartizan->$target < $max) {
+                    $available++;
+                }
+            }
+        } else {
+            $available = 0;
+        }
+
+        info(__METHOD__ . " AVAILABLE COUNT = $available");
+
         return response()->json([
-            'count' => 10
+            'count' => $available
+        ]);
+    }
+
+    public function onlinePledge(Request $request){
+        info(__METHOD__);
+        info($request);
+        $name = $request->name;
+        $district = $request->district;
+        $district = $this->getDistrict($district);
+        $position = $request->position;
+
+        $position = $request->position;
+        switch ($position){
+            case "장로" :
+                $target = "elder";
+                $max = 1;
+                break;
+            case "권사" :
+                $target = "kwonsa";
+                $max = 2;
+                break;
+            case "안수집사" :
+                $target = "ansoo";
+                $max = 1;
+                break;
+            case "렘넌트" :
+            case "RT" :
+            case "remnant" :
+                $target = "remnant";
+                $max = 2;
+                break;
+            case "성도" :
+                $target = "member";
+                $max = 2;
+                break;
+            default : $target = null;
+        }
+
+        $target = "count_" . $target;
+        // 완전 빈곳
+        $random_bartizan_row = Bartizan::where($target, "<", $max)->inRandomOrder()->get()->last();
+
+        $bartizan_id = $random_bartizan_row->id;
+        $bartizan_row = $random_bartizan_row;
+        $available = true;
+        $before_watchmen = json_decode($bartizan_row->watchman_infos);
+
+        // update bartizan
+        if($position == "장로"){
+            if($bartizan_row->count_elder > 0) $available = false;
+            $bartizan_row->count_elder++;
+
+            $before_watchmen->representative[] = [
+                'name' => $name,
+                'user_id' => null,
+                'profile_image' => null,
+                'position' => "장로",
+                'district' => $district,
+            ];
+        } else if($position == "권사"){
+            if($bartizan_row->count_kwonsa > 2) $available = false;
+            $bartizan_row->count_kwonsa++;
+
+            $before_watchmen->representative[] = [
+                'name' => $name,
+                'user_id' => null,
+                'profile_image' => null,
+                'position' => "장로",
+                'district' => $district,
+            ];
+        } else if($position == "안수집사"){
+            if($bartizan_row->count_ansoo > 0) $available = false;
+            $bartizan_row->count_ansoo++;
+
+            $before_watchmen->tychicus[] = [
+                'name' => $name,
+                'user_id' => null,
+                'profile_image' => null,
+                'position' => "안수집사",
+                'district' => $district,
+            ];
+        } else if($position == "RT"){
+            if($bartizan_row->count_remnant > 1) $available = false;
+            $bartizan_row->count_remnant++;
+
+            $before_watchmen->watchmen[] = [
+                'name' => $name,
+                'user_id' => null,
+                'profile_image' => null,
+                'position' => "RT",
+                'district' => $district,
+            ];
+        } else {
+            // 성도
+            if($bartizan_row->count_member > 4) $available = false;
+            $bartizan_row->count_member++;
+
+            $before_watchmen->watchmen[] = [
+                'name' => $name,
+                'user_id' => null,
+                'profile_image' => null,
+                'position' => "성도",
+                'district' => $district,
+            ];
+        }
+
+        if($available == false){
+            $message = "$bartizan_row->name 나라의 $position 작정자는 이미 마감되었습니다. 다른 나라를 선택해주세요";
+            info("[FAILED] $message");
+            return response()->json([
+                'success' => false,
+                'message' => $message
+            ]);
+        }
+
+//        $after_watchmen = $before_watchmen;
+//        $bartizan_row->watchman_infos = json_encode($after_watchmen);
+        $bartizan_row->update();
+
+        // create pledge
+        Pledge::create([
+            'bartizan_id' => $bartizan_id,
+            'nation' => $bartizan_row->name,
+            'nation_region' => "",
+            'name' => $name,
+            'district' => $district,
+            'position' => $position,
+        ]);
+
+        info(__METHOD__);
+        info("[$name $position $district] 제비뽑기결과 = $bartizan_row->name");
+
+        return response()->json([
+            'success' => true,
+            'nation_name' => $bartizan_row->name,
+            'message' => "$bartizan_row->name 나라의 $position 직분에 작정되었습니다!"
         ]);
     }
 

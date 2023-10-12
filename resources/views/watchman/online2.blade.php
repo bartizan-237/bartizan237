@@ -11,20 +11,20 @@
     </style>
 </head>
 
-<body class="w-full h-screen antialiased leading-none">
+<body class="w-full antialiased leading-none">
 <div id="toast"><p></p></div>
 <!-- <div class="h-full bg-gradient-to-tl from-green-400 to-indigo-900 w-full py-16 px-4"> -->
-<div class="h-full w-full py-4 px-4 pb-8">
+<div class="w-full py-4 px-4 pb-8">
     <div id="step_app" style="max-width: 500px; margin: auto" >
         <div>
             <div class="flex flex-wrap p-3 items-center justify-center">
-{{--                <button--}}
-{{--                        @click="prevStep"--}}
-{{--                        :disabled="currentStep === 0"--}}
-{{--                        class="flex text-green-600 ml-2 mr-2 items-center justify-center w-1/5 h-10 border-2 border-green-600 rounded-full"--}}
-{{--                >--}}
-{{--                    <--}}
-{{--                </button>--}}
+                {{--                <button--}}
+                {{--                        @click="prevStep"--}}
+                {{--                        :disabled="currentStep === 0"--}}
+                {{--                        class="flex text-green-600 ml-2 mr-2 items-center justify-center w-1/5 h-10 border-2 border-green-600 rounded-full"--}}
+                {{--                >--}}
+                {{--                    <--}}
+                {{--                </button>--}}
                 <div
                         v-for="(step, index) in steps"
                         :key="index"
@@ -33,13 +33,13 @@
                         v-text="step"
                 >
                 </div>
-{{--                <button--}}
-{{--                        @click="nextStep"--}}
-{{--                        :disabled="currentStep === steps.length - 1"--}}
-{{--                        class="flex text-green-600 ml-2 mr-2 items-center justify-center w-1/5 h-10 border-2 border-green-600 rounded-full"--}}
-{{--                >--}}
-{{--                    >--}}
-{{--                </button>--}}
+                {{--                <button--}}
+                {{--                        @click="nextStep"--}}
+                {{--                        :disabled="currentStep === steps.length - 1"--}}
+                {{--                        class="flex text-green-600 ml-2 mr-2 items-center justify-center w-1/5 h-10 border-2 border-green-600 rounded-full"--}}
+                {{--                >--}}
+                {{--                    >--}}
+                {{--                </button>--}}
             </div>
 
 
@@ -65,7 +65,7 @@
                     <label id="position" class="text-base font-medium leading-none text-gray-900">
                         직분을 선택해주세요.
                     </label>
-                    <p class="text-red-700 my-1 text-xs">* 11월 12일 임직식에서 임직이 예정되어있으신 분은 <b>임직예정직분</b>에 체크해주세요.</p>
+                    <p class="text-red-700 my-1 text-xs">* 지금 직분을 선택해주세요.</p>
                     <div>
                         <label class="ml-2 my-2 block ">
                             <input type="radio" name="position" v-model="position" value="장로" class="bg-gray-200 border rounded  text-sm font-medium leading-none text-gray-900 p-2"/>
@@ -88,7 +88,35 @@
                             성도(집사)
                         </label>
                     </div>
+                </div>
 
+                <div class="mb-6">
+                    <label id="position2" class="text-base font-medium leading-none text-gray-900">
+                        11월 12일 임직 예정이신 분들은 <b>임직예정직분</b>을 선택해주세요.
+                    </label>
+                    <p class="text-red-700 my-1 text-xs">* 11월 12일 임직식에서 임직이 예정되어있으신 분만 체크해주시기 바랍니다.</p>
+                    <div>
+                        <label class="ml-2 my-2 block ">
+                            <input type="radio" name="position2" v-model="position2" value="장로" class="bg-gray-200 border rounded  text-sm font-medium leading-none text-gray-900 p-2"/>
+                            장로
+                        </label>
+                        <label class="ml-2 my-2 block ">
+                            <input type="radio" name="position2" v-model="position2" value="권사" class="bg-gray-200 border rounded  text-sm font-medium leading-none text-gray-900 p-2"/>
+                            권사
+                        </label>
+                        <label class="ml-2 my-2 block ">
+                            <input type="radio" name="position2" v-model="position2" value="안수집사" class="bg-gray-200 border rounded  text-sm font-medium leading-none text-gray-900 p-2"/>
+                            안수집사
+                        </label>
+                        <label class="ml-2 my-2 block ">
+                            <input type="radio" name="position2" v-model="position2" value="렘넌트" class="bg-gray-200 border rounded  text-sm font-medium leading-none text-gray-900 p-2"/>
+                            렘넌트
+                        </label>
+                        <label class="ml-2 my-2 block ">
+                            <input type="radio" name="position2" v-model="position2" value="성도" class="bg-gray-200 border rounded  text-sm font-medium leading-none text-gray-900 p-2"/>
+                            성도(집사)
+                        </label>
+                    </div>
                 </div>
 
                 <button
@@ -133,12 +161,8 @@
                 <div v-else class="relative w-full text-center">
                     <p class="text-lg text-gray-900 " >
                         <span class="block my-3" style="font-size: 20px">축하드립니다🎉</span>
-
-
                         <span v-text="draw_result" class="draw_result my-8 block text-green-600" style="font-size: 40px"></span>
-
                         <span v-text="name" class="text-base font-bold text-gray-900"></span> <span v-text="position" class="text-base font-bold text-gray-900"></span>님의 <br/> <b>빈 곳 작정 제비뽑기</b> 결과입니다!
-
                     </p>
 
                     <div class="mt-6" style="background: rgb(238, 238, 238); padding: 30px 40px; color: rgb(85, 85, 85); border-radius: 10px; text-align: left">
@@ -187,17 +211,17 @@
             pledgeType : 'random',
         },
         mounted : function() {
-           console.log("MOUNTED", this._data.currentStep, this._data.steps);
-           setInterval(() => {
-               if(this._data.dots == "."){
-                   this._data.dots = "..";
-               } else if (this._data.dots == ".."){
-                   this._data.dots = "...";
-               } else {
-                   this._data.dots = ".";
-               }
+            console.log("MOUNTED", this._data.currentStep, this._data.steps);
+            setInterval(() => {
+                if(this._data.dots == "."){
+                    this._data.dots = "..";
+                } else if (this._data.dots == ".."){
+                    this._data.dots = "...";
+                } else {
+                    this._data.dots = ".";
+                }
 
-           }, 1000);
+            }, 1000);
         },
         methods: {
             validateMemberInfo : async function() {
@@ -281,7 +305,7 @@
                 }
             },
             drawPledge : async function() {
-               // 제비뽑기 실행
+                // 제비뽑기 실행
                 return new Promise(resolve => {
                     let name = this._data.name;
                     let district = this._data.district;
